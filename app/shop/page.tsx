@@ -18,6 +18,8 @@ const breadcrumbs = [
 ];
 
 export default function ShopPage() {
+  const healthTopicProducts = products.filter((product) => product.category === "health-topics");
+
   return (
     <>
       <Header />
@@ -46,6 +48,47 @@ export default function ShopPage() {
                   >
                     <span className="font-semibold text-sm text-brand-dark leading-snug">{cat.label}</span>
                     <span className="text-xs text-gray-400 mt-1 leading-tight line-clamp-2">{cat.description}</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+
+            <section className="mb-10 rounded-2xl border border-brand-teal/20 bg-brand-teal/5 p-5 sm:p-6">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <h2 className="text-brand-dark font-bold text-lg uppercase tracking-wide">
+                    Theo chủ đề sức khỏe
+                  </h2>
+                  <p className="mt-1 max-w-2xl text-sm text-gray-600">
+                    Đây là nhóm nội dung đang còn thiếu độ sâu so với website mẫu, nên tôi đã bổ sung thêm các tài liệu theo bệnh lý và nhu cầu chăm sóc cụ thể để trang shop có cấu trúc rõ hơn.
+                  </p>
+                </div>
+                <Link href="/shop/health-topics" className="text-sm font-semibold text-brand-teal hover:underline">
+                  Xem toàn bộ chủ đề
+                </Link>
+              </div>
+
+              <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-3">
+                {healthTopicProducts.map((product) => (
+                  <Link
+                    key={product.slug}
+                    href={`/product/${product.slug}`}
+                    className="rounded-xl border border-white bg-white p-4 shadow-sm transition-colors hover:border-brand-teal/40"
+                  >
+                    <div className="relative mb-3 aspect-[16/10] overflow-hidden rounded-lg bg-gray-50">
+                      <Image
+                        src={product.images[0]}
+                        alt={product.title}
+                        fill
+                        className="object-contain p-4"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        unoptimized
+                      />
+                    </div>
+                    <h3 className="text-sm font-semibold text-gray-900">{product.title}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-gray-500 line-clamp-3">
+                      {product.shortDescription}
+                    </p>
                   </Link>
                 ))}
               </div>

@@ -17,7 +17,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         <span className="text-3xl font-bold text-brand-teal">
           {product.price}
         </span>
-        <span className="text-sm text-gray-500">mỗi tờ rơi</span>
+        <span className="text-sm text-gray-500">{product.unit ?? "mỗi sản phẩm"}</span>
       </div>
 
       {/* Short description */}

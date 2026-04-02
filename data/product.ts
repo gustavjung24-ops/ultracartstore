@@ -349,6 +349,270 @@ export const products: Product[] = [
       },
     ],
   },
+
+  {
+    slug: "dinh-duong-cho-nguoi-ung-thu",
+    category: "health-topics",
+    categoryLabel: "Theo chủ đề sức khỏe",
+    title: "Hướng dẫn dinh dưỡng cho người vượt qua ung thư",
+    price: "$4.50",
+    unit: "/ quyển",
+    sku: "HT-201",
+    shortDescription:
+      "Cẩm nang thực hành dành cho người đang điều trị hoặc hồi phục sau ung thư, tập trung vào thực đơn thực vật dễ áp dụng, an toàn và giàu dưỡng chất.",
+    longDescription:
+      "Tài liệu này tổng hợp các khuyến nghị dinh dưỡng thực vật dành cho người đang điều trị hoặc hồi phục sau ung thư, với mục tiêu hỗ trợ thể trạng, kiểm soát tác dụng phụ và cải thiện chất lượng sống.\n\nNội dung bao gồm nguyên tắc xây dựng bữa ăn, gợi ý thực phẩm phù hợp trong từng giai đoạn điều trị, mẹo tăng năng lượng khi mệt mỏi và các thực đơn mẫu dễ thực hiện tại nhà.\n\nPhù hợp cho bệnh nhân, người chăm sóc và các nhóm hỗ trợ cộng đồng cần một tài liệu ngắn gọn nhưng có tính ứng dụng cao.",
+    contactNote: "Có thể đặt theo bộ cùng tài liệu giáo dục sức khỏe khác",
+    whatsappUrl: "https://wa.me/12025277306",
+    zaloUrl: "https://zalo.me/12025277306",
+    phoneNumber: "tel:+12025277306",
+    images: [
+      "/images/cancer-guide-main.svg",
+    ],
+    relatedResources: [
+      {
+        id: "brain-health",
+        title: "Thực phẩm siêu năng lượng cho não bộ",
+        description: "Những nguyên tắc dinh dưỡng giúp bảo vệ trí nhớ và sức khỏe não bộ lâu dài.",
+        image: "/images/power-foods-main.svg",
+        href: "/product/thuc-pham-sieu-nang-luong",
+      },
+      {
+        id: "heart-guide",
+        title: "Cẩm nang sức khỏe tim mạch từ thực vật",
+        description: "Hướng dẫn xây dựng thực đơn tốt cho tim và giảm nguy cơ bệnh mạn tính.",
+        image: "/images/heart-health-main.svg",
+        href: "/product/cam-nang-suc-khoe-tim-mach",
+      },
+      {
+        id: "diabetes-guide",
+        title: "Tài liệu kiểm soát tiểu đường bằng thực vật",
+        description: "Mẹo thực hành hàng ngày giúp ổn định đường huyết và xây dựng thói quen ăn uống bền vững.",
+        image: "/images/health-diabetes-main.svg",
+        href: "/product/tai-lieu-kiem-soat-tieu-duong",
+      },
+    ],
+  },
+
+  {
+    slug: "tai-lieu-kiem-soat-tieu-duong",
+    category: "health-topics",
+    categoryLabel: "Theo chủ đề sức khỏe",
+    title: "Tài liệu kiểm soát tiểu đường bằng thực vật",
+    price: "$2.95",
+    unit: "/ quyển",
+    sku: "HT-202",
+    shortDescription:
+      "Tài liệu dễ hiểu về chế độ ăn thực vật dành cho người tiểu đường hoặc tiền tiểu đường, nhấn mạnh vào kiểm soát đường huyết và giảm phụ thuộc thuốc theo chỉ định bác sĩ.",
+    longDescription:
+      "Đây là cẩm nang giới thiệu các nguyên tắc ăn uống thực vật giúp cải thiện độ nhạy insulin, kiểm soát đường huyết sau ăn và hỗ trợ quản lý cân nặng.\n\nTài liệu trình bày rõ nhóm thực phẩm nên ưu tiên, cách đọc khẩu phần, các ví dụ bữa ăn thực tế và câu hỏi thường gặp khi mới chuyển sang lối sống lành mạnh hơn.\n\nPhù hợp để phát tại phòng khám, chương trình cộng đồng hoặc sử dụng trong lớp học giáo dục sức khỏe.",
+    contactNote: "Phù hợp in phát tại phòng khám và lớp học sức khỏe cộng đồng",
+    whatsappUrl: "https://wa.me/12025277306",
+    zaloUrl: "https://zalo.me/12025277306",
+    phoneNumber: "tel:+12025277306",
+    images: [
+      "/images/health-diabetes-main.svg",
+    ],
+    relatedResources: [
+      {
+        id: "oncology-guide",
+        title: "Hướng dẫn dinh dưỡng cho người vượt qua ung thư",
+        description: "Bổ sung thêm tài liệu thực đơn nhẹ nhàng cho người cần phục hồi thể trạng.",
+        image: "/images/cancer-guide-main.svg",
+        href: "/product/dinh-duong-cho-nguoi-ung-thu",
+      },
+      {
+        id: "heart-guide",
+        title: "Cẩm nang sức khỏe tim mạch từ thực vật",
+        description: "Một tài liệu song hành giúp giảm nguy cơ tim mạch ở người tiểu đường.",
+        image: "/images/heart-health-main.svg",
+        href: "/product/cam-nang-suc-khoe-tim-mach",
+      },
+      {
+        id: "recipe-book",
+        title: "Sách công thức: Ăn lành mạnh mỗi ngày",
+        description: "Công thức thực vật đơn giản để áp dụng ngay cho bữa ăn hàng ngày.",
+        image: "/images/recipe-book-main.svg",
+        href: "/product/sach-cong-thuc-an-lanh-manh",
+      },
+    ],
+  },
+
+  {
+    slug: "cam-nang-suc-khoe-tim-mach",
+    category: "health-topics",
+    categoryLabel: "Theo chủ đề sức khỏe",
+    title: "Cẩm nang sức khỏe tim mạch từ thực vật",
+    price: "$3.25",
+    unit: "/ quyển",
+    sku: "HT-203",
+    shortDescription:
+      "Tài liệu thực hành giúp giảm cholesterol, huyết áp và nguy cơ tim mạch nhờ chế độ ăn dựa trên thực vật, trình bày ngắn gọn cho cộng đồng và bệnh nhân mới bắt đầu.",
+    longDescription:
+      "Cẩm nang này giải thích mối liên hệ giữa thực phẩm, cholesterol máu, huyết áp và bệnh tim theo cách dễ hiểu, đồng thời hướng dẫn xây dựng thực đơn tốt cho tim từ nguyên liệu quen thuộc.\n\nBên cạnh phần kiến thức nền tảng, tài liệu còn có danh sách thay thế thực phẩm, gợi ý mua sắm, và một kế hoạch 7 ngày để người đọc bắt đầu thay đổi từng bước.\n\nRất phù hợp cho các hội thảo giáo dục sức khỏe, phòng khám tim mạch và chiến dịch truyền thông cộng đồng.",
+    contactNote: "Có sẵn gói in số lượng lớn cho chiến dịch truyền thông sức khỏe tim mạch",
+    whatsappUrl: "https://wa.me/12025277306",
+    zaloUrl: "https://zalo.me/12025277306",
+    phoneNumber: "tel:+12025277306",
+    images: [
+      "/images/heart-health-main.svg",
+    ],
+    relatedResources: [
+      {
+        id: "diabetes-guide",
+        title: "Tài liệu kiểm soát tiểu đường bằng thực vật",
+        description: "Kết hợp cùng tài liệu tim mạch cho các chương trình phòng ngừa bệnh mạn tính.",
+        image: "/images/health-diabetes-main.svg",
+        href: "/product/tai-lieu-kiem-soat-tieu-duong",
+      },
+      {
+        id: "nutrition-poster",
+        title: "Áp phích: Kim tự tháp dinh dưỡng thực vật",
+        description: "Tài liệu trực quan lý tưởng để treo tại lớp học và phòng chờ.",
+        image: "/images/poster-nutrition-main.svg",
+        href: "/product/ap-phich-dinh-duong-thuc-vat",
+      },
+      {
+        id: "brain-health",
+        title: "Thực phẩm siêu năng lượng cho não bộ",
+        description: "Một đầu sách bổ sung về sức khỏe thần kinh và lối sống dài hạn.",
+        image: "/images/power-foods-main.svg",
+        href: "/product/thuc-pham-sieu-nang-luong",
+      },
+    ],
+  },
+
+  {
+    slug: "cam-nang-dinh-duong-lam-sang",
+    category: "clinicians",
+    categoryLabel: "Dành cho bác sĩ",
+    title: "Cẩm nang dinh dưỡng lâm sàng cho nhân viên y tế",
+    price: "$12.00",
+    unit: "/ bộ",
+    sku: "CLN-101",
+    shortDescription:
+      "Bộ tài liệu chuyên sâu dành cho bác sĩ, điều dưỡng và nhà giáo dục sức khỏe, tóm tắt bằng chứng khoa học về dinh dưỡng thực vật trong thực hành lâm sàng.",
+    longDescription:
+      "Cẩm nang này được biên soạn cho đội ngũ y tế cần một tài liệu tra cứu nhanh về dinh dưỡng thực vật trong chăm sóc bệnh nhân. Nội dung gồm các bảng tóm tắt bằng chứng, chỉ định thường gặp, lưu ý khi tư vấn và tài liệu phát tay cho người bệnh.\n\nPhù hợp sử dụng trong bệnh viện, phòng khám và các khóa đào tạo ngắn hạn cho nhân viên y tế cộng đồng.\n\nBộ tài liệu giúp việc tư vấn trở nên nhất quán, khoa học và tiết kiệm thời gian hơn.",
+    contactNote: "Phù hợp đặt theo nhóm cho cơ sở y tế và đào tạo nội bộ",
+    whatsappUrl: "https://wa.me/12025277306",
+    zaloUrl: "https://zalo.me/12025277306",
+    phoneNumber: "tel:+12025277306",
+    images: [
+      "/images/clinical-guide-main.svg",
+    ],
+    relatedResources: [
+      {
+        id: "multimedia-kit",
+        title: "Bộ slide hội thảo dinh dưỡng thực vật",
+        description: "Slide và biểu mẫu giảng dạy hỗ trợ đào tạo nhóm lớn.",
+        image: "/images/multimedia-kit-main.svg",
+        href: "/product/bo-slide-hoi-thao-thuc-vat",
+      },
+      {
+        id: "heart-guide",
+        title: "Cẩm nang sức khỏe tim mạch từ thực vật",
+        description: "Tài liệu phát tay phù hợp đi kèm trong tư vấn bệnh mạn tính.",
+        image: "/images/heart-health-main.svg",
+        href: "/product/cam-nang-suc-khoe-tim-mach",
+      },
+      {
+        id: "oncology-guide",
+        title: "Hướng dẫn dinh dưỡng cho người vượt qua ung thư",
+        description: "Bổ sung cho nhóm bệnh nhân cần hướng dẫn phục hồi cụ thể.",
+        image: "/images/cancer-guide-main.svg",
+        href: "/product/dinh-duong-cho-nguoi-ung-thu",
+      },
+    ],
+  },
+
+  {
+    slug: "bo-slide-hoi-thao-thuc-vat",
+    category: "multimedia",
+    categoryLabel: "Bộ đa phương tiện",
+    title: "Bộ slide hội thảo dinh dưỡng thực vật",
+    price: "$9.00",
+    unit: "/ bộ",
+    sku: "MM-101",
+    shortDescription:
+      "Bộ slide thuyết trình, handout và checklist triển khai hội thảo dinh dưỡng thực vật, phù hợp cho người dẫn chương trình và giáo dục sức khỏe cộng đồng.",
+    longDescription:
+      "Bộ đa phương tiện này gồm slide trình chiếu, handout in phát tay, mẫu kịch bản buổi nói chuyện và checklist chuẩn bị sự kiện. Nội dung được thiết kế cho người cần triển khai hội thảo dinh dưỡng thực vật nhanh chóng mà vẫn giữ tính chuyên nghiệp.\n\nTài liệu phù hợp với trường học, trung tâm cộng đồng, hội nhóm tôn giáo và chương trình chăm sóc sức khỏe tại nơi làm việc.\n\nĐây là lựa chọn tiện lợi nếu bạn muốn triển khai truyền thông sức khỏe theo nhóm mà không phải chuẩn bị từ đầu.",
+    contactNote: "Liên hệ nếu cần tùy chỉnh bộ slide cho lớp học hoặc hội thảo riêng",
+    whatsappUrl: "https://wa.me/12025277306",
+    zaloUrl: "https://zalo.me/12025277306",
+    phoneNumber: "tel:+12025277306",
+    images: [
+      "/images/multimedia-kit-main.svg",
+    ],
+    relatedResources: [
+      {
+        id: "clinical-guide",
+        title: "Cẩm nang dinh dưỡng lâm sàng cho nhân viên y tế",
+        description: "Hữu ích khi cần bổ sung bằng chứng chuyên môn cho nội dung thuyết trình.",
+        image: "/images/clinical-guide-main.svg",
+        href: "/product/cam-nang-dinh-duong-lam-sang",
+      },
+      {
+        id: "bhc-kit",
+        title: "Bộ hoạt động cộng đồng",
+        description: "Kết hợp để tăng tính tương tác trong các buổi chia sẻ trực tiếp.",
+        image: "/images/activity-kit-main.svg",
+        href: "/product/bo-hoat-dong-cong-dong",
+      },
+      {
+        id: "nutrition-poster",
+        title: "Áp phích: Kim tự tháp dinh dưỡng thực vật",
+        description: "Bổ sung yếu tố trực quan cho không gian hội thảo và khu trưng bày.",
+        image: "/images/poster-nutrition-main.svg",
+        href: "/product/ap-phich-dinh-duong-thuc-vat",
+      },
+    ],
+  },
+
+  {
+    slug: "ao-thun-plant-powered",
+    category: "apparel",
+    categoryLabel: "Quần áo",
+    title: "Áo thun Plant Powered",
+    price: "$22.00",
+    unit: "/ áo",
+    sku: "APR-101",
+    shortDescription:
+      "Áo thun cotton in thông điệp Plant Powered, phù hợp cho tình nguyện viên, sự kiện sức khỏe cộng đồng và chiến dịch truyền thông tích cực về lối sống lành mạnh.",
+    longDescription:
+      "Áo thun Plant Powered được thiết kế theo tinh thần đơn giản, hiện đại và dễ phối, với thông điệp tích cực khuyến khích lối sống lành mạnh dựa trên thực vật.\n\nChất liệu cotton mềm, dễ mặc trong ngày dài và thích hợp sử dụng tại sự kiện ngoài trời, lớp học sức khỏe, hội chợ cộng đồng hoặc làm đồng phục nhóm.\n\nĐây là sản phẩm vừa mang tính nhận diện, vừa giúp truyền tải thông điệp của chương trình một cách nhẹ nhàng và gần gũi.",
+    contactNote: "Có thể đặt áo theo nhóm hoặc theo số lượng sự kiện",
+    whatsappUrl: "https://wa.me/12025277306",
+    zaloUrl: "https://zalo.me/12025277306",
+    phoneNumber: "tel:+12025277306",
+    images: [
+      "/images/plant-powered-shirt-main.svg",
+    ],
+    relatedResources: [
+      {
+        id: "multimedia-kit",
+        title: "Bộ slide hội thảo dinh dưỡng thực vật",
+        description: "Đi cùng áo sự kiện để tạo bộ nhận diện đồng nhất cho chương trình.",
+        image: "/images/multimedia-kit-main.svg",
+        href: "/product/bo-slide-hoi-thao-thuc-vat",
+      },
+      {
+        id: "bhc-brochure",
+        title: "Tờ rơi: Xây dựng Cộng đồng Khỏe mạnh",
+        description: "Phát kèm trong các hoạt động cộng đồng hoặc bàn thông tin sự kiện.",
+        image: "/images/bhc-brochure-main.svg",
+        href: "/product/xay-dung-cong-dong-khoe-manh-to-roi",
+      },
+      {
+        id: "activity-kit",
+        title: "Bộ hoạt động cộng đồng",
+        description: "Tăng trải nghiệm tương tác cho nhóm thiện nguyện và người tham gia.",
+        image: "/images/activity-kit-main.svg",
+        href: "/product/bo-hoat-dong-cong-dong",
+      },
+    ],
+  },
 ];
 
 // ──────────────────────────────────────────────
@@ -359,6 +623,23 @@ export function getProductBySlug(slug: string): Product | undefined {
 }
 
 export function getProductsByCategory(category: string): Product[] {
+  if (category === "posters") {
+    return products.filter((p) => p.category === "literature");
+  }
+
+  if (category === "product-spotlight") {
+    return products.filter((p) => [
+      "bep-khong-pho-mai",
+      "xay-dung-cong-dong-khoe-manh-to-roi",
+      "cam-nang-dinh-duong-lam-sang",
+      "bo-slide-hoi-thao-thuc-vat",
+    ].includes(p.slug));
+  }
+
+  if (category === "new") {
+    return products.slice(-4).reverse();
+  }
+
   return products.filter((p) => p.category === category);
 }
 

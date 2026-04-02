@@ -8,6 +8,21 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import SidebarMenu from "@/components/SidebarMenu";
 import { categories, getProductsByCategory, mainMenu, helpMenu, footerInfo } from "@/data/product";
 
+const healthTopicHighlights = [
+  {
+    title: "Ung thư và phục hồi thể trạng",
+    summary: "Tập trung vào thực đơn dễ ăn, giàu dưỡng chất và hỗ trợ người đang điều trị hoặc hồi phục.",
+  },
+  {
+    title: "Tiểu đường và kiểm soát đường huyết",
+    summary: "Nhấn mạnh các bữa ăn thực vật cân bằng, đơn giản, phù hợp để áp dụng hàng ngày.",
+  },
+  {
+    title: "Tim mạch và cholesterol",
+    summary: "Ưu tiên kiến thức nền tảng, kế hoạch 7 ngày và nhóm thực phẩm nên sử dụng thường xuyên.",
+  },
+];
+
 interface PageProps {
   params: Promise<{ category: string }>;
 }
@@ -53,6 +68,17 @@ export default async function CategoryPage({ params }: PageProps) {
               {cat.label}
             </h1>
             <p className="text-gray-500 text-sm mb-6">{cat.description}</p>
+
+            {category === "health-topics" && (
+              <section className="mb-8 grid gap-4 md:grid-cols-3">
+                {healthTopicHighlights.map((item) => (
+                  <article key={item.title} className="rounded-xl border border-gray-200 bg-white p-5">
+                    <h2 className="text-sm font-semibold text-brand-dark">{item.title}</h2>
+                    <p className="mt-2 text-xs leading-relaxed text-gray-500">{item.summary}</p>
+                  </article>
+                ))}
+              </section>
+            )}
 
             {categoryProducts.length === 0 ? (
               <div className="py-16 text-center text-gray-400">

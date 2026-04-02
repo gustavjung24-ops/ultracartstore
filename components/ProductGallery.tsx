@@ -39,8 +39,8 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
             onClick={() => setActiveIndex(0)}
             className={`relative w-20 h-16 rounded-lg overflow-hidden border-2 transition-colors ${
               activeIndex === 0
-                ? "border-green-600"
-                : "border-gray-200 hover:border-green-400"
+                ? "border-brand-teal"
+                : "border-gray-200 hover:border-brand-teal"
             }`}
             aria-label="Xem ảnh chính"
           >
@@ -60,8 +60,8 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
               onClick={() => setActiveIndex(i + 1)}
               className={`relative w-20 h-16 rounded-lg overflow-hidden border-2 transition-colors ${
                 activeIndex === i + 1
-                  ? "border-green-600"
-                  : "border-gray-200 hover:border-green-400"
+                  ? "border-brand-teal"
+                  : "border-gray-200 hover:border-brand-teal"
               }`}
               aria-label={`Xem ảnh ${i + 2}`}
             >

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#eef8f7"/>
+  <circle cx="80" cy="250" r="70" fill="#28afb0" opacity="0.08"/>
+  <rect x="90" y="34" width="220" height="232" rx="12" fill="white" stroke="#0f3744" stroke-width="2"/>
+  <rect x="90" y="34" width="220" height="56" rx="12" fill="#0f3744"/>
+  <text x="200" y="66" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Sức khỏe tim mạch</text>
+  <path d="M200 160c-8-14-34-28-34-50 0-14 10-24 24-24 10 0 17 6 20 13 3-7 10-13 20-13 14 0 24 10 24 24 0 22-26 36-34 50l-10 16z" fill="#28afb0"/>
+  <polyline points="132,180 160,180 175,160 192,196 213,140 232,180 268,180" fill="none" stroke="#0f3744" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="128" y1="222" x2="272" y2="222" stroke="#d8eceb" stroke-width="2" stroke-linecap="round"/>
+  <line x1="128" y1="238" x2="246" y2="238" stroke="#d8eceb" stroke-width="2" stroke-linecap="round"/>
+</svg>

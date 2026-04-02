@@ -40,7 +40,7 @@ export default function RelatedResources({ resources }: RelatedResourcesProps) {
               </p>
               <Link
                 href={resource.href}
-                className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-brand-teal hover:text-green-900 hover:underline"
+                className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-brand-teal hover:text-brand-dark hover:underline"
               >
                 Xem chi tiết
                 <svg

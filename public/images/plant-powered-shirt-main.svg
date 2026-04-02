@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#f4fbfa"/>
+  <circle cx="315" cy="235" r="78" fill="#28afb0" opacity="0.08"/>
+  <path d="M160 78l18 20h44l18-20 42 30-18 32-28-12v108H144V128l-28 12-18-32z" fill="#0f3744"/>
+  <path d="M177 98h46v22h-46z" fill="#d9f1f1"/>
+  <text x="200" y="170" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#28afb0" text-anchor="middle">PLANT</text>
+  <text x="200" y="192" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#28afb0" text-anchor="middle">POWERED</text>
+  <path d="M194 210c8-15 20-22 27-30 5 9 9 18 9 27 0 12-10 22-22 22-8 0-14-4-17-10-2-3-3-6-3-9 0-5 2-10 6-14z" fill="#28afb0" opacity="0.9"/>
+</svg>

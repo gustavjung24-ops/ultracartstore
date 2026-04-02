@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#f4f9ff"/>
+  <circle cx="330" cy="250" r="78" fill="#28afb0" opacity="0.08"/>
+  <rect x="90" y="32" width="220" height="236" rx="10" fill="white" stroke="#0f3744" stroke-width="2"/>
+  <rect x="90" y="32" width="220" height="58" rx="10" fill="#0f3744"/>
+  <text x="200" y="61" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white" text-anchor="middle">Dinh dưỡng lâm sàng</text>
+  <circle cx="157" cy="145" r="28" fill="#e7f6f6" stroke="#28afb0" stroke-width="2"/>
+  <path d="M149 145h16M157 137v16" stroke="#28afb0" stroke-width="3" stroke-linecap="round"/>
+  <rect x="205" y="118" width="62" height="58" rx="8" fill="#f7fbfb" stroke="#28afb0" stroke-width="1.5"/>
+  <line x1="220" y1="132" x2="252" y2="132" stroke="#28afb0" stroke-width="2"/>
+  <line x1="220" y1="146" x2="252" y2="146" stroke="#28afb0" stroke-width="2"/>
+  <line x1="220" y1="160" x2="246" y2="160" stroke="#28afb0" stroke-width="2"/>
+  <line x1="130" y1="210" x2="270" y2="210" stroke="#d7ebeb" stroke-width="2" stroke-linecap="round"/>
+  <line x1="130" y1="226" x2="252" y2="226" stroke="#d7ebeb" stroke-width="2" stroke-linecap="round"/>
+</svg>
