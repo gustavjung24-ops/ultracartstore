@@ -9,9 +9,9 @@ const geistSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Physicians Committee Shop",
+  title: "Cửa hàng Physicians Committee",
   description:
-    "Health education materials and resources for communities, educators, and leaders.",
+    "Tài liệu giáo dục sức khỏe dành cho cộng đồng, nhà giáo dục và người lãnh đạo.",
 };
 
 export default function RootLayout({
@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} font-sans antialiased bg-gray-50`}>
+    <html lang="vi">
+      <body className={`${geistSans.variable} font-sans antialiased bg-zinc-950 text-zinc-100`}>
         {children}
       </body>
     </html>

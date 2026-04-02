@@ -37,12 +37,12 @@ export interface Product {
 
 export const product: Product = {
   slug: "building-healthy-communities-brochure",
-  title: "Building Healthy Communities Brochure",
+  title: "Tờ rơi Xây dựng Cộng đồng Khỏe mạnh",
   price: "$0.15",
   sku: "BHCOM-100",
   shortDescription:
-    "The Building Healthy Communities (BHC) brochure is a two-page resource for leaders to share. It highlights the BHC mission, benefits, and how to join—helping grow your group and community.",
-  contactNote: "Contact us to request this resource",
+    "Tờ rơi BHC gồm 2 trang, phù hợp để các trưởng nhóm chia sẻ trong cộng đồng. Tài liệu nêu rõ mục tiêu, lợi ích tham gia và cách bắt đầu, giúp nhóm của bạn phát triển bền vững.",
+  contactNote: "Liên hệ để được tư vấn và đặt tài liệu",
   // 👇 Replace with your real WhatsApp number
   whatsappUrl: "https://wa.me/12025277306",
   // 👇 Replace with your real Zalo number
@@ -58,25 +58,25 @@ export const product: Product = {
   relatedResources: [
     {
       id: "bhc-pod-guide",
-      title: "BHC Pod Leader Guide",
+      title: "Sổ tay Trưởng nhóm BHC",
       description:
-        "A comprehensive guide for pod leaders to organize and run effective community health sessions.",
+        "Hướng dẫn chi tiết giúp trưởng nhóm tổ chức và vận hành các buổi sinh hoạt sức khỏe hiệu quả.",
       image: "/images/placeholder-guide.svg",
       href: "/product/bhc-pod-leader-guide",
     },
     {
       id: "bhc-recipe-book",
-      title: "Healthy Eating Recipe Book",
+      title: "Sổ tay công thức ăn lành mạnh",
       description:
-        "Plant-based recipes and nutrition tips curated for community wellness programs.",
+        "Tổng hợp công thức thuần thực vật và mẹo dinh dưỡng dành cho chương trình sức khỏe cộng đồng.",
       image: "/images/placeholder-recipe.svg",
       href: "/product/healthy-eating-recipe-book",
     },
     {
       id: "bhc-activity-kit",
-      title: "Community Activity Kit",
+      title: "Bộ hoạt động cộng đồng",
       description:
-        "Ready-to-use activities and worksheets for facilitating healthy lifestyle workshops.",
+        "Bộ bài tập và hoạt động sẵn sàng sử dụng cho các buổi hướng dẫn lối sống lành mạnh.",
       image: "/images/placeholder-kit.svg",
       href: "/product/community-activity-kit",
     },
@@ -87,25 +87,25 @@ export const product: Product = {
 // SITE NAVIGATION — Edit menu items here
 // ============================================================
 export const mainMenu = [
-  { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop" },
-  { label: "Free Downloads", href: "/free-downloads" },
+  { label: "Trang chủ", href: "/" },
+  { label: "Cửa hàng", href: "/shop" },
+  { label: "Tải miễn phí", href: "/free-downloads" },
 ];
 
 export const helpMenu = [
-  { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Order Turnaround Time", href: "/order-turnaround-time" },
-  { label: "Contact Form", href: "/contact" },
+  { label: "Chính sách bảo mật", href: "/privacy-policy" },
+  { label: "Thời gian xử lý đơn hàng", href: "/order-turnaround-time" },
+  { label: "Biểu mẫu liên hệ", href: "/contact" },
 ];
 
 // ============================================================
 // FOOTER — Edit address / contact info here
 // ============================================================
 export const footerInfo = {
-  brandName: "Physicians Committee Shop",
+  brandName: "Cửa hàng Physicians Committee",
   address: "5100 Wisconsin Avenue, NW, Suite 400",
   city: "Washington, DC 20016",
-  phone: "ph. 202-527-7306",
+  phone: "Điện thoại: 202-527-7306",
   email: "fulfillment@PCRM.org",
-  copyright: `© ${new Date().getFullYear()} Physicians Committee for Responsible Medicine. All rights reserved.`,
+  copyright: `© ${new Date().getFullYear()} Physicians Committee for Responsible Medicine. Đã đăng ký bản quyền.`,
 };

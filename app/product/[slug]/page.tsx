@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   if (slug !== product.slug) return {};
   return {
-    title: `${product.title} — Physicians Committee Shop`,
+    title: `${product.title} - Cửa hàng Physicians Committee`,
     description: product.shortDescription,
   };
 }
@@ -35,11 +35,11 @@ export default async function ProductPage({ params }: PageProps) {
   }
 
   const breadcrumbs = [
-    { label: "Home", href: "/" },
-    { label: "Shop", href: "/shop" },
-    { label: "Healthy Communities", href: "/shop/healthy-communities" },
+    { label: "Trang chủ", href: "/" },
+    { label: "Cửa hàng", href: "/shop" },
+    { label: "Cộng đồng khỏe mạnh", href: "/shop/healthy-communities" },
     {
-      label: "Resources for Building Healthy Communities Pod Leaders",
+      label: "Tài liệu cho trưởng nhóm cộng đồng khỏe mạnh",
       href: "/shop/healthy-communities/pod-leaders",
     },
     { label: product.title },
@@ -56,7 +56,7 @@ export default async function ProductPage({ params }: PageProps) {
           {/* Product detail (left 3/4) */}
           <div className="flex-1 min-w-0">
             {/* Two-column product layout: gallery + info */}
-            <div className="flex flex-col md:flex-row gap-8 bg-white rounded-2xl border border-gray-200 p-6">
+            <div className="flex flex-col md:flex-row gap-8 bg-zinc-900 rounded-2xl border border-zinc-800 p-6">
               {/* Gallery */}
               <div className="w-full md:w-2/5">
                 <ProductGallery images={product.images} title={product.title} />
@@ -69,29 +69,28 @@ export default async function ProductPage({ params }: PageProps) {
             </div>
 
             {/* Extended description */}
-            <section className="mt-8 bg-white rounded-2xl border border-gray-200 p-6">
-              <h2 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">
-                About This Resource
+            <section className="mt-8 bg-zinc-900 rounded-2xl border border-zinc-800 p-6">
+              <h2 className="text-lg font-bold text-zinc-100 mb-4 pb-2 border-b border-zinc-800">
+                Giới thiệu tài liệu
               </h2>
-              <div className="prose prose-sm max-w-none text-gray-600 space-y-3">
+              <div className="prose prose-sm max-w-none text-zinc-300 space-y-3">
                 <p>
-                  The <strong>Building Healthy Communities (BHC)</strong> program
-                  empowers community leaders to bring evidence-based nutrition
-                  education directly to their neighborhoods. The brochure is
-                  designed to be printed in bulk and distributed at events,
-                  clinics, schools, and places of worship.
+                  Chương trình <strong>Xây dựng Cộng đồng Khỏe mạnh (BHC)</strong>
+                  giúp người lãnh đạo địa phương triển khai giáo dục dinh dưỡng
+                  dựa trên bằng chứng ngay tại khu dân cư. Tờ rơi được thiết kế
+                  để in số lượng lớn và phát tại sự kiện, phòng khám, trường học
+                  và các địa điểm sinh hoạt cộng đồng.
                 </p>
                 <p>
-                  Each brochure features an overview of the BHC initiative,
-                  key benefits of joining as a Pod Leader, and step-by-step
-                  instructions on how to get started. It is written in plain
-                  language, making it accessible to a wide audience.
+                  Mỗi bản tờ rơi trình bày tổng quan sáng kiến BHC, các lợi ích
+                  khi tham gia vai trò trưởng nhóm, và hướng dẫn từng bước để
+                  bắt đầu. Nội dung được viết đơn giản, dễ hiểu cho nhiều đối
+                  tượng khác nhau.
                 </p>
                 <p>
-                  This resource is ideal for health educators, community
-                  organizers, faith leaders, and anyone passionate about
-                  improving the health of their community through plant-based
-                  nutrition.
+                  Tài liệu phù hợp cho giáo viên sức khỏe, người tổ chức cộng đồng,
+                  trưởng nhóm tôn giáo và bất kỳ ai quan tâm đến việc nâng cao sức
+                  khỏe cộng đồng thông qua dinh dưỡng có nguồn gốc thực vật.
                 </p>
               </div>
             </section>

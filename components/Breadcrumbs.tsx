@@ -12,17 +12,17 @@ interface BreadcrumbsProps {
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav
-      aria-label="Breadcrumb"
-      className="bg-gray-50 border-b border-gray-200"
+      aria-label="Đường dẫn"
+      className="bg-zinc-950 border-b border-emerald-500/20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-        <ol className="flex flex-wrap items-center gap-1 text-sm text-gray-500">
+        <ol className="flex flex-wrap items-center gap-1 text-sm text-zinc-400">
           {items.map((item, index) => (
             <li key={index} className="flex items-center gap-1">
               {index > 0 && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-3 w-3 text-gray-400 flex-shrink-0"
+                  className="h-3 w-3 text-zinc-600 flex-shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -38,7 +38,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
               {item.href && index < items.length - 1 ? (
                 <Link
                   href={item.href}
-                  className="hover:text-green-700 hover:underline transition-colors"
+                  className="hover:text-emerald-400 hover:underline transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -46,7 +46,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
                 <span
                   className={
                     index === items.length - 1
-                      ? "text-gray-700 font-medium"
+                      ? "text-zinc-100 font-medium"
                       : ""
                   }
                   aria-current={
