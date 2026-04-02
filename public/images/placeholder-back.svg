@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="120" viewBox="0 0 150 120">
+  <rect width="150" height="120" fill="#c8e6c9"/>
+  <text x="75" y="55" font-family="system-ui,sans-serif" font-size="13" font-weight="bold" fill="#2e7d32" text-anchor="middle">Back</text>
+  <text x="75" y="75" font-family="system-ui,sans-serif" font-size="10" fill="#388e3c" text-anchor="middle">View</text>
+</svg>
