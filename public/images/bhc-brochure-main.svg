@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#e8f7f7"/>
+  <!-- Background circles -->
+  <circle cx="320" cy="60" r="80" fill="#28afb0" opacity="0.12"/>
+  <circle cx="80" cy="240" r="60" fill="#0f3744" opacity="0.08"/>
+  <!-- Document shape -->
+  <rect x="110" y="50" width="180" height="200" rx="6" fill="white" stroke="#28afb0" stroke-width="2"/>
+  <rect x="110" y="50" width="180" height="40" rx="6" fill="#0f3744"/>
+  <rect x="110" y="76" width="180" height="14" fill="#0f3744"/>
+  <!-- Lines on document -->
+  <line x1="135" y1="115" x2="265" y2="115" stroke="#28afb0" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="135" y1="133" x2="250" y2="133" stroke="#c2e8e8" stroke-width="2" stroke-linecap="round"/>
+  <line x1="135" y1="150" x2="255" y2="150" stroke="#c2e8e8" stroke-width="2" stroke-linecap="round"/>
+  <line x1="135" y1="167" x2="240" y2="167" stroke="#c2e8e8" stroke-width="2" stroke-linecap="round"/>
+  <line x1="135" y1="184" x2="260" y2="184" stroke="#c2e8e8" stroke-width="2" stroke-linecap="round"/>
+  <line x1="135" y1="201" x2="245" y2="201" stroke="#c2e8e8" stroke-width="2" stroke-linecap="round"/>
+  <!-- People icons -->
+  <circle cx="155" cy="97" r="7" fill="#28afb0"/>
+  <circle cx="175" cy="97" r="7" fill="#28afb0" opacity="0.7"/>
+  <circle cx="195" cy="97" r="7" fill="#28afb0" opacity="0.5"/>
+  <!-- Heart icon -->
+  <path d="M270 95 c-2-4-8-4-8 2 0 4 8 8 8 8 s8-4 8-8 c0-6-6-6-8-2z" fill="#28afb0"/>
+  <!-- BHC text on header -->
+  <text x="133" y="73" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="white">Xây dựng Cộng đồng Khỏe mạnh</text>
+  <!-- Price tag -->
+  <rect x="248" y="218" width="52" height="22" rx="11" fill="#28afb0"/>
+  <text x="274" y="233" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">$0.15</text>
+</svg>

@@ -13,40 +13,25 @@ interface FooterProps {
 
 export default function Footer({ info }: FooterProps) {
   return (
-    <footer className="bg-gray-800 text-gray-300 mt-16">
+    <footer className="bg-brand-dark text-white mt-16 font-[Cabin,sans-serif]">
+
+      {/* ─── 3 cột chính ─── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Brand & Address */}
-          <div className="space-y-2">
-            <h3 className="text-white font-bold text-base">{info.brandName}</h3>
-            <address className="not-italic text-sm leading-relaxed space-y-1">
-              <p>{info.address}</p>
-              <p>{info.city}</p>
-              <p>{info.phone}</p>
-              <a
-                href={`mailto:${info.email}`}
-                className="text-green-400 hover:text-green-300 underline"
-              >
-                {info.email}
-              </a>
-            </address>
-          </div>
 
-          {/* Quick links */}
-          <div className="space-y-2">
-            <h3 className="text-white font-bold text-base">Liên kết nhanh</h3>
-            <ul className="text-sm space-y-1">
+          {/* Menu chính */}
+          <div>
+            <h2 className="text-brand-teal font-bold uppercase text-sm pb-3 mb-4 border-b border-gray-600 tracking-wide">
+              Menu chính
+            </h2>
+            <ul className="space-y-2 text-sm text-gray-200">
               {[
                 { label: "Trang chủ", href: "/" },
                 { label: "Cửa hàng", href: "/shop" },
                 { label: "Tải miễn phí", href: "/free-downloads" },
-                { label: "Liên hệ", href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="hover:text-green-400 transition-colors"
-                  >
+                  <Link href={link.href} className="hover:text-brand-teal transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -54,35 +39,66 @@ export default function Footer({ info }: FooterProps) {
             </ul>
           </div>
 
-          {/* Help */}
-          <div className="space-y-2">
-            <h3 className="text-white font-bold text-base">Hỗ trợ</h3>
-            <ul className="text-sm space-y-1">
+          {/* Hỗ trợ */}
+          <div>
+            <h2 className="text-brand-teal font-bold uppercase text-sm pb-3 mb-4 border-b border-gray-600 tracking-wide">
+              Hỗ trợ
+            </h2>
+            <ul className="space-y-2 text-sm text-gray-200">
               {[
                 { label: "Chính sách bảo mật", href: "/privacy-policy" },
-                {
-                  label: "Thời gian xử lý đơn hàng",
-                  href: "/order-turnaround-time",
-                },
+                { label: "Thời gian xử lý đơn", href: "/order-turnaround-time" },
                 { label: "Biểu mẫu liên hệ", href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="hover:text-green-400 transition-colors"
-                  >
+                  <Link href={link.href} className="hover:text-brand-teal transition-colors">
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-        </div>
 
-        {/* Copyright */}
-        <div className="mt-8 pt-6 border-t border-gray-700 text-xs text-gray-500 text-center">
-          {info.copyright}
+          {/* Liên hệ */}
+          <div>
+            <h2 className="text-brand-teal font-bold uppercase text-sm pb-3 mb-4 border-b border-gray-600 tracking-wide">
+              Liên hệ
+            </h2>
+            <address className="not-italic text-sm text-gray-200 leading-relaxed space-y-1">
+              <p>{info.address}</p>
+              <p>{info.city}</p>
+              <p>{info.phone}</p>
+              <a href={`mailto:${info.email}`} className="hover:text-brand-teal transition-colors">
+                {info.email}
+              </a>
+            </address>
+          </div>
         </div>
+      </div>
+
+      {/* ─── Subfooter ─── */}
+      <div className="border-t border-gray-600">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          {/* Store title box */}
+          <div className="border border-white px-6 py-2 text-lg font-bold text-white text-center">
+            {info.brandName}
+          </div>
+
+          {/* Phương thức thanh toán */}
+          <div className="flex items-center gap-2 text-xs text-gray-400">
+            <span>Thanh toán:</span>
+            {["Visa", "Mastercard", "Amex", "Discover"].map((card) => (
+              <span key={card} className="border border-gray-500 rounded px-2 py-0.5 text-gray-300 font-medium text-[10px]">
+                {card}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ─── Copyright ─── */}
+      <div className="border-t border-gray-600 text-center text-xs text-gray-400 py-3">
+        {info.copyright}
       </div>
     </footer>
   );

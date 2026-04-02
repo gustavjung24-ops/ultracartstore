@@ -14,7 +14,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 
       {/* Price */}
       <div className="flex items-baseline gap-3">
-        <span className="text-3xl font-bold text-green-700">
+        <span className="text-3xl font-bold text-brand-teal">
           {product.price}
         </span>
         <span className="text-sm text-gray-500">mỗi tờ rơi</span>
@@ -26,8 +26,8 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       </p>
 
       {/* Contact note */}
-      <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-3">
-        <p className="text-green-800 text-sm font-medium">
+      <div className="bg-brand-teal/10 border border-brand-teal/30 rounded-lg px-4 py-3">
+        <p className="text-brand-dark text-sm font-medium">
           📋 {product.contactNote}
         </p>
       </div>
@@ -79,7 +79,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-green-700"
+            className="h-5 w-5 text-brand-teal"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

@@ -2,67 +2,86 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { product, footerInfo } from "@/data/product";
+import { products, footerInfo } from "@/data/product";
 
 export default function HomePage() {
+  const featured = products.slice(0, 4);
+
   return (
     <>
       <Header />
 
-      {/* Hero / Welcome Banner */}
       <main>
-        <section className="bg-gradient-to-br from-green-700 to-green-900 text-white py-16 px-4">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h1 className="text-3xl sm:text-4xl font-bold">
-              Cửa hàng tài liệu sức khỏe
+        {/* ─── Banner giới thiệu ─── */}
+        <section className="bg-brand-dark text-white py-14 px-4">
+          <div className="max-w-3xl mx-auto text-center space-y-5">
+            <h1 className="text-3xl sm:text-4xl font-bold text-brand-teal">
+              Physicians Committee Shop
             </h1>
-            <p className="text-green-200 text-lg">
-              Tài liệu giáo dục sức khỏe dành cho cộng đồng, nhà giáo dục và các nhà lãnh đạo.
+            <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
+              Cửa hàng Physicians Committee cung cấp tài liệu giáo dục và các
+              công cụ truyền thông vì sứ mệnh bảo vệ sức khỏe con người và
+              động vật thông qua chế độ ăn thực vật và nghiên cứu khoa học có
+              đạo đức. Tầm nhìn của chúng tôi là xây dựng một thế giới khỏe
+              mạnh hơn, nơi y tế và lòng nhân ái là những giá trị cốt lõi.
             </p>
-            <Link
-              href={`/product/${product.slug}`}
-              className="inline-block mt-2 bg-white text-green-800 font-semibold py-3 px-8 rounded-full hover:bg-green-50 transition-colors shadow"
-            >
-              Xem tài liệu
-            </Link>
+            <div className="flex flex-wrap gap-3 justify-center pt-2">
+              <Link
+                href="/shop"
+                className="bg-brand-teal hover:bg-brand-mid text-white font-bold py-3 px-8 uppercase tracking-wide transition-colors shadow"
+              >
+                Vào cửa hàng
+              </Link>
+              <a
+                href="https://pcrm.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-white text-white hover:bg-white/10 font-semibold py-3 px-8 uppercase tracking-wide transition-colors"
+              >
+                PCRM.org
+              </a>
+            </div>
           </div>
         </section>
 
-        {/* Featured Product */}
+        {/* ─── Sản phẩm nổi bật ─── */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h2 className="text-xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+          <h2 className="text-brand-teal font-bold text-lg pb-3 mb-6 border-b border-gray-200 uppercase tracking-wide">
             Sản phẩm nổi bật
           </h2>
-          <div className="max-w-sm">
-            <article className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-              <div className="relative w-full aspect-[4/3] bg-gray-50">
-                <Image
-                  src={product.images[0]}
-                  alt={product.title}
-                  fill
-                  className="object-contain p-4"
-                  sizes="(max-width: 640px) 100vw, 384px"
-                  unoptimized
-                />
-              </div>
-              <div className="p-4 flex flex-col gap-2">
-                <h3 className="font-semibold text-gray-900 leading-snug">
-                  {product.title}
-                </h3>
-                <p className="text-green-700 font-bold text-lg">
-                  {product.price}
-                </p>
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  {product.shortDescription.slice(0, 100)}…
-                </p>
-                <Link
-                  href={`/product/${product.slug}`}
-                  className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-green-700 hover:text-green-900 hover:underline"
-                >
-                  Xem chi tiết →
-                </Link>
-              </div>
-            </article>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featured.map((p) => (
+              <article
+                key={p.slug}
+                className="bg-white rounded border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col"
+              >
+                <div className="relative w-full aspect-[4/3] bg-gray-50">
+                  <Image
+                    src={p.images[0]}
+                    alt={p.title}
+                    fill
+                    className="object-contain p-4"
+                    sizes="(max-width: 640px) 100vw, 25vw"
+                    unoptimized
+                  />
+                </div>
+                <div className="p-4 flex flex-col gap-2 flex-1">
+                  <h3 className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2">
+                    {p.title}
+                  </h3>
+                  <p className="text-brand-teal font-bold">
+                    {p.price}
+                    {p.unit && <span className="text-xs text-gray-400 ml-1">{p.unit}</span>}
+                  </p>
+                  <Link
+                    href={`/product/${p.slug}`}
+                    className="mt-auto inline-block text-center bg-brand-teal hover:bg-brand-mid text-white text-sm font-semibold py-2 px-4 transition-colors"
+                  >
+                    Xem chi tiết
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
       </main>

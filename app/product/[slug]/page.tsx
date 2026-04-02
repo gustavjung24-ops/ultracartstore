@@ -9,39 +9,37 @@ import SidebarMenu from "@/components/SidebarMenu";
 import RelatedResources from "@/components/RelatedResources";
 import Footer from "@/components/Footer";
 
-import { product, mainMenu, helpMenu, footerInfo } from "@/data/product";
+import { products, mainMenu, helpMenu, footerInfo, getProductBySlug } from "@/data/product";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return [{ slug: product.slug }];
+  return products.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  if (slug !== product.slug) return {};
+  const product = getProductBySlug(slug);
+  if (!product) return {};
   return {
-    title: `${product.title} - Cửa hàng Physicians Committee`,
+    title: `${product.title} - Physicians Committee Shop`,
     description: product.shortDescription,
   };
 }
 
 export default async function ProductPage({ params }: PageProps) {
   const { slug } = await params;
-  if (slug !== product.slug) {
+  const product = getProductBySlug(slug);
+  if (!product) {
     notFound();
   }
 
   const breadcrumbs = [
     { label: "Trang chủ", href: "/" },
     { label: "Cửa hàng", href: "/shop" },
-    { label: "Cộng đồng khỏe mạnh", href: "/shop/healthy-communities" },
-    {
-      label: "Tài liệu cho trưởng nhóm cộng đồng khỏe mạnh",
-      href: "/shop/healthy-communities/pod-leaders",
-    },
+    { label: product.categoryLabel, href: `/shop/${product.category}` },
     { label: product.title },
   ];
 
@@ -71,27 +69,10 @@ export default async function ProductPage({ params }: PageProps) {
             {/* Extended description */}
             <section className="mt-8 bg-white rounded-2xl border border-gray-200 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">
-                Giới thiệu về tài liệu này
+                Giới thiệu về sản phẩm
               </h2>
-              <div className="prose prose-sm max-w-none text-gray-600 space-y-3">
-                <p>
-                  Chương trình <strong>Xây dựng Cộng đồng Khỏe mạnh (BHC)</strong>
-                  trao quyền cho các nhà lãnh đạo địa phương đưa giáo dục dinh dưỡng
-                  có cơ sở khoa học thờẳng về khu phố của mình. Tờ rơi được thiết kế
-                  để in số lượng lớn và phát tự sự kiện, phòng khám, trường học
-                  và các địa điểm sinh hoạt cộng đồng.
-                </p>
-                <p>
-                  Mỗi tờ rơi trình bày tổng quan về sáng kiến BHC, những lợi ích nổi bật
-                  khi trở thành Trưởng nhóm, và hướng dẫn từng bước để bắt đầu.
-                  Nội dung được viết súcng tích, dễ hiểu, phù hợp với nhiều đối
-                  tượng khác nhau.
-                </p>
-                <p>
-                  Tài liệu phù hợp cho giáo viên sức khỏe, tình nguyện viên cộng đồng,
-                  lãnh đạo tôn giáo và bất kỳ ai muốn cải thiện sức khỏe cộng đồng
-                  thông qua chế độ dinh dưỡng có nguồn gốc thực vật.
-                </p>
+              <div className="prose prose-sm max-w-none text-gray-600 space-y-3 whitespace-pre-line">
+                {product.longDescription}
               </div>
             </section>
 

@@ -10,8 +10,8 @@ export default function SidebarMenu({ mainMenu, helpMenu }: SidebarMenuProps) {
     <aside className="space-y-6">
       {/* Main Menu */}
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-        <div className="bg-green-700 px-4 py-3">
-          <h2 className="text-white font-semibold text-sm uppercase tracking-wide">
+        <div className="bg-brand-dark px-4 py-3">
+          <h2 className="text-brand-teal font-semibold text-sm uppercase tracking-wide">
             Danh mục chính
           </h2>
         </div>
@@ -20,7 +20,7 @@ export default function SidebarMenu({ mainMenu, helpMenu }: SidebarMenuProps) {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="flex items-center gap-2 px-4 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors"
+                className="flex items-center gap-2 px-4 py-3 text-sm text-gray-700 hover:bg-brand-teal/10 hover:text-brand-dark transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@ export default function SidebarMenu({ mainMenu, helpMenu }: SidebarMenuProps) {
 
       {/* Help Menu */}
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-        <div className="bg-gray-600 px-4 py-3">
+        <div className="bg-brand-mid px-4 py-3">
           <h2 className="text-white font-semibold text-sm uppercase tracking-wide">
             Hỗ trợ
           </h2>
@@ -55,7 +55,7 @@ export default function SidebarMenu({ mainMenu, helpMenu }: SidebarMenuProps) {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="flex items-center gap-2 px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+                className="flex items-center gap-2 px-4 py-3 text-sm text-gray-700 hover:bg-brand-teal/10 hover:text-brand-dark transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

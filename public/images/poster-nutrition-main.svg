@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#e8f5e9"/>
+  <circle cx="80" cy="280" r="75" fill="#28afb0" opacity="0.10"/>
+  <!-- Poster -->
+  <rect x="80" y="20" width="240" height="260" rx="3" fill="white" stroke="#0f3744" stroke-width="2.5"/>
+  <!-- Header -->
+  <rect x="90" y="30" width="220" height="35" fill="#28afb0"/>
+  <text x="200" y="52" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white" text-anchor="middle">Kim tự tháp dinh dưỡng</text>
+  <!-- Pyramid concept -->
+  <polygon points="200,75 270,180 130,180" fill="#28afb0" opacity="0.1" stroke="#28afb0" stroke-width="2"/>
+  <!-- Pyramid sections (simplified) -->
+  <polygon points="200,85 250,140 150,140" fill="#d1fae5" stroke="#28afb0" stroke-width="1.5"/>
+  <text x="200" y="115" font-family="Arial,sans-serif" font-size="8" fill="#0f3744" text-anchor="middle" font-weight="bold">Rau xanh</text>
+  <polygon points="148,142 272,142 238,195" fill="#a7f3d0" stroke="#28afb0" stroke-width="1.5"/>
+  <text x="210" y="170" font-family="Arial,sans-serif" font-size="8" fill="#0f3744" text-anchor="middle" font-weight="bold">Trái cây, Ngũ cốc</text>
+  <polygon points="132,197 268,197 250,240" fill="#6ee7b7" stroke="#28afb0" stroke-width="1.5"/>
+  <text x="200" y="220" font-family="Arial,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="bold">Đạm thực vật, Nước</text>
+  <!-- Decorative elements -->
+  <circle cx="320" cy="80" r="8" fill="#28afb0" opacity="0.4"/>
+  <circle cx="330" cy="120" r="6" fill="#28afb0" opacity="0.3"/>
+  <!-- Footer -->
+  <rect x="90" y="245" width="220" height="28" fill="#f0faf0" stroke="#d0d0d0" stroke-width="1"/>
+  <text x="200" y="260" font-family="Arial,sans-serif" font-size="7" fill="#666" text-anchor="middle">Physicians Committee for Responsible Medicine</text>
+  <!-- Price -->
+  <rect x="248" y="242" width="52" height="22" rx="11" fill="#28afb0"/>
+  <text x="274" y="257" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">$1.50</text>
+</svg>

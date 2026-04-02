@@ -14,6 +14,12 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        // Màu chủ đạo Physicians Committee Shop
+        brand: {
+          dark: "#0f3744",   // Header, Footer, nav sẫm
+          mid: "#1e8d8d",    // Thanh trên header, đường viền nav
+          teal: "#28afb0",   // Accent: tiêu đề, nút, highlight
+        },
       },
     },
   },
