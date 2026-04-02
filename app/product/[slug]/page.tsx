@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 import { product, mainMenu, helpMenu, footerInfo } from "@/data/product";
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -20,15 +20,17 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  if (params.slug !== product.slug) return {};
+  const { slug } = await params;
+  if (slug !== product.slug) return {};
   return {
     title: `${product.title} — Physicians Committee Shop`,
     description: product.shortDescription,
   };
 }
 
-export default function ProductPage({ params }: PageProps) {
-  if (params.slug !== product.slug) {
+export default async function ProductPage({ params }: PageProps) {
+  const { slug } = await params;
+  if (slug !== product.slug) {
     notFound();
   }
 
