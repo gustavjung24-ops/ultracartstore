@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { products, footerInfo } from "@/data/product";
+import { getProductsByCategoryFromData, getStoreData } from "@/lib/store-data";
 
-export default function HomePage() {
-  const featured = products.slice(0, 4);
+export default async function HomePage() {
+  const { products, footerInfo } = await getStoreData();
+  const featured = getProductsByCategoryFromData(products, "product-spotlight").slice(0, 4);
 
   return (
     <>

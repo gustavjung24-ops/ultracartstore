@@ -33,6 +33,20 @@ npm run build
 npm run start
 ```
 
+### 4. (Optional) Enable Airtable CMS
+
+1. Copy `.env.example` to `.env.local`
+2. Fill Airtable credentials
+3. Restart dev server
+
+```bash
+cp .env.example .env.local
+npm run dev
+```
+
+When Airtable is configured, the storefront reads products from Airtable.
+If Airtable is not configured, it automatically falls back to local data in `data/product.ts`.
+
 ---
 
 ## Project Structure
@@ -121,6 +135,13 @@ Every `git push` to `main` will auto-deploy to Vercel.
 |---|---|
 | `/` | Home / featured product |
 | `/product/building-healthy-communities-brochure` | Product detail |
+
+---
+
+## Airtable Admin Guides
+
+1. English guide: `docs/airtable-admin-guide-en.md`
+2. Vietnamese guide: `docs/huong-dan-admin-airtable-vi.md`
 
 ---
 

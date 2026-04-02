@@ -9,19 +9,21 @@ import SidebarMenu from "@/components/SidebarMenu";
 import RelatedResources from "@/components/RelatedResources";
 import Footer from "@/components/Footer";
 
-import { products, mainMenu, helpMenu, footerInfo, getProductBySlug } from "@/data/product";
+import { getStoreData } from "@/lib/store-data";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
+  const { products } = await getStoreData();
   return products.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const { products } = await getStoreData();
+  const product = products.find((item) => item.slug === slug);
   if (!product) return {};
   return {
     title: `${product.title} - Physicians Committee Shop`,
@@ -31,7 +33,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ProductPage({ params }: PageProps) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const { products, mainMenu, helpMenu, footerInfo } = await getStoreData();
+  const product = products.find((item) => item.slug === slug);
   if (!product) {
     notFound();
   }

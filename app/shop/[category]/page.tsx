@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SidebarMenu from "@/components/SidebarMenu";
-import { categories, getProductsByCategory, mainMenu, helpMenu, footerInfo } from "@/data/product";
+import { getProductsByCategoryFromData, getStoreData } from "@/lib/store-data";
 
 const healthTopicHighlights = [
   {
@@ -28,11 +28,13 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
+  const { categories } = await getStoreData();
   return categories.map((cat) => ({ category: cat.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category } = await params;
+  const { categories } = await getStoreData();
   const cat = categories.find((c) => c.slug === category);
   if (!cat) return {};
   return {
@@ -43,10 +45,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params;
+  const { products, categories, mainMenu, helpMenu, footerInfo } = await getStoreData();
   const cat = categories.find((c) => c.slug === category);
   if (!cat) notFound();
 
-  const categoryProducts = getProductsByCategory(category);
+  const categoryProducts = getProductsByCategoryFromData(products, category);
 
   const breadcrumbs = [
     { label: "Trang chủ", href: "/" },

@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SidebarMenu from "@/components/SidebarMenu";
-import { products, categories, mainMenu, helpMenu, footerInfo } from "@/data/product";
+import { getStoreData } from "@/lib/store-data";
 
 export const metadata: Metadata = {
   title: "Cửa hàng - Physicians Committee Shop",
@@ -17,7 +17,8 @@ const breadcrumbs = [
   { label: "Cửa hàng" },
 ];
 
-export default function ShopPage() {
+export default async function ShopPage() {
+  const { products, categories, mainMenu, helpMenu, footerInfo } = await getStoreData();
   const healthTopicProducts = products.filter((product) => product.category === "health-topics");
 
   return (
