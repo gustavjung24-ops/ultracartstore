@@ -8,26 +8,26 @@ export default function ProductInfo({ product }: ProductInfoProps) {
   return (
     <div className="space-y-5">
       {/* Title */}
-      <h1 className="text-2xl sm:text-3xl font-bold text-zinc-100 leading-snug">
+      <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-snug">
         {product.title}
       </h1>
 
       {/* Price */}
       <div className="flex items-baseline gap-3">
-        <span className="text-3xl font-bold text-emerald-400">
+        <span className="text-3xl font-bold text-green-700">
           {product.price}
         </span>
-        <span className="text-sm text-zinc-400">mỗi bản</span>
+        <span className="text-sm text-gray-500">mỗi tờ rơi</span>
       </div>
 
       {/* Short description */}
-      <p className="text-zinc-300 leading-relaxed text-sm sm:text-base">
+      <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
         {product.shortDescription}
       </p>
 
       {/* Contact note */}
-      <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg px-4 py-3">
-        <p className="text-emerald-300 text-sm font-medium">
+      <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-3">
+        <p className="text-green-800 text-sm font-medium">
           📋 {product.contactNote}
         </p>
       </div>
@@ -75,11 +75,11 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         {/* Call */}
         <a
           href={product.phoneNumber}
-          className="flex items-center justify-center gap-3 w-full py-3 px-5 bg-zinc-900 hover:bg-zinc-800 text-zinc-100 font-semibold rounded-xl shadow-sm border border-zinc-700 transition-colors"
+          className="flex items-center justify-center gap-3 w-full py-3 px-5 bg-white hover:bg-gray-50 text-gray-800 font-semibold rounded-xl shadow-sm border border-gray-300 transition-colors"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-emerald-400"
+            className="h-5 w-5 text-green-700"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -96,7 +96,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       </div>
 
       {/* SKU */}
-      <p className="text-xs text-zinc-500 pt-2">
+      <p className="text-xs text-gray-400 pt-2">
         <span className="font-medium">Mã sản phẩm:</span> {product.sku}
       </p>
     </div>

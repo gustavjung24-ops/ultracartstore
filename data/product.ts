@@ -41,8 +41,8 @@ export const product: Product = {
   price: "$0.15",
   sku: "BHCOM-100",
   shortDescription:
-    "Tờ rơi BHC gồm 2 trang, phù hợp để các trưởng nhóm chia sẻ trong cộng đồng. Tài liệu nêu rõ mục tiêu, lợi ích tham gia và cách bắt đầu, giúp nhóm của bạn phát triển bền vững.",
-  contactNote: "Liên hệ để được tư vấn và đặt tài liệu",
+    "Tờ rơi BHC 2 trang — dành cho các Trưởng nhóm chia sẻ với cộng đồng. Nêu rõ sứ mệnh chương trình, lợi ích khi tham gia và cách đăng ký, giúp nhóm của bạn ngày càng lớn mạnh.",
+  contactNote: "Liên hệ ngay để đặt mua và nhận tư vấn miễn phí",
   // 👇 Replace with your real WhatsApp number
   whatsappUrl: "https://wa.me/12025277306",
   // 👇 Replace with your real Zalo number
@@ -58,25 +58,25 @@ export const product: Product = {
   relatedResources: [
     {
       id: "bhc-pod-guide",
-      title: "Sổ tay Trưởng nhóm BHC",
+      title: "Sổ tay Hướng dẫn Trưởng nhóm BHC",
       description:
-        "Hướng dẫn chi tiết giúp trưởng nhóm tổ chức và vận hành các buổi sinh hoạt sức khỏe hiệu quả.",
+        "Tài liệu toàn diện giúp Trưởng nhóm lập kế hoạch và điều phối các buổi sinh hoạt sức khỏe cộng đồng hiệu quả.",
       image: "/images/placeholder-guide.svg",
       href: "/product/bhc-pod-leader-guide",
     },
     {
       id: "bhc-recipe-book",
-      title: "Sổ tay công thức ăn lành mạnh",
+      title: "Sách công thức ăn lành mạnh",
       description:
-        "Tổng hợp công thức thuần thực vật và mẹo dinh dưỡng dành cho chương trình sức khỏe cộng đồng.",
+        "Tổng hợp công thức thuần thực vật và mẹo dinh dưỡng thực tiễn cho các chương trình sức khỏe cộng đồng.",
       image: "/images/placeholder-recipe.svg",
       href: "/product/healthy-eating-recipe-book",
     },
     {
       id: "bhc-activity-kit",
-      title: "Bộ hoạt động cộng đồng",
+      title: "Bộ công cụ hoạt động cộng đồng",
       description:
-        "Bộ bài tập và hoạt động sẵn sàng sử dụng cho các buổi hướng dẫn lối sống lành mạnh.",
+        "Hoạt động và phiếu bài tập dùng ngay — lý tưởng để hướng dẫn lối sống lành mạnh trong các buổi hội thảo nhóm.",
       image: "/images/placeholder-kit.svg",
       href: "/product/community-activity-kit",
     },

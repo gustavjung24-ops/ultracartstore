@@ -19,7 +19,7 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
   return (
     <div className="space-y-3">
       {/* Main image */}
-      <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-zinc-800 bg-zinc-950">
+      <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 bg-gray-50">
         <Image
           src={activeIndex === 0 ? mainImage : images[activeIndex]}
           alt={title}
@@ -40,9 +40,7 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
             className={`relative w-20 h-16 rounded-lg overflow-hidden border-2 transition-colors ${
               activeIndex === 0
                 ? "border-green-600"
-                : "border-zinc-700 hover:border-green-400"
-            }`}
-            aria-label="Xem ảnh chính"
+                : "border-gray-200 hover:border-green-400"
           >
             <Image
               src={mainImage}
@@ -61,9 +59,7 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
               className={`relative w-20 h-16 rounded-lg overflow-hidden border-2 transition-colors ${
                 activeIndex === i + 1
                   ? "border-green-600"
-                  : "border-zinc-700 hover:border-green-400"
-              }`}
-              aria-label={`Xem ảnh ${i + 2}`}
+                  : "border-gray-200 hover:border-green-400"
             >
               <Image
                 src={src}
