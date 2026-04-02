@@ -1,6 +1,6 @@
 # Healthy Communities Demo
 
-A responsive storefront/catalog demo built with **Next.js 14 + TypeScript + Tailwind CSS**.
+A responsive storefront/catalog demo built with **Next.js 15 + TypeScript + Tailwind CSS**.
 
 > This is a UI demo only. No cart, no backend, no payments.
 
@@ -82,6 +82,6 @@ Your demo will be live at `https://YOUR_PROJECT.vercel.app`.
 
 ## Tech Stack
 
-- [Next.js 14](https://nextjs.org/) — App Router
+- [Next.js 15](https://nextjs.org/) — App Router
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
