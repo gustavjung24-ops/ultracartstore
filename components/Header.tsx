@@ -15,6 +15,8 @@ const shopCategories = [
   { label: "Bộ đa phương tiện", href: "/shop/multimedia" },
   { label: "Mới nhất", href: "/shop/new" },
   { label: "Cộng đồng khỏe mạnh", href: "/shop/healthy-communities" },
+  { label: "Liên hệ", href: "/contact" },
+  { label: "PCRM.org", href: "https://pcrm.org", external: true },
 ];
 
 export default function Header() {
@@ -114,30 +116,31 @@ export default function Header() {
               {shopOpen && (
                 <div className="absolute top-full right-0 bg-brand-dark border-t border-brand-mid min-w-[200px] py-2 z-50">
                   {shopCategories.map((cat) => (
-                    <Link
-                      key={cat.href}
-                      href={cat.href}
-                      className="block px-5 py-2 text-xs font-normal normal-case text-gray-200 hover:text-brand-teal hover:bg-brand-mid/30 whitespace-nowrap"
-                      onClick={() => setShopOpen(false)}
-                    >
-                      {cat.label}
-                    </Link>
+                    cat.external ? (
+                      <a
+                        key={cat.href}
+                        href={cat.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-5 py-2 text-xs font-normal normal-case text-gray-200 hover:text-brand-teal hover:bg-brand-mid/30 whitespace-nowrap"
+                        onClick={() => setShopOpen(false)}
+                      >
+                        {cat.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={cat.href}
+                        href={cat.href}
+                        className="block px-5 py-2 text-xs font-normal normal-case text-gray-200 hover:text-brand-teal hover:bg-brand-mid/30 whitespace-nowrap"
+                        onClick={() => setShopOpen(false)}
+                      >
+                        {cat.label}
+                      </Link>
+                    )
                   ))}
                 </div>
               )}
             </div>
-
-            <Link href="/contact" className="px-4 py-6 hover:text-brand-teal transition-colors">
-              Liên hệ
-            </Link>
-            <a
-              href="https://pcrm.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-6 hover:text-brand-teal transition-colors"
-            >
-              PCRM.org
-            </a>
           </nav>
 
           {/* Hamburger mobile */}
@@ -186,17 +189,24 @@ export default function Header() {
             </Link>
             <div className="py-2 border-b border-brand-mid/50">
               {shopCategories.map((cat) => (
-                <Link key={cat.href} href={cat.href} className="block py-1.5 pl-5 text-xs font-normal normal-case text-gray-300 hover:text-brand-teal" onClick={() => setMobileOpen(false)}>
-                  — {cat.label}
-                </Link>
+                cat.external ? (
+                  <a
+                    key={cat.href}
+                    href={cat.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block py-1.5 pl-5 text-xs font-normal normal-case text-gray-300 hover:text-brand-teal"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    — {cat.label}
+                  </a>
+                ) : (
+                  <Link key={cat.href} href={cat.href} className="block py-1.5 pl-5 text-xs font-normal normal-case text-gray-300 hover:text-brand-teal" onClick={() => setMobileOpen(false)}>
+                    — {cat.label}
+                  </Link>
+                )
               ))}
             </div>
-            <Link href="/contact" className="py-3 border-b border-brand-mid/50 hover:text-brand-teal" onClick={() => setMobileOpen(false)}>
-              Liên hệ
-            </Link>
-            <a href="https://pcrm.org" target="_blank" rel="noopener noreferrer" className="py-3 hover:text-brand-teal">
-              PCRM.org
-            </a>
           </nav>
         </div>
       )}
