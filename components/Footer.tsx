@@ -54,7 +54,7 @@ export default function Footer({ info }: FooterProps) {
             </ul>
           </div>
 
-          {/* Help */}}
+          {/* Help */}
           <div className="space-y-2">
             <h3 className="text-white font-bold text-base">Hỗ trợ</h3>
             <ul className="text-sm space-y-1">
@@ -79,7 +79,7 @@ export default function Footer({ info }: FooterProps) {
           </div>
         </div>
 
-        {/* Copyright */}}
+        {/* Copyright */}
         <div className="mt-8 pt-6 border-t border-gray-700 text-xs text-gray-500 text-center">
           {info.copyright}
         </div>

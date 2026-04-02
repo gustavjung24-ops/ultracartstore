@@ -41,6 +41,8 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
               activeIndex === 0
                 ? "border-green-600"
                 : "border-gray-200 hover:border-green-400"
+            }`}
+            aria-label="Xem ảnh chính"
           >
             <Image
               src={mainImage}
@@ -60,6 +62,8 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
                 activeIndex === i + 1
                   ? "border-green-600"
                   : "border-gray-200 hover:border-green-400"
+              }`}
+              aria-label={`Xem ảnh ${i + 2}`}
             >
               <Image
                 src={src}
