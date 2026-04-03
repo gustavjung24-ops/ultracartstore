@@ -250,7 +250,7 @@ export default function Header({ showDonateButton = true }: HeaderProps) {
   ];
 
   return (
-    <header className="z-50 border-b border-slate-200 bg-white shadow-sm lg:sticky lg:top-0">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-sm">
       <div className="hidden border-b border-[#2a5d7d] bg-[#18354a] lg:block">
         <div className="mx-auto grid max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6">
           {utilityGroups.map((group) => (
@@ -279,23 +279,44 @@ export default function Header({ showDonateButton = true }: HeaderProps) {
         </div>
       </div>
 
-      <div className="border-b border-slate-200 bg-white px-4 py-3 md:px-6 md:py-4">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
-          <Link href="/" className="no-underline hover:opacity-95">
+      <div className="border-b border-slate-200 bg-white px-4 py-2.5 md:px-6 md:py-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
+          <Link href="/" className="min-w-0 flex-1 no-underline hover:opacity-95">
             <div className="leading-none">
-              <div className="text-[2.45rem] font-bold tracking-[-0.03em] text-[#005f87] sm:text-[2.7rem]">
+              <div className="text-[1.2rem] font-bold tracking-[-0.02em] text-[#005f87] sm:text-[2.7rem]">
                 Physicians
               </div>
-              <div className="text-[2.28rem] font-light tracking-[-0.03em] text-[#7aa8bf] sm:text-[2.52rem]">
+              <div className="text-[1.1rem] font-light tracking-[-0.02em] text-[#7aa8bf] sm:text-[2.52rem]">
                 Committee
               </div>
-              <div className="mt-0.5 text-base font-medium tracking-[-0.01em] text-[#0f5c73] sm:text-lg">
+              <div className="mt-0.5 text-[0.55rem] font-semibold tracking-[0.01em] text-[#0f5c73] sm:text-lg sm:font-medium sm:tracking-[-0.01em]">
                 for Responsible Medicine
               </div>
             </div>
           </Link>
 
-          <div className="flex items-center gap-2 md:gap-3">
+          <div className="flex shrink-0 items-center gap-1.5 md:gap-3">
+            {mounted ? (
+              <div className="inline-flex overflow-hidden rounded-md border border-slate-300 bg-white lg:hidden">
+                <button
+                  onClick={() => handleLanguageChange('vi')}
+                  className={`px-1.5 py-1 text-[10px] font-bold transition ${
+                    language === 'vi' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
+                  }`}
+                >
+                  VI
+                </button>
+                <button
+                  onClick={() => handleLanguageChange('en')}
+                  className={`border-l border-slate-300 px-1.5 py-1 text-[10px] font-bold transition ${
+                    language === 'en' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
+                  }`}
+                >
+                  EN
+                </button>
+              </div>
+            ) : null}
+
             {mounted ? (
               <div className="hidden lg:block">
                 <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
@@ -305,7 +326,7 @@ export default function Header({ showDonateButton = true }: HeaderProps) {
             {showDonateButton ? (
               <Link
                 href="/donate"
-                className="rounded-md bg-[#f0ad4e] px-3 py-2 text-[11px] font-bold uppercase tracking-[0.05em] text-slate-900 no-underline transition hover:bg-[#e39c36] sm:px-4 sm:text-xs"
+                className="rounded-md bg-[#f0ad4e] px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.04em] text-slate-900 no-underline transition hover:bg-[#e39c36] sm:px-4 sm:py-2 sm:text-xs"
               >
                 {currentLabels.donate}
               </Link>
@@ -313,8 +334,8 @@ export default function Header({ showDonateButton = true }: HeaderProps) {
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-300 text-[#0f5c73] lg:hidden"
-              aria-label="Toggle menu"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-300 text-[#0f5c73] lg:hidden"
+              aria-label={currentLabels.menu}
             >
               <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round">
                 <path d="M4 7h16M4 12h16M4 17h16" />
