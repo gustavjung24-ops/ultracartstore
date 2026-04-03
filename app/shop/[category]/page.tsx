@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params;
-  const { products, categories, mainMenu, helpMenu, footerInfo } = await getStoreData();
+  const { products, categories, mainMenu, helpMenu } = await getStoreData();
   const cat = categories.find((c) => c.slug === category);
   if (!cat) notFound();
 

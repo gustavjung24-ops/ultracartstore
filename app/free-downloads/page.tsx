@@ -3,7 +3,6 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { footerInfo } from "@/data/product";
 
 export const metadata: Metadata = {
   title: "Tải miễn phí - Physicians Committee Shop",

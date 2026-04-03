@@ -16,6 +16,9 @@ html {
   --color-muted: #5b6973;
   --color-surface: #ffffff;
   --color-border: #d6dee4;
+  --shadow-soft: 0 10px 30px rgba(17, 39, 53, 0.08);
+  --shadow-medium: 0 18px 42px rgba(17, 39, 53, 0.12);
+  --shadow-strong: 0 24px 60px rgba(17, 39, 53, 0.16);
 }
 
 body {
@@ -74,6 +77,22 @@ h6 {
   border-color: var(--color-border);
 }
 
+.luxury-panel {
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.88));
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(4px);
+}
+
+.lift-card {
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.lift-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
 .article-card-image {
   @apply relative h-44 w-full;
 }
@@ -128,6 +147,23 @@ h3 {
 
 .muted {
   color: var(--color-muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-up {
+    animation: fadeUp 560ms ease both;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 @media (max-width: 768px) {

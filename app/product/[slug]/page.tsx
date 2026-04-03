@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ProductPage({ params }: PageProps) {
   const { slug } = await params;
-  const { products, mainMenu, helpMenu, footerInfo } = await getStoreData();
+  const { products, mainMenu, helpMenu } = await getStoreData();
   const product = products.find((item) => item.slug === slug);
   if (!product) {
     notFound();

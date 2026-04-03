@@ -18,7 +18,7 @@ const breadcrumbs = [
 ];
 
 export default async function ShopPage() {
-  const { products, categories, mainMenu, helpMenu, footerInfo } = await getStoreData();
+  const { products, categories, mainMenu, helpMenu } = await getStoreData();
   const healthTopicProducts = products.filter((product) => product.category === "health-topics");
 
   return (
