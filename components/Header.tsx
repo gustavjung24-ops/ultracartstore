@@ -143,6 +143,7 @@ const navGroups: NavGroup[] = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const [language, setLanguage] = useState<Language>('en');
   const [mounted, setMounted] = useState(false);
 
@@ -177,7 +178,7 @@ export default function Header() {
 
   return (
     <header className="z-50 border-b border-slate-200 bg-white shadow-sm lg:sticky lg:top-0">
-      <div className="bg-[#18354a] px-4 py-2 text-[11px] text-white">
+      <div className="hidden bg-[#18354a] px-4 py-2 text-[11px] text-white lg:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <div className="hidden items-center gap-2 text-slate-200 md:flex">
             <span className="h-1.5 w-1.5 rounded-full bg-[#f0ad4e]" />
@@ -290,25 +291,35 @@ export default function Header() {
           <div className="space-y-4">
             {navGroups.map((group) => (
               <div key={group.href} className="rounded-lg border border-slate-200">
-                <Link
-                  href={group.href}
-                  className="block border-b border-slate-200 px-4 py-3 text-sm font-bold text-[#007fab] no-underline"
-                  onClick={() => setIsMenuOpen(false)}
+                <button
+                  onClick={() => setOpenMobileGroup((prev) => (prev === group.href ? null : group.href))}
+                  className="flex w-full items-center justify-between border-b border-slate-200 px-4 py-3 text-left text-sm font-bold text-[#007fab]"
+                  aria-expanded={openMobileGroup === group.href}
                 >
-                  {tLabel(group.label)}
-                </Link>
-                <div className="grid gap-1 p-2">
-                  {group.items.map((item) => (
+                  <span>{tLabel(group.label)}</span>
+                  <span className={`text-base transition-transform ${openMobileGroup === group.href ? 'rotate-180' : ''}`}>▾</span>
+                </button>
+                {openMobileGroup === group.href ? (
+                  <div className="grid gap-1 p-2">
                     <Link
-                      key={item.href}
-                      href={item.href}
-                      className="rounded px-3 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50"
+                      href={group.href}
+                      className="rounded px-3 py-2 text-sm font-semibold text-[#0f5c73] no-underline hover:bg-slate-50"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      {tLabel(item.label)}
+                      {language === 'vi' ? 'Xem mục chính' : 'Open main section'}
                     </Link>
-                  ))}
-                </div>
+                    {group.items.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="rounded px-3 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {tLabel(item.label)}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
               </div>
             ))}
             <div className="flex flex-col gap-2 border-t border-slate-200 pt-4 text-sm text-slate-700">
