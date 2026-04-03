@@ -1,4 +1,4 @@
-import extractedRaw from "@/pcrm_translated/extracted_raw.json";
+import translatedAll from "@/pcrm_translated/translated_all.json";
 
 export interface PcrmMedia {
   src: string;
@@ -13,16 +13,29 @@ export interface PcrmLink {
 export interface PcrmPage {
   url: string;
   title: string;
+  title_en?: string;
+  title_vi?: string;
   description: string;
+  description_en?: string;
+  description_vi?: string;
   h1: string[];
+  h1_en?: string[];
+  h1_vi?: string[];
   h2: string[];
+  h2_en?: string[];
+  h2_vi?: string[];
   h3: string[];
+  h3_en?: string[];
+  h3_vi?: string[];
   paragraphs: string[];
+  paragraphs_en?: string[];
+  paragraphs_vi?: string[];
   images: PcrmMedia[];
   links: PcrmLink[];
+  links_vi?: (PcrmLink & { text_vi?: string })[];
 }
 
-const RAW = extractedRaw as PcrmPage[];
+const RAW = translatedAll as PcrmPage[];
 const BASE = "https://www.pcrm.org";
 
 function normalizePath(path: string): string {

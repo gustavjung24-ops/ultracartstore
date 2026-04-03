@@ -13,9 +13,12 @@ export default function LanguageSwitcher({
 }: LanguageSwitcherProps) {
   const handleChange = (lang: Language) => {
     localStorage.setItem('language', lang);
+    document.cookie = `site_lang=${lang}; path=/; max-age=31536000`;
+    window.dispatchEvent(new CustomEvent('languagechange', { detail: { language: lang } }));
     if (onLanguageChange) {
       onLanguageChange(lang);
     }
+    window.location.reload();
   };
 
   return (
