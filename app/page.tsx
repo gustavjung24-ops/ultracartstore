@@ -14,7 +14,6 @@ export default async function HomePage() {
 
   if (!home) return null;
 
-  const heroImage = home.images[0]?.src;
   const healthAndNutritionPosts = blog.filter((post) => post.path.includes("/news/health-nutrition/")).slice(0, 2);
   const innovativeSciencePosts = blog.filter((post) => post.path.includes("/news/innovative-science/")).slice(0, 2);
   const scienceDigestPosts = blog.filter((post) => post.path.includes("/news/good-science-digest/")).slice(0, 2);
@@ -51,7 +50,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <Header />
+      <Header showDonateButton={false} />
       <main className="pb-12 md:pb-16">
         <section className="mx-auto max-w-7xl px-4 pt-3 md:px-6 md:pt-5">
           <div className="smooth-surface rounded-[26px] px-4 py-4 md:px-6">
@@ -79,41 +78,42 @@ export default async function HomePage() {
         <section className="mx-auto mt-3 max-w-7xl px-4 md:mt-4 md:px-6">
           <div className="overflow-hidden rounded-[34px] border border-[#cad8df] bg-white shadow-[0_18px_44px_rgba(15,35,45,0.16)]">
             <div className="grid md:grid-cols-2">
-              <div className="bg-[radial-gradient(circle_at_top_left,#1f7390_0%,#0f5c73_58%,#0c4a5e_100%)] px-5 py-8 text-white md:px-10 md:py-14">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#ddbb83]">
-                  {lang === "vi" ? "Y học dự phòng từ 1985" : "Preventive Medicine Since 1985"}
-                </p>
-                <h1 className="home-hero-title mt-2.5 text-4xl font-extrabold leading-tight text-white md:mt-3 md:text-5xl">
-                  {lang === "vi"
-                    ? home.title_vi || home.h1_vi?.[0] || home.title
-                    : home.title_en || home.h1_en?.[0] || home.title}
-                </h1>
-                <p className="home-hero-copy mt-4 max-w-xl text-base leading-8 text-slate-100 md:mt-5 md:text-lg">
-                  {lang === "vi" ? home.description_vi || home.description : home.description_en || home.description}
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2.5 md:mt-8 md:gap-3">
-                  <Link
-                    href="/donate"
-                    className="rounded-full bg-[#c89d59] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-[#17232d] no-underline transition hover:bg-[#ddbb83] md:px-7 md:py-3 md:text-sm"
-                  >
-                    {lang === "vi" ? "Quyên góp hôm nay" : "Donate Today"}
-                  </Link>
-                  <Link
-                    href="/ways-to-give"
-                    className="rounded-full border border-white/45 px-6 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white no-underline transition hover:bg-white/10 md:px-7 md:py-3 md:text-sm"
-                  >
-                    {lang === "vi" ? "Các cách ủng hộ" : "Ways to Give"}
-                  </Link>
-                </div>
+              <div className="relative min-h-[260px] bg-[#dce8ee] md:min-h-[500px]">
+                <Image
+                  src="/images/pig-in-grass.jpg"
+                  alt={lang === "vi" ? "Chú heo trên bãi cỏ" : "Pig in grass"}
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
 
-              <div className="relative min-h-[260px] bg-[#dce8ee] md:min-h-[500px]">
-                {heroImage ? (
-                  <>
-                    <Image src={heroImage} alt="Hero" fill className="object-cover" priority unoptimized />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f5c73]/25 to-transparent" />
-                  </>
-                ) : null}
+              <div className="flex items-center bg-[radial-gradient(circle_at_top_left,#1f7390_0%,#0f5c73_58%,#0c4a5e_100%)] px-5 py-8 text-white md:px-10 md:py-14">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#ddbb83]">
+                    {lang === "vi" ? "CHIẾN THẮNG!" : "VICTORY!"}
+                  </p>
+                  <h1 className="home-hero-title mt-2.5 text-3xl font-extrabold leading-tight text-white sm:text-4xl md:mt-3 md:text-5xl">
+                    {lang === "vi"
+                      ? "Đại học Brown dừng chương trình huấn luyện gây chết người!"
+                      : "Brown University Halts Deadly Training Exercise!"}
+                  </h1>
+                  <p className="home-hero-copy mt-4 max-w-xl text-base leading-8 text-slate-100 md:mt-5 md:text-lg">
+                    {lang === "vi"
+                      ? "Cập nhật mới từ chiến dịch khoa học đạo đức của Physicians Committee."
+                      : "Latest win from the Physicians Committee's ethical science campaign."}
+                  </p>
+                  <div className="mt-6 md:mt-8">
+                    <Link
+                      href="https://act.pcrm.org/a/victory-brown-university"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full border border-white/45 px-6 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white no-underline transition hover:bg-white/10 md:px-7 md:py-3 md:text-sm"
+                    >
+                      {lang === "vi" ? "Tìm hiểu thêm" : "Learn More"}
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -245,12 +245,9 @@ export default async function HomePage() {
                 ? home.paragraphs_vi?.[4] || home.paragraphs[4] || "Đồng hành cùng chúng tôi trong y học dự phòng và nghiên cứu đạo đức."
                 : home.paragraphs_en?.[4] || home.paragraphs[4] || "Join us in preventive medicine and ethical science."}
             </p>
-            <div className="mt-5 flex flex-wrap justify-center gap-2.5 md:mt-6 md:gap-3">
-              <Link href="/donate" className="inline-block rounded-full bg-[#c89d59] px-7 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-[#17232d] transition hover:bg-[#ddbb83] no-underline md:px-8 md:py-3 md:text-sm">
-                {lang === "vi" ? "Quyên góp" : "Donate"}
-              </Link>
-              <Link href="/ways-to-give" className="inline-block rounded-full border border-white/40 px-7 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-white/10 no-underline md:px-8 md:py-3 md:text-sm">
-                {lang === "vi" ? "Các cách ủng hộ" : "Ways to Give"}
+            <div className="mt-5 md:mt-6">
+              <Link href="/about-us/our-victories" className="inline-block rounded-full border border-white/40 px-7 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-white/10 no-underline md:px-8 md:py-3 md:text-sm">
+                {lang === "vi" ? "Xem thành tựu" : "See Our Victories"}
               </Link>
             </div>
           </div>

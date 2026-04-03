@@ -17,6 +17,10 @@ type NavGroup = {
   columns: 2 | 3;
 };
 
+type HeaderProps = {
+  showDonateButton?: boolean;
+};
+
 const utilityLinks: NavLeaf[] = [
   { href: '/good-nutrition/nutrition-for-clinicians', label: { en: 'For Clinicians', vi: 'Dành cho bác sĩ' } },
   { href: '/good-nutrition/nutrition-for-clinicians/medical-students', label: { en: 'For Medical Students', vi: 'Dành cho sinh viên y' } },
@@ -141,7 +145,7 @@ const navGroups: NavGroup[] = [
   },
 ];
 
-export default function Header() {
+export default function Header({ showDonateButton = true }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const [language, setLanguage] = useState<Language>('en');
@@ -221,12 +225,14 @@ export default function Header() {
               {currentLabels.search}
             </button>
             <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
-            <Link
-              href="/donate"
-              className="rounded-sm bg-[#f0ad4e] px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-slate-900 no-underline hover:bg-[#e39c36]"
-            >
-              {currentLabels.donate}
-            </Link>
+            {showDonateButton ? (
+              <Link
+                href="/donate"
+                className="rounded-sm bg-[#f0ad4e] px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-slate-900 no-underline hover:bg-[#e39c36]"
+              >
+                {currentLabels.donate}
+              </Link>
+            ) : null}
           </div>
         </div>
       </div>
@@ -272,9 +278,11 @@ export default function Header() {
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             {mounted ? <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} /> : null}
-            <Link href="/donate" className="rounded-sm bg-[#f0ad4e] px-4 py-2 text-sm font-bold text-slate-900 no-underline">
-              {currentLabels.donate}
-            </Link>
+            {showDonateButton ? (
+              <Link href="/donate" className="rounded-sm bg-[#f0ad4e] px-4 py-2 text-sm font-bold text-slate-900 no-underline">
+                {currentLabels.donate}
+              </Link>
+            ) : null}
           </div>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
