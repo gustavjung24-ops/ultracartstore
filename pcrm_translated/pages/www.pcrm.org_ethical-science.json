@@ -1,0 +1,155 @@
+{
+  "url": "https://www.pcrm.org/ethical-science",
+  "url_vi": "https://www.pcrm.org/ethical-science",
+  "title": "Ethical Science",
+  "title_en": "Ethical Science",
+  "description": "Improving Human Health Through Research Conducted Without Animal Use",
+  "description_en": "Improving Human Health Through Research Conducted Without Animal Use",
+  "h1": [
+    "Ethical Science"
+  ],
+  "h1_en": [
+    "Ethical Science"
+  ],
+  "h2": [],
+  "h2_en": [],
+  "h3": [],
+  "h3_en": [],
+  "paragraphs": [
+    "Improving Human Health Through Research Conducted Without Animal Use",
+    "The Physicians Committee promotes alternatives to animal use in research, testing, and education. Explore our resources to find out how you can help facilitate a transition from animal use to human-relevant methods.",
+    "Transitioning From Animals to Human-Relevant Methods",
+    "Championing Methods To Replace Animal Testing"
+  ],
+  "paragraphs_en": [
+    "Improving Human Health Through Research Conducted Without Animal Use",
+    "The Physicians Committee promotes alternatives to animal use in research, testing, and education. Explore our resources to find out how you can help facilitate a transition from animal use to human-relevant methods.",
+    "Transitioning From Animals to Human-Relevant Methods",
+    "Championing Methods To Replace Animal Testing"
+  ],
+  "images": [
+    {
+      "src": "https://p.alocdn.com/c/ype6nguo/a/etarget/p.gif?label=physcomrespmed",
+      "alt": ""
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/animal-medical-research-hero.jpg",
+      "alt": ""
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/animal-testing-hero.jpg",
+      "alt": ""
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2019-08/ethicalscience.jpg",
+      "alt": ""
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2025-06/candid-seal-platinum-2025.png",
+      "alt": "Candid Platinum Seal 2025"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-04/Animal_Charities_America.png",
+      "alt": "Animal Charities of America"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-04/BBB.png",
+      "alt": "Better Business Bureau"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-04/BIA_Seal.png",
+      "alt": "Best in America"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-05/charity-watch.png",
+      "alt": "Charity Watch"
+    }
+  ],
+  "links": [
+    {
+      "text": "Skip to main content",
+      "url": "https://www.pcrm.org#main-content"
+    },
+    {
+      "text": "Physicians Committee for Responsible Medicine",
+      "url": "https://www.pcrm.org/"
+    },
+    {
+      "text": "For Clinicians",
+      "url": "https://www.pcrm.org/good-nutrition/nutrition-for-clinicians"
+    },
+    {
+      "text": "For Medical Students",
+      "url": "https://www.pcrm.org/good-nutrition/nutrition-for-clinicians/medical-students"
+    },
+    {
+      "text": "For Scientists",
+      "url": "https://www.pcrm.org/term/scientists"
+    },
+    {
+      "text": "About Us",
+      "url": "https://www.pcrm.org/about-us"
+    },
+    {
+      "text": "Leadership",
+      "url": "https://www.pcrm.org/about-us#leadership"
+    },
+    {
+      "text": "Our Victories",
+      "url": "https://www.pcrm.org/about-us/our-victories"
+    },
+    {
+      "text": "Careers",
+      "url": "https://www.pcrm.org/about-us/careers"
+    },
+    {
+      "text": "Internships",
+      "url": "https://www.pcrm.org/about-us/careers/internships"
+    },
+    {
+      "text": "Events",
+      "url": "https://www.pcrm.org/events"
+    },
+    {
+      "text": "Annual & Financial Reports",
+      "url": "https://www.pcrm.org/about-us/financial-report"
+    },
+    {
+      "text": "Barnard Medical Center",
+      "url": "https://www.pcrm.org/barnard-medical-center"
+    },
+    {
+      "text": "Contact Us",
+      "url": "https://www.pcrm.org/contact-us"
+    },
+    {
+      "text": "Animals in Medical Research",
+      "url": "https://www.pcrm.org/ethical-science/animals-in-medical-research"
+    },
+    {
+      "text": "Animal Testing and Alternatives",
+      "url": "https://www.pcrm.org/ethical-science/animal-testing-and-alternatives"
+    },
+    {
+      "text": "Physicians Committee for Responsible Medicine",
+      "url": "https://www.pcrm.org/"
+    }
+  ],
+  "buttons": [],
+  "buttons_en": [],
+  "form_fields": [
+    {
+      "name": "keys",
+      "label": "Search",
+      "label_en": "Search",
+      "type": "text"
+    },
+    {
+      "name": "keys",
+      "label": "Search",
+      "label_en": "Search",
+      "type": "text"
+    }
+  ],
+  "extracted_at": "2026-04-03T05:57:33.412267"
+}

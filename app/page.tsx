@@ -4,10 +4,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getProductsByCategoryFromData, getStoreData } from "@/lib/store-data";
 
-export default async function HomePage() {
-  const { products, footerInfo } = await getStoreData();
-  const featured = getProductsByCategoryFromData(products, "product-spotlight").slice(0, 4);
 
+export default function HomePage() {
+  const locale = 'en';
+  const t = {
+    'site.name': 'Physicians Committee for Responsible Medicine',
+    'home.title': 'Welcome to PCRM',
+    'home.heroTitle': 'Transform the way you eat with evidence-based medical guidance and practical kitchen skills.',
+  };
   return (
     <>
       <Header />

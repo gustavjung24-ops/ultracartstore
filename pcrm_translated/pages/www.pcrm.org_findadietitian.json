@@ -1,0 +1,169 @@
+{
+  "url": "https://www.pcrm.org/findadietitian",
+  "url_vi": "https://www.pcrm.org/findadietitian",
+  "title": "Preferred Dietitian Referral",
+  "title_en": "Preferred Dietitian Referral",
+  "description": "",
+  "description_en": "",
+  "h1": [],
+  "h1_en": [],
+  "h2": [],
+  "h2_en": [],
+  "h3": [],
+  "h3_en": [],
+  "paragraphs": [
+    "Make your 2026 membership gift today!",
+    "Find plant-based dietitians in your area or offering telehealth services in your state.",
+    "The Preferred Dietitian Referral program is a free database of qualified dietitians who are experts in plant-based nutrition.",
+    "Doctors, connect with dietitians and confidently refer your patients to them!",
+    "Patients, use this resource to find nutrition counseling near you!",
+    "Increase your visibility to doctors looking for a dietitian referral and patients looking for plant-based nutrition counseling.",
+    "Apply to Become a Preferred Dietitian",
+    "More information about the PDR, our doctor database, and the Physicians Committee can be found on our FAQ page. If you have questions or concerns, please contact nutrition [at] pcrm.org.",
+    "Prevention starts today. Join the 21-Day Vegan Kickstart.",
+    "Get Healthy With Good Nutrition",
+    "Food for Life classes teach you how to improve your health with a plant-based diet."
+  ],
+  "paragraphs_en": [
+    "Make your 2026 membership gift today!",
+    "Find plant-based dietitians in your area or offering telehealth services in your state.",
+    "The Preferred Dietitian Referral program is a free database of qualified dietitians who are experts in plant-based nutrition.",
+    "Doctors, connect with dietitians and confidently refer your patients to them!",
+    "Patients, use this resource to find nutrition counseling near you!",
+    "Increase your visibility to doctors looking for a dietitian referral and patients looking for plant-based nutrition counseling.",
+    "Apply to Become a Preferred Dietitian",
+    "More information about the PDR, our doctor database, and the Physicians Committee can be found on our FAQ page. If you have questions or concerns, please contact nutrition [at] pcrm.org.",
+    "Prevention starts today. Join the 21-Day Vegan Kickstart.",
+    "Get Healthy With Good Nutrition",
+    "Food for Life classes teach you how to improve your health with a plant-based diet."
+  ],
+  "images": [
+    {
+      "src": "https://p.alocdn.com/c/ype6nguo/a/etarget/p.gif?label=physcomrespmed",
+      "alt": ""
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2025-06/candid-seal-platinum-2025.png",
+      "alt": "Candid Platinum Seal 2025"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-04/Animal_Charities_America.png",
+      "alt": "Animal Charities of America"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-04/BBB.png",
+      "alt": "Better Business Bureau"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-04/BIA_Seal.png",
+      "alt": "Best in America"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-05/charity-watch.png",
+      "alt": "Charity Watch"
+    }
+  ],
+  "links": [
+    {
+      "text": "Skip to main content",
+      "url": "https://www.pcrm.org#main-content"
+    },
+    {
+      "text": "Physicians Committee for Responsible Medicine",
+      "url": "https://www.pcrm.org/"
+    },
+    {
+      "text": "For Clinicians",
+      "url": "https://www.pcrm.org/good-nutrition/nutrition-for-clinicians"
+    },
+    {
+      "text": "For Medical Students",
+      "url": "https://www.pcrm.org/good-nutrition/nutrition-for-clinicians/medical-students"
+    },
+    {
+      "text": "For Scientists",
+      "url": "https://www.pcrm.org/term/scientists"
+    },
+    {
+      "text": "About Us",
+      "url": "https://www.pcrm.org/about-us"
+    },
+    {
+      "text": "Leadership",
+      "url": "https://www.pcrm.org/about-us#leadership"
+    },
+    {
+      "text": "Our Victories",
+      "url": "https://www.pcrm.org/about-us/our-victories"
+    },
+    {
+      "text": "Careers",
+      "url": "https://www.pcrm.org/about-us/careers"
+    },
+    {
+      "text": "Internships",
+      "url": "https://www.pcrm.org/about-us/careers/internships"
+    },
+    {
+      "text": "Events",
+      "url": "https://www.pcrm.org/events"
+    },
+    {
+      "text": "Annual & Financial Reports",
+      "url": "https://www.pcrm.org/about-us/financial-report"
+    },
+    {
+      "text": "Barnard Medical Center",
+      "url": "https://www.pcrm.org/barnard-medical-center"
+    },
+    {
+      "text": "Contact Us",
+      "url": "https://www.pcrm.org/contact-us"
+    },
+    {
+      "text": "Find a Dietitian",
+      "url": "https://www.pcrm.org/findadietitian"
+    },
+    {
+      "text": "Search Dietitians by Location",
+      "url": "https://www.pcrm.org/findadietitian/search-distance"
+    },
+    {
+      "text": "Search for Telehealth Dietitians",
+      "url": "https://www.pcrm.org/findadietitian/search-telehealth"
+    },
+    {
+      "text": "Apply to Become a Preferred Dietitian",
+      "url": "https://www.pcrm.org/findadoctor/add"
+    },
+    {
+      "text": "FAQ page",
+      "url": "https://www.pcrm.org/findadoctor/faq"
+    },
+    {
+      "text": "Find a Class",
+      "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/ffl/classes"
+    },
+    {
+      "text": "Physicians Committee for Responsible Medicine",
+      "url": "https://www.pcrm.org/"
+    }
+  ],
+  "buttons": [],
+  "buttons_en": [],
+  "form_fields": [
+    {
+      "name": "keys",
+      "label": "Search",
+      "label_en": "Search",
+      "type": "text"
+    },
+    {
+      "name": "keys",
+      "label": "Search",
+      "label_en": "Search",
+      "type": "text"
+    }
+  ],
+  "extracted_at": "2026-04-03T05:58:10.173510"
+}

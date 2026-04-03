@@ -1,0 +1,71 @@
+{
+  "site": {
+    "name": "Physicians Committee for Responsible Medicine",
+    "description": "A nonprofit health organization that promotes preventive medicine, conducts clinical research, and encourages higher standards for ethics and effectiveness in research and medical training."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "goodNutrition": "Good Nutrition",
+    "ethicalScience": "Ethical Science",
+    "clinicalResearch": "Clinical Research",
+    "healthTopics": "Health Topics",
+    "blog": "Blog",
+    "contact": "Contact",
+    "donate": "Donate"
+  },
+  "home": {
+    "title": "Welcome to PCRM",
+    "heroTitle": "Transform the way you eat with evidence-based medical guidance and practical kitchen skills.",
+    "ctaText": "Join Our Community",
+    "newsTitle": "Health and Nutrition News",
+    "scienceTitle": "Innovative Science News",
+    "sections": {
+      "about": "About Us",
+      "mission": "Our Mission",
+      "research": "Clinical Research"
+    }
+  },
+  "about": {
+    "title": "About Physicians Committee for Responsible Medicine",
+    "content": "For 40 years, the Physicians Committee has been leading the way for people, animals, and the planet. We promote preventive medicine, conduct groundbreaking clinical research, and advocate for higher standards in medical training and ethical science.",
+    "mission": "Our mission is to promote health and compassion through science and education.",
+    "values": {
+      "science": "Evidence-Based Science",
+      "ethics": "Ethical Standards",
+      "compassion": "Compassion for All"
+    }
+  },
+  "donate": {
+    "title": "Make a Donation Today",
+    "subtitle": "Support our mission to transform health through science and compassion",
+    "paymentMethods": "Payment Methods",
+    "card": "Credit Card",
+    "paypal": "PayPal",
+    "bankTransfer": "Bank Transfer",
+    "submitButton": "Donate Now",
+    "impact": "Your donation creates real change"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "message": "Message",
+    "submitButton": "Send Message",
+    "successMessage": "Thank you for your message. We will get back to you soon."
+  },
+  "footer": {
+    "copyright": "© 2026 Physicians Committee for Responsible Medicine. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "followUs": "Follow Us"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "backHome": "Back to Home",
+    "readMore": "Read More",
+    "viewMore": "View More"
+  }
+}

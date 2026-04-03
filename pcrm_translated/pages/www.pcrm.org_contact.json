@@ -1,0 +1,229 @@
+{
+  "url": "https://www.pcrm.org/contact",
+  "url_vi": "https://www.pcrm.org/contact",
+  "title": "Contact the Physicians Committee | Physicians Committee",
+  "title_en": "Contact the Physicians Committee | Physicians Committee",
+  "description": "",
+  "description_en": "",
+  "h1": [
+    "Contact the Physicians Committee"
+  ],
+  "h1_en": [
+    "Contact the Physicians Committee"
+  ],
+  "h2": [],
+  "h2_en": [],
+  "h3": [],
+  "h3_en": [],
+  "paragraphs": [
+    "Please note: Due to an overwhelming number of inquiries, we are unable to answer each e-mail we receive. If the answer to your question is on any of our websites or if you are forwarding information or a suggestion, you may not receive a response. We do read all letters and e-mails and value your comments and questions.",
+    "Prevention starts today. Join the 21-Day Vegan Kickstart.",
+    "Get Healthy With Good Nutrition",
+    "Food for Life classes teach you how to improve your health with a plant-based diet."
+  ],
+  "paragraphs_en": [
+    "Please note: Due to an overwhelming number of inquiries, we are unable to answer each e-mail we receive. If the answer to your question is on any of our websites or if you are forwarding information or a suggestion, you may not receive a response. We do read all letters and e-mails and value your comments and questions.",
+    "Prevention starts today. Join the 21-Day Vegan Kickstart.",
+    "Get Healthy With Good Nutrition",
+    "Food for Life classes teach you how to improve your health with a plant-based diet."
+  ],
+  "images": [
+    {
+      "src": "https://p.alocdn.com/c/ype6nguo/a/etarget/p.gif?label=physcomrespmed",
+      "alt": ""
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2025-06/candid-seal-platinum-2025.png",
+      "alt": "Candid Platinum Seal 2025"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-04/Animal_Charities_America.png",
+      "alt": "Animal Charities of America"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-04/BBB.png",
+      "alt": "Better Business Bureau"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-04/BIA_Seal.png",
+      "alt": "Best in America"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-05/charity-watch.png",
+      "alt": "Charity Watch"
+    }
+  ],
+  "links": [
+    {
+      "text": "Skip to main content",
+      "url": "https://www.pcrm.org#main-content"
+    },
+    {
+      "text": "Physicians Committee for Responsible Medicine",
+      "url": "https://www.pcrm.org/"
+    },
+    {
+      "text": "For Clinicians",
+      "url": "https://www.pcrm.org/good-nutrition/nutrition-for-clinicians"
+    },
+    {
+      "text": "For Medical Students",
+      "url": "https://www.pcrm.org/good-nutrition/nutrition-for-clinicians/medical-students"
+    },
+    {
+      "text": "For Scientists",
+      "url": "https://www.pcrm.org/term/scientists"
+    },
+    {
+      "text": "About Us",
+      "url": "https://www.pcrm.org/about-us"
+    },
+    {
+      "text": "Leadership",
+      "url": "https://www.pcrm.org/about-us#leadership"
+    },
+    {
+      "text": "Our Victories",
+      "url": "https://www.pcrm.org/about-us/our-victories"
+    },
+    {
+      "text": "Careers",
+      "url": "https://www.pcrm.org/about-us/careers"
+    },
+    {
+      "text": "Internships",
+      "url": "https://www.pcrm.org/about-us/careers/internships"
+    },
+    {
+      "text": "Events",
+      "url": "https://www.pcrm.org/events"
+    },
+    {
+      "text": "Annual & Financial Reports",
+      "url": "https://www.pcrm.org/about-us/financial-report"
+    },
+    {
+      "text": "Barnard Medical Center",
+      "url": "https://www.pcrm.org/barnard-medical-center"
+    },
+    {
+      "text": "Contact Us",
+      "url": "https://www.pcrm.org/contact-us"
+    },
+    {
+      "text": "Find a Class",
+      "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/ffl/classes"
+    },
+    {
+      "text": "Physicians Committee for Responsible Medicine",
+      "url": "https://www.pcrm.org/"
+    }
+  ],
+  "buttons": [
+    "Send message",
+    "Preview"
+  ],
+  "buttons_en": [
+    "Send message",
+    "Preview"
+  ],
+  "form_fields": [
+    {
+      "name": "keys",
+      "label": "Search",
+      "label_en": "Search",
+      "type": "text"
+    },
+    {
+      "name": "keys",
+      "label": "Search",
+      "label_en": "Search",
+      "type": "text"
+    },
+    {
+      "name": "name",
+      "label": "",
+      "label_en": "",
+      "type": "text"
+    },
+    {
+      "name": "mail",
+      "label": "",
+      "label_en": "",
+      "type": "email"
+    },
+    {
+      "name": "subject[0][value]",
+      "label": "",
+      "label_en": "",
+      "type": "text"
+    },
+    {
+      "name": "message[0][value]",
+      "label": "",
+      "label_en": "",
+      "type": "text"
+    },
+    {
+      "name": "form_build_id",
+      "label": "",
+      "label_en": "",
+      "type": "hidden"
+    },
+    {
+      "name": "form_id",
+      "label": "",
+      "label_en": "",
+      "type": "hidden"
+    },
+    {
+      "name": "antibot_key",
+      "label": "",
+      "label_en": "",
+      "type": "hidden"
+    },
+    {
+      "name": "captcha_sid",
+      "label": "",
+      "label_en": "",
+      "type": "hidden"
+    },
+    {
+      "name": "captcha_token",
+      "label": "",
+      "label_en": "",
+      "type": "hidden"
+    },
+    {
+      "name": "captcha_response",
+      "label": "",
+      "label_en": "",
+      "type": "hidden"
+    },
+    {
+      "name": "captcha_cacheable",
+      "label": "",
+      "label_en": "",
+      "type": "hidden"
+    },
+    {
+      "name": "op",
+      "label": "",
+      "label_en": "",
+      "type": "submit"
+    },
+    {
+      "name": "op",
+      "label": "",
+      "label_en": "",
+      "type": "submit"
+    },
+    {
+      "name": "url",
+      "label": "",
+      "label_en": "",
+      "type": "text"
+    }
+  ],
+  "extracted_at": "2026-04-03T05:57:39.682806"
+}

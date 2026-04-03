@@ -1,0 +1,42 @@
+{
+  "url": "https://www.pcrm.org/donate",
+  "url_vi": "https://www.pcrm.org/donate",
+  "title": "Attention Required! | Cloudflare",
+  "title_en": "Attention Required! | Cloudflare",
+  "description": "",
+  "description_en": "",
+  "h1": [
+    "Sorry, you have been blocked"
+  ],
+  "h1_en": [
+    "Sorry, you have been blocked"
+  ],
+  "h2": [
+    "You are unable to access actions.everyaction.com",
+    "Why have I been blocked?",
+    "What can I do to resolve this?"
+  ],
+  "h2_en": [
+    "You are unable to access actions.everyaction.com",
+    "Why have I been blocked?",
+    "What can I do to resolve this?"
+  ],
+  "h3": [],
+  "h3_en": [],
+  "paragraphs": [
+    "This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.",
+    "You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.",
+    "Cloudflare Ray ID: 9e65d6416b9a8813 • Your IP: Click to reveal 207.46.224.90 • Performance & security by Cloudflare"
+  ],
+  "paragraphs_en": [
+    "This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.",
+    "You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.",
+    "Cloudflare Ray ID: 9e65d6416b9a8813 • Your IP: Click to reveal 207.46.224.90 • Performance & security by Cloudflare"
+  ],
+  "images": [],
+  "links": [],
+  "buttons": [],
+  "buttons_en": [],
+  "form_fields": [],
+  "extracted_at": "2026-04-03T05:57:38.170481"
+}

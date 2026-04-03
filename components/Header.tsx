@@ -4,26 +4,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const shopCategories = [
-  { label: "Quần áo", href: "/shop/apparel" },
-  { label: "Sách", href: "/shop/books" },
-  { label: "Tài liệu in ấn", href: "/shop/literature" },
-  { label: "Theo chủ đề sức khỏe", href: "/shop/health-topics" },
-  { label: "Sản phẩm nổi bật", href: "/shop/product-spotlight" },
-  { label: "Áp phích", href: "/shop/posters" },
-  { label: "Dành cho bác sĩ", href: "/shop/clinicians" },
-  { label: "Bộ đa phương tiện", href: "/shop/multimedia" },
-  { label: "Mới nhất", href: "/shop/new" },
-  { label: "Cộng đồng khỏe mạnh", href: "/shop/healthy-communities" },
-  { label: "Liên hệ", href: "/contact" },
-  { label: "PCRM.org", href: "https://pcrm.org", external: true },
+
+
+const navigation = [
+  { label_en: 'Home', label_vi: 'Trang chủ', href: '/' },
+  { label_en: 'About Us', label_vi: 'Về chúng tôi', href: '/about' },
+  { label_en: 'Good Nutrition', label_vi: 'Dinh dưỡng tốt', href: '/nutrition' },
+  { label_en: 'Ethical Science', label_vi: 'Khoa học đạo đức', href: '/science' },
+  { label_en: 'Clinical Research', label_vi: 'Nghiên cứu lâm sàng', href: '/research' },
+  { label_en: 'Health Topics', label_vi: 'Các chủ đề sức khỏe', href: '/health' },
+  { label_en: 'Blog', label_vi: 'Blog', href: '/blog' },
+  { label_en: 'Contact', label_vi: 'Liên hệ', href: '/contact' },
 ];
 
-export default function Header() {
-  const [searchValue, setSearchValue] = useState("");
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [shopOpen, setShopOpen] = useState(false);
+interface HeaderProps {
+  locale?: string;
+}
 
+export default function Header({ locale = 'en' }: HeaderProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const getNavLabel = (nav: any) => (locale === 'en' ? nav.label_en : nav.label_vi);
   return (
     <header className="sticky top-0 z-50 shadow-md">
 

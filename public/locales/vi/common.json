@@ -1,0 +1,71 @@
+{
+  "site": {
+    "name": "Hội bác sĩ vì y học xứ sở có trách nhiệm",
+    "description": "Một tổ chức y tế phi lợi nhuận thúc đẩy y học dự phòng, tiến hành nghiên cứu lâm sàng, và khuyến khích các tiêu chuẩn cao hơn về đạo đức và hiệu quả trong nghiên cứu và đào tạo y tế."
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "about": "Về chúng tôi",
+    "goodNutrition": "Dinh dưỡng tốt",
+    "ethicalScience": "Khoa học đạo đức",
+    "clinicalResearch": "Nghiên cứu lâm sàng",
+    "healthTopics": "Các chủ đề sức khỏe",
+    "blog": "Blog",
+    "contact": "Liên hệ",
+    "donate": "Quyên góp"
+  },
+  "home": {
+    "title": "Chào mừng đến PCRM",
+    "heroTitle": "Thay đổi cách bạn ăn uống với hướng dẫn y tế dựa trên bằng chứng và những kỹ năng bếp thực tế.",
+    "ctaText": "Tham gia cộng đồng của chúng tôi",
+    "newsTitle": "Tin tức sức khỏe và dinh dưỡng",
+    "scienceTitle": "Tin tức khoa học sáng tạo",
+    "sections": {
+      "about": "Về chúng tôi",
+      "mission": "Sứ mệnh của chúng tôi",
+      "research": "Nghiên cứu lâm sàng"
+    }
+  },
+  "about": {
+    "title": "Về Hội bác sĩ vì y học xứ sở có trách nhiệm",
+    "content": "Trong 40 năm qua, Hội bác sĩ đã dẫn đầu cho người dân, động vật và hành tinh. Chúng tôi thúc đẩy y học dự phòng, tiến hành nghiên cứu lâm sàng độc lập, và ủng hộ các tiêu chuẩn cao hơn trong đào tạo y tế và khoa học đạo đức.",
+    "mission": "Sứ mệnh của chúng tôi là thúc đẩy sức khỏe và lòng trắc ẩn thông qua khoa học và giáo dục.",
+    "values": {
+      "science": "Khoa học dựa trên bằng chứng",
+      "ethics": "Tiêu chuẩn đạo đức",
+      "compassion": "Lòng trắc ẩn cho tất cả"
+    }
+  },
+  "donate": {
+    "title": "Quyên góp hôm nay",
+    "subtitle": "Hỗ trợ sứ mệnh của chúng tôi để thay đổi sức khỏe thông qua khoa học và lòng trắc ẩn",
+    "paymentMethods": "Phương thức thanh toán",
+    "card": "Thẻ tín dụng",
+    "paypal": "PayPal",
+    "bankTransfer": "Chuyển khoản ngân hàng",
+    "submitButton": "Quyên góp ngay",
+    "impact": "Quyên góp của bạn tạo ra thay đổi thực sự"
+  },
+  "contact": {
+    "title": "Liên hệ với chúng tôi",
+    "email": "Email",
+    "phone": "Điện thoại",
+    "address": "Địa chỉ",
+    "message": "Lời nhắn",
+    "submitButton": "Gửi lời nhắn",
+    "successMessage": "Cảm ơn bạn đã gửi tin nhắn. Chúng tôi sẽ liên hệ lại với bạn sớm."
+  },
+  "footer": {
+    "copyright": "© 2026 Hội bác sĩ vì y học xứ sở có trách nhiệm. Tất cả quyền được bảo lưu.",
+    "privacy": "Chính sách bảo mật",
+    "terms": "Điều khoản dịch vụ",
+    "followUs": "Theo dõi chúng tôi"
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Đã xảy ra lỗi",
+    "backHome": "Quay lại trang chủ",
+    "readMore": "Đọc thêm",
+    "viewMore": "Xem thêm"
+  }
+}

@@ -11,7 +11,9 @@
   "dependencies": {
     "@sanity/client": "^7.20.0",
     "groq": "^5.19.0",
+    "i18next": "^26.0.3",
     "next": "^15.5.14",
+    "next-i18next": "^16.0.5",
     "react": "^18",
     "react-dom": "^18"
   },

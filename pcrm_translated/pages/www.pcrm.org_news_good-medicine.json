@@ -1,0 +1,143 @@
+{
+  "url": "https://www.pcrm.org/news/good-medicine",
+  "url_vi": "https://www.pcrm.org/news/good-medicine",
+  "title": "Good Medicine Magazine",
+  "title_en": "Good Medicine Magazine",
+  "description": "Good Medicine is the Physicians Committee’s quarterly member magazine that provides campaign updates, breaking news on the health benefits of plant-based nutrition, and more.",
+  "description_en": "Good Medicine is the Physicians Committee’s quarterly member magazine that provides campaign updates, breaking news on the health benefits of plant-based nutrition, and more.",
+  "h1": [
+    "Good Medicine Magazine"
+  ],
+  "h1_en": [
+    "Good Medicine Magazine"
+  ],
+  "h2": [
+    "Spring 2026 No.2"
+  ],
+  "h2_en": [
+    "Spring 2026 No.2"
+  ],
+  "h3": [],
+  "h3_en": [],
+  "paragraphs": [
+    "Make your 2026 membership gift today!",
+    "Good Medicine is the Physicians Committee’s quarterly member magazine that provides campaign updates, breaking news on the health benefits of plant-based nutrition, and more.",
+    "A subscription to Good Medicine is included with a Physicians Committee membership.",
+    "Good Medicine is the Physicians Committee’s quarterly member magazine that provides campaign updates, breaking news on the health benefits of plant-based nutrition, the latest information on scientific advances that are improving human health by replacing animal tests and experiments, practice tips for physicians and health care professionals, infographics, and physician profiles."
+  ],
+  "paragraphs_en": [
+    "Make your 2026 membership gift today!",
+    "Good Medicine is the Physicians Committee’s quarterly member magazine that provides campaign updates, breaking news on the health benefits of plant-based nutrition, and more.",
+    "A subscription to Good Medicine is included with a Physicians Committee membership.",
+    "Good Medicine is the Physicians Committee’s quarterly member magazine that provides campaign updates, breaking news on the health benefits of plant-based nutrition, the latest information on scientific advances that are improving human health by replacing animal tests and experiments, practice tips for physicians and health care professionals, infographics, and physician profiles."
+  ],
+  "images": [
+    {
+      "src": "https://p.alocdn.com/c/ype6nguo/a/etarget/p.gif?label=physcomrespmed",
+      "alt": ""
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2021-05/Good-Medicine-Magazines.jpg",
+      "alt": ""
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2025-06/candid-seal-platinum-2025.png",
+      "alt": "Candid Platinum Seal 2025"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-04/Animal_Charities_America.png",
+      "alt": "Animal Charities of America"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-04/BBB.png",
+      "alt": "Better Business Bureau"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-04/BIA_Seal.png",
+      "alt": "Best in America"
+    },
+    {
+      "src": "https://www.pcrm.org/sites/default/files/2022-05/charity-watch.png",
+      "alt": "Charity Watch"
+    }
+  ],
+  "links": [
+    {
+      "text": "Skip to main content",
+      "url": "https://www.pcrm.org#main-content"
+    },
+    {
+      "text": "Physicians Committee for Responsible Medicine",
+      "url": "https://www.pcrm.org/"
+    },
+    {
+      "text": "For Clinicians",
+      "url": "https://www.pcrm.org/good-nutrition/nutrition-for-clinicians"
+    },
+    {
+      "text": "For Medical Students",
+      "url": "https://www.pcrm.org/good-nutrition/nutrition-for-clinicians/medical-students"
+    },
+    {
+      "text": "For Scientists",
+      "url": "https://www.pcrm.org/term/scientists"
+    },
+    {
+      "text": "About Us",
+      "url": "https://www.pcrm.org/about-us"
+    },
+    {
+      "text": "Leadership",
+      "url": "https://www.pcrm.org/about-us#leadership"
+    },
+    {
+      "text": "Our Victories",
+      "url": "https://www.pcrm.org/about-us/our-victories"
+    },
+    {
+      "text": "Careers",
+      "url": "https://www.pcrm.org/about-us/careers"
+    },
+    {
+      "text": "Internships",
+      "url": "https://www.pcrm.org/about-us/careers/internships"
+    },
+    {
+      "text": "Events",
+      "url": "https://www.pcrm.org/events"
+    },
+    {
+      "text": "Annual & Financial Reports",
+      "url": "https://www.pcrm.org/about-us/financial-report"
+    },
+    {
+      "text": "Barnard Medical Center",
+      "url": "https://www.pcrm.org/barnard-medical-center"
+    },
+    {
+      "text": "Contact Us",
+      "url": "https://www.pcrm.org/contact-us"
+    },
+    {
+      "text": "Physicians Committee for Responsible Medicine",
+      "url": "https://www.pcrm.org/"
+    }
+  ],
+  "buttons": [],
+  "buttons_en": [],
+  "form_fields": [
+    {
+      "name": "keys",
+      "label": "Search",
+      "label_en": "Search",
+      "type": "text"
+    },
+    {
+      "name": "keys",
+      "label": "Search",
+      "label_en": "Search",
+      "type": "text"
+    }
+  ],
+  "extracted_at": "2026-04-03T05:57:54.740448"
+}
