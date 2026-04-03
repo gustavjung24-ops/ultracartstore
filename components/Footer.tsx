@@ -10,9 +10,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About Column */}
           <div>
-            <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-              🏥 PCRM
-            </h3>
+            <Link href="/" className="mb-4 inline-block rounded-sm bg-[#f1f3f5] px-3 py-2 no-underline">
+              <img
+                src="/images/pcrm-wordmark.svg"
+                alt="Physicians Committee for Responsible Medicine"
+                className="h-auto w-[240px] max-w-full"
+              />
+            </Link>
             <p className="text-gray-300 text-sm leading-6">
               Physicians Committee for Responsible Medicine - Promoting preventive medicine, ethical research, and higher standards for medical training.
             </p>
@@ -85,7 +89,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-base font-bold text-white mb-4">Contact & Donate</h4>
+            <h4 className="text-base font-bold text-white mb-4">Contact</h4>
             <div className="space-y-3 text-sm text-gray-300">
               <p>
                 <span className="font-semibold text-white">📍 Address:</span><br />
@@ -104,12 +108,6 @@ export default function Footer() {
                   info@pcrm.org
                 </a>
               </p>
-              <Link
-                href="/donate"
-                className="inline-block bg-[#f0ad4e] text-gray-900 font-bold px-4 py-2 rounded-md hover:bg-[#ec971f] transition mt-3"
-              >
-                💝 Donate
-              </Link>
             </div>
           </div>
         </div>

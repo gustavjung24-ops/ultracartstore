@@ -201,7 +201,7 @@ const navGroups: NavGroup[] = [
   },
 ];
 
-export default function Header({ showDonateButton = true }: HeaderProps) {
+export default function Header({ showDonateButton = false }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const [language, setLanguage] = useState<Language>('en');
