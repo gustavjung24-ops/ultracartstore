@@ -176,7 +176,7 @@ export default function Header() {
   const tLabel = (label: { en: string; vi: string }) => (language === 'vi' ? label.vi : label.en);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-sm">
+    <header className="z-50 border-b border-slate-200 bg-white shadow-sm lg:sticky lg:top-0">
       <div className="bg-[#18354a] px-4 py-2 text-[11px] text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <div className="hidden items-center gap-2 text-slate-200 md:flex">
