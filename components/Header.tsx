@@ -21,11 +21,58 @@ type HeaderProps = {
   showDonateButton?: boolean;
 };
 
-const utilityLinks: NavLeaf[] = [
-  { href: '/good-nutrition/nutrition-for-clinicians', label: { en: 'For Clinicians', vi: 'Dành cho bác sĩ' } },
-  { href: '/good-nutrition/nutrition-for-clinicians/medical-students', label: { en: 'For Medical Students', vi: 'Dành cho sinh viên y' } },
-  { href: '/term/scientists', label: { en: 'For Scientists', vi: 'Dành cho nhà khoa học' } },
-  { href: '/about-us', label: { en: 'About Us', vi: 'Về chúng tôi' } },
+type UtilityGroup = {
+  href: string;
+  label: { en: string; vi: string };
+  items: NavLeaf[];
+};
+
+const utilityGroups: UtilityGroup[] = [
+  {
+    href: '/good-nutrition/nutrition-for-clinicians',
+    label: { en: 'For Clinicians', vi: 'Dành cho bác sĩ' },
+    items: [
+      { href: '/good-nutrition/nutrition-for-clinicians', label: { en: 'Nutrition for Clinicians', vi: 'Dinh dưỡng cho bác sĩ' } },
+      { href: '/good-nutrition/nutrition-for-clinicians/medical-students', label: { en: 'Medical Students', vi: 'Sinh viên y' } },
+      { href: '/good-nutrition/nutrition-information', label: { en: 'Nutrition Information', vi: 'Thông tin dinh dưỡng' } },
+      { href: '/good-nutrition/nutrition-information/protein', label: { en: 'Protein', vi: 'Chất đạm' } },
+      { href: '/good-nutrition/nutrition-information/fiber', label: { en: 'Fiber', vi: 'Chất xơ' } },
+    ],
+  },
+  {
+    href: '/good-nutrition/nutrition-for-clinicians/medical-students',
+    label: { en: 'For Medical Students', vi: 'Dành cho sinh viên y' },
+    items: [
+      { href: '/good-nutrition/nutrition-for-clinicians/medical-students', label: { en: 'Overview', vi: 'Tổng quan' } },
+      { href: '/clinical-research/recruitment', label: { en: 'Research Recruitment', vi: 'Tuyển người tham gia nghiên cứu' } },
+      { href: '/events', label: { en: 'Events', vi: 'Sự kiện' } },
+      { href: '/news/good-science-digest', label: { en: 'Good Science Digest', vi: 'Bản tin khoa học' } },
+    ],
+  },
+  {
+    href: '/term/scientists',
+    label: { en: 'For Scientists', vi: 'Dành cho nhà khoa học' },
+    items: [
+      { href: '/term/scientists', label: { en: 'Overview', vi: 'Tổng quan' } },
+      { href: '/ethical-science', label: { en: 'Ethical Science', vi: 'Khoa học đạo đức' } },
+      { href: '/clinical-research', label: { en: 'Clinical Research', vi: 'Nghiên cứu lâm sàng' } },
+      { href: '/news/innovative-science-news', label: { en: 'Innovative Science News', vi: 'Tin khoa học đổi mới' } },
+    ],
+  },
+  {
+    href: '/about-us',
+    label: { en: 'About Us', vi: 'Về chúng tôi' },
+    items: [
+      { href: '/about-us#leadership', label: { en: 'Leadership', vi: 'Ban lãnh đạo' } },
+      { href: '/about-us/our-victories', label: { en: 'Our Victories', vi: 'Thành tựu của chúng tôi' } },
+      { href: '/about-us/careers', label: { en: 'Careers', vi: 'Tuyển dụng' } },
+      { href: '/about-us/careers/internships', label: { en: 'Internships', vi: 'Thực tập' } },
+      { href: '/events', label: { en: 'Events', vi: 'Sự kiện' } },
+      { href: '/about-us/financial-report', label: { en: 'Annual & Financial Reports', vi: 'Báo cáo thường niên' } },
+      { href: '/barnard-medical-center', label: { en: 'Barnard Medical Center', vi: 'Trung tâm Barnard' } },
+      { href: '/contact', label: { en: 'Contact Us', vi: 'Liên hệ' } },
+    ],
+  },
 ];
 
 const navGroups: NavGroup[] = [
@@ -189,14 +236,28 @@ export default function Header({ showDonateButton = true }: HeaderProps) {
             <span>{currentLabels.mission}</span>
           </div>
           <div className="flex w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:w-auto sm:justify-end sm:gap-x-3 sm:gap-y-1.5 xl:ml-0">
-            {utilityLinks.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded px-1 py-0.5 text-[10px] font-semibold uppercase tracking-[0.05em] text-slate-100 no-underline transition hover:text-white hover:underline hover:underline-offset-4 md:text-[11px]"
-              >
-                {tLabel(item.label)}
-              </Link>
+            {utilityGroups.map((group) => (
+              <div key={group.href} className="group relative">
+                <Link
+                  href={group.href}
+                  className="rounded px-1 py-0.5 text-[10px] font-semibold uppercase tracking-[0.05em] text-slate-100 no-underline transition hover:text-white hover:underline hover:underline-offset-4 md:text-[11px]"
+                >
+                  <span>{tLabel(group.label)}</span>
+                  <span className="ml-1 hidden text-[9px] align-middle lg:inline">▾</span>
+                </Link>
+
+                <div className="absolute right-0 top-full z-50 hidden min-w-[250px] rounded-md border border-slate-200 bg-white p-2 shadow-2xl lg:group-hover:block lg:group-focus-within:block">
+                  {group.items.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block rounded px-2.5 py-2 text-sm font-medium text-slate-700 no-underline hover:bg-slate-50 hover:text-[#007fab]"
+                    >
+                      {tLabel(item.label)}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>

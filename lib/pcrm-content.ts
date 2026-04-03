@@ -38,6 +38,9 @@ export interface PcrmPage {
 
 const RAW = translatedAll as PcrmPage[];
 const BASE = "https://www.pcrm.org";
+const PATH_ALIASES: Record<string, string> = {
+  '/contact-us': '/contact',
+};
 
 function normalizePath(path: string): string {
   const clean = path.replace(/\/+$|^\/+/, "");
@@ -110,5 +113,51 @@ export function sanitizeExternalLink(url: string) {
     return parsed.href;
   } catch {
     return BASE;
+  }
+}
+
+function closestKnownPath(path: string): string {
+  const normalized = normalizePath(path);
+  const aliased = PATH_ALIASES[normalized] || normalized;
+
+  if (byPath.has(aliased)) {
+    return aliased;
+  }
+
+  const segments = aliased.split('/').filter(Boolean);
+  while (segments.length > 0) {
+    segments.pop();
+    const candidate = segments.length ? `/${segments.join('/')}` : '/';
+    if (byPath.has(candidate)) {
+      return candidate;
+    }
+  }
+
+  return '/';
+}
+
+export function toInternalPcrmHref(url: string): { href: string; internal: boolean } {
+  const trimmed = url.trim();
+
+  if (!trimmed) {
+    return { href: '/', internal: true };
+  }
+
+  if (trimmed.startsWith('/')) {
+    return { href: closestKnownPath(trimmed), internal: true };
+  }
+
+  try {
+    const parsed = new URL(trimmed);
+    const hostname = parsed.hostname.toLowerCase();
+
+    if (hostname === 'www.pcrm.org' || hostname === 'pcrm.org') {
+      const pathname = closestKnownPath(parsed.pathname);
+      return { href: `${pathname}${parsed.search}${parsed.hash}`, internal: true };
+    }
+
+    return { href: parsed.href, internal: false };
+  } catch {
+    return { href: sanitizeExternalLink(trimmed), internal: false };
   }
 }

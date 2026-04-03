@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getAllPcrmPages, getPcrmPageBySegments } from "@/lib/pcrm-content";
+import { getAllPcrmPages, getPcrmPageBySegments, toInternalPcrmHref } from "@/lib/pcrm-content";
 
 type Props = {
   params: Promise<{ slug: string[] }>;
@@ -32,6 +33,14 @@ export default async function DynamicPcrmPage({ params }: Props) {
   const links = lang === "vi" && page.links_vi?.length
     ? page.links_vi.map((link) => ({ text: link.text_vi || link.text, url: link.url }))
     : page.links;
+  const normalizedLinks = links.map((link) => {
+    const mapped = toInternalPcrmHref(link.url);
+    return {
+      text: link.text,
+      href: mapped.href,
+      internal: mapped.internal,
+    };
+  });
 
   return (
     <>
@@ -71,15 +80,21 @@ export default async function DynamicPcrmPage({ params }: Props) {
             ))}
           </section>
 
-          {links?.length ? (
+          {normalizedLinks.length ? (
             <section className="mt-10 border-t border-slate-200 pt-8">
             <h3 className="text-lg font-bold text-slate-900">{lang === "vi" ? "Liên kết liên quan" : "Related Links"}</h3>
             <ul className="mt-3 list-disc pl-6 space-y-2">
-              {links.slice(0, 24).map((link, index) => (
-                <li key={`${link.url}-${index}`}>
-                  <a href={link.url} className="text-[#006c96] hover:underline" target="_blank" rel="noreferrer">
-                    {link.text}
-                  </a>
+              {normalizedLinks.slice(0, 24).map((link, index) => (
+                <li key={`${link.href}-${index}`}>
+                  {link.internal ? (
+                    <Link href={link.href} className="text-[#006c96] hover:underline">
+                      {link.text}
+                    </Link>
+                  ) : (
+                    <a href={link.href} className="text-[#006c96] hover:underline" target="_blank" rel="noreferrer">
+                      {link.text}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
