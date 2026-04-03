@@ -223,114 +223,102 @@ export default function Header({ showDonateButton = true }: HeaderProps) {
 
   const currentLabels = language === 'vi'
     ? {
-        search: 'Tìm kiếm',
         donate: 'Quyên góp',
         menu: 'Menu',
+        quickAccess: 'Truy cập nhanh',
       }
     : {
-        search: 'Search',
         donate: 'Donate',
         menu: 'Menu',
+        quickAccess: 'Quick Access',
       };
 
   const tLabel = (label: { en: string; vi: string }) => (language === 'vi' ? label.vi : label.en);
+  const mobileMenuGroups: Array<{ key: string; href: string; label: { en: string; vi: string }; items: NavLeaf[] }> = [
+    ...utilityGroups.map((group) => ({
+      key: `utility:${group.href}`,
+      href: group.href,
+      label: group.label,
+      items: group.items,
+    })),
+    ...navGroups.map((group) => ({
+      key: `main:${group.href}`,
+      href: group.href,
+      label: group.label,
+      items: group.items,
+    })),
+  ];
 
   return (
     <header className="z-50 border-b border-slate-200 bg-white shadow-sm lg:sticky lg:top-0">
-      <div className="border-b border-[#2a5d7d] bg-[#18354a] px-3 py-2 sm:px-4 md:px-6">
-        <div className="mx-auto flex max-w-7xl items-start gap-3 lg:items-stretch">
-          <div className="hidden flex-1 grid-cols-4 gap-2 lg:grid">
-            {utilityGroups.map((group) => (
-              <div key={group.href} className="group relative">
-                <Link
-                  href={group.href}
-                  className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-2 py-2 text-center text-[11px] font-semibold text-white no-underline transition hover:bg-white/18"
-                >
-                  <span className="line-clamp-1">{tLabel(group.label)}</span>
-                  <span className="ml-1 text-[10px]">▾</span>
-                </Link>
-
-                <div className="absolute left-0 top-full z-50 hidden min-w-[260px] rounded-md border border-slate-200 bg-white p-2 shadow-2xl lg:group-hover:block lg:group-focus-within:block">
-                  {group.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="block rounded px-2.5 py-2 text-sm font-medium text-slate-700 no-underline hover:bg-slate-50 hover:text-[#007fab]"
-                    >
-                      {tLabel(item.label)}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="ml-auto flex items-center gap-2">
-            <div className="hidden overflow-hidden rounded-md border border-white/25 bg-white/10 lg:flex lg:flex-col">
-              <button
-                onClick={() => handleLanguageChange('vi')}
-                className={`px-3 py-1.5 text-[10px] font-semibold transition ${
-                  language === 'vi' ? 'bg-white text-[#18354a]' : 'text-white hover:bg-white/15'
-                }`}
-              >
-                Tiếng Việt
-              </button>
-              <button
-                onClick={() => handleLanguageChange('en')}
-                className={`border-t border-white/25 px-3 py-1.5 text-[10px] font-semibold transition ${
-                  language === 'en' ? 'bg-white text-[#18354a]' : 'text-white hover:bg-white/15'
-                }`}
-              >
-                English
-              </button>
-            </div>
-
-            {showDonateButton ? (
-              <Link
-                href="/donate"
-                className="rounded-md bg-[#f0ad4e] px-4 py-2 text-xs font-bold uppercase tracking-[0.06em] text-slate-900 no-underline transition hover:bg-[#e39c36]"
-              >
-                {currentLabels.donate}
-              </Link>
-            ) : null}
-          </div>
-        </div>
-
-        <div className="mt-2 grid grid-cols-2 gap-2 lg:hidden">
+      <div className="hidden border-b border-[#2a5d7d] bg-[#18354a] lg:block">
+        <div className="mx-auto grid max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6">
           {utilityGroups.map((group) => (
-            <Link
-              key={group.href}
-              href={group.href}
-              className="rounded border border-white/20 bg-white/10 px-2 py-1.5 text-center text-[10px] font-semibold text-white no-underline"
-            >
-              {tLabel(group.label)}
-            </Link>
+            <div key={group.href} className="group relative">
+              <Link
+                href={group.href}
+                className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-2 py-2 text-center text-[11px] font-semibold text-white no-underline transition hover:bg-white/18"
+              >
+                <span className="line-clamp-1">{tLabel(group.label)}</span>
+                <span className="ml-1 text-[10px]">▾</span>
+              </Link>
+
+              <div className="absolute left-0 top-full z-50 hidden min-w-[260px] rounded-md border border-slate-200 bg-white p-2 shadow-2xl lg:group-hover:block lg:group-focus-within:block">
+                {group.items.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block rounded px-2.5 py-2 text-sm font-medium text-slate-700 no-underline hover:bg-slate-50 hover:text-[#007fab]"
+                  >
+                    {tLabel(item.label)}
+                  </Link>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
 
-      <div className="border-b border-slate-200 bg-white px-4 py-4 md:px-6">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6">
-          <Link href="/" className="flex items-center gap-4 no-underline hover:opacity-90">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#0f5c73] bg-[#f3f7f9] text-lg font-extrabold uppercase tracking-[0.08em] text-[#0f5c73]">
-              PC
-            </div>
-            <div className="min-w-0">
-              <div className="text-base font-extrabold uppercase tracking-[0.08em] text-[#0f2433] sm:text-lg">
-                Physicians Committee
+      <div className="border-b border-slate-200 bg-white px-4 py-3 md:px-6 md:py-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
+          <Link href="/" className="no-underline hover:opacity-95">
+            <div className="leading-none">
+              <div className="text-[2.45rem] font-bold tracking-[-0.03em] text-[#005f87] sm:text-[2.7rem]">
+                Physicians
               </div>
-              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[#0f5c73] sm:text-sm">
-                For Responsible Medicine
+              <div className="text-[2.28rem] font-light tracking-[-0.03em] text-[#7aa8bf] sm:text-[2.52rem]">
+                Committee
+              </div>
+              <div className="mt-0.5 text-base font-medium tracking-[-0.01em] text-[#0f5c73] sm:text-lg">
+                for Responsible Medicine
               </div>
             </div>
           </Link>
 
-          <div className="hidden items-center gap-3 lg:flex">
-            <a href="tel:+1-202-527-7306" className="text-sm font-semibold text-slate-700 no-underline hover:text-[#007fab]">
-              202-527-7306
-            </a>
-            <button className="rounded-full border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-              {currentLabels.search}
+          <div className="flex items-center gap-2 md:gap-3">
+            {mounted ? (
+              <div className="hidden lg:block">
+                <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
+              </div>
+            ) : null}
+
+            {showDonateButton ? (
+              <Link
+                href="/donate"
+                className="rounded-md bg-[#f0ad4e] px-3 py-2 text-[11px] font-bold uppercase tracking-[0.05em] text-slate-900 no-underline transition hover:bg-[#e39c36] sm:px-4 sm:text-xs"
+              >
+                {currentLabels.donate}
+              </Link>
+            ) : null}
+
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-300 text-[#0f5c73] lg:hidden"
+              aria-label="Toggle menu"
+            >
+              <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round">
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
             </button>
           </div>
         </div>
@@ -373,40 +361,29 @@ export default function Header({ showDonateButton = true }: HeaderProps) {
         </div>
       </nav>
 
-      <div className="border-t border-slate-200 px-4 py-3 lg:hidden">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            {mounted ? <LanguageSwitcher language={language} /> : null}
-            {showDonateButton ? (
-              <Link href="/donate" className="rounded-sm bg-[#f0ad4e] px-4 py-2 text-sm font-bold text-slate-900 no-underline">
-                {currentLabels.donate}
-              </Link>
-            ) : null}
-          </div>
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="rounded-md border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700"
-            aria-label="Toggle menu"
-          >
-            {currentLabels.menu}
-          </button>
-        </div>
-      </div>
-
       {isMenuOpen ? (
         <div className="max-h-[72vh] overflow-y-auto border-t border-slate-200 bg-white px-4 py-4 lg:hidden">
           <div className="space-y-4">
-            {navGroups.map((group) => (
-              <div key={group.href} className="rounded-lg border border-slate-200">
+            {mounted ? (
+              <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                  {currentLabels.quickAccess}
+                </div>
+                <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
+              </div>
+            ) : null}
+
+            {mobileMenuGroups.map((group) => (
+              <div key={group.key} className="rounded-lg border border-slate-200">
                 <button
-                  onClick={() => setOpenMobileGroup((prev) => (prev === group.href ? null : group.href))}
+                  onClick={() => setOpenMobileGroup((prev) => (prev === group.key ? null : group.key))}
                   className="flex w-full items-center justify-between border-b border-slate-200 px-4 py-3 text-left text-sm font-bold text-[#007fab]"
-                  aria-expanded={openMobileGroup === group.href}
+                  aria-expanded={openMobileGroup === group.key}
                 >
                   <span>{tLabel(group.label)}</span>
-                  <span className={`text-base transition-transform ${openMobileGroup === group.href ? 'rotate-180' : ''}`}>▾</span>
+                  <span className={`text-base transition-transform ${openMobileGroup === group.key ? 'rotate-180' : ''}`}>▾</span>
                 </button>
-                {openMobileGroup === group.href ? (
+                {openMobileGroup === group.key ? (
                   <div className="grid gap-1 p-2">
                     <Link
                       href={group.href}
