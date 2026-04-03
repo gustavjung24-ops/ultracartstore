@@ -17,11 +17,12 @@ type NavGroup = {
 };
 
 const utilityLinks: NavLeaf[] = [
-  { href: '/good-nutrition/nutrition-for-athletes', label: { en: 'For Clinicians', vi: 'Dành cho bác sĩ' } },
-  { href: '/good-nutrition/nutrition-for-kids', label: { en: 'For Medical Students', vi: 'Dành cho sinh viên y' } },
+  { href: '/good-nutrition/nutrition-for-clinicians', label: { en: 'For Clinicians', vi: 'Dành cho bác sĩ' } },
+  { href: '/good-nutrition/nutrition-for-clinicians/medical-students', label: { en: 'For Medical Students', vi: 'Dành cho sinh viên y' } },
   { href: '/term/scientists', label: { en: 'For Scientists', vi: 'Dành cho nhà khoa học' } },
   { href: '/about-us', label: { en: 'About Us', vi: 'Về chúng tôi' } },
   { href: '/news/blog', label: { en: 'Blog', vi: 'Blog' } },
+  { href: '/ways-to-give', label: { en: 'Ways to Give', vi: 'Các cách ủng hộ' } },
   { href: '/donate', label: { en: 'Donate', vi: 'Quyên góp' } },
 ];
 
@@ -154,8 +155,8 @@ export default function Header() {
       <div className="border-b border-slate-200 bg-white px-4 py-4 md:px-6">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6">
           <Link href="/" className="flex items-center gap-4 no-underline hover:opacity-90">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#007fab] text-3xl text-[#007fab]">
-              🏥
+            <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#0f5c73] bg-[#f3f7f9] text-lg font-extrabold uppercase tracking-[0.08em] text-[#0f5c73]">
+              PC
             </div>
             <div className="min-w-0">
               <div className="text-base font-extrabold uppercase tracking-[0.08em] text-[#0f2433] sm:text-lg">

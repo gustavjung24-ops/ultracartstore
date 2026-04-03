@@ -7,21 +7,25 @@ html {
 }
 
 :root {
-  --color-primary: #007fab;
-  --color-primary-dark: #005f87;
-  --color-primary-light: #0f9fd4;
-  --color-accent: #f0ad4e;
-  --color-accent-light: #f5c877;
-  --color-text: #243746;
-  --color-muted: #5e6b75;
+  --color-primary: #0f5c73;
+  --color-primary-dark: #0a4658;
+  --color-primary-light: #1f8aa7;
+  --color-accent: #c89d59;
+  --color-accent-light: #ddbb83;
+  --color-text: #17232d;
+  --color-muted: #5b6973;
   --color-surface: #ffffff;
-  --color-border: #d7e0e7;
+  --color-border: #d6dee4;
 }
 
 body {
-  @apply antialiased bg-[#f6f8fa];
+  @apply antialiased;
   color: var(--color-text);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top right, #f4efe2 0%, transparent 45%),
+    radial-gradient(circle at bottom left, #e9f1f4 0%, transparent 40%),
+    #f7f8f9;
 }
 
 h1,
@@ -32,7 +36,8 @@ h5,
 h6 {
   @apply font-bold;
   color: var(--color-text);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading), Georgia, serif;
+  letter-spacing: 0.01em;
 }
 
 .btn {
