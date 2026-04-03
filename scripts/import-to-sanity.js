@@ -6,7 +6,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { createClient } = require("sanity");
+const { createClient } = require("@sanity/client");
 
 const projectId = process.env.SANITY_PROJECT_ID;
 const dataset = process.env.SANITY_DATASET || "production";
