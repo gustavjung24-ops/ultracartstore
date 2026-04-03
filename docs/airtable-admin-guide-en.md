@@ -1,4 +1,8 @@
-# Airtable Admin Guide (English)
+# Airtable Admin Guide (Deprecated)
+
+This guide is deprecated.
+
+Please use Sanity guide instead: `docs/sanity-admin-guide-en.md`.
 
 This project is now connected to Airtable as a lightweight CMS source.
 

@@ -33,10 +33,10 @@ npm run build
 npm run start
 ```
 
-### 4. (Optional) Enable Airtable CMS
+### 4. (Optional) Enable Sanity CMS
 
 1. Copy `.env.example` to `.env.local`
-2. Fill Airtable credentials
+2. Fill Sanity credentials
 3. Restart dev server
 
 ```bash
@@ -44,8 +44,8 @@ cp .env.example .env.local
 npm run dev
 ```
 
-When Airtable is configured, the storefront reads products from Airtable.
-If Airtable is not configured, it automatically falls back to local data in `data/product.ts`.
+When Sanity is configured, the storefront reads products from Sanity.
+If Sanity is not configured, it automatically falls back to local data in `data/product.ts`.
 
 ---
 
@@ -138,10 +138,10 @@ Every `git push` to `main` will auto-deploy to Vercel.
 
 ---
 
-## Airtable Admin Guides
+## Sanity Admin Guides
 
-1. English guide: `docs/airtable-admin-guide-en.md`
-2. Vietnamese guide: `docs/huong-dan-admin-airtable-vi.md`
+1. English guide: `docs/sanity-admin-guide-en.md`
+2. Vietnamese guide: `docs/huong-dan-admin-sanity-vi.md`
 
 ---
 

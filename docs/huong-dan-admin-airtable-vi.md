@@ -1,4 +1,8 @@
-# Huong Dan Admin Airtable (Tieng Viet)
+# Huong Dan Admin Airtable (Khong Con Su Dung)
+
+Tai lieu nay khong con su dung.
+
+Vui long dung tai lieu Sanity: `docs/huong-dan-admin-sanity-vi.md`.
 
 Website nay da duoc ket noi Airtable nhu mot CMS don gian.
 

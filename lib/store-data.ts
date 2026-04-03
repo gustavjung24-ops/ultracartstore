@@ -1,4 +1,6 @@
 import { cache } from "react";
+import { createClient } from "@sanity/client";
+import groq from "groq";
 
 import {
   categories as staticCategories,
@@ -22,45 +24,54 @@ interface StoreData {
   footerInfo: FooterInfo;
 }
 
-interface AirtableAttachment {
-  url?: string;
+interface SanityProductDocument {
+  slug?: string;
+  title?: string;
+  category?: string;
+  categoryLabel?: string;
+  price?: string;
+  unit?: string;
+  sku?: string;
+  shortDescription?: string;
+  longDescription?: string;
+  contactNote?: string;
+  whatsappUrl?: string;
+  zaloUrl?: string;
+  phoneNumber?: string;
+  images?: string[];
+  relatedSlugs?: string[];
 }
 
-interface AirtableRecord<TFields> {
-  id: string;
-  fields: TFields;
-}
-
-interface AirtableProductFields {
-  Slug?: string;
-  Title?: string;
-  Category?: string;
-  CategoryLabel?: string;
-  Price?: string;
-  Unit?: string;
-  SKU?: string;
-  ShortDescription?: string;
-  LongDescription?: string;
-  ContactNote?: string;
-  WhatsAppUrl?: string;
-  ZaloUrl?: string;
-  PhoneNumber?: string;
-  Images?: AirtableAttachment[];
-  RelatedSlugs?: string;
-  Published?: boolean;
-}
-
-interface AirtableNormalizedProduct extends Product {
+interface SanityNormalizedProduct extends Product {
   relatedSlugs: string[];
 }
 
-const AIRTABLE_REVALIDATE_SECONDS = Number.parseInt(
-  process.env.AIRTABLE_REVALIDATE_SECONDS ?? "300",
+const SANITY_REVALIDATE_SECONDS = Number.parseInt(
+  process.env.SANITY_REVALIDATE_SECONDS ?? "300",
   10,
 );
-const REVALIDATE_SECONDS = Number.isFinite(AIRTABLE_REVALIDATE_SECONDS)
-  ? Math.max(AIRTABLE_REVALIDATE_SECONDS, 60)
+const REVALIDATE_SECONDS = Number.isFinite(SANITY_REVALIDATE_SECONDS)
+  ? Math.max(SANITY_REVALIDATE_SECONDS, 60)
   : 300;
+
+const SANITY_API_VERSION = process.env.SANITY_API_VERSION ?? "2024-08-01";
+const SANITY_PRODUCTS_QUERY = groq`*[_type == "product" && coalesce(published, true)] | order(_updatedAt desc) {
+  "slug": slug.current,
+  title,
+  "category": coalesce(category->slug.current, categorySlug, category),
+  "categoryLabel": coalesce(category->title, categoryLabel),
+  price,
+  unit,
+  sku,
+  shortDescription,
+  longDescription,
+  contactNote,
+  whatsappUrl,
+  zaloUrl,
+  phoneNumber,
+  "images": images[].asset->url,
+  "relatedSlugs": relatedProducts[]->slug.current
+}`;
 
 const FALLBACK_STORE_DATA: StoreData = {
   products: staticProducts,
@@ -104,9 +115,13 @@ function normalizePhoneHref(phoneNumber?: string) {
   return `tel:${phoneNumber}`;
 }
 
-function parseRelatedSlugs(relatedSlugs?: string) {
+function parseRelatedSlugs(relatedSlugs?: string | string[]) {
   if (!relatedSlugs) {
     return [];
+  }
+
+  if (Array.isArray(relatedSlugs)) {
+    return relatedSlugs.map((value) => value.trim()).filter(Boolean);
   }
 
   return relatedSlugs
@@ -160,93 +175,67 @@ function buildRelatedResources(
   return fallbackResources;
 }
 
-function normalizeAirtableProduct(record: AirtableRecord<AirtableProductFields>) {
-  const fields = record.fields;
-  const slug = fields.Slug?.trim();
-  const title = fields.Title?.trim();
-  const category = fields.Category?.trim();
+function normalizeSanityProduct(record: SanityProductDocument) {
+  const slug = record.slug?.trim();
+  const title = record.title?.trim();
+  const category = record.category?.trim();
 
   if (!slug || !title || !category) {
     return null;
   }
 
-  if (fields.Published === false) {
-    return null;
-  }
-
-  const images = (fields.Images ?? [])
-    .map((image) => image.url?.trim())
+  const images = (record.images ?? [])
+    .map((image) => image?.trim())
     .filter((url): url is string => Boolean(url));
 
-  const normalizedProduct: AirtableNormalizedProduct = {
+  const normalizedProduct: SanityNormalizedProduct = {
     slug,
     category,
-    categoryLabel: normalizeCategoryLabel(category, fields.CategoryLabel),
+    categoryLabel: normalizeCategoryLabel(category, record.categoryLabel),
     title,
-    price: fields.Price?.trim() || "$0.00",
-    unit: fields.Unit?.trim() || "/ sản phẩm",
-    sku: fields.SKU?.trim() || slug.toUpperCase(),
+    price: record.price?.trim() || "$0.00",
+    unit: record.unit?.trim() || "/ sản phẩm",
+    sku: record.sku?.trim() || slug.toUpperCase(),
     shortDescription:
-      fields.ShortDescription?.trim() ||
+      record.shortDescription?.trim() ||
       "Mô tả ngắn sẽ được cập nhật bởi quản trị viên.",
     longDescription:
-      fields.LongDescription?.trim() ||
-      fields.ShortDescription?.trim() ||
+      record.longDescription?.trim() ||
+      record.shortDescription?.trim() ||
       "Nội dung chi tiết đang được cập nhật.",
     contactNote:
-      fields.ContactNote?.trim() ||
+      record.contactNote?.trim() ||
       "Liên hệ để nhận tư vấn và báo giá chi tiết.",
-    whatsappUrl: fields.WhatsAppUrl?.trim() || "https://wa.me/12025277306",
-    zaloUrl: fields.ZaloUrl?.trim() || "https://zalo.me/12025277306",
-    phoneNumber: normalizePhoneHref(fields.PhoneNumber),
+    whatsappUrl: record.whatsappUrl?.trim() || "https://wa.me/12025277306",
+    zaloUrl: record.zaloUrl?.trim() || "https://zalo.me/12025277306",
+    phoneNumber: normalizePhoneHref(record.phoneNumber),
     images: images.length > 0 ? images : ["/images/placeholder-main.svg"],
     relatedResources: [],
-    relatedSlugs: parseRelatedSlugs(fields.RelatedSlugs),
+    relatedSlugs: parseRelatedSlugs(record.relatedSlugs),
   };
 
   return normalizedProduct;
 }
 
-async function fetchAirtableRecords<TFields>(
-  baseId: string,
-  tableName: string,
-  token: string,
-): Promise<Array<AirtableRecord<TFields>>> {
-  const records: Array<AirtableRecord<TFields>> = [];
-  let offset: string | undefined;
+async function fetchSanityProducts(
+  projectId: string,
+  dataset: string,
+  token?: string,
+): Promise<SanityProductDocument[]> {
+  const client = createClient({
+    projectId,
+    dataset,
+    apiVersion: SANITY_API_VERSION,
+    token,
+    useCdn: !token,
+    perspective: "published",
+  });
 
-  do {
-    const params = new URLSearchParams({ pageSize: "100" });
-    if (offset) {
-      params.set("offset", offset);
-    }
-
-    const response = await fetch(
-      `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}?${params.toString()}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        next: {
-          revalidate: REVALIDATE_SECONDS,
-        },
-      },
-    );
-
-    if (!response.ok) {
-      throw new Error(`Airtable request failed (${response.status})`);
-    }
-
-    const json = (await response.json()) as {
-      records: Array<AirtableRecord<TFields>>;
-      offset?: string;
-    };
-
-    records.push(...json.records);
-    offset = json.offset;
-  } while (offset);
-
-  return records;
+  return client.fetch<SanityProductDocument[]>(SANITY_PRODUCTS_QUERY, {}, {
+    next: {
+      revalidate: REVALIDATE_SECONDS,
+    },
+  });
 }
 
 function getCategoriesForProducts(products: Product[]) {
@@ -322,24 +311,20 @@ export function getProductsByCategoryFromData(products: Product[], category: str
 }
 
 export const getStoreData = cache(async (): Promise<StoreData> => {
-  const token = process.env.AIRTABLE_TOKEN;
-  const baseId = process.env.AIRTABLE_BASE_ID;
-  const productsTableName = process.env.AIRTABLE_PRODUCTS_TABLE ?? "Products";
+  const projectId = process.env.SANITY_PROJECT_ID ?? process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+  const dataset = process.env.SANITY_DATASET ?? process.env.NEXT_PUBLIC_SANITY_DATASET;
+  const token = process.env.SANITY_API_TOKEN;
 
-  if (!token || !baseId) {
+  if (!projectId || !dataset) {
     return FALLBACK_STORE_DATA;
   }
 
   try {
-    const airtableRecords = await fetchAirtableRecords<AirtableProductFields>(
-      baseId,
-      productsTableName,
-      token,
-    );
+    const sanityProducts = await fetchSanityProducts(projectId, dataset, token);
 
-    const normalizedProducts = airtableRecords
-      .map((record) => normalizeAirtableProduct(record))
-      .filter((product): product is AirtableNormalizedProduct => Boolean(product));
+    const normalizedProducts = sanityProducts
+      .map((record) => normalizeSanityProduct(record))
+      .filter((product): product is SanityNormalizedProduct => Boolean(product));
 
     if (normalizedProducts.length === 0) {
       return FALLBACK_STORE_DATA;
@@ -368,7 +353,7 @@ export const getStoreData = cache(async (): Promise<StoreData> => {
       footerInfo: staticFooterInfo,
     };
   } catch (error) {
-    console.error("Airtable sync failed, using static fallback:", error);
+    console.error("Sanity sync failed, using static fallback:", error);
     return FALLBACK_STORE_DATA;
   }
 });
