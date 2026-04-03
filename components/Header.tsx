@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { type Language } from '@/lib/translations';
 
@@ -207,11 +207,33 @@ export default function Header({ showDonateButton = false }: HeaderProps) {
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const [language, setLanguage] = useState<Language>('en');
   const [mounted, setMounted] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const headerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     setMounted(true);
     const saved = localStorage.getItem('language') as Language | null;
     if (saved) setLanguage(saved);
+  }, []);
+
+  useEffect(() => {
+    const node = headerRef.current;
+    if (!node) return;
+
+    setHeaderHeight(node.offsetHeight);
+
+    const observer = new ResizeObserver((entries) => {
+      const [entry] = entries;
+      if (entry) {
+        setHeaderHeight(Math.ceil(entry.contentRect.height));
+      }
+    });
+
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   const handleLanguageChange = (lang: Language) => {
@@ -251,7 +273,8 @@ export default function Header({ showDonateButton = false }: HeaderProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-sm">
+    <>
+    <header ref={headerRef} className="fixed inset-x-0 top-0 z-50 border-b border-slate-200 bg-white shadow-sm">
       <div className="hidden border-b border-[#2a5d7d] bg-[#18354a] lg:block">
         <div className="mx-auto grid max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6">
           {utilityGroups.map((group) => (
@@ -433,5 +456,7 @@ export default function Header({ showDonateButton = false }: HeaderProps) {
         </div>
       ) : null}
     </header>
+    <div aria-hidden style={{ height: `${headerHeight}px` }} />
+    </>
   );
 }
