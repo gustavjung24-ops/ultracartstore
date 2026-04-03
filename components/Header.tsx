@@ -286,7 +286,7 @@ export default function Header() {
       </div>
 
       {isMenuOpen ? (
-        <div className="border-t border-slate-200 bg-white px-4 py-4 lg:hidden">
+        <div className="max-h-[72vh] overflow-y-auto border-t border-slate-200 bg-white px-4 py-4 lg:hidden">
           <div className="space-y-4">
             {navGroups.map((group) => (
               <div key={group.href} className="rounded-lg border border-slate-200">
