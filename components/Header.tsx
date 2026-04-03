@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
-import { getSiteInfo, type Language } from '@/lib/translations';
+import { type Language } from '@/lib/translations';
 
 type NavLeaf = {
   href: string;
@@ -207,46 +207,41 @@ export default function Header({ showDonateButton = true }: HeaderProps) {
   const handleLanguageChange = (lang: Language) => {
     setLanguage(lang);
     localStorage.setItem('language', lang);
+    document.cookie = `site_lang=${lang}; path=/; max-age=31536000`;
     window.dispatchEvent(new CustomEvent('languagechange', { detail: { language: lang } }));
+    window.location.reload();
   };
 
-  const siteInfo = getSiteInfo(language);
   const currentLabels = language === 'vi'
     ? {
         search: 'Tìm kiếm',
         donate: 'Quyên góp',
         menu: 'Menu',
-        mission: 'Thúc đẩy y học dự phòng từ năm 1985',
       }
     : {
         search: 'Search',
         donate: 'Donate',
         menu: 'Menu',
-        mission: 'Promoting preventive medicine since 1985',
       };
 
   const tLabel = (label: { en: string; vi: string }) => (language === 'vi' ? label.vi : label.en);
 
   return (
     <header className="z-50 border-b border-slate-200 bg-white shadow-sm lg:sticky lg:top-0">
-      <div className="bg-[#18354a] px-3 py-1 text-[10px] text-white sm:px-4 sm:py-1.5 sm:text-[11px]">
-        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 sm:justify-between sm:gap-3">
-          <div className="hidden items-center gap-2 text-slate-200 xl:flex">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#f0ad4e]" />
-            <span>{currentLabels.mission}</span>
-          </div>
-          <div className="flex w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:w-auto sm:justify-end sm:gap-x-3 sm:gap-y-1.5 xl:ml-0">
+      <div className="border-b border-[#2a5d7d] bg-[#18354a] px-3 py-2 sm:px-4 md:px-6">
+        <div className="mx-auto flex max-w-7xl items-start gap-3 lg:items-stretch">
+          <div className="hidden flex-1 grid-cols-4 gap-2 lg:grid">
             {utilityGroups.map((group) => (
               <div key={group.href} className="group relative">
                 <Link
                   href={group.href}
-                  className="rounded px-1 py-0.5 text-[10px] font-semibold uppercase tracking-[0.05em] text-slate-100 no-underline transition hover:text-white hover:underline hover:underline-offset-4 md:text-[11px]"
+                  className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-2 py-2 text-center text-[11px] font-semibold text-white no-underline transition hover:bg-white/18"
                 >
-                  <span>{tLabel(group.label)}</span>
-                  <span className="ml-1 hidden text-[9px] align-middle lg:inline">▾</span>
+                  <span className="line-clamp-1">{tLabel(group.label)}</span>
+                  <span className="ml-1 text-[10px]">▾</span>
                 </Link>
 
-                <div className="absolute right-0 top-full z-50 hidden min-w-[250px] rounded-md border border-slate-200 bg-white p-2 shadow-2xl lg:group-hover:block lg:group-focus-within:block">
+                <div className="absolute left-0 top-full z-50 hidden min-w-[260px] rounded-md border border-slate-200 bg-white p-2 shadow-2xl lg:group-hover:block lg:group-focus-within:block">
                   {group.items.map((item) => (
                     <Link
                       key={item.href}
@@ -260,6 +255,48 @@ export default function Header({ showDonateButton = true }: HeaderProps) {
               </div>
             ))}
           </div>
+
+          <div className="ml-auto flex items-center gap-2">
+            <div className="hidden overflow-hidden rounded-md border border-white/25 bg-white/10 lg:flex lg:flex-col">
+              <button
+                onClick={() => handleLanguageChange('vi')}
+                className={`px-3 py-1.5 text-[10px] font-semibold transition ${
+                  language === 'vi' ? 'bg-white text-[#18354a]' : 'text-white hover:bg-white/15'
+                }`}
+              >
+                Tiếng Việt
+              </button>
+              <button
+                onClick={() => handleLanguageChange('en')}
+                className={`border-t border-white/25 px-3 py-1.5 text-[10px] font-semibold transition ${
+                  language === 'en' ? 'bg-white text-[#18354a]' : 'text-white hover:bg-white/15'
+                }`}
+              >
+                English
+              </button>
+            </div>
+
+            {showDonateButton ? (
+              <Link
+                href="/donate"
+                className="rounded-md bg-[#f0ad4e] px-4 py-2 text-xs font-bold uppercase tracking-[0.06em] text-slate-900 no-underline transition hover:bg-[#e39c36]"
+              >
+                {currentLabels.donate}
+              </Link>
+            ) : null}
+          </div>
+        </div>
+
+        <div className="mt-2 grid grid-cols-2 gap-2 lg:hidden">
+          {utilityGroups.map((group) => (
+            <Link
+              key={group.href}
+              href={group.href}
+              className="rounded border border-white/20 bg-white/10 px-2 py-1.5 text-center text-[10px] font-semibold text-white no-underline"
+            >
+              {tLabel(group.label)}
+            </Link>
+          ))}
         </div>
       </div>
 
@@ -273,8 +310,9 @@ export default function Header({ showDonateButton = true }: HeaderProps) {
               <div className="text-base font-extrabold uppercase tracking-[0.08em] text-[#0f2433] sm:text-lg">
                 Physicians Committee
               </div>
-              <div className="text-sm font-semibold text-[#007fab]">{siteInfo.name}</div>
-              <div className="hidden text-xs text-slate-500 md:block">{siteInfo.description}</div>
+              <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[#0f5c73] sm:text-sm">
+                For Responsible Medicine
+              </div>
             </div>
           </Link>
 
@@ -285,15 +323,6 @@ export default function Header({ showDonateButton = true }: HeaderProps) {
             <button className="rounded-full border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
               {currentLabels.search}
             </button>
-            <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
-            {showDonateButton ? (
-              <Link
-                href="/donate"
-                className="rounded-sm bg-[#f0ad4e] px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-slate-900 no-underline hover:bg-[#e39c36]"
-              >
-                {currentLabels.donate}
-              </Link>
-            ) : null}
           </div>
         </div>
       </div>
@@ -338,7 +367,7 @@ export default function Header({ showDonateButton = true }: HeaderProps) {
       <div className="border-t border-slate-200 px-4 py-3 lg:hidden">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            {mounted ? <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} /> : null}
+            {mounted ? <LanguageSwitcher language={language} /> : null}
             {showDonateButton ? (
               <Link href="/donate" className="rounded-sm bg-[#f0ad4e] px-4 py-2 text-sm font-bold text-slate-900 no-underline">
                 {currentLabels.donate}

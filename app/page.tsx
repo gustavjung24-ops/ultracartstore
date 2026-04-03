@@ -50,11 +50,11 @@ export default async function HomePage() {
 
   return (
     <>
-      <Header showDonateButton={false} />
+      <Header />
       <main className="pb-12 md:pb-16">
         <section className="mx-auto max-w-7xl px-4 pt-3 md:px-6 md:pt-5">
           <div className="smooth-surface rounded-[26px] px-4 py-4 md:px-6">
-            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-2">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0f5c73]">
                   {lang === "vi" ? "Chiến dịch thành viên 2026" : "2026 Membership Campaign"}
@@ -65,12 +65,6 @@ export default async function HomePage() {
                     : home.paragraphs_en?.[0] || home.paragraphs[0] || "Make your 2026 membership gift today."}
                 </p>
               </div>
-              <Link
-                href="/donate"
-                className="inline-block rounded-full bg-[#c89d59] px-6 py-2 text-xs font-bold uppercase tracking-[0.08em] text-[#17232d] no-underline transition hover:bg-[#ddbb83] md:text-sm"
-              >
-                {lang === "vi" ? "Ủng hộ ngay" : "Give Now"}
-              </Link>
             </div>
           </div>
         </section>
