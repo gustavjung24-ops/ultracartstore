@@ -10,6 +10,39 @@ type Props = {
   params: Promise<{ slug: string[] }>;
 };
 
+const TRUST_BADGES = [
+  {
+    src: "/images/trust-badges/candid-seal-platinum-2025.png",
+    alt: "Candid Platinum Transparency 2025",
+    width: 100,
+    height: 100,
+  },
+  {
+    src: "/images/trust-badges/animal-charities-of-america.png",
+    alt: "Animal Charities of America",
+    width: 300,
+    height: 300,
+  },
+  {
+    src: "/images/trust-badges/bbb-accredited-charity.png",
+    alt: "BBB Accredited Charity",
+    width: 300,
+    height: 300,
+  },
+  {
+    src: "/images/trust-badges/best-in-america.png",
+    alt: "Best in America",
+    width: 300,
+    height: 300,
+  },
+  {
+    src: "/images/trust-badges/charitywatch-top-rated.png",
+    alt: "Charity Watch Top-Rated",
+    width: 300,
+    height: 231,
+  },
+];
+
 export async function generateStaticParams() {
   return getAllPcrmPages()
     .filter((page) => page.path !== "/")
@@ -41,6 +74,7 @@ export default async function DynamicPcrmPage({ params }: Props) {
       internal: mapped.internal,
     };
   });
+  const showTrustBadges = page.path === "/about-us/financial-report";
 
   return (
     <>
@@ -100,6 +134,38 @@ export default async function DynamicPcrmPage({ params }: Props) {
             </ul>
           </section>
         ) : null}
+
+          {showTrustBadges ? (
+            <section className="mt-10 rounded-sm bg-[#0b485a] p-5 md:p-8">
+              <div className="flex flex-wrap items-start gap-6 md:gap-8">
+                {TRUST_BADGES.slice(0, 3).map((badge) => (
+                  <div key={badge.src} className="flex h-[108px] w-[108px] items-center justify-center">
+                    <Image
+                      src={badge.src}
+                      alt={badge.alt}
+                      width={badge.width}
+                      height={badge.height}
+                      className="h-auto w-auto max-h-[108px] max-w-[108px] object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-5 flex flex-wrap items-start gap-6 md:mt-7 md:gap-8">
+                {TRUST_BADGES.slice(3).map((badge) => (
+                  <div key={badge.src} className="flex h-[108px] w-[108px] items-center justify-center">
+                    <Image
+                      src={badge.src}
+                      alt={badge.alt}
+                      width={badge.width}
+                      height={badge.height}
+                      className="h-auto w-auto max-h-[108px] max-w-[108px] object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : null}
         </article>
       </main>
       <Footer />
