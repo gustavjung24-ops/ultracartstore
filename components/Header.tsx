@@ -178,18 +178,18 @@ export default function Header() {
 
   return (
     <header className="z-50 border-b border-slate-200 bg-white shadow-sm lg:sticky lg:top-0">
-      <div className="hidden bg-[#18354a] px-4 py-1.5 text-[11px] text-white lg:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
+      <div className="bg-[#18354a] px-3 py-1 text-[10px] text-white sm:px-4 sm:py-1.5 sm:text-[11px]">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 sm:justify-between sm:gap-3">
           <div className="hidden items-center gap-2 text-slate-200 xl:flex">
             <span className="h-1.5 w-1.5 rounded-full bg-[#f0ad4e]" />
             <span>{currentLabels.mission}</span>
           </div>
-          <div className="ml-auto flex flex-wrap items-center justify-end gap-x-3 gap-y-1.5 xl:ml-0">
+          <div className="flex w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:w-auto sm:justify-end sm:gap-x-3 sm:gap-y-1.5 xl:ml-0">
             {utilityLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded px-1 py-0.5 text-[10px] font-semibold uppercase tracking-[0.06em] text-slate-100 no-underline transition hover:text-white hover:underline hover:underline-offset-4 md:text-[11px]"
+                className="rounded px-1 py-0.5 text-[10px] font-semibold uppercase tracking-[0.05em] text-slate-100 no-underline transition hover:text-white hover:underline hover:underline-offset-4 md:text-[11px]"
               >
                 {tLabel(item.label)}
               </Link>
