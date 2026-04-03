@@ -90,7 +90,7 @@ export default async function ProductPage({ params }: PageProps) {
         </div>
       </div>
 
-      <Footer info={footerInfo} />
+      <Footer />
     </>
   );
 }

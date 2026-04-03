@@ -124,7 +124,7 @@ export default function FreeDownloadsPage() {
         </div>
       </div>
 
-      <Footer info={footerInfo} />
+      <Footer />
     </>
   );
 }

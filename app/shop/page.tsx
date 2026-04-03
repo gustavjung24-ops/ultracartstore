@@ -150,7 +150,7 @@ export default async function ShopPage() {
         </div>
       </div>
 
-      <Footer info={footerInfo} />
+      <Footer />
     </>
   );
 }

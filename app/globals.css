@@ -7,7 +7,138 @@ html {
   scroll-behavior: smooth;
 }
 
+/* PCRM Brand Colors */
+:root {
+  --color-primary: #005e86;
+  --color-primary-dark: #00425f;
+  --color-primary-light: #0f7ea8;
+  --color-accent: #ffb53d;
+  --color-accent-light: #ffc869;
+  --color-text: #1a202c;
+  --color-text-light: #4a5568;
+}
+
+body {
+  @apply antialiased bg-gray-50;
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold;
+  color: var(--color-text);
+  font-family: "Georgia", serif;
+}
+
+
+h1 {
+  @apply text-4xl md:text-5xl leading-tight;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl leading-snug;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl leading-normal;
+}
+
 /* Prose overrides for description sections */
 .prose p {
   @apply leading-relaxed;
 }
+
+/* Hero section styling */
+.hero {
+  @apply relative isolate overflow-hidden bg-gradient-to-br from-[#005e86] to-[#00425f] text-white;
+}
+
+.hero-content {
+  @apply relative mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-32;
+}
+
+/* Card styling */
+.card {
+  @apply rounded-lg border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden;
+}
+
+.card-image {
+  @apply relative h-44 w-full overflow-hidden bg-gray-100;
+}
+
+.card-body {
+  @apply p-4 md:p-6;
+}
+
+/* Button variants */
+.btn {
+  @apply inline-flex items-center justify-center px-4 py-2 font-semibold rounded transition-colors;
+}
+
+.btn-primary {
+  @apply bg-[#005e86] text-white hover:bg-[#00425f];
+}
+
+.btn-accent {
+  @apply bg-[#ffb53d] text-slate-900 hover:bg-[#ffc869];
+}
+
+.btn-secondary {
+  @apply border border-gray-300 text-gray-700 hover:bg-gray-50;
+}
+
+/* Link styling */
+a {
+  @apply text-[#006c96] hover:text-[#005e86] transition-colors;
+}
+
+/* Article/Blog card */
+.article-card {
+  @apply card hover:shadow-lg;
+}
+
+.article-card-image {
+  @apply card-image;
+}
+
+/* Navigation active state */
+nav a.active {
+  @apply text-[#ffb53d] border-b-2 border-[#ffb53d];
+}
+
+/* Section spacing */
+section {
+  @apply py-12 md:py-16;
+}
+
+/* Grid layouts */
+.grid-cols-auto {
+  @apply grid auto-cols-max gap-4;
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  h1 {
+    @apply text-3xl;
+  }
+  
+  h2 {
+    @apply text-2xl;
+  }
+  
+  h3 {
+    @apply text-xl;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-gray-900 text-gray-100;
+  }
+  
+  .card {
+    @apply bg-gray-800 border-gray-700;
+  }
+}
+

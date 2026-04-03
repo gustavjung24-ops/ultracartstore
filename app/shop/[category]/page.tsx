@@ -131,7 +131,7 @@ export default async function CategoryPage({ params }: PageProps) {
         </div>
       </div>
 
-      <Footer info={footerInfo} />
+      <Footer />
     </>
   );
 }

@@ -121,7 +121,7 @@ export default function OrderTurnaroundPage() {
         </div>
       </div>
 
-      <Footer info={footerInfo} />
+      <Footer />
     </>
   );
 }

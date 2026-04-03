@@ -6,7 +6,7 @@ import { getBlogPages, getPcrmPageByPath } from "@/lib/pcrm-content";
 
 export default function HomePage() {
   const home = getPcrmPageByPath("/");
-  const blog = getBlogPages().slice(0, 9);
+  const blog = getBlogPages().slice(0, 6);
 
   if (!home) return null;
 
@@ -16,59 +16,113 @@ export default function HomePage() {
     <>
       <Header />
       <main>
-        <section className="relative isolate overflow-hidden bg-[#005e86] text-white">
-          {heroImage ? (
+        {/* Hero Section */}
+        <section className="hero">
+          {heroImage && (
             <Image
               src={heroImage}
               alt={home.h1[0] || home.title}
               fill
-              className="object-cover opacity-20"
-              sizes="100vw"
+              className="absolute inset-0 object-cover opacity-15"
+              priority
               unoptimized
             />
-          ) : null}
-          <div className="relative mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-28">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ffd38a]">PCRM</p>
-            <h1 className="mt-4 max-w-4xl text-3xl font-extrabold leading-tight md:text-5xl">
-              {home.h1[0] || home.title}
-            </h1>
-            <p className="mt-6 max-w-3xl text-base leading-7 text-sky-100 md:text-lg">{home.description}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/donate"
-                className="rounded bg-[#ffb53d] px-6 py-3 text-sm font-bold uppercase tracking-wide text-slate-900 transition hover:bg-[#ffc869]"
-              >
-                Donate
+          )}
+          <div className="hero-content">
+            <h1 className="text-white font-serif">{home.h1[0] || home.title}</h1>
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-100">{home.description}</p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link href="/donate" className="btn btn-accent px-6 py-3 text-base font-bold">
+                💝 Quyên góp ngay
               </Link>
-              <Link
-                href="/news/blog"
-                className="rounded border border-white/50 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/10"
-              >
-                News & Events
+              <Link href="/news/blog" className="btn btn-secondary text-white border-white px-6 py-3">
+                📰 Tin tức & Sự kiện
               </Link>
             </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-12 md:px-6">
-          <h2 className="text-2xl font-bold text-slate-900">Tin và bài viết mới</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {blog.map((post) => (
-              <article key={post.path} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-                {post.images[0]?.src ? (
-                  <div className="relative h-44 w-full">
-                    <Image src={post.images[0].src} alt={post.h1[0] || post.title} fill className="object-cover" unoptimized />
+        {/* About Section */}
+        <section className="mx-auto max-w-7xl px-4 md:px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-[#005e86] font-serif">Về chúng tôi</h2>
+              <p className="mt-4 text-gray-700 leading-8">
+                Physicians Committee for Responsible Medicine là một tổ chức phi lợi nhuận lâu đời, cam kết thúc đẩy y học dự phòng, tiến hành nghiên cứu lâm sàng có tính đạo đức, và nâng cao tiêu chuẩn đào tạo y khoa.
+              </p>
+              <div className="mt-6 flex gap-4">
+                <Link href="/about-us" className="btn btn-primary px-6 py-2">
+                  Tìm hiểu thêm
+                </Link>
+              </div>
+            </div>
+            {home.images[1] && (
+              <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
+                <Image
+                  src={home.images[1].src}
+                  alt="About"
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Latest News */}
+        <section className="bg-gray-100 py-16">
+          <div className="mx-auto max-w-7xl px-4 md:px-6">
+            <h2 className="text-[#005e86] font-serif">Tin tức mới nhất</h2>
+            <p className="mt-2 text-gray-600">Cập nhật thông tin sức khỏe và nghiên cứu từ PCRM</p>
+
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {blog.map((post) => (
+                <article key={post.path} className="article-card group">
+                  {post.images[0]?.src && (
+                    <div className="article-card-image group-hover:scale-105 transition-transform duration-300">
+                      <Image
+                        src={post.images[0].src}
+                        alt={post.h1[0] || post.title}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
+                  )}
+                  <div className="card-body">
+                    <h3 className="line-clamp-2 text-lg font-bold text-[#005e86]">
+                      {post.h1[0] || post.title}
+                    </h3>
+                    <p className="mt-3 line-clamp-3 text-sm text-gray-600">
+                      {post.paragraphs[0] || post.description}
+                    </p>
+                    <Link href={post.path} className="mt-4 inline-block font-semibold text-[#0f7ea8] hover:text-[#005e86]">
+                      Đọc bài viết →
+                    </Link>
                   </div>
-                ) : null}
-                <div className="p-4">
-                  <h3 className="line-clamp-2 text-base font-semibold text-slate-900">{post.h1[0] || post.title}</h3>
-                  <p className="mt-2 line-clamp-3 text-sm text-slate-600">{post.paragraphs[0] || post.description}</p>
-                  <Link href={post.path} className="mt-4 inline-block text-sm font-semibold text-[#006c96] hover:underline">
-                    Đọc chi tiết
-                  </Link>
-                </div>
-              </article>
-            ))}
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-12 text-center">
+              <Link href="/news/blog" className="btn btn-primary px-8 py-3">
+                Xem tất cả bài viết
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="bg-[#005e86] text-white py-16">
+          <div className="mx-auto max-w-4xl px-4 md:px-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-serif">Ủng hộ sứ mệnh của chúng tôi</h2>
+            <p className="mt-4 text-lg text-gray-100">
+              Hãy quyên góp để hỗ trợ nghiên cứu về y học dự phòng và dinh dưỡng lành mạnh
+            </p>
+            <Link href="/donate" className="mt-8 inline-block btn btn-accent px-8 py-3 text-lg font-bold">
+              Quyên góp ngay
+            </Link>
           </div>
         </section>
       </main>
