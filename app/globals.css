@@ -35,8 +35,6 @@ body {
   font-family: var(--font-body), "Segoe UI", sans-serif;
   font-size: 16px;
   line-height: 1.65;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: auto;
   background:
     radial-gradient(circle at top right, #f4efe2 0%, transparent 45%),
