@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -282,17 +283,14 @@ export default function Header({ showDonateButton = false }: HeaderProps) {
       <div className="border-b border-slate-200 bg-white px-4 py-2.5 md:px-6 md:py-4">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
           <Link href="/" className="min-w-0 flex-1 no-underline hover:opacity-95">
-            <div className="leading-none">
-              <div className="text-[1.2rem] font-bold tracking-[-0.02em] text-[#005f87] sm:text-[2.7rem]">
-                Physicians
-              </div>
-              <div className="text-[1.1rem] font-light tracking-[-0.02em] text-[#7aa8bf] sm:text-[2.52rem]">
-                Committee
-              </div>
-              <div className="mt-0.5 text-[0.55rem] font-semibold tracking-[0.01em] text-[#0f5c73] sm:text-lg sm:font-medium sm:tracking-[-0.01em]">
-                for Responsible Medicine
-              </div>
-            </div>
+            <Image
+              src="/images/pcrm-wordmark.svg"
+              alt="Physicians Committee for Responsible Medicine"
+              width={423}
+              height={193}
+              className="h-auto w-[160px] sm:w-[300px]"
+              priority
+            />
           </Link>
 
           <div className="flex shrink-0 items-center gap-1.5 md:gap-3">

@@ -53,23 +53,6 @@ export default async function HomePage() {
       <Header />
       <main className="pb-12 md:pb-16">
         <section className="mx-auto max-w-7xl px-4 pt-3 md:px-6 md:pt-5">
-          <div className="smooth-surface rounded-[26px] px-4 py-4 md:px-6">
-            <div className="flex flex-col gap-2">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0f5c73]">
-                  {lang === "vi" ? "Chiến dịch thành viên 2026" : "2026 Membership Campaign"}
-                </p>
-                <p className="mt-1 text-sm text-slate-700 md:text-base">
-                  {lang === "vi"
-                    ? home.paragraphs_vi?.[0] || home.paragraphs[0] || "Hãy trao tặng món quà thành viên năm 2026 ngay hôm nay."
-                    : home.paragraphs_en?.[0] || home.paragraphs[0] || "Make your 2026 membership gift today."}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto mt-3 max-w-7xl px-4 md:mt-4 md:px-6">
           <div className="overflow-hidden rounded-[34px] border border-[#cad8df] bg-white shadow-[0_18px_44px_rgba(15,35,45,0.16)]">
             <div className="grid md:grid-cols-2">
               <div className="relative min-h-[260px] bg-[#dce8ee] md:min-h-[500px]">
