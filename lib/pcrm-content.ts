@@ -1,4 +1,5 @@
 import translatedAll from "@/pcrm_translated/translated_all.json";
+import { manualPages } from "@/lib/manual-pages";
 
 export interface PcrmMedia {
   src: string;
@@ -60,10 +61,12 @@ const pages = RAW.map((page) => ({
   images: page.images.filter((img) => !likelyTrackingImage(img.src)),
 }));
 
-const byPath = new Map<string, (PcrmPage & { path: string })>(pages.map((page) => [page.path, page]));
+const mergedPages = [...pages, ...manualPages];
+
+const byPath = new Map<string, (PcrmPage & { path: string })>(mergedPages.map((page) => [page.path, page]));
 
 export function getAllPcrmPages() {
-  return pages;
+  return mergedPages;
 }
 
 export function getPcrmPageByPath(path: string) {

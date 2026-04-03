@@ -29,7 +29,7 @@ export default async function HomePage() {
       posts: healthAndNutritionPosts,
     },
     {
-      href: "/news/innovative-science",
+      href: "/news/innovative-science-news",
       title: lang === "vi" ? "Tin Khoa Học Đổi Mới" : "Innovative Science News",
       summary:
         lang === "vi"

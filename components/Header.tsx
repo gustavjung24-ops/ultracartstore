@@ -1,4 +1,4 @@
- 'use client';
+'use client';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -21,9 +21,6 @@ const utilityLinks: NavLeaf[] = [
   { href: '/good-nutrition/nutrition-for-clinicians/medical-students', label: { en: 'For Medical Students', vi: 'Dành cho sinh viên y' } },
   { href: '/term/scientists', label: { en: 'For Scientists', vi: 'Dành cho nhà khoa học' } },
   { href: '/about-us', label: { en: 'About Us', vi: 'Về chúng tôi' } },
-  { href: '/news/blog', label: { en: 'Blog', vi: 'Blog' } },
-  { href: '/ways-to-give', label: { en: 'Ways to Give', vi: 'Các cách ủng hộ' } },
-  { href: '/donate', label: { en: 'Donate', vi: 'Quyên góp' } },
 ];
 
 const navGroups: NavGroup[] = [
@@ -32,18 +29,53 @@ const navGroups: NavGroup[] = [
     label: { en: 'Good Nutrition', vi: 'Dinh dưỡng tốt' },
     items: [
       { href: '/good-nutrition', label: { en: 'Overview', vi: 'Tổng quan' } },
+      { href: '/good-nutrition/plant-based-diets', label: { en: 'Plant-Based Diets', vi: 'Chế độ ăn thực vật' } },
       { href: '/good-nutrition/three-reasons-go-vegan', label: { en: 'Three Reasons to Go Vegan', vi: 'Ba lý do ăn chay' } },
       { href: '/good-nutrition/vegan-diet-environment', label: { en: 'Vegan Diet and Environment', vi: 'Ăn chay và môi trường' } },
+      { href: '/good-nutrition/plant-based-diets/nutrition-faq', label: { en: 'Nutrition FAQ', vi: 'Câu hỏi thường gặp' } },
       { href: '/good-nutrition/plant-based-diets/recipes', label: { en: 'Recipes', vi: 'Công thức' } },
       { href: '/good-nutrition/plant-based-diets/pregnancy', label: { en: 'Plant-Based Pregnancy', vi: 'Mang thai với chế độ thực vật' } },
       { href: '/good-nutrition/plant-based-diets/ffl', label: { en: 'Food for Life', vi: 'Food for Life' } },
       { href: '/good-nutrition/nutrition-for-athletes', label: { en: 'Nutrition for Athletes', vi: 'Dinh dưỡng cho vận động viên' } },
       { href: '/good-nutrition/nutrition-for-kids', label: { en: 'Nutrition for Kids', vi: 'Dinh dưỡng cho trẻ em' } },
+      { href: '/good-nutrition/nutrition-for-clinicians', label: { en: 'Nutrition for Clinicians', vi: 'Dinh dưỡng cho bác sĩ' } },
       { href: '/good-nutrition/nutrition-information', label: { en: 'Nutrition Information', vi: 'Thông tin dinh dưỡng' } },
+      { href: '/good-nutrition/nutrition-information/the-carbohydrate-advantage', label: { en: 'The Carbohydrate Advantage', vi: 'Lợi thế carbohydrate' } },
       { href: '/good-nutrition/nutrition-information/fiber', label: { en: 'Fiber', vi: 'Chất xơ' } },
       { href: '/good-nutrition/nutrition-information/protein', label: { en: 'Protein', vi: 'Chất đạm' } },
+      { href: '/good-nutrition/nutrition-information/soy-and-health', label: { en: 'Soy and Health', vi: 'Đậu nành và sức khỏe' } },
+      { href: '/good-nutrition/nutrition-information/lowering-cholesterol-with-a-plant-based-diet', label: { en: 'Lowering Cholesterol', vi: 'Giảm cholesterol' } },
       { href: '/good-nutrition/nutrition-information/health-concerns-about-dairy', label: { en: 'Concerns About Dairy', vi: 'Rủi ro từ sữa' } },
+      { href: '/good-nutrition/nutrition-information/chicken', label: { en: 'Chicken', vi: 'Thịt gà' } },
       { href: '/good-nutrition/nutrition-information/health-concerns-with-eggs', label: { en: 'Concerns With Eggs', vi: 'Rủi ro từ trứng' } },
+      { href: '/good-nutrition/nutrition-information/processed-meat', label: { en: 'Processed Meat', vi: 'Thịt chế biến sẵn' } },
+      { href: '/good-nutrition/healthy-communities', label: { en: 'Healthy Communities', vi: 'Cộng đồng khỏe mạnh' } },
+      { href: '/good-nutrition/nutrition-programs-policies', label: { en: 'Programs & Policies', vi: 'Chương trình & chính sách' } },
+    ],
+  },
+  {
+    href: '/health-topics',
+    label: { en: 'Health Topics', vi: 'Chủ đề sức khỏe' },
+    items: [
+      { href: '/health-topics', label: { en: 'Overview', vi: 'Tổng quan' } },
+      { href: '/health-topics/alzheimers', label: { en: "Alzheimer's", vi: 'Alzheimer' } },
+      { href: '/health-topics/arthritis', label: { en: 'Arthritis', vi: 'Viêm khớp' } },
+      { href: '/health-topics/asthma', label: { en: 'Asthma', vi: 'Hen suyễn' } },
+      { href: '/health-topics/breast-cancer', label: { en: 'Breast Cancer', vi: 'Ung thư vú' } },
+      { href: '/health-topics/cancer', label: { en: 'Cancer', vi: 'Ung thư' } },
+      { href: '/health-topics/colorectal-cancer', label: { en: 'Colorectal Cancer', vi: 'Ung thư đại trực tràng' } },
+      { href: '/health-topics/coronavirus', label: { en: 'Coronavirus', vi: 'Coronavirus' } },
+      { href: '/health-topics/diabetes', label: { en: 'Diabetes', vi: 'Tiểu đường' } },
+      { href: '/health-topics/gut-bacteria', label: { en: 'Gut Bacteria', vi: 'Vi khuẩn đường ruột' } },
+      { href: '/health-topics/healthy-aging', label: { en: 'Healthy Aging', vi: 'Lão hóa khỏe mạnh' } },
+      { href: '/health-topics/healthy-bones', label: { en: 'Healthy Bones', vi: 'Xương khỏe mạnh' } },
+      { href: '/health-topics/heart-disease', label: { en: 'Heart Disease', vi: 'Bệnh tim' } },
+      { href: '/health-topics/high-blood-pressure', label: { en: 'High Blood Pressure', vi: 'Cao huyết áp' } },
+      { href: '/health-topics/migraines', label: { en: 'Migraines', vi: 'Đau nửa đầu' } },
+      { href: '/health-topics/ovarian-cancer', label: { en: 'Ovarian Cancer', vi: 'Ung thư buồng trứng' } },
+      { href: '/health-topics/polycystic-ovarian-syndrome', label: { en: 'Polycystic Ovarian Syndrome', vi: 'Hội chứng buồng trứng đa nang' } },
+      { href: '/health-topics/prostate-cancer', label: { en: 'Prostate Cancer', vi: 'Ung thư tuyến tiền liệt' } },
+      { href: '/health-topics/weight-loss', label: { en: 'Weight Loss', vi: 'Giảm cân' } },
     ],
   },
   {
@@ -52,33 +84,46 @@ const navGroups: NavGroup[] = [
     items: [
       { href: '/ethical-science', label: { en: 'Overview', vi: 'Tổng quan' } },
       { href: '/ethical-science/ethical-education-and-training/surgery-training', label: { en: 'Surgery Training', vi: 'Đào tạo phẫu thuật' } },
+      { href: '/ethical-science/ethical-education-and-training/paramedic-training', label: { en: 'Paramedic Training', vi: 'Đào tạo cấp cứu' } },
+      { href: '/ethical-science/animals-in-medical-research', label: { en: 'Animals in Medical Research', vi: 'Động vật trong nghiên cứu y khoa' } },
+      { href: '/ethical-science/animals-in-medical-research/alzheimers-disease-research-without-animals', label: { en: "Alzheimer's Research Without Animals", vi: 'Nghiên cứu Alzheimer không dùng động vật' } },
+      { href: '/ethical-science/ethical-education-and-training/ERA21', label: { en: 'ERA21', vi: 'ERA21' } },
+      { href: '/ethical-science/animal-testing-and-alternatives', label: { en: 'Animal Testing & Alternatives', vi: 'Thử nghiệm động vật và thay thế' } },
+      { href: '/ethical-science/animal-testing-and-alternatives/animal-free-antibodies', label: { en: 'Animal-Free Antibodies', vi: 'Kháng thể không dùng động vật' } },
       { href: '/ethical-science/animal-testing-and-alternatives/chemical-testing-reform', label: { en: 'Chemical Testing Reform', vi: 'Cải cách thử nghiệm hóa chất' } },
+      { href: '/ethical-science/animal-testing-and-alternatives/cruelty-free-cosmetics', label: { en: 'Cruelty-Free Cosmetics', vi: 'Mỹ phẩm không thử nghiệm động vật' } },
       { href: '/ethical-science/animal-testing-and-alternatives/nura', label: { en: 'Alternatives to Animal Use', vi: 'Giải pháp thay thế thử nghiệm động vật' } },
+      { href: '/ethical-science/animal-testing-and-alternatives/human-tissue-research', label: { en: 'Human Tissue Research', vi: 'Nghiên cứu mô người' } },
     ],
   },
   {
     href: '/clinical-research',
-    label: { en: 'Clinical Research', vi: 'Nghiên cứu lâm sàng' },
+    label: { en: 'Our Research', vi: 'Nghiên cứu của chúng tôi' },
     items: [
       { href: '/clinical-research', label: { en: 'Overview', vi: 'Tổng quan' } },
       { href: '/clinical-research/recruitment', label: { en: 'Recruitment', vi: 'Tuyển người tham gia' } },
+      { href: '/clinical-research/endometriosis', label: { en: 'Endometriosis', vi: 'Lạc nội mạc tử cung' } },
+      { href: '/clinical-research/fighting-hot-flashes-with-diet', label: { en: 'Fighting Hot Flashes with Diet', vi: 'Kiểm soát bốc hỏa bằng ăn uống' } },
       { href: '/barnard-medical-center', label: { en: 'Barnard Medical Center', vi: 'Trung tâm y khoa Barnard' } },
       { href: '/findadietitian', label: { en: 'Find a Dietitian', vi: 'Tìm chuyên gia dinh dưỡng' } },
     ],
   },
   {
-    href: '/health-topics',
-    label: { en: 'Health Topics', vi: 'Chủ đề sức khỏe' },
+    href: '/news',
+    label: { en: 'News', vi: 'Tin tức' },
     items: [
-      { href: '/health-topics', label: { en: 'Overview', vi: 'Tổng quan' } },
-      { href: '/health-topics/cancer', label: { en: 'Cancer', vi: 'Ung thư' } },
-      { href: '/health-topics/colorectal-cancer', label: { en: 'Colorectal Cancer', vi: 'Ung thư đại trực tràng' } },
-      { href: '/health-topics/prostate-cancer', label: { en: 'Prostate Cancer', vi: 'Ung thư tuyến tiền liệt' } },
-      { href: '/health-topics/diabetes', label: { en: 'Diabetes', vi: 'Tiểu đường' } },
-      { href: '/health-topics/high-blood-pressure', label: { en: 'High Blood Pressure', vi: 'Cao huyết áp' } },
-      { href: '/health-topics/weight-loss', label: { en: 'Weight Loss', vi: 'Giảm cân' } },
-      { href: '/health-topics/healthy-aging', label: { en: 'Healthy Aging', vi: 'Lão hóa khỏe mạnh' } },
-      { href: '/health-topics/gut-bacteria', label: { en: 'Gut Bacteria', vi: 'Vi khuẩn đường ruột' } },
+      { href: '/news', label: { en: 'Overview', vi: 'Tổng quan' } },
+      { href: '/news/blog', label: { en: 'All News', vi: 'Tất cả tin tức' } },
+      { href: '/news/health-nutrition', label: { en: 'Health & Nutrition', vi: 'Sức khỏe & dinh dưỡng' } },
+      { href: '/news/innovative-science-news', label: { en: 'Innovative Science News', vi: 'Tin khoa học đổi mới' } },
+      { href: '/news/good-science-digest', label: { en: 'Good Science Digest', vi: 'Bản tin khoa học' } },
+      { href: '/news/good-medicine', label: { en: 'Good Medicine', vi: 'Y học tốt' } },
+      { href: '/news/exam-room-podcast/can-your-gut-predict-parkinsons-alzheimers-dr-trisha-pasricha', label: { en: 'Exam Room Podcast', vi: 'Podcast Exam Room' } },
+      { href: '/news/news-releases', label: { en: 'News Releases', vi: 'Thông cáo báo chí' } },
+      { href: '/news/news-releases/physicians-committee-offering-grants-farmers-who-are-growing-health-promoting', label: { en: 'Featured Press Release', vi: 'Thông cáo nổi bật' } },
+      { href: '/news/media-center', label: { en: 'Media Center', vi: 'Trung tâm truyền thông' } },
+      { href: '/events/mission-critical', label: { en: 'Mission Critical', vi: 'Mission Critical' } },
+      { href: '/events/power-foods-diet', label: { en: 'Power Foods Diet Event', vi: 'Sự kiện Power Foods Diet' } },
     ],
   },
   {
@@ -87,25 +132,12 @@ const navGroups: NavGroup[] = [
     items: [
       { href: '/about-us', label: { en: 'About PCRM', vi: 'Giới thiệu PCRM' } },
       { href: '/about-us/our-victories', label: { en: 'Our Victories', vi: 'Thành tựu của chúng tôi' } },
+      { href: '/about-us/careers', label: { en: 'Careers', vi: 'Tuyển dụng' } },
+      { href: '/about-us/careers/internships', label: { en: 'Internships', vi: 'Thực tập' } },
+      { href: '/about-us/financial-report', label: { en: 'Annual & Financial Reports', vi: 'Báo cáo thường niên' } },
       { href: '/contact', label: { en: 'Contact Us', vi: 'Liên hệ' } },
+      { href: '/events', label: { en: 'Events', vi: 'Sự kiện' } },
       { href: '/donate', label: { en: 'Donate', vi: 'Quyên góp' } },
-      { href: '/events/mission-critical', label: { en: 'Mission Critical', vi: 'Mission Critical' } },
-    ],
-  },
-  {
-    href: '/news/blog',
-    label: { en: 'News & Events', vi: 'Tin tức & Sự kiện' },
-    items: [
-      { href: '/news/blog', label: { en: 'All News', vi: 'Tất cả tin tức' } },
-      { href: '/news/good-medicine', label: { en: 'Good Medicine', vi: 'Y học tốt' } },
-      { href: '/news/health-nutrition/plant-based-diets-reduce-risk-cancer', label: { en: 'Health & Nutrition News', vi: 'Tin sức khỏe & dinh dưỡng' } },
-      { href: '/news/health-nutrition/american-heart-association-recommends-plant-based-protein-over-meat', label: { en: 'Heart Health News', vi: 'Tin tim mạch' } },
-      { href: '/news/good-science-digest', label: { en: 'Good Science Digest', vi: 'Bản tin khoa học' } },
-      { href: '/news/news-releases', label: { en: 'News Releases', vi: 'Thông cáo báo chí' } },
-      { href: '/news/news-releases/physicians-committee-offering-grants-farmers-who-are-growing-health-promoting', label: { en: 'Featured Press Release', vi: 'Thông cáo nổi bật' } },
-      { href: '/news/exam-room-podcast/can-your-gut-predict-parkinsons-alzheimers-dr-trisha-pasricha', label: { en: 'Exam Room Podcast', vi: 'Podcast Exam Room' } },
-      { href: '/events/mission-critical', label: { en: 'Mission Critical Event', vi: 'Sự kiện Mission Critical' } },
-      { href: '/events/power-foods-diet', label: { en: 'Events', vi: 'Sự kiện' } },
     ],
   },
 ];
@@ -209,11 +241,11 @@ export default function Header() {
               >
                 {tLabel(group.label)}
               </Link>
-              <div className="absolute left-0 top-full z-50 hidden min-w-[320px] border border-slate-200 bg-white p-4 shadow-xl group-hover:block">
+              <div className="absolute left-0 top-full z-50 hidden min-w-[680px] border border-slate-200 bg-white p-5 shadow-2xl group-hover:block">
                 <div className="mb-3 border-b border-slate-200 pb-2 text-sm font-bold uppercase tracking-[0.06em] text-[#007fab]">
                   {tLabel(group.label)}
                 </div>
-                <div className="grid gap-2">
+                <div className="grid max-h-[70vh] grid-cols-2 gap-x-6 gap-y-2 overflow-auto pr-1">
                   {group.items.map((item) => (
                     <Link
                       key={item.href}
@@ -249,7 +281,7 @@ export default function Header() {
       </div>
 
       {isMenuOpen ? (
-        <div className="lg:hidden border-t border-slate-200 bg-white px-4 py-4">
+        <div className="border-t border-slate-200 bg-white px-4 py-4 lg:hidden">
           <div className="space-y-4">
             {navGroups.map((group) => (
               <div key={group.href} className="rounded-lg border border-slate-200">
@@ -284,4 +316,3 @@ export default function Header() {
     </header>
   );
 }
-
