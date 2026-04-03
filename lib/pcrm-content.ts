@@ -1,4 +1,5 @@
 import translatedAll from "@/pcrm_translated/translated_all.json";
+import generatedSourcePages from "@/pcrm_translated/generated_source_pages.json";
 import { manualPages } from "@/lib/manual-pages";
 
 export interface PcrmMedia {
@@ -37,6 +38,7 @@ export interface PcrmPage {
 }
 
 const RAW = translatedAll as PcrmPage[];
+const GENERATED_RAW = generatedSourcePages as PcrmPage[];
 const BASE = "https://www.pcrm.org";
 const PATH_ALIASES: Record<string, string> = {
   '/contact-us': '/contact',
@@ -64,7 +66,13 @@ const pages = RAW.map((page) => ({
   images: page.images.filter((img) => !likelyTrackingImage(img.src)),
 }));
 
-const mergedPages = [...pages, ...manualPages];
+const generatedPages = GENERATED_RAW.map((page) => ({
+  ...page,
+  path: pathFromUrl(page.url),
+  images: page.images.filter((img) => !likelyTrackingImage(img.src)),
+}));
+
+const mergedPages = [...manualPages, ...pages, ...generatedPages];
 
 const byPath = new Map<string, (PcrmPage & { path: string })>(mergedPages.map((page) => [page.path, page]));
 
@@ -104,7 +112,9 @@ export function getMainNavigation() {
 }
 
 export function getBlogPages() {
-  return pages.filter((page) => page.path.startsWith("/news/") && page.path !== "/news/blog");
+  const contentPages = [...pages, ...generatedPages];
+  const dedupedByPath = new Map(contentPages.map((page) => [page.path, page]));
+  return [...dedupedByPath.values()].filter((page) => page.path.startsWith("/news/") && page.path !== "/news/blog");
 }
 
 export function sanitizeExternalLink(url: string) {

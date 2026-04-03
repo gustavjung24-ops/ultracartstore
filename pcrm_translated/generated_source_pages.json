@@ -8205,5 +8205,532 @@
         "text_vi": "Cửa hàng Ủy ban Bác sĩ"
       }
     ]
+  },
+  {
+    "url": "https://www.pcrm.org/ways-to-give",
+    "title": "Ways to Give",
+    "description": "Become a PCRM member today! Join our dedicated community working together to stop cruelty, modernize medicine, and advance human health – a win for people, animals, and the planet!",
+    "h1": [
+      "Ways to Give"
+    ],
+    "h2": [],
+    "h3": [],
+    "paragraphs": [
+      "Become a PCRM member today! Join our dedicated community working together to stop cruelty, modernize medicine, and advance human health – a win for people, animals, and the planet!",
+      "It's as easy as giving any amount – large or small, EVERY gift makes a difference – and qualifies as a PCRM membership.",
+      "Donations of $20 or more include a yearly subscription to our quarterly publication, Good Medicine . For a list of all your membership benefits, please see our Membership Giving Levels . *Note, your membership is active for one year after each gift.",
+      "Want to take your support one step further? Become a Remembering Rodney Society member or a Food for Life Society member today!",
+      "Thank you for supporting our lifesaving work!",
+      "If you would like to mail in your gift, please print out and mail in this donation form ."
+    ],
+    "images": [
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2021-09/Memorial-Gifts.png",
+        "alt": "Leave your Legacy"
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2021-09/To-Honor.png",
+        "alt": "Memorial Gifts or To Honor a Person, Animal, or Occasion"
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2021-09/Gift-Memberships.png",
+        "alt": "Gift Memberships"
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2021-09/Named-Funds.png",
+        "alt": "Named Funds"
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2021-09/Stocks-Gifts.png",
+        "alt": "Stocks Gifts"
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2021-09/Give-Safely.png",
+        "alt": "GiveSafely and Bitcoin"
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2021-09/Workplace.png",
+        "alt": "Combined Federal Campaign and Workplace Giving"
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2021-09/Vehicle.png",
+        "alt": "Donate Your Vehicle"
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2022-07/21432-DEV%20Ways%20to%20Give%20Icons_Charitable%20Gift%20Annuity.png",
+        "alt": "Annuity"
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2022-07/21432-DEV%20Ways%20to%20Give%20Icons_In%20Honor%20Of.png",
+        "alt": "In Honor Of"
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2022-07/21432-DEV%20Ways%20to%20Give%20Icons_IRA%20Gifts.png",
+        "alt": "IRA Gifts"
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2022-07/21432-DEV%20Ways%20to%20Give%20Icons_Donor%20Advised%20Funds.png",
+        "alt": "Advised Funds"
+      }
+    ],
+    "links": [
+      {
+        "text": "Leave Your Legacy",
+        "url": "https://pcrm.plannedgiving.org"
+      },
+      {
+        "text": "Memorial Gifts",
+        "url": "https://act.pcrm.org/onlineactions/OdCs6fmE2kyC8tJY-FZyaQ2"
+      },
+      {
+        "text": "Gift Memberships",
+        "url": "https://act.pcrm.org/onlineactions/Ja1ezZPjaES61ZBp0IriHA2"
+      },
+      {
+        "text": "Named Funds",
+        "url": "https://www.pcrm.org/ways-to-give/named-funds"
+      },
+      {
+        "text": "Stock Gifts",
+        "url": "https://www.pcrm.org/ways-to-give/stock-donations"
+      },
+      {
+        "text": "Cryptocurrency",
+        "url": "https://thegivingblock.com/donate/physicians-committee-for-responsible-medicine/"
+      },
+      {
+        "text": "Workplace Giving",
+        "url": "https://www.pcrm.org/ways-to-give/cfc-and-workplace-giving"
+      },
+      {
+        "text": "Donate Your Vehicle",
+        "url": "https://www.pcrm.org/ways-to-give/vehicle-donations"
+      },
+      {
+        "text": "Charitable Gift Annuity",
+        "url": "https://pcrm.plannedgiving.org/charitable-gift-annuity"
+      },
+      {
+        "text": "In Honor Of",
+        "url": "https://act.pcrm.org/onlineactions/pGAwavKVFkSx-d2-G73HPQ2"
+      },
+      {
+        "text": "Charitable IRA Rollover or Qualified Charitable Distribution",
+        "url": "https://pcrm.plannedgiving.org/ira-charitable-rollover"
+      },
+      {
+        "text": "Donor Advised Funds",
+        "url": "https://www.pcrm.org/ways-to-give/donor-advised-funds"
+      },
+      {
+        "text": "Membership Giving Levels",
+        "url": "https://act.pcrm.org/p/uw9XJUABCk2rK2N-Wh3V2Q2"
+      },
+      {
+        "text": "Remembering Rodney Society",
+        "url": "https://act.pcrm.org/onlineactions/Y2iU2knV7EaLqkLEYQ4flw2"
+      },
+      {
+        "text": "Food for Life Society",
+        "url": "https://act.pcrm.org/onlineactions/bHjH_RaXLkaPnA5OrGdoXA2"
+      },
+      {
+        "text": "mail in this donation form",
+        "url": "https://www.pcrm.org/sites/default/files/2022-12/Donation-Form.pdf"
+      }
+    ],
+    "title_en": "Ways to Give",
+    "description_en": "Become a PCRM member today! Join our dedicated community working together to stop cruelty, modernize medicine, and advance human health – a win for people, animals, and the planet!",
+    "title_vi": "Cách cho đi",
+    "description_vi": "Hãy trở thành thành viên PCRM ngay hôm nay! Hãy tham gia cộng đồng tận tâm của chúng tôi để cùng nhau ngăn chặn sự tàn ác, hiện đại hóa y học và nâng cao sức khỏe con người - một chiến thắng cho con người, động vật và hành tinh!",
+    "h1_en": [
+      "Ways to Give"
+    ],
+    "h1_vi": [
+      "Cách cho đi"
+    ],
+    "h2_en": [],
+    "h2_vi": [],
+    "h3_en": [],
+    "h3_vi": [],
+    "paragraphs_en": [
+      "Become a PCRM member today! Join our dedicated community working together to stop cruelty, modernize medicine, and advance human health – a win for people, animals, and the planet!",
+      "It's as easy as giving any amount – large or small, EVERY gift makes a difference – and qualifies as a PCRM membership.",
+      "Donations of $20 or more include a yearly subscription to our quarterly publication, Good Medicine . For a list of all your membership benefits, please see our Membership Giving Levels . *Note, your membership is active for one year after each gift.",
+      "Want to take your support one step further? Become a Remembering Rodney Society member or a Food for Life Society member today!",
+      "Thank you for supporting our lifesaving work!",
+      "If you would like to mail in your gift, please print out and mail in this donation form ."
+    ],
+    "paragraphs_vi": [
+      "Hãy trở thành thành viên PCRM ngay hôm nay! Hãy tham gia cộng đồng tận tâm của chúng tôi để cùng nhau ngăn chặn sự tàn ác, hiện đại hóa y học và nâng cao sức khỏe con người - một chiến thắng cho con người, động vật và hành tinh!",
+      "Thật dễ dàng như việc tặng bất kỳ số lượng nào - dù lớn hay nhỏ, MỌI món quà đều tạo nên sự khác biệt - và đủ điều kiện trở thành thành viên PCRM.",
+      "Các khoản quyên góp từ 20 đô la trở lên bao gồm đăng ký hàng năm cho ấn phẩm hàng quý của chúng tôi, Thuốc tốt. Để biết danh sách tất cả các lợi ích thành viên của bạn, vui lòng xem Cấp độ tặng thành viên của chúng tôi. *Lưu ý, tư cách thành viên của bạn sẽ hoạt động trong một năm sau mỗi lần tặng quà.",
+      "Bạn muốn đưa sự hỗ trợ của mình tiến thêm một bước nữa? Hãy trở thành thành viên của Hiệp hội Tưởng nhớ Rodney hoặc thành viên của Hiệp hội Thực phẩm cho Cuộc sống ngay hôm nay!",
+      "Cảm ơn bạn đã hỗ trợ công việc cứu sống của chúng tôi!",
+      "Nếu bạn muốn gửi món quà của mình qua đường bưu điện, vui lòng in ra và gửi theo mẫu quyên góp này."
+    ],
+    "links_vi": [
+      {
+        "text": "Leave Your Legacy",
+        "url": "https://pcrm.plannedgiving.org",
+        "text_vi": "Để lại di sản của bạn"
+      },
+      {
+        "text": "Memorial Gifts",
+        "url": "https://act.pcrm.org/onlineactions/OdCs6fmE2kyC8tJY-FZyaQ2",
+        "text_vi": "Quà tặng kỷ niệm"
+      },
+      {
+        "text": "Gift Memberships",
+        "url": "https://act.pcrm.org/onlineactions/Ja1ezZPjaES61ZBp0IriHA2",
+        "text_vi": "Quà tặng thành viên"
+      },
+      {
+        "text": "Named Funds",
+        "url": "https://www.pcrm.org/ways-to-give/named-funds",
+        "text_vi": "Quỹ được đặt tên"
+      },
+      {
+        "text": "Stock Gifts",
+        "url": "https://www.pcrm.org/ways-to-give/stock-donations",
+        "text_vi": "Quà tặng chứng khoán"
+      },
+      {
+        "text": "Cryptocurrency",
+        "url": "https://thegivingblock.com/donate/physicians-committee-for-responsible-medicine/",
+        "text_vi": "tiền điện tử"
+      },
+      {
+        "text": "Workplace Giving",
+        "url": "https://www.pcrm.org/ways-to-give/cfc-and-workplace-giving",
+        "text_vi": "Tặng quà nơi làm việc"
+      },
+      {
+        "text": "Donate Your Vehicle",
+        "url": "https://www.pcrm.org/ways-to-give/vehicle-donations",
+        "text_vi": "Tặng xe của bạn"
+      },
+      {
+        "text": "Charitable Gift Annuity",
+        "url": "https://pcrm.plannedgiving.org/charitable-gift-annuity",
+        "text_vi": "Quà tặng Từ thiện Niên kim"
+      },
+      {
+        "text": "In Honor Of",
+        "url": "https://act.pcrm.org/onlineactions/pGAwavKVFkSx-d2-G73HPQ2",
+        "text_vi": "để vinh danh"
+      },
+      {
+        "text": "Charitable IRA Rollover or Qualified Charitable Distribution",
+        "url": "https://pcrm.plannedgiving.org/ira-charitable-rollover",
+        "text_vi": "Chuyển đổi IRA từ thiện hoặc phân phối từ thiện đủ tiêu chuẩn"
+      },
+      {
+        "text": "Donor Advised Funds",
+        "url": "https://www.pcrm.org/ways-to-give/donor-advised-funds",
+        "text_vi": "Quỹ tư vấn của nhà tài trợ"
+      },
+      {
+        "text": "Membership Giving Levels",
+        "url": "https://act.pcrm.org/p/uw9XJUABCk2rK2N-Wh3V2Q2",
+        "text_vi": "Cấp độ tặng thành viên"
+      },
+      {
+        "text": "Remembering Rodney Society",
+        "url": "https://act.pcrm.org/onlineactions/Y2iU2knV7EaLqkLEYQ4flw2",
+        "text_vi": "Tưởng nhớ Hội Rodney"
+      },
+      {
+        "text": "Food for Life Society",
+        "url": "https://act.pcrm.org/onlineactions/bHjH_RaXLkaPnA5OrGdoXA2",
+        "text_vi": "Hiệp hội Thực phẩm cho Cuộc sống"
+      },
+      {
+        "text": "mail in this donation form",
+        "url": "https://www.pcrm.org/sites/default/files/2022-12/Donation-Form.pdf",
+        "text_vi": "gửi thư theo hình thức quyên góp này"
+      }
+    ]
+  },
+  {
+    "url": "https://www.pcrm.org/yourbodyinbalance",
+    "title": "Your Body in Balance by Neal Barnard, MD",
+    "description": "Learn the science behind food, hormones, and health in Your Body in Balance!",
+    "h1": [
+      "Your Body in Balance by Neal Barnard, MD"
+    ],
+    "h2": [
+      "About:",
+      "About the Author:",
+      "Try a Hormone-Balancing Recipe:"
+    ],
+    "h3": [],
+    "paragraphs": [
+      "Learn the science behind food, hormones, and health in Your Body in Balance!",
+      "Nutrition researcher and New York Times bestselling author Neal Barnard, MD, demonstrates how foods affect our hormones—and our health—in his new book, Your Body in Balance . Dr. Barnard shares the science behind how common hormone-related conditions—like infertility, weight gain, menopausal symptoms, breast and prostate cancers, thyroid problems, and acne—can be affected by and improved by simple diet changes. Your Body in Balance is available now wherever books are sold!",
+      "In Your Body in Balance , Dr. Barnard describes how food and hormones play a powerful role in:",
+      "The book also gives readers practical tips and resources, including answers to frequently asked questions and 65 hormone-balancing recipes developed by Lindsay Nixon.",
+      "Learn more about Your Body in Balance and hear powerful success stories!",
+      "Neal Barnard, MD, is president of the Physicians Committee for Responsible Medicine, founder of the Barnard Medical Center, an Adjunct Professor of Medicine at the George Washington University School of Medicine, and a Fellow of the American College of Cardiology. His federally funded diabetes research revolutionized the nutritional approaches to type 2 diabetes, and he now aims to empower readers with life-changing information on hormones and health. He has written more than 19 books on nutrition and health. Follow Dr. Barnard on Twitter @DrNealBarnard and Facebook @NealBarnardMD.",
+      "Your Body in Balance features more than 65 hormone-balancing recipes created by Lindsay Nixon. Try one today:"
+    ],
+    "images": [
+      {
+        "src": "https://www.pcrm.org/sites/default/files/2020-01/neal.jpg",
+        "alt": "Neal Barnard"
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2019-11/Untitled%20%282%29.jpg?h=ae1281eb&itok=08wAglUS",
+        "alt": ""
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2019-12/Untitled%20%284%29.jpg?h=ae1281eb&itok=wsorwSD_",
+        "alt": ""
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2020-01/Pancakes.jpg?h=ae1281eb&itok=xUmwUeQH",
+        "alt": ""
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2019-12/Untitled%20%283%29_1.jpg?h=ae1281eb&itok=K0WvXsu7",
+        "alt": ""
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2020-01/Spring%20Rolls.jpg?h=ae1281eb&itok=UJA16XKQ",
+        "alt": ""
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2020-01/Miso%20Soup.jpg?h=ae1281eb&itok=NIRNI2L2",
+        "alt": ""
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2020-01/Sushi.jpg?h=ae1281eb&itok=xqO2V7p8",
+        "alt": ""
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2020-01/Cauliflower%20Crust%20Pizza.jpg?h=ae1281eb&itok=quxeZtIQ",
+        "alt": ""
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2020-01/Fruit%20Salsa.jpg?h=ae1281eb&itok=pG1mekhF",
+        "alt": ""
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2019-12/Untitled%20%285%29.jpg?h=ae1281eb&itok=QrIkBWf-",
+        "alt": ""
+      },
+      {
+        "src": "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2020-01/Apple%20Pie%20Nachos.jpg?h=ae1281eb&itok=fLbWOcQf",
+        "alt": ""
+      }
+    ],
+    "links": [
+      {
+        "text": "Your Body in Balance",
+        "url": "https://www.grandcentralpublishing.com/titles/neal-d-barnard-md-facc/your-body-in-balance/9781538747421/"
+      },
+      {
+        "text": "Order your copy today!",
+        "url": "https://pcrm1.ultracartstore.com/shop/Books/HEAL-111.html"
+      },
+      {
+        "text": "Kale Mini Quiches",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/kale-mini-quiches"
+      },
+      {
+        "text": "Butternut Breakfast Tacos",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/butternut-breakfast-tacos"
+      },
+      {
+        "text": "Perfect Pancakes",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/perfect-pancakes"
+      },
+      {
+        "text": "Vegan Caesar Salad",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/vegan-caesar-salad"
+      },
+      {
+        "text": "Simple Spring Rolls",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/simple-spring-rolls"
+      },
+      {
+        "text": "Shiitake Miso Soup",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/shiitake-miso-soup"
+      },
+      {
+        "text": "Rainbow Sushi",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/rainbow-sushi"
+      },
+      {
+        "text": "Vegan Cauliflower Crust Pizza",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/vegan-cauliflower-crust-pizza"
+      },
+      {
+        "text": "Fantastic Fruit Salsa With Cinnamon Chips",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/fantastic-fruit-salsa-cinnamon-chips"
+      },
+      {
+        "text": "Brownie Batter Hummus",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/brownie-batter-hummus"
+      },
+      {
+        "text": "Apple Pie Nachos",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/apple-pie-nachos"
+      }
+    ],
+    "title_en": "Your Body in Balance by Neal Barnard, MD",
+    "description_en": "Learn the science behind food, hormones, and health in Your Body in Balance!",
+    "title_vi": "Cơ thể bạn cân bằng bởi Neal Barnard, MD",
+    "description_vi": "Tìm hiểu khoa học đằng sau thực phẩm, hormone và sức khỏe trong Cơ thể cân bằng của bạn!",
+    "h1_en": [
+      "Your Body in Balance by Neal Barnard, MD"
+    ],
+    "h1_vi": [
+      "Cơ thể bạn cân bằng bởi Neal Barnard, MD"
+    ],
+    "h2_en": [
+      "About:",
+      "About the Author:",
+      "Try a Hormone-Balancing Recipe:"
+    ],
+    "h2_vi": [
+      "Về:",
+      "Về tác giả:",
+      "Hãy thử Công thức cân bằng nội tiết tố:"
+    ],
+    "h3_en": [],
+    "h3_vi": [],
+    "paragraphs_en": [
+      "Learn the science behind food, hormones, and health in Your Body in Balance!",
+      "Nutrition researcher and New York Times bestselling author Neal Barnard, MD, demonstrates how foods affect our hormones—and our health—in his new book, Your Body in Balance . Dr. Barnard shares the science behind how common hormone-related conditions—like infertility, weight gain, menopausal symptoms, breast and prostate cancers, thyroid problems, and acne—can be affected by and improved by simple diet changes. Your Body in Balance is available now wherever books are sold!",
+      "In Your Body in Balance , Dr. Barnard describes how food and hormones play a powerful role in:",
+      "The book also gives readers practical tips and resources, including answers to frequently asked questions and 65 hormone-balancing recipes developed by Lindsay Nixon.",
+      "Learn more about Your Body in Balance and hear powerful success stories!",
+      "Neal Barnard, MD, is president of the Physicians Committee for Responsible Medicine, founder of the Barnard Medical Center, an Adjunct Professor of Medicine at the George Washington University School of Medicine, and a Fellow of the American College of Cardiology. His federally funded diabetes research revolutionized the nutritional approaches to type 2 diabetes, and he now aims to empower readers with life-changing information on hormones and health. He has written more than 19 books on nutrition and health. Follow Dr. Barnard on Twitter @DrNealBarnard and Facebook @NealBarnardMD.",
+      "Your Body in Balance features more than 65 hormone-balancing recipes created by Lindsay Nixon. Try one today:"
+    ],
+    "paragraphs_vi": [
+      "Tìm hiểu khoa học đằng sau thực phẩm, hormone và sức khỏe trong Cơ thể cân bằng của bạn!",
+      "Nhà nghiên cứu dinh dưỡng và tác giả sách bán chạy nhất của New York Times Neal Barnard, MD, chứng minh cách thực phẩm ảnh hưởng đến hormone — và sức khỏe của chúng ta — trong cuốn sách mới của ông, Cơ thể cân bằng của bạn. Tiến sĩ Barnard chia sẻ khoa học đằng sau các tình trạng phổ biến liên quan đến hormone—như vô sinh, tăng cân, các triệu chứng mãn kinh, ung thư vú và tuyến tiền liệt, các vấn đề về tuyến giáp và mụn trứng cá—có thể bị ảnh hưởng và cải thiện nhờ những thay đổi đơn giản trong chế độ ăn uống. Cơ thể cân bằng của bạn hiện có sẵn ở bất cứ nơi nào bán sách!",
+      "Trong cuốn Cơ thể cân bằng của bạn, Tiến sĩ Barnard mô tả thức ăn và hormone đóng vai trò mạnh mẽ như thế nào trong việc:",
+      "Cuốn sách cũng cung cấp cho người đọc những lời khuyên và tài nguyên thực tế, bao gồm câu trả lời cho các câu hỏi thường gặp và 65 công thức cân bằng hormone do Lindsay Nixon phát triển.",
+      "Tìm hiểu thêm về Cơ thể cân bằng của bạn và nghe những câu chuyện thành công mạnh mẽ!",
+      "Neal Barnard, MD, là chủ tịch Ủy ban Bác sĩ về Y học có Trách nhiệm, người sáng lập Trung tâm Y tế Barnard, Giáo sư Y khoa phụ trợ tại Trường Y thuộc Đại học George Washington và là thành viên của Trường Cao đẳng Tim mạch Hoa Kỳ. Nghiên cứu về bệnh tiểu đường do liên bang tài trợ của ông đã cách mạng hóa các phương pháp dinh dưỡng cho bệnh tiểu đường loại 2 và giờ đây ông hướng đến việc cung cấp cho độc giả những thông tin thay đổi cuộc sống về hormone và sức khỏe. Ông đã viết hơn 19 cuốn sách về dinh dưỡng và sức khỏe. Theo dõi Tiến sĩ Barnard trên Twitter @DrNealBarnard và Facebook @NealBarnardMD.",
+      "Cơ thể cân bằng của bạn có hơn 65 công thức cân bằng hormone do Lindsay Nixon tạo ra. Hãy thử một ngày hôm nay:"
+    ],
+    "links_vi": [
+      {
+        "text": "Your Body in Balance",
+        "url": "https://www.grandcentralpublishing.com/titles/neal-d-barnard-md-facc/your-body-in-balance/9781538747421/",
+        "text_vi": "Cơ thể bạn cân bằng"
+      },
+      {
+        "text": "Order your copy today!",
+        "url": "https://pcrm1.ultracartstore.com/shop/Books/HEAL-111.html",
+        "text_vi": "Hãy đặt hàng bản sao của bạn ngay hôm nay!"
+      },
+      {
+        "text": "Kale Mini Quiches",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/kale-mini-quiches",
+        "text_vi": "Kale Mini Quiches"
+      },
+      {
+        "text": "Butternut Breakfast Tacos",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/butternut-breakfast-tacos",
+        "text_vi": "Tacos ăn sáng bơ"
+      },
+      {
+        "text": "Perfect Pancakes",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/perfect-pancakes",
+        "text_vi": "Bánh kếp hoàn hảo"
+      },
+      {
+        "text": "Vegan Caesar Salad",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/vegan-caesar-salad",
+        "text_vi": "Salad Caesar thuần chay"
+      },
+      {
+        "text": "Simple Spring Rolls",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/simple-spring-rolls",
+        "text_vi": "Chả giò đơn giản"
+      },
+      {
+        "text": "Shiitake Miso Soup",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/shiitake-miso-soup",
+        "text_vi": "Súp Miso nấm hương"
+      },
+      {
+        "text": "Rainbow Sushi",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/rainbow-sushi",
+        "text_vi": "Sushi cầu vồng"
+      },
+      {
+        "text": "Vegan Cauliflower Crust Pizza",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/vegan-cauliflower-crust-pizza",
+        "text_vi": "Pizza vỏ súp lơ thuần chay"
+      },
+      {
+        "text": "Fantastic Fruit Salsa With Cinnamon Chips",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/fantastic-fruit-salsa-cinnamon-chips",
+        "text_vi": "Salsa trái cây tuyệt vời với khoai tây chiên quế"
+      },
+      {
+        "text": "Brownie Batter Hummus",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/brownie-batter-hummus",
+        "text_vi": "Bánh Brownie Hummus"
+      },
+      {
+        "text": "Apple Pie Nachos",
+        "url": "https://www.pcrm.org/good-nutrition/plant-based-diets/recipes/apple-pie-nachos",
+        "text_vi": "bánh táo Nachos"
+      }
+    ]
+  },
+  {
+    "url": "https://www.pcrm.org/dogs",
+    "title": "Dogs",
+    "title_en": "Dogs",
+    "title_vi": "Chó",
+    "description": "This source route redirects to the PCRM action campaign page.",
+    "description_en": "This source route redirects to the PCRM action campaign page.",
+    "description_vi": "Route nguồn này chuyển hướng đến trang chiến dịch hành động của PCRM.",
+    "h1": [
+      "Dogs"
+    ],
+    "h1_en": [
+      "Dogs"
+    ],
+    "h1_vi": [
+      "Chó"
+    ],
+    "h2": [],
+    "h2_en": [],
+    "h2_vi": [],
+    "h3": [],
+    "h3_en": [],
+    "h3_vi": [],
+    "paragraphs": [
+      "The original /dogs URL on pcrm.org redirects to an external action page. Use the link below to open the campaign."
+    ],
+    "paragraphs_en": [
+      "The original /dogs URL on pcrm.org redirects to an external action page. Use the link below to open the campaign."
+    ],
+    "paragraphs_vi": [
+      "URL /dogs gốc trên pcrm.org chuyển hướng đến một trang hành động bên ngoài. Dùng liên kết bên dưới để mở chiến dịch."
+    ],
+    "images": [],
+    "links": [
+      {
+        "text": "Open campaign page",
+        "url": "https://act.pcrm.org/pvi3cAaWekqb1OX15hKzKQ2"
+      }
+    ],
+    "links_vi": [
+      {
+        "text": "Open campaign page",
+        "url": "https://act.pcrm.org/pvi3cAaWekqb1OX15hKzKQ2",
+        "text_vi": "Mở trang chiến dịch"
+      }
+    ]
   }
 ]
