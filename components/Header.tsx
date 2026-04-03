@@ -1,9 +1,99 @@
-'use client';
+ 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
-import { getNavigation, getSiteInfo, type Language } from '@/lib/translations';
+import { getSiteInfo, type Language } from '@/lib/translations';
+
+type NavLeaf = {
+  href: string;
+  label: { en: string; vi: string };
+};
+
+type NavGroup = {
+  href: string;
+  label: { en: string; vi: string };
+  items: NavLeaf[];
+};
+
+const utilityLinks: NavLeaf[] = [
+  { href: '/good-nutrition/nutrition-for-athletes', label: { en: 'For Clinicians', vi: 'Dành cho bác sĩ' } },
+  { href: '/good-nutrition/nutrition-for-kids', label: { en: 'For Medical Students', vi: 'Dành cho sinh viên y' } },
+  { href: '/term/scientists', label: { en: 'For Scientists', vi: 'Dành cho nhà khoa học' } },
+  { href: '/about-us', label: { en: 'About Us', vi: 'Về chúng tôi' } },
+  { href: '/news/blog', label: { en: 'Blog', vi: 'Blog' } },
+  { href: '/donate', label: { en: 'Donate', vi: 'Quyên góp' } },
+];
+
+const navGroups: NavGroup[] = [
+  {
+    href: '/good-nutrition',
+    label: { en: 'Good Nutrition', vi: 'Dinh dưỡng tốt' },
+    items: [
+      { href: '/good-nutrition', label: { en: 'Plant-Based Diets', vi: 'Chế độ ăn thực vật' } },
+      { href: '/good-nutrition/three-reasons-go-vegan', label: { en: 'Three Reasons to Go Vegan', vi: 'Ba lý do ăn chay' } },
+      { href: '/good-nutrition/plant-based-diets/recipes', label: { en: 'Recipes', vi: 'Công thức' } },
+      { href: '/good-nutrition/nutrition-for-athletes', label: { en: 'Nutrition for Athletes', vi: 'Dinh dưỡng cho vận động viên' } },
+      { href: '/good-nutrition/nutrition-for-kids', label: { en: 'Nutrition for Kids', vi: 'Dinh dưỡng cho trẻ em' } },
+      { href: '/good-nutrition/nutrition-information', label: { en: 'Nutrition Information', vi: 'Thông tin dinh dưỡng' } },
+      { href: '/good-nutrition/nutrition-information/fiber', label: { en: 'Fiber', vi: 'Chất xơ' } },
+      { href: '/good-nutrition/nutrition-information/protein', label: { en: 'Protein', vi: 'Chất đạm' } },
+    ],
+  },
+  {
+    href: '/ethical-science',
+    label: { en: 'Ethical Science', vi: 'Khoa học đạo đức' },
+    items: [
+      { href: '/ethical-science', label: { en: 'Overview', vi: 'Tổng quan' } },
+      { href: '/ethical-science/ethical-education-and-training/surgery-training', label: { en: 'Surgery Training', vi: 'Đào tạo phẫu thuật' } },
+      { href: '/ethical-science/animal-testing-and-alternatives/chemical-testing-reform', label: { en: 'Chemical Testing Reform', vi: 'Cải cách thử nghiệm hóa chất' } },
+      { href: '/ethical-science/animal-testing-and-alternatives/nura', label: { en: 'Alternatives to Animal Use', vi: 'Giải pháp thay thế thử nghiệm động vật' } },
+    ],
+  },
+  {
+    href: '/clinical-research',
+    label: { en: 'Clinical Research', vi: 'Nghiên cứu lâm sàng' },
+    items: [
+      { href: '/clinical-research', label: { en: 'Overview', vi: 'Tổng quan' } },
+      { href: '/clinical-research/recruitment', label: { en: 'Recruitment', vi: 'Tuyển người tham gia' } },
+      { href: '/t2dstudy', label: { en: 'T2D Study', vi: 'Nghiên cứu T2D' } },
+      { href: '/barnard-medical-center', label: { en: 'Barnard Medical Center', vi: 'Trung tâm y khoa Barnard' } },
+    ],
+  },
+  {
+    href: '/health-topics',
+    label: { en: 'Health Topics', vi: 'Chủ đề sức khỏe' },
+    items: [
+      { href: '/health-topics/cancer', label: { en: 'Cancer', vi: 'Ung thư' } },
+      { href: '/health-topics/diabetes', label: { en: 'Diabetes', vi: 'Tiểu đường' } },
+      { href: '/health-topics/high-blood-pressure', label: { en: 'High Blood Pressure', vi: 'Cao huyết áp' } },
+      { href: '/health-topics/weight-loss', label: { en: 'Weight Loss', vi: 'Giảm cân' } },
+      { href: '/health-topics/healthy-aging', label: { en: 'Healthy Aging', vi: 'Lão hóa khỏe mạnh' } },
+      { href: '/health-topics/gut-bacteria', label: { en: 'Gut Bacteria', vi: 'Vi khuẩn đường ruột' } },
+    ],
+  },
+  {
+    href: '/about-us',
+    label: { en: 'About Us', vi: 'Về chúng tôi' },
+    items: [
+      { href: '/about-us', label: { en: 'About PCRM', vi: 'Giới thiệu PCRM' } },
+      { href: '/about-us/our-victories', label: { en: 'Our Victories', vi: 'Thành tựu của chúng tôi' } },
+      { href: '/contact', label: { en: 'Contact Us', vi: 'Liên hệ' } },
+      { href: '/events/mission-critical', label: { en: 'Mission Critical', vi: 'Mission Critical' } },
+    ],
+  },
+  {
+    href: '/news/blog',
+    label: { en: 'News & Events', vi: 'Tin tức & Sự kiện' },
+    items: [
+      { href: '/news/blog', label: { en: 'All News', vi: 'Tất cả tin tức' } },
+      { href: '/news/health-nutrition/plant-based-diets-reduce-risk-cancer', label: { en: 'Health & Nutrition News', vi: 'Tin sức khỏe & dinh dưỡng' } },
+      { href: '/news/good-science-digest', label: { en: 'Good Science Digest', vi: 'Bản tin khoa học' } },
+      { href: '/news/news-releases', label: { en: 'News Releases', vi: 'Thông cáo báo chí' } },
+      { href: '/events/power-foods-diet', label: { en: 'Events', vi: 'Sự kiện' } },
+    ],
+  },
+];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,148 +112,160 @@ export default function Header() {
     window.dispatchEvent(new CustomEvent('languagechange', { detail: { language: lang } }));
   };
 
-  const nav = getNavigation(language);
   const siteInfo = getSiteInfo(language);
+  const currentLabels = language === 'vi'
+    ? {
+        search: 'Tìm kiếm',
+        donate: 'Quyên góp',
+        menu: 'Menu',
+        mission: 'Thúc đẩy y học dự phòng từ năm 1985',
+      }
+    : {
+        search: 'Search',
+        donate: 'Donate',
+        menu: 'Menu',
+        mission: 'Promoting preventive medicine since 1985',
+      };
 
-  const labels = {
-    en: {
-      search: 'Search',
-      contact: 'Contact',
-      donate: 'Donate',
-    },
-    vi: {
-      search: 'Tìm kiếm',
-      contact: 'Liên hệ',
-      donate: 'Quyên góp',
-    },
-  };
-
-  const currentLabels = labels[language];
+  const tLabel = (label: { en: string; vi: string }) => (language === 'vi' ? label.vi : label.en);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
-      {/* Top Toolbar */}
-      <div className="bg-gray-900 text-white text-xs py-2 px-4">
-        <div className="mx-auto max-w-7xl flex justify-between items-center">
-          <div className="flex gap-8">
-            <a href="tel:+1-202-527-7306" className="hover:text-gray-300 transition">
-              📞 202-527-7306
-            </a>
-            <a href="mailto:info@pcrm.org" className="hover:text-gray-300 transition">
-              ✉️ info@pcrm.org
-            </a>
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-sm">
+      <div className="bg-[#18354a] px-4 py-2 text-[11px] text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
+          <div className="hidden items-center gap-2 text-slate-200 md:flex">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#f0ad4e]" />
+            <span>{currentLabels.mission}</span>
           </div>
-          <div className="flex gap-4 items-center">
-            <button className="hover:text-gray-300 transition">
-              🔍 {currentLabels.search}
-            </button>
-            <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
+          <div className="flex flex-wrap items-center gap-2">
+            {utilityLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-sm border border-white/15 px-2.5 py-1 font-semibold uppercase tracking-[0.08em] text-white no-underline hover:bg-white/10"
+              >
+                {tLabel(item.label)}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Main Navigation Bar */}
-      <nav className="mx-auto max-w-7xl px-4 md:px-6 py-4 flex justify-between items-center border-b border-gray-200">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition">
-          <span className="text-3xl font-bold text-[#007fab]">🏥</span>
-          <div className="hidden sm:block">
-            <div className="text-sm font-bold text-gray-700 leading-tight">
-              {siteInfo.name}
+      <div className="border-b border-slate-200 bg-white px-4 py-4 md:px-6">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6">
+          <Link href="/" className="flex items-center gap-4 no-underline hover:opacity-90">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#007fab] text-3xl text-[#007fab]">
+              🏥
             </div>
-            <div className="text-xs text-gray-500 leading-tight">
-              Promoting Preventive Medicine
+            <div className="min-w-0">
+              <div className="text-base font-extrabold uppercase tracking-[0.08em] text-[#0f2433] sm:text-lg">
+                Physicians Committee
+              </div>
+              <div className="text-sm font-semibold text-[#007fab]">{siteInfo.name}</div>
+              <div className="hidden text-xs text-slate-500 md:block">{siteInfo.description}</div>
             </div>
-          </div>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-6 flex-1 justify-center px-8">
-          {nav.slice(0, 6).map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-gray-700 hover:text-[#007fab] transition duration-200 whitespace-nowrap"
-            >
-              {item.label}
-            </Link>
-          ))}
-          <div className="relative group">
-            <button className="text-sm font-medium text-gray-700 hover:text-[#007fab] transition">
-              More ▼
-            </button>
-            <div className="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg hidden group-hover:block py-2 border border-gray-200">
-              {nav.slice(6).map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-[#007fab] transition"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Right Side Actions */}
-        <div className="flex items-center gap-3">
-          <Link
-            href="/donate"
-            className="bg-[#f0ad4e] hover:bg-[#ec971f] text-gray-900 font-bold px-4 py-2 rounded-md transition text-sm"
-          >
-            💝 {currentLabels.donate}
           </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
+          <div className="hidden items-center gap-3 lg:flex">
+            <a href="tel:+1-202-527-7306" className="text-sm font-semibold text-slate-700 no-underline hover:text-[#007fab]">
+              202-527-7306
+            </a>
+            <button className="rounded-full border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+              {currentLabels.search}
+            </button>
+            <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
+            <Link
+              href="/donate"
+              className="rounded-sm bg-[#f0ad4e] px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-slate-900 no-underline hover:bg-[#e39c36]"
+            >
+              {currentLabels.donate}
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <nav className="hidden bg-[#007fab] lg:block">
+        <div className="mx-auto flex max-w-7xl items-stretch justify-between px-4 md:px-6">
+          {navGroups.map((group) => (
+            <div key={group.href} className="group relative">
+              <Link
+                href={group.href}
+                className="flex h-full items-center px-4 py-4 text-sm font-bold uppercase tracking-[0.05em] text-white no-underline hover:bg-[#005f87]"
+              >
+                {tLabel(group.label)}
+              </Link>
+              <div className="absolute left-0 top-full z-50 hidden min-w-[320px] border border-slate-200 bg-white p-4 shadow-xl group-hover:block">
+                <div className="mb-3 border-b border-slate-200 pb-2 text-sm font-bold uppercase tracking-[0.06em] text-[#007fab]">
+                  {tLabel(group.label)}
+                </div>
+                <div className="grid gap-2">
+                  {group.items.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block rounded-sm px-2 py-2 text-sm font-medium text-slate-700 no-underline hover:bg-slate-50 hover:text-[#007fab]"
+                    >
+                      {tLabel(item.label)}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="lg:hidden border-t border-gray-200 bg-gray-50 py-4 px-4">
-          <div className="space-y-2 mb-4">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block px-4 py-2 text-gray-700 font-medium hover:bg-blue-100 rounded-lg transition"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+      <div className="border-t border-slate-200 px-4 py-3 lg:hidden">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            {mounted ? <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} /> : null}
+            <Link href="/donate" className="rounded-sm bg-[#f0ad4e] px-4 py-2 text-sm font-bold text-slate-900 no-underline">
+              {currentLabels.donate}
+            </Link>
           </div>
-          <div className="border-t pt-4 px-4">
-            <div className="mb-3">
-              {mounted && (
-                <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
-              )}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="rounded-md border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700"
+            aria-label="Toggle menu"
+          >
+            {currentLabels.menu}
+          </button>
+        </div>
+      </div>
+
+      {isMenuOpen ? (
+        <div className="lg:hidden border-t border-slate-200 bg-white px-4 py-4">
+          <div className="space-y-4">
+            {navGroups.map((group) => (
+              <div key={group.href} className="rounded-lg border border-slate-200">
+                <Link
+                  href={group.href}
+                  className="block border-b border-slate-200 px-4 py-3 text-sm font-bold text-[#007fab] no-underline"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {tLabel(group.label)}
+                </Link>
+                <div className="grid gap-1 p-2">
+                  {group.items.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="rounded px-3 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {tLabel(item.label)}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div className="flex flex-col gap-2 border-t border-slate-200 pt-4 text-sm text-slate-700">
+              <a href="tel:+1-202-527-7306" className="no-underline hover:text-[#007fab]">202-527-7306</a>
+              <a href="mailto:info@pcrm.org" className="no-underline hover:text-[#007fab]">info@pcrm.org</a>
             </div>
-            <a
-              href="tel:+1-202-527-7306"
-              className="block text-sm text-[#007fab] font-medium hover:underline"
-            >
-              📞 202-527-7306
-            </a>
           </div>
         </div>
-      )}
+      ) : null}
     </header>
   );
 }

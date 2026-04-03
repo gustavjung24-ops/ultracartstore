@@ -2,36 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* PCRM Brand Colors matching pcrm.org */
 :root {
   --color-primary: #007fab;
   --color-primary-dark: #005f87;
   --color-primary-light: #0f9fd4;
   --color-accent: #f0ad4e;
   --color-accent-light: #f5c877;
-  --color-text: #333333;
-  --color-text-light: #666666;
+  --color-text: #243746;
+  --color-muted: #5e6b75;
+  --color-surface: #ffffff;
+  --color-border: #d7e0e7;
 }
 
 body {
-  @apply antialiased bg-white;
+  @apply antialiased bg-[#f6f8fa];
   color: var(--color-text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply font-bold;
   color: var(--color-text);
+  font-family: Georgia, "Times New Roman", serif;
 }
 
-/* Button Styles */
 .btn {
-  @apply font-bold px-4 py-2 rounded-md transition inline-block;
+  @apply inline-flex items-center justify-center rounded-sm px-4 py-2 font-bold transition-colors;
 }
 
 .btn-primary {
@@ -43,12 +48,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-secondary {
-  @apply border-2 border-current hover:bg-opacity-10;
+  @apply border border-slate-300 text-slate-700 hover:bg-slate-50;
 }
 
-/* Card Styles */
 .card {
-  @apply rounded-lg border border-gray-200 bg-white shadow-sm hover:shadow-md;
+  @apply overflow-hidden rounded-sm border bg-white shadow-sm;
+  border-color: var(--color-border);
 }
 
 .card-image {
@@ -59,158 +64,78 @@ h1, h2, h3, h4, h5, h6 {
   @apply p-4;
 }
 
-/* Article Card */
 .article-card {
-  @apply bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition;
+  @apply overflow-hidden rounded-sm border bg-white shadow-sm transition hover:shadow-md;
+  border-color: var(--color-border);
 }
 
 .article-card-image {
   @apply relative h-44 w-full;
 }
 
-/* Hero Section */
 .hero {
-  @apply relative h-96 md:h-[500px] bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden flex items-center justify-center;
+  @apply relative overflow-hidden bg-[#163b52] text-white;
 }
 
 .hero-content {
-  @apply relative z-10 text-center px-4 max-w-3xl mx-auto;
+  @apply relative z-10 mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-24;
 }
 
-/* Utility Classes */
-.max-width-container {
-  @apply mx-auto max-w-7xl px-4 md:px-6;
+h1 {
+  @apply text-4xl leading-tight md:text-5xl;
 }
 
-.grid-cols-auto {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+h2 {
+  @apply text-3xl leading-snug md:text-4xl;
 }
 
-/* Links */
-a {
-  @apply text-[#007fab] hover:underline transition;
+h3 {
+  @apply text-2xl leading-normal md:text-3xl;
 }
 
-/* Responsive Grid */
+.page-surface {
+  @apply rounded-sm border bg-white shadow-sm;
+  border-color: var(--color-border);
+}
+
+.prose,
+.prose p,
+.prose li,
+.prose strong,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--color-text);
+}
+
+.prose p {
+  @apply my-4 leading-8;
+}
+
+.prose a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}
+
+.muted {
+  color: var(--color-muted);
+}
+
 @media (max-width: 768px) {
   h1 {
     @apply text-3xl;
   }
+
   h2 {
     @apply text-2xl;
   }
-}
 
-
-
-h1 {
-  @apply text-4xl md:text-5xl leading-tight;
-}
-
-h2 {
-  @apply text-3xl md:text-4xl leading-snug;
-}
-
-h3 {
-  @apply text-2xl md:text-3xl leading-normal;
-}
-
-/* Prose overrides for description sections */
-.prose p {
-  @apply leading-relaxed;
-}
-
-/* Hero section styling */
-.hero {
-  @apply relative isolate overflow-hidden bg-gradient-to-br from-[#005e86] to-[#00425f] text-white;
-}
-
-.hero-content {
-  @apply relative mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-32;
-}
-
-/* Card styling */
-.card {
-  @apply rounded-lg border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden;
-}
-
-.card-image {
-  @apply relative h-44 w-full overflow-hidden bg-gray-100;
-}
-
-.card-body {
-  @apply p-4 md:p-6;
-}
-
-/* Button variants */
-.btn {
-  @apply inline-flex items-center justify-center px-4 py-2 font-semibold rounded transition-colors;
-}
-
-.btn-primary {
-  @apply bg-[#005e86] text-white hover:bg-[#00425f];
-}
-
-.btn-accent {
-  @apply bg-[#ffb53d] text-slate-900 hover:bg-[#ffc869];
-}
-
-.btn-secondary {
-  @apply border border-gray-300 text-gray-700 hover:bg-gray-50;
-}
-
-/* Link styling */
-a {
-  @apply text-[#006c96] hover:text-[#005e86] transition-colors;
-}
-
-/* Article/Blog card */
-.article-card {
-  @apply card hover:shadow-lg;
-}
-
-.article-card-image {
-  @apply card-image;
-}
-
-/* Navigation active state */
-nav a.active {
-  @apply text-[#ffb53d] border-b-2 border-[#ffb53d];
-}
-
-/* Section spacing */
-section {
-  @apply py-12 md:py-16;
-}
-
-/* Grid layouts */
-.grid-cols-auto {
-  @apply grid auto-cols-max gap-4;
-}
-
-/* Responsive typography */
-@media (max-width: 640px) {
-  h1 {
-    @apply text-3xl;
-  }
-  
-  h2 {
-    @apply text-2xl;
-  }
-  
   h3 {
     @apply text-xl;
-  }
-}
-
-/* Dark mode support (optional) */
-@media (prefers-color-scheme: dark) {
-  body {
-    @apply bg-gray-900 text-gray-100;
-  }
-  
-  .card {
-    @apply bg-gray-800 border-gray-700;
   }
 }
 

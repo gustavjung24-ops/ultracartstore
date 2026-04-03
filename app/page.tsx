@@ -9,6 +9,7 @@ export default async function HomePage() {
   const lang = (await cookies()).get("site_lang")?.value === "vi" ? "vi" : "en";
   const home = getPcrmPageByPath("/");
   const blog = getBlogPages().slice(0, 9);
+  const featuredPosts = blog.slice(0, 3);
 
   if (!home) return null;
 
@@ -53,7 +54,37 @@ export default async function HomePage() {
         </section>
 
         <div className="mx-auto max-w-7xl px-4 md:px-6 py-12">
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 items-center">
+          <section className="grid gap-4 md:grid-cols-3">
+            {featuredPosts.map((post) => (
+              <article key={post.path} className="article-card bg-white">
+                {post.images[0]?.src ? (
+                  <div className="relative h-52 w-full overflow-hidden">
+                    <Image src={post.images[0].src} alt={post.h1[0] || post.title} fill className="object-cover" unoptimized />
+                  </div>
+                ) : null}
+                <div className="p-5">
+                  <div className="mb-2 text-xs font-bold uppercase tracking-[0.08em] text-[#007fab]">
+                    {lang === "vi" ? "Bài viết nổi bật" : "Featured Story"}
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900">
+                    {lang === "vi"
+                      ? post.h1_vi?.[0] || post.title_vi || post.h1[0] || post.title
+                      : post.h1_en?.[0] || post.h1[0] || post.title_en || post.title}
+                  </h3>
+                  <p className="mt-3 line-clamp-3 text-sm text-slate-600">
+                    {lang === "vi"
+                      ? post.paragraphs_vi?.[0] || post.description_vi || post.paragraphs[0] || post.description
+                      : post.paragraphs_en?.[0] || post.paragraphs[0] || post.description_en || post.description}
+                  </p>
+                  <Link href={post.path} className="mt-4 inline-block text-sm font-bold text-[#007fab] no-underline hover:underline">
+                    {lang === "vi" ? "Xem bài" : "View story"}
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </section>
+
+          <section className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-[#007fab] mb-4">{lang === "vi" ? "40 Năm Tác Động" : "40 Years"}</h2>
               <p className="text-gray-700 text-lg leading-relaxed mb-6">
@@ -74,7 +105,7 @@ export default async function HomePage() {
             )}
           </section>
 
-          <section className="mb-20">
+          <section className="mb-20 mt-12">
             <h2 className="text-3xl font-bold text-[#007fab] mb-8">{lang === "vi" ? "Tin tức & Sự kiện" : "News & Events"}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {blog.slice(0, 9).map((post) => (

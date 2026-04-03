@@ -36,36 +36,43 @@ export default async function DynamicPcrmPage({ params }: Props) {
   return (
     <>
       <Header />
-      <main className="mx-auto max-w-5xl px-4 py-10 md:px-6">
-        <h1 className="text-3xl font-extrabold leading-tight text-slate-900 md:text-4xl">{title}</h1>
-        <p className="mt-4 text-base leading-7 text-slate-700">{description}</p>
+      <main className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-10">
+        <div className="mb-4 text-sm text-slate-500">
+          <span>{lang === "vi" ? "Trang chủ" : "Home"}</span>
+          <span className="mx-2">/</span>
+          <span>{title}</span>
+        </div>
 
-        {page.images[0]?.src ? (
-          <div className="relative mt-8 h-[280px] overflow-hidden rounded-xl md:h-[420px]">
-            <Image src={page.images[0].src} alt={title} fill className="object-cover" unoptimized />
-          </div>
-        ) : null}
+        <article className="page-surface overflow-hidden p-6 md:p-10">
+          <h1 className="text-3xl font-extrabold leading-tight text-slate-900 md:text-4xl">{title}</h1>
+          <p className="mt-4 max-w-4xl text-base leading-7 text-slate-700 md:text-lg">{description}</p>
 
-        <section className="prose mt-8 max-w-none prose-p:leading-7 prose-p:text-slate-700">
-          {h2.map((heading, index) => (
-            <h2 key={`${heading}-${index}`} className="text-2xl font-bold text-slate-900">
-              {heading}
-            </h2>
-          ))}
+          {page.images[0]?.src ? (
+            <div className="relative mt-8 h-[280px] overflow-hidden rounded-sm md:h-[420px]">
+              <Image src={page.images[0].src} alt={title} fill className="object-cover" unoptimized />
+            </div>
+          ) : null}
 
-          {h3.map((heading, index) => (
-            <h3 key={`${heading}-${index}`} className="text-xl font-semibold text-slate-800">
-              {heading}
-            </h3>
-          ))}
+          <section className="prose mt-8 max-w-none">
+            {h2.map((heading, index) => (
+              <h2 key={`${heading}-${index}`} className="text-2xl font-bold text-slate-900">
+                {heading}
+              </h2>
+            ))}
 
-          {paragraphs.map((paragraph, index) => (
-            <p key={`${page.path}-p-${index}`}>{paragraph}</p>
-          ))}
-        </section>
+            {h3.map((heading, index) => (
+              <h3 key={`${heading}-${index}`} className="text-xl font-semibold text-slate-800">
+                {heading}
+              </h3>
+            ))}
 
-        {links?.length ? (
-          <section className="mt-10">
+            {paragraphs.map((paragraph, index) => (
+              <p key={`${page.path}-p-${index}`}>{paragraph}</p>
+            ))}
+          </section>
+
+          {links?.length ? (
+            <section className="mt-10 border-t border-slate-200 pt-8">
             <h3 className="text-lg font-bold text-slate-900">{lang === "vi" ? "Liên kết liên quan" : "Related Links"}</h3>
             <ul className="mt-3 list-disc pl-6 space-y-2">
               {links.slice(0, 24).map((link, index) => (
@@ -78,6 +85,7 @@ export default async function DynamicPcrmPage({ params }: Props) {
             </ul>
           </section>
         ) : null}
+        </article>
       </main>
       <Footer />
     </>

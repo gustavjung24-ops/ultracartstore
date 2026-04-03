@@ -12,7 +12,8 @@ export default async function BlogIndexPage() {
   return (
     <>
       <Header />
-      <main className="mx-auto max-w-7xl px-4 py-10 md:px-6">
+      <main className="mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-10">
+        <div className="page-surface p-6 md:p-8">
         <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">{lang === "vi" ? "Tin Tức" : "News Blog"}</h1>
         <p className="mt-3 max-w-3xl text-slate-700">
           {lang === "vi"
@@ -22,7 +23,7 @@ export default async function BlogIndexPage() {
 
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {posts.map((post) => (
-            <article key={post.path} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+            <article key={post.path} className="article-card">
               {post.images[0]?.src ? (
                 <div className="relative h-44 w-full">
                   <Image src={post.images[0].src} alt={post.h1[0] || post.title} fill className="object-cover" unoptimized />
@@ -45,6 +46,7 @@ export default async function BlogIndexPage() {
               </div>
             </article>
           ))}
+        </div>
         </div>
       </main>
       <Footer />
