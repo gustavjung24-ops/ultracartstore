@@ -2,87 +2,69 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getProductsByCategoryFromData, getStoreData } from "@/lib/store-data";
-
+import { getBlogPages, getPcrmPageByPath } from "@/lib/pcrm-content";
 
 export default function HomePage() {
-  const locale = 'en';
-  const t = {
-    'site.name': 'Physicians Committee for Responsible Medicine',
-    'home.title': 'Welcome to PCRM',
-    'home.heroTitle': 'Transform the way you eat with evidence-based medical guidance and practical kitchen skills.',
-  };
+  const home = getPcrmPageByPath("/");
+  const blog = getBlogPages().slice(0, 9);
+
+  if (!home) return null;
+
+  const heroImage = home.images[0]?.src;
+
   return (
     <>
       <Header />
-
       <main>
-        {/* ─── Banner giới thiệu ─── */}
-        <section className="bg-brand-dark text-white py-14 px-4">
-          <div className="max-w-3xl mx-auto text-center space-y-5">
-            <h1 className="text-3xl sm:text-4xl font-bold text-brand-teal">
-              Physicians Committee Shop
+        <section className="relative isolate overflow-hidden bg-[#005e86] text-white">
+          {heroImage ? (
+            <Image
+              src={heroImage}
+              alt={home.h1[0] || home.title}
+              fill
+              className="object-cover opacity-20"
+              sizes="100vw"
+              unoptimized
+            />
+          ) : null}
+          <div className="relative mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-28">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#ffd38a]">PCRM</p>
+            <h1 className="mt-4 max-w-4xl text-3xl font-extrabold leading-tight md:text-5xl">
+              {home.h1[0] || home.title}
             </h1>
-            <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
-              Cửa hàng Physicians Committee cung cấp tài liệu giáo dục và các
-              công cụ truyền thông vì sứ mệnh bảo vệ sức khỏe con người và
-              động vật thông qua chế độ ăn thực vật và nghiên cứu khoa học có
-              đạo đức. Tầm nhìn của chúng tôi là xây dựng một thế giới khỏe
-              mạnh hơn, nơi y tế và lòng nhân ái là những giá trị cốt lõi.
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center pt-2">
+            <p className="mt-6 max-w-3xl text-base leading-7 text-sky-100 md:text-lg">{home.description}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/shop"
-                className="bg-brand-teal hover:bg-brand-mid text-white font-bold py-3 px-8 uppercase tracking-wide transition-colors shadow"
+                href="/donate"
+                className="rounded bg-[#ffb53d] px-6 py-3 text-sm font-bold uppercase tracking-wide text-slate-900 transition hover:bg-[#ffc869]"
               >
-                Vào cửa hàng
+                Donate
               </Link>
-              <a
-                href="https://pcrm.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-white text-white hover:bg-white/10 font-semibold py-3 px-8 uppercase tracking-wide transition-colors"
+              <Link
+                href="/news/blog"
+                className="rounded border border-white/50 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/10"
               >
-                PCRM.org
-              </a>
+                News & Events
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* ─── Sản phẩm nổi bật ─── */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h2 className="text-brand-teal font-bold text-lg pb-3 mb-6 border-b border-gray-200 uppercase tracking-wide">
-            Sản phẩm nổi bật
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featured.map((p) => (
-              <article
-                key={p.slug}
-                className="bg-white rounded border border-gray-200 overflow-hidden hover:shadow-md transition-shadow flex flex-col"
-              >
-                <div className="relative w-full aspect-[4/3] bg-gray-50">
-                  <Image
-                    src={p.images[0]}
-                    alt={p.title}
-                    fill
-                    className="object-contain p-4"
-                    sizes="(max-width: 640px) 100vw, 25vw"
-                    unoptimized
-                  />
-                </div>
-                <div className="p-4 flex flex-col gap-2 flex-1">
-                  <h3 className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2">
-                    {p.title}
-                  </h3>
-                  <p className="text-brand-teal font-bold">
-                    {p.price}
-                    {p.unit && <span className="text-xs text-gray-400 ml-1">{p.unit}</span>}
-                  </p>
-                  <Link
-                    href={`/product/${p.slug}`}
-                    className="mt-auto inline-block text-center bg-brand-teal hover:bg-brand-mid text-white text-sm font-semibold py-2 px-4 transition-colors"
-                  >
-                    Xem chi tiết
+        <section className="mx-auto max-w-7xl px-4 py-12 md:px-6">
+          <h2 className="text-2xl font-bold text-slate-900">Tin và bài viết mới</h2>
+          <div className="mt-6 grid gap-6 md:grid-cols-3">
+            {blog.map((post) => (
+              <article key={post.path} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+                {post.images[0]?.src ? (
+                  <div className="relative h-44 w-full">
+                    <Image src={post.images[0].src} alt={post.h1[0] || post.title} fill className="object-cover" unoptimized />
+                  </div>
+                ) : null}
+                <div className="p-4">
+                  <h3 className="line-clamp-2 text-base font-semibold text-slate-900">{post.h1[0] || post.title}</h3>
+                  <p className="mt-2 line-clamp-3 text-sm text-slate-600">{post.paragraphs[0] || post.description}</p>
+                  <Link href={post.path} className="mt-4 inline-block text-sm font-semibold text-[#006c96] hover:underline">
+                    Đọc chi tiết
                   </Link>
                 </div>
               </article>
@@ -90,8 +72,7 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-
-      <Footer info={footerInfo} />
+      <Footer />
     </>
   );
 }

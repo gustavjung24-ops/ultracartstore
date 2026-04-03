@@ -4,7 +4,6 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { footerInfo } from "@/data/product";
 
 const breadcrumbs = [
   { label: "Trang chủ", href: "/" },
@@ -162,7 +161,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <Footer info={footerInfo} />
+      <Footer />
     </>
   );
 }
