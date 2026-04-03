@@ -14,6 +14,7 @@ type NavGroup = {
   href: string;
   label: { en: string; vi: string };
   items: NavLeaf[];
+  columns: 2 | 3;
 };
 
 const utilityLinks: NavLeaf[] = [
@@ -27,18 +28,17 @@ const navGroups: NavGroup[] = [
   {
     href: '/good-nutrition',
     label: { en: 'Good Nutrition', vi: 'Dinh dưỡng tốt' },
+    columns: 3,
     items: [
       { href: '/good-nutrition', label: { en: 'Overview', vi: 'Tổng quan' } },
       { href: '/good-nutrition/plant-based-diets', label: { en: 'Plant-Based Diets', vi: 'Chế độ ăn thực vật' } },
       { href: '/good-nutrition/three-reasons-go-vegan', label: { en: 'Three Reasons to Go Vegan', vi: 'Ba lý do ăn chay' } },
-      { href: '/good-nutrition/vegan-diet-environment', label: { en: 'Vegan Diet and Environment', vi: 'Ăn chay và môi trường' } },
+      { href: '/good-nutrition/plant-based-diets/ffl', label: { en: 'Food for Life', vi: 'Food for Life' } },
       { href: '/good-nutrition/plant-based-diets/nutrition-faq', label: { en: 'Nutrition FAQ', vi: 'Câu hỏi thường gặp' } },
       { href: '/good-nutrition/plant-based-diets/recipes', label: { en: 'Recipes', vi: 'Công thức' } },
-      { href: '/good-nutrition/plant-based-diets/pregnancy', label: { en: 'Plant-Based Pregnancy', vi: 'Mang thai với chế độ thực vật' } },
-      { href: '/good-nutrition/plant-based-diets/ffl', label: { en: 'Food for Life', vi: 'Food for Life' } },
       { href: '/good-nutrition/nutrition-for-athletes', label: { en: 'Nutrition for Athletes', vi: 'Dinh dưỡng cho vận động viên' } },
+      { href: '/good-nutrition/plant-based-diets/pregnancy', label: { en: 'Plant-Based Pregnancy', vi: 'Mang thai với chế độ thực vật' } },
       { href: '/good-nutrition/nutrition-for-kids', label: { en: 'Nutrition for Kids', vi: 'Dinh dưỡng cho trẻ em' } },
-      { href: '/good-nutrition/nutrition-for-clinicians', label: { en: 'Nutrition for Clinicians', vi: 'Dinh dưỡng cho bác sĩ' } },
       { href: '/good-nutrition/nutrition-information', label: { en: 'Nutrition Information', vi: 'Thông tin dinh dưỡng' } },
       { href: '/good-nutrition/nutrition-information/the-carbohydrate-advantage', label: { en: 'The Carbohydrate Advantage', vi: 'Lợi thế carbohydrate' } },
       { href: '/good-nutrition/nutrition-information/fiber', label: { en: 'Fiber', vi: 'Chất xơ' } },
@@ -49,6 +49,8 @@ const navGroups: NavGroup[] = [
       { href: '/good-nutrition/nutrition-information/chicken', label: { en: 'Chicken', vi: 'Thịt gà' } },
       { href: '/good-nutrition/nutrition-information/health-concerns-with-eggs', label: { en: 'Concerns With Eggs', vi: 'Rủi ro từ trứng' } },
       { href: '/good-nutrition/nutrition-information/processed-meat', label: { en: 'Processed Meat', vi: 'Thịt chế biến sẵn' } },
+      { href: '/good-nutrition/vegan-diet-environment', label: { en: 'Vegan Diet and Environment', vi: 'Ăn chay và môi trường' } },
+      { href: '/good-nutrition/nutrition-for-clinicians', label: { en: 'Nutrition for Clinicians', vi: 'Dinh dưỡng cho bác sĩ' } },
       { href: '/good-nutrition/healthy-communities', label: { en: 'Healthy Communities', vi: 'Cộng đồng khỏe mạnh' } },
       { href: '/good-nutrition/nutrition-programs-policies', label: { en: 'Programs & Policies', vi: 'Chương trình & chính sách' } },
     ],
@@ -56,6 +58,7 @@ const navGroups: NavGroup[] = [
   {
     href: '/health-topics',
     label: { en: 'Health Topics', vi: 'Chủ đề sức khỏe' },
+    columns: 3,
     items: [
       { href: '/health-topics', label: { en: 'Overview', vi: 'Tổng quan' } },
       { href: '/health-topics/alzheimers', label: { en: "Alzheimer's", vi: 'Alzheimer' } },
@@ -81,6 +84,7 @@ const navGroups: NavGroup[] = [
   {
     href: '/ethical-science',
     label: { en: 'Ethical Science', vi: 'Khoa học đạo đức' },
+    columns: 2,
     items: [
       { href: '/ethical-science', label: { en: 'Overview', vi: 'Tổng quan' } },
       { href: '/ethical-science/ethical-education-and-training/surgery-training', label: { en: 'Surgery Training', vi: 'Đào tạo phẫu thuật' } },
@@ -99,18 +103,18 @@ const navGroups: NavGroup[] = [
   {
     href: '/clinical-research',
     label: { en: 'Our Research', vi: 'Nghiên cứu của chúng tôi' },
+    columns: 2,
     items: [
       { href: '/clinical-research', label: { en: 'Overview', vi: 'Tổng quan' } },
       { href: '/clinical-research/recruitment', label: { en: 'Recruitment', vi: 'Tuyển người tham gia' } },
       { href: '/clinical-research/endometriosis', label: { en: 'Endometriosis', vi: 'Lạc nội mạc tử cung' } },
       { href: '/clinical-research/fighting-hot-flashes-with-diet', label: { en: 'Fighting Hot Flashes with Diet', vi: 'Kiểm soát bốc hỏa bằng ăn uống' } },
-      { href: '/barnard-medical-center', label: { en: 'Barnard Medical Center', vi: 'Trung tâm y khoa Barnard' } },
-      { href: '/findadietitian', label: { en: 'Find a Dietitian', vi: 'Tìm chuyên gia dinh dưỡng' } },
     ],
   },
   {
     href: '/news',
     label: { en: 'News', vi: 'Tin tức' },
+    columns: 2,
     items: [
       { href: '/news', label: { en: 'Overview', vi: 'Tổng quan' } },
       { href: '/news/blog', label: { en: 'All News', vi: 'Tất cả tin tức' } },
@@ -118,26 +122,21 @@ const navGroups: NavGroup[] = [
       { href: '/news/innovative-science-news', label: { en: 'Innovative Science News', vi: 'Tin khoa học đổi mới' } },
       { href: '/news/good-science-digest', label: { en: 'Good Science Digest', vi: 'Bản tin khoa học' } },
       { href: '/news/good-medicine', label: { en: 'Good Medicine', vi: 'Y học tốt' } },
-      { href: '/news/exam-room-podcast/can-your-gut-predict-parkinsons-alzheimers-dr-trisha-pasricha', label: { en: 'Exam Room Podcast', vi: 'Podcast Exam Room' } },
-      { href: '/news/news-releases', label: { en: 'News Releases', vi: 'Thông cáo báo chí' } },
-      { href: '/news/news-releases/physicians-committee-offering-grants-farmers-who-are-growing-health-promoting', label: { en: 'Featured Press Release', vi: 'Thông cáo nổi bật' } },
       { href: '/news/media-center', label: { en: 'Media Center', vi: 'Trung tâm truyền thông' } },
-      { href: '/events/mission-critical', label: { en: 'Mission Critical', vi: 'Mission Critical' } },
-      { href: '/events/power-foods-diet', label: { en: 'Power Foods Diet Event', vi: 'Sự kiện Power Foods Diet' } },
+      { href: '/news/news-releases', label: { en: 'News Releases', vi: 'Thông cáo báo chí' } },
     ],
   },
   {
     href: '/about-us',
     label: { en: 'About Us', vi: 'Về chúng tôi' },
+    columns: 2,
     items: [
-      { href: '/about-us', label: { en: 'About PCRM', vi: 'Giới thiệu PCRM' } },
+      { href: '/about-us#leadership', label: { en: 'Leadership', vi: 'Ban lãnh đạo' } },
       { href: '/about-us/our-victories', label: { en: 'Our Victories', vi: 'Thành tựu của chúng tôi' } },
       { href: '/about-us/careers', label: { en: 'Careers', vi: 'Tuyển dụng' } },
       { href: '/about-us/careers/internships', label: { en: 'Internships', vi: 'Thực tập' } },
-      { href: '/about-us/financial-report', label: { en: 'Annual & Financial Reports', vi: 'Báo cáo thường niên' } },
-      { href: '/contact', label: { en: 'Contact Us', vi: 'Liên hệ' } },
       { href: '/events', label: { en: 'Events', vi: 'Sự kiện' } },
-      { href: '/donate', label: { en: 'Donate', vi: 'Quyên góp' } },
+      { href: '/about-us/financial-report', label: { en: 'Annual & Financial Reports', vi: 'Báo cáo thường niên' } },
     ],
   },
 ];
@@ -233,32 +232,38 @@ export default function Header() {
 
       <nav className="hidden bg-[#007fab] lg:block">
         <div className="mx-auto flex max-w-7xl items-stretch justify-between px-4 md:px-6">
-          {navGroups.map((group) => (
-            <div key={group.href} className="group relative">
-              <Link
-                href={group.href}
-                className="flex h-full items-center px-4 py-4 text-sm font-bold uppercase tracking-[0.05em] text-white no-underline hover:bg-[#005f87]"
-              >
-                {tLabel(group.label)}
-              </Link>
-              <div className="absolute left-0 top-full z-50 hidden min-w-[680px] border border-slate-200 bg-white p-5 shadow-2xl group-hover:block">
-                <div className="mb-3 border-b border-slate-200 pb-2 text-sm font-bold uppercase tracking-[0.06em] text-[#007fab]">
+          {navGroups.map((group, index) => {
+            const alignClass = index >= navGroups.length - 2 ? 'left-auto right-0' : 'left-0';
+            const panelWidthClass = group.columns === 3 ? 'w-[880px]' : 'w-[620px]';
+            const gridColsClass = group.columns === 3 ? 'grid-cols-3' : 'grid-cols-2';
+
+            return (
+              <div key={group.href} className="group relative">
+                <Link
+                  href={group.href}
+                  className="flex h-full items-center px-4 py-4 text-sm font-bold uppercase tracking-[0.05em] text-white no-underline hover:bg-[#005f87]"
+                >
                   {tLabel(group.label)}
-                </div>
-                <div className="grid max-h-[70vh] grid-cols-2 gap-x-6 gap-y-2 overflow-auto pr-1">
-                  {group.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="block rounded-sm px-2 py-2 text-sm font-medium text-slate-700 no-underline hover:bg-slate-50 hover:text-[#007fab]"
-                    >
-                      {tLabel(item.label)}
-                    </Link>
-                  ))}
+                </Link>
+                <div className={`absolute ${alignClass} top-full z-50 hidden ${panelWidthClass} max-w-[94vw] border border-slate-200 bg-white p-5 shadow-2xl group-hover:block`}>
+                  <div className="mb-3 border-b border-slate-200 pb-2 text-sm font-bold uppercase tracking-[0.06em] text-[#007fab]">
+                    {tLabel(group.label)}
+                  </div>
+                  <div className={`grid max-h-[68vh] ${gridColsClass} gap-x-6 gap-y-2 overflow-auto pr-1`}>
+                    {group.items.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="block rounded-sm px-2 py-2 text-sm font-medium text-slate-700 no-underline hover:bg-slate-50 hover:text-[#007fab]"
+                      >
+                        {tLabel(item.label)}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </nav>
 
