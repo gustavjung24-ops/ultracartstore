@@ -387,6 +387,18 @@ function removeKnownNoiseParagraphs(
   return paragraphs.filter((paragraph) => !noise.has(paragraph));
 }
 
+function dedupeParagraphsPreserveOrder(paragraphs: string[]): string[] {
+  const seen = new Set<string>();
+  return paragraphs.filter((paragraph) => {
+    if (seen.has(paragraph)) {
+      return false;
+    }
+
+    seen.add(paragraph);
+    return true;
+  });
+}
+
 function normalizePathFromHubLinkUrl(url: string): string | null {
   try {
     const parsed = new URL(url);
@@ -531,6 +543,8 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
 
     paragraphsEn = trimLeadingParagraphIfDuplicate(paragraphsEn, descriptionEn);
     paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, descriptionVi);
+    paragraphsEn = dedupeParagraphsPreserveOrder(paragraphsEn);
+    paragraphsVi = dedupeParagraphsPreserveOrder(paragraphsVi);
   }
 
   if (page.path === "/news/blog") {
