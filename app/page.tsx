@@ -8,6 +8,11 @@ import {
   getPcrmPageByPath,
   type PcrmPage,
 } from "@/lib/pcrm-content";
+import {
+  getCleanNewsSummary,
+  isNewsArticlePath,
+  isNoisyNewsSummaryLine,
+} from "@/lib/news-summary";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 type BlogPost = PcrmPage & { path: string };
@@ -17,8 +22,32 @@ function getPostTitle(post: BlogPost, lang: "en" | "vi") {
 }
 
 function getPostSummary(post: BlogPost, lang: "en" | "vi") {
-  const localized = getLocalizedPcrmPageContent(post, lang);
-  return localized.paragraphs[0] || localized.description;
+  return getCleanNewsSummary(getLocalizedPcrmPageContent(post, lang), lang);
+}
+
+function getSectionSummary(
+  candidates: Array<string | undefined>,
+  posts: BlogPost[],
+  sectionTitle: string,
+  lang: "en" | "vi",
+) {
+  const candidateSummary = candidates.find((candidate) => {
+    if (!candidate || isNoisyNewsSummaryLine(candidate, lang)) {
+      return false;
+    }
+
+    return candidate.trim() !== sectionTitle.trim();
+  });
+
+  if (candidateSummary) {
+    return candidateSummary;
+  }
+
+  const postSummary = posts
+    .map((post) => getPostSummary(post, lang))
+    .find((summary) => !isNoisyNewsSummaryLine(summary, lang) && summary.trim() !== sectionTitle.trim());
+
+  return postSummary || sectionTitle;
 }
 
 export default async function HomePage() {
@@ -30,7 +59,7 @@ export default async function HomePage() {
   if (!home) return null;
 
   const localizedHome = getLocalizedPcrmPageContent(home, lang);
-  const blog = getBlogPages().slice(0, 9) as BlogPost[];
+  const blog = getBlogPages().filter((post) => isNewsArticlePath(post.path)).slice(0, 9) as BlogPost[];
   const featuredPosts = blog.slice(0, 3);
   const latestPosts = blog.slice(0, 6);
 
@@ -42,19 +71,34 @@ export default async function HomePage() {
     {
       href: "/news/health-nutrition",
       title: locale.news.healthNutrition,
-      summary: localizedHome.paragraphs[6] || localizedHome.paragraphs[5] || localizedHome.description,
+      summary: getSectionSummary(
+        [localizedHome.paragraphs[6], localizedHome.paragraphs[5], localizedHome.description],
+        healthAndNutritionPosts,
+        locale.news.healthNutrition,
+        lang,
+      ),
       posts: healthAndNutritionPosts,
     },
     {
       href: "/news/innovative-science-news",
       title: homeUi.innovativeScienceNews,
-      summary: localizedHome.paragraphs[8] || localizedHome.paragraphs[7] || localizedHome.description,
+      summary: getSectionSummary(
+        [localizedHome.paragraphs[8], localizedHome.paragraphs[7], localizedHome.description],
+        innovativeSciencePosts,
+        homeUi.innovativeScienceNews,
+        lang,
+      ),
       posts: innovativeSciencePosts,
     },
     {
       href: "/news/good-science-digest",
       title: homeUi.goodScienceDigest,
-      summary: homeUi.goodScienceDigestSummary,
+      summary: getSectionSummary(
+        [homeUi.goodScienceDigestSummary, localizedHome.paragraphs[9], localizedHome.description],
+        scienceDigestPosts,
+        homeUi.goodScienceDigest,
+        lang,
+      ),
       posts: scienceDigestPosts,
     },
   ];

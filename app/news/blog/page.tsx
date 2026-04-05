@@ -8,60 +8,15 @@ import {
   getPcrmPageByPath,
   type PcrmResolvedPage,
 } from "@/lib/pcrm-content";
+import { getCleanNewsSummary, isNewsArticlePath } from "@/lib/news-summary";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
-
-const BLOG_LISTING_EXCLUDED_PATHS = new Set([
-  "/news",
-  "/news/health-nutrition",
-  "/news/innovative-science-news",
-  "/news/media-center",
-]);
-
-const BLOG_SUMMARY_NOISE_EN = new Set([
-  "Make your 2026 membership gift today!",
-  "Prevention starts today. Join the 21-Day Vegan Kickstart.",
-  "Get Healthy With Good Nutrition",
-  "Blog | Impact & Advocacy",
-  "Xavier Toledo, MS, RD, LDN",
-]);
-
-const BLOG_SUMMARY_NOISE_VI = new Set([
-  "Hãy tặng quà thành viên năm 2026 ngay hôm nay!",
-  "Phòng ngừa bắt đầu từ hôm nay. Tham gia Khởi động thuần chay 21 ngày.",
-  "Khỏe mạnh nhờ dinh dưỡng tốt",
-  "Blog | Tác động & Vận động",
-  "Xavier Toledo, MS, RD, LDN",
-]);
-
-function isNoisySummaryLine(value: string, lang: "en" | "vi") {
-  const trimmed = value.trim();
-  if (!trimmed) {
-    return true;
-  }
-
-  const noise = lang === "vi" ? BLOG_SUMMARY_NOISE_VI : BLOG_SUMMARY_NOISE_EN;
-  return noise.has(trimmed);
-}
 
 function getPostTitle(post: PcrmResolvedPage, lang: "en" | "vi") {
   return getLocalizedPcrmPageContent(post, lang).title;
 }
 
 function getPostSummary(post: PcrmResolvedPage, lang: "en" | "vi") {
-  const localized = getLocalizedPcrmPageContent(post, lang);
-
-  const summaryFromParagraph = localized.paragraphs.find(
-    (paragraph) => !isNoisySummaryLine(paragraph, lang),
-  );
-  if (summaryFromParagraph) {
-    return summaryFromParagraph;
-  }
-
-  if (!isNoisySummaryLine(localized.description, lang)) {
-    return localized.description;
-  }
-
-  return localized.paragraphs[0] || localized.description;
+  return getCleanNewsSummary(getLocalizedPcrmPageContent(post, lang), lang);
 }
 
 export default async function BlogIndexPage() {
@@ -70,7 +25,7 @@ export default async function BlogIndexPage() {
   const hubPage = getPcrmPageByPath("/news/blog");
   const localizedHub = hubPage ? getLocalizedPcrmPageContent(hubPage, lang) : null;
 
-  const posts = getBlogPages().filter((post) => !BLOG_LISTING_EXCLUDED_PATHS.has(post.path));
+  const posts = getBlogPages().filter((post) => isNewsArticlePath(post.path));
   const pageTitle = localizedHub?.title || "Blog";
   const pageIntro =
     localizedHub?.description ||
