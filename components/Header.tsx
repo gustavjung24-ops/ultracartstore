@@ -330,8 +330,12 @@ export default function Header({ showDonateButton = false }: HeaderProps) {
               ))}
 
               <div className="flex flex-col gap-2 border-t border-slate-200 pt-4 text-sm text-slate-700">
-                <a href="tel:+1-202-527-7306" className="no-underline hover:text-[#007fab]">202-527-7306</a>
-                <a href="mailto:info@pcrm.org" className="no-underline hover:text-[#007fab]">info@pcrm.org</a>
+                <a href={`tel:${locale.site.contact.quickPhoneHref}`} className="no-underline hover:text-[#007fab]">
+                  {locale.site.contact.quickPhoneDisplay}
+                </a>
+                <a href={`mailto:${locale.site.contact.email}`} className="no-underline hover:text-[#007fab]">
+                  {locale.site.contact.email}
+                </a>
               </div>
             </div>
           </div>
