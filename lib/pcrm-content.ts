@@ -37,6 +37,18 @@ export interface PcrmPage {
   links_vi?: (PcrmLink & { text_vi?: string })[];
 }
 
+export type ContentLanguage = "en" | "vi";
+
+export interface LocalizedPcrmPageContent {
+  title: string;
+  description: string;
+  h1: string[];
+  h2: string[];
+  h3: string[];
+  paragraphs: string[];
+  links: PcrmLink[];
+}
+
 const RAW = translatedAll as PcrmPage[];
 const GENERATED_RAW = generatedSourcePages as PcrmPage[];
 const BASE = "https://www.pcrm.org";
@@ -58,6 +70,65 @@ function pathFromUrl(url: string): string {
 
 function likelyTrackingImage(src: string): boolean {
   return /pixel|tracking|p\.gif/i.test(src);
+}
+
+function pickLocalizedValue<T>(
+  lang: ContentLanguage,
+  values: { vi?: T; en?: T; fallback: T }
+): T {
+  if (lang === "vi") {
+    return values.vi ?? values.en ?? values.fallback;
+  }
+
+  return values.en ?? values.fallback;
+}
+
+function getLocalizedLinks(page: PcrmPage, lang: ContentLanguage): PcrmLink[] {
+  if (lang === "vi" && page.links_vi?.length) {
+    return page.links_vi.map((link) => ({
+      text: link.text_vi || link.text,
+      url: link.url,
+    }));
+  }
+
+  return page.links;
+}
+
+export function getLocalizedPcrmPageContent(page: PcrmPage, lang: ContentLanguage): LocalizedPcrmPageContent {
+  const title =
+    lang === "vi"
+      ? page.h1_vi?.[0] || page.title_vi || page.h1[0] || page.title
+      : page.h1_en?.[0] || page.title_en || page.h1[0] || page.title;
+
+  return {
+    title,
+    description: pickLocalizedValue(lang, {
+      vi: page.description_vi,
+      en: page.description_en,
+      fallback: page.description,
+    }),
+    h1: pickLocalizedValue(lang, {
+      vi: page.h1_vi,
+      en: page.h1_en,
+      fallback: page.h1,
+    }),
+    h2: pickLocalizedValue(lang, {
+      vi: page.h2_vi,
+      en: page.h2_en,
+      fallback: page.h2,
+    }),
+    h3: pickLocalizedValue(lang, {
+      vi: page.h3_vi,
+      en: page.h3_en,
+      fallback: page.h3,
+    }),
+    paragraphs: pickLocalizedValue(lang, {
+      vi: page.paragraphs_vi,
+      en: page.paragraphs_en,
+      fallback: page.paragraphs,
+    }),
+    links: getLocalizedLinks(page, lang),
+  };
 }
 
 const pages = RAW.map((page) => ({

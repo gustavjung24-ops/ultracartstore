@@ -1,25 +1,25 @@
 {
   "site": {
-    "name": "Hội bác sĩ vì y học xứ sở có trách nhiệm",
-    "description": "Một tổ chức y tế phi lợi nhuận thúc đẩy y học dự phòng, tiến hành nghiên cứu lâm sàng, và khuyến khích các tiêu chuẩn cao hơn về đạo đức và hiệu quả trong nghiên cứu và đào tạo y tế."
+    "name": "Ủy ban Bác sĩ vì Y học có trách nhiệm",
+    "description": "Tổ chức y tế phi lợi nhuận thúc đẩy y học dự phòng, thực hiện nghiên cứu lâm sàng và vận động các chuẩn mực cao hơn về đạo đức, hiệu quả trong nghiên cứu và đào tạo y khoa."
   },
   "nav": {
     "home": "Trang chủ",
     "about": "Về chúng tôi",
-    "goodNutrition": "Dinh dưỡng tốt",
-    "ethicalScience": "Khoa học đạo đức",
+    "goodNutrition": "Dinh dưỡng lành mạnh",
+    "ethicalScience": "Khoa học có đạo đức",
     "clinicalResearch": "Nghiên cứu lâm sàng",
-    "healthTopics": "Các chủ đề sức khỏe",
-    "blog": "Blog",
+    "healthTopics": "Chủ đề sức khỏe",
+    "blog": "Tin tức",
     "contact": "Liên hệ",
     "donate": "Quyên góp"
   },
   "home": {
-    "title": "Chào mừng đến PCRM",
-    "heroTitle": "Thay đổi cách bạn ăn uống với hướng dẫn y tế dựa trên bằng chứng và những kỹ năng bếp thực tế.",
-    "ctaText": "Tham gia cộng đồng của chúng tôi",
+    "title": "Chào mừng đến với PCRM",
+    "heroTitle": "Thay đổi thói quen ăn uống với hướng dẫn y khoa dựa trên bằng chứng và kỹ năng bếp thực tế.",
+    "ctaText": "Tham gia cộng đồng",
     "newsTitle": "Tin tức sức khỏe và dinh dưỡng",
-    "scienceTitle": "Tin tức khoa học sáng tạo",
+    "scienceTitle": "Tin khoa học đổi mới",
     "sections": {
       "about": "Về chúng tôi",
       "mission": "Sứ mệnh của chúng tôi",
@@ -27,8 +27,8 @@
     }
   },
   "about": {
-    "title": "Về Hội bác sĩ vì y học xứ sở có trách nhiệm",
-    "content": "Trong 40 năm qua, Hội bác sĩ đã dẫn đầu cho người dân, động vật và hành tinh. Chúng tôi thúc đẩy y học dự phòng, tiến hành nghiên cứu lâm sàng độc lập, và ủng hộ các tiêu chuẩn cao hơn trong đào tạo y tế và khoa học đạo đức.",
+    "title": "Về Ủy ban Bác sĩ vì Y học có trách nhiệm",
+    "content": "Trong 40 năm qua, PCRM đã dẫn dắt các nỗ lực vì con người, động vật và hành tinh. Chúng tôi thúc đẩy y học dự phòng, thực hiện nghiên cứu lâm sàng tiên phong và vận động các chuẩn mực cao hơn trong đào tạo y khoa và khoa học có đạo đức.",
     "mission": "Sứ mệnh của chúng tôi là thúc đẩy sức khỏe và lòng trắc ẩn thông qua khoa học và giáo dục.",
     "values": {
       "science": "Khoa học dựa trên bằng chứng",
@@ -38,7 +38,7 @@
   },
   "donate": {
     "title": "Quyên góp hôm nay",
-    "subtitle": "Hỗ trợ sứ mệnh của chúng tôi để thay đổi sức khỏe thông qua khoa học và lòng trắc ẩn",
+    "subtitle": "Ủng hộ sứ mệnh cải thiện sức khỏe thông qua khoa học và lòng trắc ẩn.",
     "paymentMethods": "Phương thức thanh toán",
     "card": "Thẻ tín dụng",
     "paypal": "PayPal",
@@ -56,10 +56,54 @@
     "successMessage": "Cảm ơn bạn đã gửi tin nhắn. Chúng tôi sẽ liên hệ lại với bạn sớm."
   },
   "footer": {
-    "copyright": "© 2026 Hội bác sĩ vì y học xứ sở có trách nhiệm. Tất cả quyền được bảo lưu.",
+    "copyright": "© 2026 Ủy ban Bác sĩ vì Y học có trách nhiệm. Bảo lưu mọi quyền.",
     "privacy": "Chính sách bảo mật",
     "terms": "Điều khoản dịch vụ",
     "followUs": "Theo dõi chúng tôi"
+  },
+  "labels": {
+    "home": "Trang chủ",
+    "learnMore": "Tìm hiểu thêm",
+    "readMore": "Đọc thêm",
+    "relatedLinks": "Liên kết liên quan",
+    "openSection": "Xem chuyên mục",
+    "newsAndEvents": "Tin tức và sự kiện",
+    "topicHighlights": "Tin theo chuyên mục",
+    "latestStories": "Bài viết mới nhất",
+    "mainMenu": "Menu chính",
+    "support": "Hỗ trợ",
+    "supportOurMission": "Ủng hộ sứ mệnh của chúng tôi",
+    "seeOurVictories": "Xem thành tựu",
+    "victory": "CHIẾN THẮNG!"
+  },
+  "dynamicPage": {
+    "breadcrumbHome": "Trang chủ",
+    "relatedLinksHeading": "Liên kết liên quan"
+  },
+  "sidebar": {
+    "mainMenuHeading": "Menu chính",
+    "helpMenuHeading": "Hỗ trợ"
+  },
+  "homepage": {
+    "hero": {
+      "imageAlt": "Chú heo trên bãi cỏ",
+      "title": "Đại học Brown dừng chương trình huấn luyện gây chết người!",
+      "summary": "Cập nhật mới từ chiến dịch khoa học có đạo đức của PCRM."
+    },
+    "sections": {
+      "healthAndNutrition": "Sức khỏe và dinh dưỡng",
+      "innovativeScienceNews": "Khoa học đổi mới",
+      "goodScienceDigest": "Bản tin khoa học",
+      "goodScienceDigestSummary": "Những cập nhật khoa học ngắn gọn, đáng tin cậy cho cộng đồng quan tâm sức khỏe."
+    },
+    "impact": {
+      "title": "40 năm tạo chuyển biến",
+      "fallbackSummary": "40 năm thúc đẩy y học dự phòng.",
+      "imageAlt": "Dấu ấn PCRM"
+    },
+    "support": {
+      "fallbackSummary": "Đồng hành cùng chúng tôi trong y học dự phòng và khoa học có đạo đức."
+    }
   },
   "common": {
     "loading": "Đang tải...",

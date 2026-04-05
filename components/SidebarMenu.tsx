@@ -3,16 +3,22 @@ import Link from "next/link";
 interface SidebarMenuProps {
   mainMenu: { label: string; href: string }[];
   helpMenu: { label: string; href: string }[];
+  mainMenuHeading: string;
+  helpMenuHeading: string;
 }
 
-export default function SidebarMenu({ mainMenu, helpMenu }: SidebarMenuProps) {
+export default function SidebarMenu({
+  mainMenu,
+  helpMenu,
+  mainMenuHeading,
+  helpMenuHeading,
+}: SidebarMenuProps) {
   return (
     <aside className="space-y-6">
-      {/* Main Menu */}
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
         <div className="bg-brand-dark px-4 py-3">
           <h2 className="text-brand-teal font-semibold text-sm uppercase tracking-wide">
-            Danh mục chính
+            {mainMenuHeading}
           </h2>
         </div>
         <ul className="divide-y divide-gray-100">
@@ -43,11 +49,10 @@ export default function SidebarMenu({ mainMenu, helpMenu }: SidebarMenuProps) {
         </ul>
       </div>
 
-      {/* Help Menu */}
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
         <div className="bg-brand-mid px-4 py-3">
           <h2 className="text-white font-semibold text-sm uppercase tracking-wide">
-            Hỗ trợ
+            {helpMenuHeading}
           </h2>
         </div>
         <ul className="divide-y divide-gray-100">

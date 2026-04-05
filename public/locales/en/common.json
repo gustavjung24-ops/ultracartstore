@@ -10,7 +10,7 @@
     "ethicalScience": "Ethical Science",
     "clinicalResearch": "Clinical Research",
     "healthTopics": "Health Topics",
-    "blog": "Blog",
+    "blog": "News",
     "contact": "Contact",
     "donate": "Donate"
   },
@@ -38,7 +38,7 @@
   },
   "donate": {
     "title": "Make a Donation Today",
-    "subtitle": "Support our mission to transform health through science and compassion",
+    "subtitle": "Support our mission to transform health through science and compassion.",
     "paymentMethods": "Payment Methods",
     "card": "Credit Card",
     "paypal": "PayPal",
@@ -60,6 +60,50 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "followUs": "Follow Us"
+  },
+  "labels": {
+    "home": "Home",
+    "learnMore": "Learn More",
+    "readMore": "Read More",
+    "relatedLinks": "Related Links",
+    "openSection": "Open Section",
+    "newsAndEvents": "News and Events",
+    "topicHighlights": "Topic Highlights",
+    "latestStories": "Latest Stories",
+    "mainMenu": "Main Menu",
+    "support": "Support",
+    "supportOurMission": "Support Our Mission",
+    "seeOurVictories": "See Our Victories",
+    "victory": "VICTORY!"
+  },
+  "dynamicPage": {
+    "breadcrumbHome": "Home",
+    "relatedLinksHeading": "Related Links"
+  },
+  "sidebar": {
+    "mainMenuHeading": "Main Menu",
+    "helpMenuHeading": "Support"
+  },
+  "homepage": {
+    "hero": {
+      "imageAlt": "Pig in grass",
+      "title": "Brown University Halts Deadly Training Exercise!",
+      "summary": "Latest win from the Physicians Committee's ethical science campaign."
+    },
+    "sections": {
+      "healthAndNutrition": "Health and Nutrition",
+      "innovativeScienceNews": "Innovative Science News",
+      "goodScienceDigest": "Good Science Digest",
+      "goodScienceDigestSummary": "Short, practical science updates curated for readers and clinicians."
+    },
+    "impact": {
+      "title": "40 Years of Impact",
+      "fallbackSummary": "For 40 years, advancing preventive medicine.",
+      "imageAlt": "Impact"
+    },
+    "support": {
+      "fallbackSummary": "Join us in preventive medicine and ethical science."
+    }
   },
   "common": {
     "loading": "Loading...",

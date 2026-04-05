@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SidebarMenu from "@/components/SidebarMenu";
 import { getProductsByCategoryFromData, getStoreData } from "@/lib/store-data";
+import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 const healthTopicHighlights = [
   {
@@ -44,6 +45,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function CategoryPage({ params }: PageProps) {
+  const lang = await getSiteLanguageFromCookie();
+  const locale = getCommonLocale(lang);
   const { category } = await params;
   const { products, categories, mainMenu, helpMenu } = await getStoreData();
   const cat = categories.find((c) => c.slug === category);
@@ -126,7 +129,12 @@ export default async function CategoryPage({ params }: PageProps) {
 
           {/* Sidebar */}
           <div className="w-full lg:w-64 xl:w-72 flex-shrink-0">
-            <SidebarMenu mainMenu={mainMenu} helpMenu={helpMenu} />
+            <SidebarMenu
+              mainMenu={mainMenu}
+              helpMenu={helpMenu}
+              mainMenuHeading={locale.sidebar.mainMenuHeading}
+              helpMenuHeading={locale.sidebar.helpMenuHeading}
+            />
           </div>
         </div>
       </div>

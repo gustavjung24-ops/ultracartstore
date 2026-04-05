@@ -1,10 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getAllPcrmPages, getPcrmPageBySegments, toInternalPcrmHref } from "@/lib/pcrm-content";
+import {
+  getAllPcrmPages,
+  getLocalizedPcrmPageContent,
+  getPcrmPageBySegments,
+  toInternalPcrmHref,
+} from "@/lib/pcrm-content";
+import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 type Props = {
   params: Promise<{ slug: string[] }>;
@@ -51,21 +56,16 @@ export async function generateStaticParams() {
 
 export default async function DynamicPcrmPage({ params }: Props) {
   const { slug } = await params;
-  const lang = (await cookies()).get("site_lang")?.value === "vi" ? "vi" : "en";
+  const lang = await getSiteLanguageFromCookie();
+  const locale = getCommonLocale(lang);
   const page = getPcrmPageBySegments(slug);
 
   if (!page || page.path === "/") {
     notFound();
   }
 
-  const title = lang === "vi" ? page.h1_vi?.[0] || page.title_vi || page.h1[0] || page.title : page.h1_en?.[0] || page.title_en || page.h1[0] || page.title;
-  const description = lang === "vi" ? page.description_vi || page.description : page.description_en || page.description;
-  const h2 = lang === "vi" ? page.h2_vi || page.h2_en || page.h2 : page.h2_en || page.h2;
-  const h3 = lang === "vi" ? page.h3_vi || page.h3_en || page.h3 : page.h3_en || page.h3;
-  const paragraphs = lang === "vi" ? page.paragraphs_vi || page.paragraphs_en || page.paragraphs : page.paragraphs_en || page.paragraphs;
-  const links = lang === "vi" && page.links_vi?.length
-    ? page.links_vi.map((link) => ({ text: link.text_vi || link.text, url: link.url }))
-    : page.links;
+  const localizedPage = getLocalizedPcrmPageContent(page, lang);
+  const { title, description, h2, h3, paragraphs, links } = localizedPage;
   const normalizedLinks = links.map((link) => {
     const mapped = toInternalPcrmHref(link.url);
     return {
@@ -81,7 +81,7 @@ export default async function DynamicPcrmPage({ params }: Props) {
       <Header />
       <main className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-10">
         <div className="mb-4 text-sm text-slate-500">
-          <span>{lang === "vi" ? "Trang chủ" : "Home"}</span>
+          <span>{locale.dynamicPage.breadcrumbHome}</span>
           <span className="mx-2">/</span>
           <span>{title}</span>
         </div>
@@ -116,24 +116,24 @@ export default async function DynamicPcrmPage({ params }: Props) {
 
           {normalizedLinks.length ? (
             <section className="mt-10 border-t border-slate-200 pt-8">
-            <h3 className="text-lg font-bold text-slate-900">{lang === "vi" ? "Liên kết liên quan" : "Related Links"}</h3>
-            <ul className="mt-3 list-disc pl-6 space-y-2">
-              {normalizedLinks.slice(0, 24).map((link, index) => (
-                <li key={`${link.href}-${index}`}>
-                  {link.internal ? (
-                    <Link href={link.href} className="text-[#006c96] hover:underline">
-                      {link.text}
-                    </Link>
-                  ) : (
-                    <a href={link.href} className="text-[#006c96] hover:underline" target="_blank" rel="noreferrer">
-                      {link.text}
-                    </a>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
+              <h3 className="text-lg font-bold text-slate-900">{locale.dynamicPage.relatedLinksHeading}</h3>
+              <ul className="mt-3 list-disc pl-6 space-y-2">
+                {normalizedLinks.slice(0, 24).map((link, index) => (
+                  <li key={`${link.href}-${index}`}>
+                    {link.internal ? (
+                      <Link href={link.href} className="text-[#006c96] hover:underline">
+                        {link.text}
+                      </Link>
+                    ) : (
+                      <a href={link.href} className="text-[#006c96] hover:underline" target="_blank" rel="noreferrer">
+                        {link.text}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
 
           {showTrustBadges ? (
             <section className="mt-10 rounded-sm bg-[#0b485a] p-5 md:p-8">

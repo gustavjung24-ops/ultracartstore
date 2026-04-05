@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SidebarMenu from "@/components/SidebarMenu";
 import { getStoreData } from "@/lib/store-data";
+import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 export const metadata: Metadata = {
   title: "Cửa hàng - Physicians Committee Shop",
@@ -18,6 +19,8 @@ const breadcrumbs = [
 ];
 
 export default async function ShopPage() {
+  const lang = await getSiteLanguageFromCookie();
+  const locale = getCommonLocale(lang);
   const { products, categories, mainMenu, helpMenu } = await getStoreData();
   const healthTopicProducts = products.filter((product) => product.category === "health-topics");
 
@@ -145,7 +148,12 @@ export default async function ShopPage() {
 
           {/* Sidebar */}
           <div className="w-full lg:w-64 xl:w-72 flex-shrink-0">
-            <SidebarMenu mainMenu={mainMenu} helpMenu={helpMenu} />
+            <SidebarMenu
+              mainMenu={mainMenu}
+              helpMenu={helpMenu}
+              mainMenuHeading={locale.sidebar.mainMenuHeading}
+              helpMenuHeading={locale.sidebar.helpMenuHeading}
+            />
           </div>
         </div>
       </div>

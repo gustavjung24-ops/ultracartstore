@@ -10,6 +10,7 @@ import RelatedResources from "@/components/RelatedResources";
 import Footer from "@/components/Footer";
 
 import { getStoreData } from "@/lib/store-data";
+import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -32,6 +33,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProductPage({ params }: PageProps) {
+  const lang = await getSiteLanguageFromCookie();
+  const locale = getCommonLocale(lang);
   const { slug } = await params;
   const { products, mainMenu, helpMenu } = await getStoreData();
   const product = products.find((item) => item.slug === slug);
@@ -85,7 +88,12 @@ export default async function ProductPage({ params }: PageProps) {
 
           {/* Sidebar (right 1/4 on desktop) */}
           <div className="w-full lg:w-64 xl:w-72 flex-shrink-0">
-            <SidebarMenu mainMenu={mainMenu} helpMenu={helpMenu} />
+            <SidebarMenu
+              mainMenu={mainMenu}
+              helpMenu={helpMenu}
+              mainMenuHeading={locale.sidebar.mainMenuHeading}
+              helpMenuHeading={locale.sidebar.helpMenuHeading}
+            />
           </div>
         </div>
       </div>
