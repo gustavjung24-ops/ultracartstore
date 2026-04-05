@@ -15,7 +15,7 @@
     "forClinicians": "Dành cho chuyên gia lâm sàng",
     "forMedicalStudents": "Dành cho sinh viên y khoa",
     "forScientists": "Dành cho nhà khoa học",
-    "aboutUs": "Giới thiệu"
+    "aboutUs": "Về chúng tôi"
   },
   "mainNav": {
     "goodNutrition": "Dinh dưỡng lành mạnh",
@@ -103,22 +103,22 @@
     "openMainSection": "Mở mục chính",
     "sourceNotice": "Nội dung trang web này được trích dẫn từ",
     "home": {
-      "victory": "Cập nhật nổi bật",
-      "heroTitle": "Đại học Brown dừng chương trình huấn luyện gây tử vong",
-      "heroSummary": "Một cập nhật nổi bật từ nội dung khoa học có đạo đức của PCRM.",
+      "victory": "Tin nổi bật",
+      "heroTitle": "Đại học Brown tạm dừng bài tập huấn luyện gây chết người",
+      "heroSummary": "Tổ chức y tế phi lợi nhuận thúc đẩy y học dự phòng, nghiên cứu lâm sàng và các tiêu chuẩn cao về đạo đức, hiệu quả trong nghiên cứu và đào tạo.",
       "heroImageAlt": "Chú heo trên bãi cỏ",
-      "topicHighlights": "Điểm nhấn theo chuyên mục",
+      "topicHighlights": "Điểm nhấn theo chủ đề",
       "innovativeScienceNews": "Tin khoa học đổi mới",
-      "innovativeScienceSummary": "Tổng hợp các tiến triển và thay đổi chính sách trong khoa học phù hợp với con người.",
+      "innovativeScienceSummary": "Tin tức về khoa học nhân văn và phù hợp với con người.",
       "goodScienceDigest": "Bản tin khoa học",
-      "goodScienceDigestSummary": "Những cập nhật khoa học ngắn gọn, đáng tin cậy cho cộng đồng quan tâm sức khỏe.",
+      "goodScienceDigestSummary": "Cập nhật khoa học từ các chuyên gia của Ủy ban Bác sĩ.",
       "openSection": "Xem chuyên mục",
-      "impactTitle": "Điểm nhấn tác động trong 40 năm",
-      "impactFallbackSummary": "40 năm thúc đẩy y học dự phòng.",
+      "impactTitle": "40 năm tạo tác động",
+      "impactFallbackSummary": "Thúc đẩy y học dự phòng cùng nghiên cứu khoa học hiệu quả, có đạo đức.",
       "impactImageAlt": "Dấu ấn PCRM",
-      "latestStories": "Bài viết mới nhất",
-      "seeOurVictories": "Xem các thành tựu của PCRM",
-      "supportFallbackSummary": "Khám phá cách y học dự phòng và khoa học có đạo đức được thể hiện qua các nội dung tuyển chọn này."
+      "latestStories": "Tin mới nhất",
+      "seeOurVictories": "Xem các thành tựu của chúng tôi",
+      "supportFallbackSummary": "Khám phá các nội dung chọn lọc về y học dự phòng và khoa học có đạo đức."
     },
     "contact": {
       "title": "Biểu mẫu liên hệ",
