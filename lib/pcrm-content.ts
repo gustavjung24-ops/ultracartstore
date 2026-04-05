@@ -66,6 +66,7 @@ export interface LocalizedPcrmPageContent {
 const BASE = "https://www.pcrm.org";
 const PATH_ALIASES: Record<string, string> = {
   "/contact-us": "/contact",
+  "/our-research": "/clinical-research",
 };
 
 const QA_TARGET_HUBS = new Set([
@@ -73,6 +74,8 @@ const QA_TARGET_HUBS = new Set([
   "/good-nutrition",
   "/health-topics",
   "/ethical-science",
+  "/clinical-research",
+  "/news/blog",
 ]);
 const MEMBERSHIP_CTA_EN = "Make your 2026 membership gift today!";
 const MEMBERSHIP_CTA_VI = "Hãy tặng quà thành viên năm 2026 ngay hôm nay!";
@@ -134,9 +137,48 @@ const QA_LINK_EXCLUDE_BY_PATH: Record<string, Set<string>> = {
     "/barnard-medical-center",
     "/contact-us",
   ]),
+  "/clinical-research": new Set([
+    "/#main-content",
+    "/",
+    "/good-nutrition/nutrition-for-clinicians",
+    "/good-nutrition/nutrition-for-clinicians/medical-students",
+    "/term/scientists",
+    "/about-us",
+    "/about-us#leadership",
+    "/about-us/our-victories",
+    "/about-us/careers",
+    "/about-us/careers/internships",
+    "/events",
+    "/about-us/financial-report",
+    "/barnard-medical-center",
+    "/contact-us",
+    "/clinical-research",
+  ]),
+  "/news/blog": new Set([
+    "/#main-content",
+    "/",
+    "/good-nutrition/nutrition-for-clinicians",
+    "/good-nutrition/nutrition-for-clinicians/medical-students",
+    "/term/scientists",
+    "/about-us",
+    "/about-us#leadership",
+    "/about-us/our-victories",
+    "/about-us/careers",
+    "/about-us/careers/internships",
+    "/events",
+    "/about-us/financial-report",
+    "/barnard-medical-center",
+    "/contact-us",
+    "/good-nutrition/plant-based-diets/ffl/classes",
+  ]),
 };
 
 const QA_REQUIRED_LINK_PATHS_BY_PAGE: Record<string, string[]> = {
+  "/clinical-research": [
+    "/clinical-research/recruitment",
+    "/clinical-research/endometriosis",
+    "/clinical-research/fighting-hot-flashes-with-diet",
+  ],
   "/ethical-science": [
     "/ethical-science/ethical-education-and-training/surgery-training",
     "/ethical-science/ethical-education-and-training/paramedic-training",
@@ -147,6 +189,18 @@ const QA_REQUIRED_LINK_PATHS_BY_PAGE: Record<string, string[]> = {
 };
 
 const QA_FALLBACK_LINK_LABELS_BY_PATH: Record<string, { en: string; vi: string }> = {
+  "/clinical-research/recruitment": {
+    en: "Type 1 Diabetes Research Study",
+    vi: "Nghiên cứu bệnh tiểu đường loại 1",
+  },
+  "/clinical-research/endometriosis": {
+    en: "Endometriosis Study",
+    vi: "Nghiên cứu lạc nội mạc tử cung",
+  },
+  "/clinical-research/fighting-hot-flashes-with-diet": {
+    en: "Fighting Hot Flashes With Diet",
+    vi: "Kiểm soát bốc hỏa bằng chế độ ăn",
+  },
   "/ethical-science/ethical-education-and-training/surgery-training": {
     en: "Replacing Animals in Surgery Training",
     vi: "Thay thế động vật trong đào tạo phẫu thuật",
@@ -183,7 +237,25 @@ const QA_VI_LINK_TEXT_REPLACEMENTS: Record<string, string> = {
   "Động vật trong nghiên cứu y học": "Động vật trong nghiên cứu y khoa",
   "Thử nghiệm và thay thế động vật": "Thử nghiệm trên động vật và giải pháp thay thế",
   "Đào tạo y tế": "Đào tạo nhân viên cấp cứu",
+  "tin tức phát hành": "Thông cáo báo chí",
+  "Chống lại cơn bốc hỏa bằng chế độ ăn kiêng": "Kiểm soát bốc hỏa bằng chế độ ăn",
 };
+
+const BLOG_PARAGRAPH_NOISE_EN = new Set([
+  "Blog | Impact & Advocacy",
+  "Xavier Toledo, MS, RD, LDN",
+  "Prevention starts today. Join the 21-Day Vegan Kickstart.",
+  "Get Healthy With Good Nutrition",
+  "Food for Life classes teach you how to improve your health with a plant-based diet.",
+]);
+
+const BLOG_PARAGRAPH_NOISE_VI = new Set([
+  "Blog | Tác động & Vận động",
+  "Xavier Toledo, MS, RD, LDN",
+  "Phòng ngừa bắt đầu từ hôm nay. Tham gia Khởi động thuần chay 21 ngày.",
+  "Khỏe mạnh nhờ dinh dưỡng tốt",
+  "Các lớp học Food for Life hướng dẫn bạn cách cải thiện sức khỏe của mình bằng chế độ ăn dựa trên thực vật.",
+]);
 
 const QA_VI_PARAGRAPH_REPLACEMENTS_BY_PATH: Record<string, Record<string, string>> = {
   "/ethical-science": {
@@ -305,6 +377,14 @@ function trimLeadingParagraphIfDuplicate(paragraphs: string[], lead: string): st
   }
 
   return paragraphs[0] === lead ? paragraphs.slice(1) : paragraphs;
+}
+
+function removeKnownNoiseParagraphs(
+  paragraphs: string[],
+  lang: ContentLanguage,
+): string[] {
+  const noise = lang === "vi" ? BLOG_PARAGRAPH_NOISE_VI : BLOG_PARAGRAPH_NOISE_EN;
+  return paragraphs.filter((paragraph) => !noise.has(paragraph));
 }
 
 function normalizePathFromHubLinkUrl(url: string): string | null {
@@ -436,6 +516,34 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
       descriptionVi = firstNonEmptyString(paragraphsVi[0], descriptionEn);
     }
 
+    paragraphsEn = trimLeadingParagraphIfDuplicate(paragraphsEn, descriptionEn);
+    paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, descriptionVi);
+  }
+
+  if (page.path === "/clinical-research") {
+    if (!isNonEmptyString(descriptionEn) || descriptionEn === MEMBERSHIP_CTA_EN) {
+      descriptionEn = firstNonEmptyString(paragraphsEn[0], page.title_en, page.title);
+    }
+
+    if (!isNonEmptyString(descriptionVi) || descriptionVi === MEMBERSHIP_CTA_VI) {
+      descriptionVi = firstNonEmptyString(paragraphsVi[0], descriptionEn);
+    }
+
+    paragraphsEn = trimLeadingParagraphIfDuplicate(paragraphsEn, descriptionEn);
+    paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, descriptionVi);
+  }
+
+  if (page.path === "/news/blog") {
+    if (!isNonEmptyString(descriptionEn) || descriptionEn === MEMBERSHIP_CTA_EN) {
+      descriptionEn = firstNonEmptyString(paragraphsEn[0], page.title_en, page.title);
+    }
+
+    if (!isNonEmptyString(descriptionVi) || descriptionVi === MEMBERSHIP_CTA_VI) {
+      descriptionVi = firstNonEmptyString(paragraphsVi[0], descriptionEn);
+    }
+
+    paragraphsEn = removeKnownNoiseParagraphs(paragraphsEn, "en");
+    paragraphsVi = removeKnownNoiseParagraphs(paragraphsVi, "vi");
     paragraphsEn = trimLeadingParagraphIfDuplicate(paragraphsEn, descriptionEn);
     paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, descriptionVi);
   }
@@ -749,7 +857,9 @@ export function getAllPcrmPages() {
 }
 
 export function getPcrmPageByPath(path: string) {
-  return byPath.get(normalizePath(path));
+  const normalizedPath = normalizePath(path);
+  const aliasedPath = PATH_ALIASES[normalizedPath] || normalizedPath;
+  return byPath.get(aliasedPath);
 }
 
 export function getPcrmPageBySegments(segments: string[] = []) {
@@ -804,7 +914,9 @@ export function getBlogPages() {
 }
 
 export function getPcrmPageSourceResolution(path: string) {
-  return sourceResolutionByPath.get(normalizePath(path));
+  const normalizedPath = normalizePath(path);
+  const aliasedPath = PATH_ALIASES[normalizedPath] || normalizedPath;
+  return sourceResolutionByPath.get(aliasedPath);
 }
 
 export function getAllPcrmPageSourceResolutions() {
