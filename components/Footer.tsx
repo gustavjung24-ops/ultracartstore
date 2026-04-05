@@ -1,136 +1,164 @@
-import Link from "next/link";
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useMemo, useState } from 'react';
+import type { Language } from '@/lib/translations';
+import {
+  COMMON_LOCALES,
+  FOOTER_LEGAL_LINKS,
+  FOOTER_UTILITY_LINKS,
+  HEADER_MAIN_NAV_GROUPS,
+  resolveCatalogLabel,
+} from '@/lib/navigation-catalog';
+
+function getLanguageFromCookie(): Language | null {
+  if (typeof document === 'undefined') {
+    return null;
+  }
+
+  const match = document.cookie.match(/(?:^|; )site_lang=(en|vi)(?:;|$)/);
+  if (!match) {
+    return null;
+  }
+
+  const value = match[1];
+  return value === 'vi' ? 'vi' : 'en';
+}
 
 export default function Footer() {
+  const [language, setLanguage] = useState<Language>('en');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('language');
+    if (saved === 'en' || saved === 'vi') {
+      setLanguage(saved);
+      return;
+    }
+
+    const cookieLanguage = getLanguageFromCookie();
+    if (cookieLanguage) {
+      setLanguage(cookieLanguage);
+    }
+  }, []);
+
+  const locale = useMemo(() => COMMON_LOCALES[language], [language]);
   const currentYear = new Date().getFullYear();
 
+  const mainNavLinks = useMemo(
+    () =>
+      HEADER_MAIN_NAV_GROUPS.map((group) => ({
+        href: group.href,
+        label: resolveCatalogLabel(locale, language, group),
+      })),
+    [locale, language]
+  );
+
+  const utilityLinks = useMemo(
+    () =>
+      FOOTER_UTILITY_LINKS.map((item) => ({
+        href: item.href,
+        label: resolveCatalogLabel(locale, language, item),
+        external: item.external,
+      })),
+    [locale, language]
+  );
+
+  const legalLinks = useMemo(
+    () =>
+      FOOTER_LEGAL_LINKS.map((item) => ({
+        href: item.href,
+        label: resolveCatalogLabel(locale, language, item),
+      })),
+    [locale, language]
+  );
+
   return (
-    <footer className="bg-gray-900 text-gray-100">
-      {/* Main Footer Content */}
-      <div className="mx-auto max-w-7xl px-4 md:px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* About Column */}
+    <footer className="mt-16 border-t border-[#dbe5ec] bg-white text-[#1f2d3d]">
+      <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Link href="/" className="mb-4 inline-block rounded-sm bg-[#f1f3f5] px-3 py-2 no-underline">
-              <img
+            <Link href="/" className="inline-block no-underline">
+              <Image
                 src="/images/pcrm-wordmark.svg"
-                alt="Physicians Committee for Responsible Medicine"
-                className="h-auto w-[240px] max-w-full"
+                alt={locale.site.name}
+                width={210}
+                height={95}
+                className="h-auto w-[180px]"
               />
             </Link>
-            <p className="text-gray-300 text-sm leading-6">
-              Physicians Committee for Responsible Medicine - Promoting preventive medicine, ethical research, and higher standards for medical training.
-            </p>
-            <div className="mt-4 flex gap-3">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-[#f0ad4e] hover:text-white transition">
-                <span className="sr-only">Facebook</span>📘
+            <p className="mt-4 text-sm leading-relaxed text-[#4a6072]">{locale.site.tagline}</p>
+            <div className="mt-4 flex gap-3 text-sm font-medium">
+              <a href="https://www.facebook.com/PCRM.org" target="_blank" rel="noreferrer" className="no-underline hover:text-[#007fab]">
+                Facebook
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[#f0ad4e] hover:text-white transition">
-                <span className="sr-only">Twitter</span>🐦
+              <a href="https://www.instagram.com/pcrmhealth/" target="_blank" rel="noreferrer" className="no-underline hover:text-[#007fab]">
+                Instagram
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-[#f0ad4e] hover:text-white transition">
-                <span className="sr-only">YouTube</span>▶️
+              <a href="https://www.youtube.com/user/PCRMvideos" target="_blank" rel="noreferrer" className="no-underline hover:text-[#007fab]">
+                YouTube
               </a>
             </div>
           </div>
 
-          {/* Main Topics */}
           <div>
-            <h4 className="text-base font-bold text-white mb-4">Our Work</h4>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#007fab]">{locale.common.mainMenu}</h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/good-nutrition" className="text-gray-300 hover:text-[#f0ad4e] transition">
-                  Good Nutrition
-                </Link>
-              </li>
-              <li>
-                <Link href="/ethical-science" className="text-gray-300 hover:text-[#f0ad4e] transition">
-                  Ethical Science
-                </Link>
-              </li>
-              <li>
-                <Link href="/clinical-research" className="text-gray-300 hover:text-[#f0ad4e] transition">
-                  Clinical Research
-                </Link>
-              </li>
-              <li>
-                <Link href="/health-topics" className="text-gray-300 hover:text-[#f0ad4e] transition">
-                  Health Topics
-                </Link>
-              </li>
+              {mainNavLinks.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Resources */}
           <div>
-            <h4 className="text-base font-bold text-white mb-4">Resources</h4>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#007fab]">{locale.common.resources}</h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/news/blog" className="text-gray-300 hover:text-[#f0ad4e] transition">
-                  News & Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop" className="text-gray-300 hover:text-[#f0ad4e] transition">
-                  Shop & Downloads
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-300 hover:text-[#f0ad4e] transition">
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="text-gray-300 hover:text-[#f0ad4e] transition">
-                  Privacy Policy
-                </Link>
-              </li>
+              {utilityLinks.map((item) => (
+                <li key={item.href}>
+                  {item.external ? (
+                    <a href={item.href} target="_blank" rel="noreferrer" className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link href={item.href} className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="text-base font-bold text-white mb-4">Contact</h4>
-            <div className="space-y-3 text-sm text-gray-300">
-              <p>
-                <span className="font-semibold text-white">📍 Address:</span><br />
-                5100 Wisconsin Ave NW<br />
-                Washington, DC 20016
-              </p>
-              <p>
-                <span className="font-semibold text-white">📞 Phone:</span><br />
-                <a href="tel:+1-202-527-7306" className="text-[#f0ad4e] hover:underline">
-                  (202) 527-7306
-                </a>
-              </p>
-              <p>
-                <span className="font-semibold text-white">📧 Email:</span><br />
-                <a href="mailto:info@pcrm.org" className="text-[#f0ad4e] hover:underline">
-                  info@pcrm.org
-                </a>
-              </p>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#007fab]">{locale.utilityNav.contact}</h4>
+            <address className="not-italic text-sm leading-relaxed text-[#4a6072]">
+              5100 Wisconsin Ave. NW, Suite 400
+              <br />
+              Washington, D.C. 20016
+            </address>
+            <div className="mt-3 space-y-1 text-sm">
+              <a href="mailto:info@pcrm.org" className="block text-[#1f2d3d] no-underline hover:text-[#007fab]">
+                info@pcrm.org
+              </a>
+              <a href="tel:+1-202-686-2210" className="block text-[#1f2d3d] no-underline hover:text-[#007fab]">
+                (202) 686-2210
+              </a>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-800 px-4 md:px-6 py-8">
-        <div className="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-          <p>
-            &copy; {currentYear} Physicians Committee for Responsible Medicine. All rights reserved.
-          </p>
+        <div className="mt-10 flex flex-col gap-3 border-t border-[#e2e8f0] pt-6 text-sm text-[#64748b] md:flex-row md:items-center md:justify-between">
+          <p>Copyright {currentYear} {locale.site.name}. All rights reserved.</p>
           <div className="flex gap-4">
-            <Link href="/privacy-policy" className="hover:text-[#f0ad4e] transition">
-              Privacy Policy
-            </Link>
-            <span>•</span>
-            <a href="#" className="hover:text-[#f0ad4e] transition">
-              Terms of Use
-            </a>
-            <span>•</span>
-            <a href="#" className="hover:text-[#f0ad4e] transition">
-              Sitemap
-            </a>
+            {legalLinks.map((item) => (
+              <Link key={item.href} href={item.href} className="no-underline hover:text-[#007fab]">
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

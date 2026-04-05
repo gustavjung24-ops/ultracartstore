@@ -29,6 +29,14 @@ Repo: `gustavjung24-ops/ultracartstore`
 - [x] Add to repo
 - [x] Use as architecture reference before refactoring
 
+### `docs/common-vs-navigation-catalog.md`
+- [x] Define boundary between minimal common keys and navigation catalog
+- [x] Lock ownership of labels vs menu structure
+
+### `docs/pcrm-menu-crosswalk.md`
+- [x] Build menu crosswalk for current PCRM navigation
+- [x] Lock official key namespaces for Header/Footer
+
 ### `docs/todo-by-file.md`
 - [x] Add to repo
 - [x] Keep updated as tasks are completed
@@ -106,8 +114,8 @@ Repo: `gustavjung24-ops/ultracartstore`
 - [ ] Remove leftover machine-like headings
 
 ### Shared navigation/footer files
-- [ ] Ensure all repeated labels come from locale files
-- [ ] Match glossary-approved wording
+- [x] Ensure all repeated labels come from locale files
+- [x] Match glossary-approved wording
 
 ---
 
