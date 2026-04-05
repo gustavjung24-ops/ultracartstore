@@ -340,22 +340,6 @@ export const HEADER_MAIN_NAV_GROUPS: HeaderMainGroup[] = [
     ],
   },
   {
-    id: "waysToGive",
-    href: "/donate",
-    columns: 2,
-    key: "mainNav.waysToGive",
-    localePath: "mainNav.waysToGive",
-    fallback: { en: "Ways to Give", vi: "Các cách ủng hộ" },
-    items: [
-      { href: "/donate", key: "waysToGive.donate", localePath: "waysToGive.donate", fallback: { en: "Donate", vi: "Quyên góp" } },
-      { href: "/donate", key: "waysToGive.donateNow", localePath: "waysToGive.donateNow", fallback: { en: "Donate Now", vi: "Quyên góp ngay" } },
-      { href: "/take-action", key: "mainNav.takeAction", localePath: "mainNav.takeAction", fallback: { en: "Take Action", vi: "Cùng hành động" } },
-      { href: "/about-us/our-victories", key: "waysToGiveMenu.ourVictories", fallback: { en: "Our Victories", vi: "Thành tựu của chúng tôi" } },
-      { href: "/about-us/financial-report", key: "waysToGiveMenu.annualFinancialReports", fallback: { en: "Annual & Financial Reports", vi: "Báo cáo thường niên và tài chính" } },
-      { href: "/about-us/careers", key: "waysToGiveMenu.careers", localePath: "utilityNav.careers", fallback: { en: "Careers", vi: "Tuyển dụng" } }
-    ],
-  },
-  {
     id: "takeAction",
     href: "/take-action",
     columns: 2,

@@ -23,7 +23,6 @@
     "ethicalScience": "Ethical Science",
     "ourResearch": "Our Research",
     "news": "News",
-    "waysToGive": "Ways to Give",
     "takeAction": "Take Action"
   },
   "goodNutrition": {
@@ -60,11 +59,6 @@
     "innovativeScienceNews": "Innovative Science News",
     "goodScienceDigest": "Good Science Digest"
   },
-  "waysToGive": {
-    "title": "Ways to Give",
-    "donate": "Donate",
-    "donateNow": "Donate Now"
-  },
   "utilityNav": {
     "events": "Events",
     "shop": "Shop",
@@ -95,7 +89,7 @@
     "resource": "Resource",
     "relatedLinks": "Related Links",
     "newsAndEvents": "News & Events",
-    "supportOurMission": "Support Our Mission",
+    "supportOurMission": "Our Mission in Action",
     "mainMenu": "Main Menu",
     "support": "Support",
     "language": "Language",
@@ -122,7 +116,7 @@
       "impactImageAlt": "Impact",
       "latestStories": "Latest Stories",
       "seeOurVictories": "See Our Victories",
-      "supportFallbackSummary": "Join us in preventive medicine and ethical science."
+      "supportFallbackSummary": "See how preventive medicine and ethical science create real-world impact."
     },
     "contact": {
       "title": "Contact Form",

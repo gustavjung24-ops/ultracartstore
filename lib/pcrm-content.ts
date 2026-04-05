@@ -226,7 +226,7 @@ const QA_FALLBACK_LINK_LABELS_BY_PATH: Record<string, { en: string; vi: string }
 const QA_VI_LINK_TEXT_REPLACEMENTS: Record<string, string> = {
   "Khả năng lãnh đạo": "Ban lãnh đạo",
   "Nghề nghiệp": "Tuyển dụng",
-  "Cách cho đi": "Các cách ủng hộ",
+  "Cách cho đi": "Thông tin hỗ trợ",
   "Chủ tịch Hội đồng Tổng thống": "Chủ tịch Hội đồng Chủ tịch",
   "Đánh dấu Hammond, MD": "Mark Hammond, MD",
   "Ca sĩ Mikalah, JD, LLM": "Mikalah Singer, JD, LLM",
@@ -877,7 +877,6 @@ export function getMainNavigation() {
     "/health-topics",
     "/news/blog",
     "/contact",
-    "/donate",
   ];
 
   return preferred

@@ -23,7 +23,6 @@
     "ethicalScience": "Khoa học có đạo đức",
     "ourResearch": "Nghiên cứu của chúng tôi",
     "news": "Tin tức",
-    "waysToGive": "Các cách ủng hộ",
     "takeAction": "Cùng hành động"
   },
   "goodNutrition": {
@@ -60,11 +59,6 @@
     "innovativeScienceNews": "Khoa học đổi mới",
     "goodScienceDigest": "Bản tin khoa học"
   },
-  "waysToGive": {
-    "title": "Các cách ủng hộ",
-    "donate": "Quyên góp",
-    "donateNow": "Quyên góp ngay"
-  },
   "utilityNav": {
     "events": "Sự kiện",
     "shop": "Cửa hàng",
@@ -95,7 +89,7 @@
     "resource": "Tài nguyên",
     "relatedLinks": "Liên kết liên quan",
     "newsAndEvents": "Tin tức và sự kiện",
-    "supportOurMission": "Ủng hộ sứ mệnh của chúng tôi",
+    "supportOurMission": "Sứ mệnh của chúng tôi trong hành động",
     "mainMenu": "Menu chính",
     "support": "Hỗ trợ",
     "language": "Ngôn ngữ",
@@ -122,7 +116,7 @@
       "impactImageAlt": "Dấu ấn PCRM",
       "latestStories": "Bài viết mới nhất",
       "seeOurVictories": "Xem thành tựu",
-      "supportFallbackSummary": "Đồng hành cùng chúng tôi trong y học dự phòng và khoa học có đạo đức."
+      "supportFallbackSummary": "Khám phá cách y học dự phòng và khoa học có đạo đức tạo ra tác động thực tế."
     },
     "contact": {
       "title": "Biểu mẫu liên hệ",

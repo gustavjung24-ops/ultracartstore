@@ -15,10 +15,6 @@ import {
   type CommonLocaleDictionary,
 } from '@/lib/navigation-catalog';
 
-type HeaderProps = {
-  showDonateButton?: boolean;
-};
-
 type RenderNavItem = {
   href: string;
   label: string;
@@ -48,7 +44,7 @@ function toRenderItem(locale: CommonLocaleDictionary, language: Language, item: 
   };
 }
 
-export default function Header({ showDonateButton = false }: HeaderProps) {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const [language, setLanguage] = useState<Language>(() => getPreferredClientLanguage());
@@ -111,7 +107,6 @@ export default function Header({ showDonateButton = false }: HeaderProps) {
 
   const currentLabels = useMemo(() => {
     return {
-      donate: locale.waysToGive.donate,
       menu: locale.common.mainMenu,
       quickAccess: locale.repoUi.quickAccess,
       openMainSection: locale.repoUi.openMainSection,
@@ -207,15 +202,6 @@ export default function Header({ showDonateButton = false }: HeaderProps) {
                 <div className="hidden lg:block">
                   <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
                 </div>
-              ) : null}
-
-              {showDonateButton ? (
-                <Link
-                  href="/donate"
-                  className="rounded-md bg-[#f0ad4e] px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.04em] text-slate-900 no-underline transition hover:bg-[#e39c36] sm:px-4 sm:py-2 sm:text-xs"
-                >
-                  {currentLabels.donate}
-                </Link>
               ) : null}
 
               <button

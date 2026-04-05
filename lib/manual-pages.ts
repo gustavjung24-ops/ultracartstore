@@ -314,10 +314,10 @@ const manualPageSpecs: ManualPageSpec[] = [
   ],
   [
     "/ways-to-give",
-    "Ways to Give",
-    "Các cách ủng hộ",
-    "Donation methods and support options.",
-    "Các phương thức quyên góp và lựa chọn ủng hộ.",
+    "Support Information",
+    "Thông tin hỗ trợ",
+    "This supporting reference site does not accept donations.",
+    "Website tham chiếu này không tiếp nhận quyên góp.",
   ],
 ];
 
