@@ -68,7 +68,12 @@ const PATH_ALIASES: Record<string, string> = {
   "/contact-us": "/contact",
 };
 
-const QA_TARGET_HUBS = new Set(["/about-us", "/good-nutrition"]);
+const QA_TARGET_HUBS = new Set([
+  "/about-us",
+  "/good-nutrition",
+  "/health-topics",
+  "/ethical-science",
+]);
 const MEMBERSHIP_CTA_EN = "Make your 2026 membership gift today!";
 const MEMBERSHIP_CTA_VI = "Hãy tặng quà thành viên năm 2026 ngay hôm nay!";
 
@@ -97,6 +102,71 @@ const QA_LINK_EXCLUDE_BY_PATH: Record<string, Set<string>> = {
     "/barnard-medical-center",
     "/contact-us",
   ]),
+  "/health-topics": new Set([
+    "/#main-content",
+    "/",
+    "/good-nutrition/nutrition-for-clinicians",
+    "/good-nutrition/nutrition-for-clinicians/medical-students",
+    "/term/scientists",
+    "/about-us",
+    "/about-us#leadership",
+    "/about-us/our-victories",
+    "/about-us/careers",
+    "/about-us/careers/internships",
+    "/events",
+    "/about-us/financial-report",
+    "/barnard-medical-center",
+    "/contact-us",
+  ]),
+  "/ethical-science": new Set([
+    "/#main-content",
+    "/",
+    "/good-nutrition/nutrition-for-clinicians",
+    "/good-nutrition/nutrition-for-clinicians/medical-students",
+    "/term/scientists",
+    "/about-us",
+    "/about-us#leadership",
+    "/about-us/our-victories",
+    "/about-us/careers",
+    "/about-us/careers/internships",
+    "/events",
+    "/about-us/financial-report",
+    "/barnard-medical-center",
+    "/contact-us",
+  ]),
+};
+
+const QA_REQUIRED_LINK_PATHS_BY_PAGE: Record<string, string[]> = {
+  "/ethical-science": [
+    "/ethical-science/ethical-education-and-training/surgery-training",
+    "/ethical-science/ethical-education-and-training/paramedic-training",
+    "/ethical-science/animals-in-medical-research",
+    "/ethical-science/animal-testing-and-alternatives",
+    "/take-action",
+  ],
+};
+
+const QA_FALLBACK_LINK_LABELS_BY_PATH: Record<string, { en: string; vi: string }> = {
+  "/ethical-science/ethical-education-and-training/surgery-training": {
+    en: "Replacing Animals in Surgery Training",
+    vi: "Thay thế động vật trong đào tạo phẫu thuật",
+  },
+  "/ethical-science/ethical-education-and-training/paramedic-training": {
+    en: "Paramedic Training",
+    vi: "Đào tạo nhân viên cấp cứu",
+  },
+  "/ethical-science/animals-in-medical-research": {
+    en: "Animals in Medical Research",
+    vi: "Động vật trong nghiên cứu y khoa",
+  },
+  "/ethical-science/animal-testing-and-alternatives": {
+    en: "Animal Testing and Alternatives",
+    vi: "Thử nghiệm trên động vật và giải pháp thay thế",
+  },
+  "/take-action": {
+    en: "Take Action",
+    vi: "Hãy hành động",
+  },
 };
 
 const QA_VI_LINK_TEXT_REPLACEMENTS: Record<string, string> = {
@@ -108,6 +178,20 @@ const QA_VI_LINK_TEXT_REPLACEMENTS: Record<string, string> = {
   "Ca sĩ Mikalah, JD, LLM": "Mikalah Singer, JD, LLM",
   "Nhà xuất bản Deborah Dubow, Esq.": "Deborah Dubow Press, Esq.",
   "Nô-ê Praamsma, MS, RDN": "Noah Praamsma, MS, RDN",
+  "bệnh Alzheimer": "Bệnh Alzheimer",
+  "Bệnh ung thư": "Ung thư",
+  "Động vật trong nghiên cứu y học": "Động vật trong nghiên cứu y khoa",
+  "Thử nghiệm và thay thế động vật": "Thử nghiệm trên động vật và giải pháp thay thế",
+  "Đào tạo y tế": "Đào tạo nhân viên cấp cứu",
+};
+
+const QA_VI_PARAGRAPH_REPLACEMENTS_BY_PATH: Record<string, Record<string, string>> = {
+  "/ethical-science": {
+    "Chuyển đổi từ động vật sang các phương pháp liên quan đến con người":
+      "Chuyển đổi từ việc sử dụng động vật sang các phương pháp phù hợp với con người",
+    "Các phương pháp vô địch để thay thế thử nghiệm trên động vật":
+      "Thúc đẩy các phương pháp thay thế thử nghiệm trên động vật",
+  },
 };
 
 // Source-of-truth resolution for each normalized path.
@@ -215,6 +299,55 @@ function trimMembershipCtaParagraphs(paragraphs: string[], cta: string): string[
   return paragraphs[0] === cta ? paragraphs.slice(1) : paragraphs;
 }
 
+function trimLeadingParagraphIfDuplicate(paragraphs: string[], lead: string): string[] {
+  if (!paragraphs.length) {
+    return paragraphs;
+  }
+
+  return paragraphs[0] === lead ? paragraphs.slice(1) : paragraphs;
+}
+
+function normalizePathFromHubLinkUrl(url: string): string | null {
+  try {
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.toLowerCase();
+    if (hostname !== "www.pcrm.org" && hostname !== "pcrm.org") {
+      return null;
+    }
+
+    return normalizePath(parsed.pathname);
+  } catch {
+    return null;
+  }
+}
+
+function getPageLabelByPath(path: string, lang: ContentLanguage): string {
+  const normalizedPath = normalizePath(path);
+  const sourcePage = pickSourcePage(normalizedPath, lang);
+  const fallbackLabels = QA_FALLBACK_LINK_LABELS_BY_PATH[normalizedPath];
+
+  if (lang === "vi") {
+    return firstNonEmptyString(
+      sourcePage?.h1_vi?.[0],
+      sourcePage?.title_vi,
+      sourcePage?.h1?.[0],
+      sourcePage?.title,
+      fallbackLabels?.vi,
+      fallbackLabels?.en,
+      normalizedPath,
+    );
+  }
+
+  return firstNonEmptyString(
+    sourcePage?.h1_en?.[0],
+    sourcePage?.title_en,
+    sourcePage?.h1?.[0],
+    sourcePage?.title,
+    fallbackLabels?.en,
+    normalizedPath,
+  );
+}
+
 function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
   if (!QA_TARGET_HUBS.has(page.path)) {
     return page;
@@ -238,7 +371,14 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
     return true;
   });
 
-  const filteredLinksVi = page.links_vi
+  const seenLinkPathKeys = new Set(
+    filteredLinks
+      .map((link) => normalizePathFromHubLinkUrl(link.url))
+      .filter((value): value is string => Boolean(value)),
+  );
+
+  const filteredLinksVi = (
+    page.links_vi
     ?.filter((link) => {
       const key = normalizePcrmLinkKey(link.url);
       if (excludedLinkKeys.has(key)) {
@@ -256,13 +396,65 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
         ...link,
         text_vi: correctedText,
       };
+    }) ?? []
+  );
+
+  for (const requiredPath of QA_REQUIRED_LINK_PATHS_BY_PAGE[page.path] ?? []) {
+    if (seenLinkPathKeys.has(requiredPath)) {
+      continue;
+    }
+
+    const enText = getPageLabelByPath(requiredPath, "en");
+    const viText = getPageLabelByPath(requiredPath, "vi");
+    const url = `${BASE}${requiredPath}`;
+
+    filteredLinks.push({
+      text: enText,
+      url,
+    });
+    filteredLinksVi.push({
+      text: enText,
+      text_vi: QA_VI_LINK_TEXT_REPLACEMENTS[viText] ?? viText,
+      url,
     });
 
-  const paragraphsEn = trimMembershipCtaParagraphs(page.paragraphs_en ?? page.paragraphs, MEMBERSHIP_CTA_EN);
-  const paragraphsVi = trimMembershipCtaParagraphs(page.paragraphs_vi ?? page.paragraphs, MEMBERSHIP_CTA_VI);
+    seenLinkPathKeys.add(requiredPath);
+  }
+
+  let paragraphsEn = trimMembershipCtaParagraphs(page.paragraphs_en ?? page.paragraphs, MEMBERSHIP_CTA_EN);
+  let paragraphsVi = trimMembershipCtaParagraphs(page.paragraphs_vi ?? page.paragraphs, MEMBERSHIP_CTA_VI);
+
+  let descriptionEn = firstNonEmptyString(page.description_en, page.description);
+  let descriptionVi = firstNonEmptyString(page.description_vi);
+
+  if (page.path === "/health-topics") {
+    if (!isNonEmptyString(descriptionEn) || descriptionEn === MEMBERSHIP_CTA_EN) {
+      descriptionEn = firstNonEmptyString(paragraphsEn[0], page.title_en, page.title);
+    }
+
+    if (!isNonEmptyString(descriptionVi) || descriptionVi === MEMBERSHIP_CTA_VI) {
+      descriptionVi = firstNonEmptyString(paragraphsVi[0], descriptionEn);
+    }
+
+    paragraphsEn = trimLeadingParagraphIfDuplicate(paragraphsEn, descriptionEn);
+    paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, descriptionVi);
+  }
+
+  if (page.path === "/ethical-science") {
+    paragraphsEn = trimLeadingParagraphIfDuplicate(paragraphsEn, descriptionEn);
+    paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, firstNonEmptyString(descriptionVi, descriptionEn));
+  }
+
+  const paragraphViReplacements = QA_VI_PARAGRAPH_REPLACEMENTS_BY_PATH[page.path] ?? {};
+  paragraphsVi = paragraphsVi.map((paragraph) => paragraphViReplacements[paragraph] ?? paragraph);
+
+  const normalizedDescriptionVi = QA_VI_LINK_TEXT_REPLACEMENTS[descriptionVi] ?? descriptionVi;
 
   return {
     ...page,
+    description: descriptionEn,
+    description_en: descriptionEn,
+    description_vi: normalizedDescriptionVi,
     paragraphs: paragraphsEn,
     paragraphs_en: paragraphsEn,
     paragraphs_vi: paragraphsVi,
