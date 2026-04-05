@@ -296,6 +296,20 @@ const QA_LINK_EXCLUDE_BY_PATH: Record<string, Set<string>> = {
   ]),
 };
 
+// Keep /about-us related links focused on stable hub destinations instead of
+// scraper artifacts (self anchors, profile lists, and global CTA links).
+const QA_LINK_ALLOWLIST_BY_PATH: Record<string, Set<string>> = {
+  "/about-us": new Set([
+    "/about-us/our-victories",
+    "/about-us/careers",
+    "/about-us/careers/internships",
+    "/events",
+    "/about-us/financial-report",
+    "/barnard-medical-center",
+    "/contact-us",
+  ]),
+};
+
 const QA_REQUIRED_LINK_PATHS_BY_PAGE: Record<string, string[]> = {
   "/clinical-research": [
     "/clinical-research/recruitment",
@@ -381,6 +395,10 @@ const BLOG_PARAGRAPH_NOISE_VI = new Set([
 ]);
 
 const QA_VI_PARAGRAPH_REPLACEMENTS_BY_PATH: Record<string, Record<string, string>> = {
+  "/about-us": {
+    "Ủy ban Bác sĩ được dành riêng để cứu và cải thiện cuộc sống của con người và động vật thông qua chế độ ăn dựa trên thực vật và nghiên cứu khoa học có đạo đức và hiệu quả.":
+      "Ủy ban Bác sĩ cam kết cứu sống và cải thiện cuộc sống của con người và động vật thông qua chế độ ăn dựa trên thực vật cùng nghiên cứu khoa học hiệu quả, có đạo đức.",
+  },
   "/ethical-science": {
     "Chuyển đổi từ động vật sang các phương pháp liên quan đến con người":
       "Chuyển đổi từ việc sử dụng động vật sang các phương pháp phù hợp với con người",
@@ -625,6 +643,17 @@ function getExcludedLinkKeysForQa(
   return excluded;
 }
 
+function isAllowedLinkKeyForPath(path: string, key: string): boolean {
+  const allowlist = QA_LINK_ALLOWLIST_BY_PATH[path];
+  if (!allowlist) {
+    return true;
+  }
+
+  const hashIndex = key.indexOf("#");
+  const keyWithoutHash = hashIndex >= 0 ? key.slice(0, hashIndex) : key;
+  return allowlist.has(key) || allowlist.has(keyWithoutHash);
+}
+
 function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
   const isTargetHub = QA_TARGET_HUBS.has(page.path);
   const visibleNewsArticleQa = getVisibleNewsArticleQaRule(page.path);
@@ -641,6 +670,10 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
   const filteredLinks = page.links.filter((link) => {
     const key = normalizePcrmLinkKey(link.url);
     if (excludedLinkKeys.has(key)) {
+      return false;
+    }
+
+    if (!isAllowedLinkKeyForPath(page.path, key)) {
       return false;
     }
 
@@ -664,6 +697,10 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
     ?.filter((link) => {
       const key = normalizePcrmLinkKey(link.url);
       if (excludedLinkKeys.has(key)) {
+        return false;
+      }
+
+      if (!isAllowedLinkKeyForPath(page.path, key)) {
         return false;
       }
 
@@ -755,6 +792,21 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
   if (page.path === "/ethical-science") {
     paragraphsEn = trimLeadingParagraphIfDuplicate(paragraphsEn, descriptionEn);
     paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, firstNonEmptyString(descriptionVi, descriptionEn));
+  }
+
+  if (page.path === "/about-us") {
+    if (!isNonEmptyString(descriptionEn) || descriptionEn === MEMBERSHIP_CTA_EN) {
+      descriptionEn = firstNonEmptyString(paragraphsEn[0], page.title_en, page.title);
+    }
+
+    if (!isNonEmptyString(descriptionVi) || descriptionVi === MEMBERSHIP_CTA_VI) {
+      descriptionVi = firstNonEmptyString(paragraphsVi[0], descriptionEn);
+    }
+
+    // Keep intro stable: do not repeat the same summary paragraph under the page title.
+    paragraphsEn = trimLeadingParagraphIfDuplicate(paragraphsEn, descriptionEn);
+    paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, descriptionVi);
+    descriptionVi = descriptionVi.replace("kiến ​​thức", "kiến thức");
   }
 
   if (visibleNewsArticleQa?.cleanTopSectionNoise) {
