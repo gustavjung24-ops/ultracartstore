@@ -81,7 +81,7 @@ export default async function DynamicPcrmPage({ params }: Props) {
       <Header />
       <main className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-10">
         <div className="mb-4 text-sm text-slate-500">
-          <span>{locale.dynamicPage.breadcrumbHome}</span>
+          <span>{locale.breadcrumbs.home}</span>
           <span className="mx-2">/</span>
           <span>{title}</span>
         </div>
@@ -116,7 +116,7 @@ export default async function DynamicPcrmPage({ params }: Props) {
 
           {normalizedLinks.length ? (
             <section className="mt-10 border-t border-slate-200 pt-8">
-              <h3 className="text-lg font-bold text-slate-900">{locale.dynamicPage.relatedLinksHeading}</h3>
+              <h3 className="text-lg font-bold text-slate-900">{locale.sections.relatedLinks}</h3>
               <ul className="mt-3 list-disc pl-6 space-y-2">
                 {normalizedLinks.slice(0, 24).map((link, index) => (
                   <li key={`${link.href}-${index}`}>

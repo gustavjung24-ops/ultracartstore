@@ -93,7 +93,7 @@ export default async function HomePage() {
                       rel="noopener noreferrer"
                       className="rounded-full border border-white/45 px-6 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white no-underline transition hover:bg-white/10 md:px-7 md:py-3 md:text-sm"
                     >
-                      {locale.labels.learnMore}
+                      {locale.buttons.learnMore}
                     </Link>
                   </div>
                 </div>
@@ -104,7 +104,7 @@ export default async function HomePage() {
 
         <section className="mx-auto mt-10 max-w-7xl px-4 md:mt-12 md:px-6">
           <h2 className="home-section-title mb-5 text-3xl font-bold text-[#0f5c73] md:mb-6 md:text-4xl">
-            {locale.labels.newsAndEvents}
+            {locale.sections.newsAndEvents}
           </h2>
           <div className="grid gap-4 md:gap-6 md:grid-cols-3">
             {featuredPosts.map((post) => (
@@ -122,7 +122,7 @@ export default async function HomePage() {
                     {getPostSummary(post, lang)}
                   </p>
                   <Link href={post.path} className="mt-4 inline-block text-sm font-bold uppercase tracking-[0.08em] text-[#0f5c73] no-underline hover:underline">
-                    {locale.labels.readMore}
+                    {locale.buttons.readMore}
                   </Link>
                 </div>
               </article>
@@ -167,7 +167,7 @@ export default async function HomePage() {
                 href="/about-us"
                 className="mt-5 inline-block rounded-full bg-[#0f5c73] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white no-underline hover:opacity-90 md:mt-6 md:py-3 md:text-sm"
               >
-                {locale.labels.learnMore}
+                {locale.buttons.learnMore}
               </Link>
             </div>
             {home.images[1]?.src ? (
@@ -198,7 +198,7 @@ export default async function HomePage() {
                     {getPostSummary(post, lang)}
                   </p>
                   <Link href={post.path} className="mt-3 inline-block text-sm font-semibold text-[#0f5c73] hover:underline">
-                    {locale.labels.readMore}
+                    {locale.buttons.readMore}
                   </Link>
                 </div>
               </article>
@@ -209,7 +209,7 @@ export default async function HomePage() {
         <section className="mx-auto mt-10 max-w-7xl px-4 md:mt-14 md:px-6">
           <div className="rounded-3xl bg-gradient-to-r from-[#0f5c73] to-[#123847] px-5 py-8 text-center text-white md:px-12 md:py-10">
             <h2 className="home-section-title text-3xl font-bold md:text-4xl">
-              {locale.labels.supportOurMission}
+              {locale.sections.supportMission}
             </h2>
             <p className="home-hero-copy mx-auto mt-3 max-w-3xl text-slate-200 md:mt-4">
               {localizedHome.paragraphs[4] || locale.homepage.support.fallbackSummary}

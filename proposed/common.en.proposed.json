@@ -1,0 +1,93 @@
+{
+  "site": {
+    "name": "Physicians Committee for Responsible Medicine",
+    "shortName": "PCRM",
+    "tagline": "Evidence-based nutrition and ethical science"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "goodNutrition": "Good Nutrition",
+    "healthTopics": "Health Topics",
+    "ethicalScience": "Ethical Science",
+    "research": "Research",
+    "news": "News",
+    "resources": "Resources",
+    "contact": "Contact",
+    "shop": "Shop",
+    "donate": "Donate",
+    "freeDownloads": "Free Downloads",
+    "privacyPolicy": "Privacy Policy",
+    "forClinicians": "For Clinicians",
+    "forMedicalStudents": "For Medical Students",
+    "forScientists": "For Scientists",
+    "mainMenu": "Main Menu",
+    "support": "Support"
+  },
+  "footer": {
+    "about": "About",
+    "resources": "Resources",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "supportMission": "Support Our Mission",
+    "copyright": "All rights reserved."
+  },
+  "buttons": {
+    "learnMore": "Learn More",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "back": "Back",
+    "goBack": "Go Back",
+    "getStarted": "Get Started",
+    "donateNow": "Donate Now",
+    "contactUs": "Contact Us",
+    "explore": "Explore",
+    "browse": "Browse",
+    "submit": "Submit",
+    "search": "Search"
+  },
+  "labels": {
+    "featured": "Featured",
+    "latest": "Latest",
+    "relatedLinks": "Related Links",
+    "newsAndEvents": "News and Events",
+    "resources": "Resources",
+    "categories": "Categories",
+    "mainCategory": "Main Category",
+    "support": "Support",
+    "language": "Language"
+  },
+  "breadcrumbs": {
+    "home": "Home"
+  },
+  "sections": {
+    "supportMission": "Support Our Mission",
+    "featuredContent": "Featured Content",
+    "latestNews": "Latest News",
+    "relatedLinks": "Related Links",
+    "newsAndEvents": "News and Events"
+  },
+  "contactOptions": {
+    "whatsapp": "Message on WhatsApp",
+    "zalo": "Message on Zalo",
+    "callNow": "Call Now",
+    "email": "Email"
+  },
+  "product": {
+    "sku": "Product Code",
+    "category": "Category",
+    "description": "Description"
+  },
+  "languageSwitcher": {
+    "english": "English",
+    "vietnamese": "Tiếng Việt",
+    "switchToEnglish": "Switch to English",
+    "switchToVietnamese": "Chuyển sang Tiếng Việt"
+  },
+  "messages": {
+    "loading": "Loading...",
+    "noData": "No data available.",
+    "notFound": "Content not found.",
+    "comingSoon": "Coming soon."
+  }
+}

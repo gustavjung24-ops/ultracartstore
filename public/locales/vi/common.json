@@ -1,18 +1,31 @@
 {
   "site": {
     "name": "Ủy ban Bác sĩ vì Y học có trách nhiệm",
+    "shortName": "PCRM",
+    "tagline": "Dinh dưỡng dựa trên bằng chứng và khoa học có đạo đức",
     "description": "Tổ chức y tế phi lợi nhuận thúc đẩy y học dự phòng, thực hiện nghiên cứu lâm sàng và vận động các chuẩn mực cao hơn về đạo đức, hiệu quả trong nghiên cứu và đào tạo y khoa."
   },
   "nav": {
     "home": "Trang chủ",
-    "about": "Về chúng tôi",
+    "about": "Giới thiệu",
     "goodNutrition": "Dinh dưỡng lành mạnh",
     "ethicalScience": "Khoa học có đạo đức",
     "clinicalResearch": "Nghiên cứu lâm sàng",
+    "research": "Nghiên cứu",
+    "news": "Tin tức",
     "healthTopics": "Chủ đề sức khỏe",
     "blog": "Tin tức",
+    "resources": "Tài nguyên",
     "contact": "Liên hệ",
-    "donate": "Quyên góp"
+    "shop": "Cửa hàng",
+    "donate": "Quyên góp",
+    "freeDownloads": "Tải xuống miễn phí",
+    "privacyPolicy": "Chính sách bảo mật",
+    "forClinicians": "Dành cho chuyên gia lâm sàng",
+    "forMedicalStudents": "Dành cho sinh viên y khoa",
+    "forScientists": "Dành cho nhà khoa học",
+    "mainMenu": "Menu chính",
+    "support": "Hỗ trợ"
   },
   "home": {
     "title": "Chào mừng đến với PCRM",
@@ -56,10 +69,29 @@
     "successMessage": "Cảm ơn bạn đã gửi tin nhắn. Chúng tôi sẽ liên hệ lại với bạn sớm."
   },
   "footer": {
+    "about": "Giới thiệu",
+    "resources": "Tài nguyên",
+    "contact": "Liên hệ",
+    "supportMission": "Ủng hộ sứ mệnh của chúng tôi",
     "copyright": "© 2026 Ủy ban Bác sĩ vì Y học có trách nhiệm. Bảo lưu mọi quyền.",
+    "copyrightShort": "Bảo lưu mọi quyền.",
     "privacy": "Chính sách bảo mật",
     "terms": "Điều khoản dịch vụ",
     "followUs": "Theo dõi chúng tôi"
+  },
+  "buttons": {
+    "learnMore": "Tìm hiểu thêm",
+    "readMore": "Đọc thêm",
+    "viewAll": "Xem tất cả",
+    "back": "Quay lại",
+    "goBack": "Quay lại",
+    "getStarted": "Bắt đầu",
+    "donateNow": "Quyên góp ngay",
+    "contactUs": "Liên hệ với chúng tôi",
+    "explore": "Khám phá",
+    "browse": "Xem thêm",
+    "submit": "Gửi",
+    "search": "Tìm kiếm"
   },
   "labels": {
     "home": "Trang chủ",
@@ -74,7 +106,46 @@
     "support": "Hỗ trợ",
     "supportOurMission": "Ủng hộ sứ mệnh của chúng tôi",
     "seeOurVictories": "Xem thành tựu",
-    "victory": "CHIẾN THẮNG!"
+    "victory": "CHIẾN THẮNG!",
+    "featured": "Nổi bật",
+    "latest": "Mới nhất",
+    "resources": "Tài nguyên",
+    "categories": "Danh mục",
+    "mainCategory": "Danh mục chính",
+    "language": "Ngôn ngữ"
+  },
+  "breadcrumbs": {
+    "home": "Trang chủ"
+  },
+  "sections": {
+    "supportMission": "Ủng hộ sứ mệnh của chúng tôi",
+    "featuredContent": "Nội dung nổi bật",
+    "latestNews": "Tin tức mới nhất",
+    "relatedLinks": "Liên kết liên quan",
+    "newsAndEvents": "Tin tức và sự kiện"
+  },
+  "contactOptions": {
+    "whatsapp": "Nhắn tin WhatsApp",
+    "zalo": "Nhắn tin Zalo",
+    "callNow": "Gọi ngay",
+    "email": "Email"
+  },
+  "product": {
+    "sku": "Mã sản phẩm",
+    "category": "Danh mục",
+    "description": "Mô tả"
+  },
+  "languageSwitcher": {
+    "english": "Tiếng Anh",
+    "vietnamese": "Tiếng Việt",
+    "switchToEnglish": "Chuyển sang Tiếng Anh",
+    "switchToVietnamese": "Chuyển sang Tiếng Việt"
+  },
+  "messages": {
+    "loading": "Đang tải...",
+    "noData": "Hiện chưa có dữ liệu.",
+    "notFound": "Không tìm thấy nội dung.",
+    "comingSoon": "Sắp ra mắt."
   },
   "dynamicPage": {
     "breadcrumbHome": "Trang chủ",

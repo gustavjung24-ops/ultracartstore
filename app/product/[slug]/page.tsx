@@ -91,8 +91,8 @@ export default async function ProductPage({ params }: PageProps) {
             <SidebarMenu
               mainMenu={mainMenu}
               helpMenu={helpMenu}
-              mainMenuHeading={locale.sidebar.mainMenuHeading}
-              helpMenuHeading={locale.sidebar.helpMenuHeading}
+              mainMenuHeading={locale.nav.mainMenu}
+              helpMenuHeading={locale.nav.support}
             />
           </div>
         </div>

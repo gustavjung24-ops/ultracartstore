@@ -1,0 +1,93 @@
+{
+  "site": {
+    "name": "Ủy ban Bác sĩ vì Y học có trách nhiệm",
+    "shortName": "PCRM",
+    "tagline": "Dinh dưỡng dựa trên bằng chứng và khoa học có đạo đức"
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "about": "Giới thiệu",
+    "goodNutrition": "Dinh dưỡng lành mạnh",
+    "healthTopics": "Chủ đề sức khỏe",
+    "ethicalScience": "Khoa học có đạo đức",
+    "research": "Nghiên cứu",
+    "news": "Tin tức",
+    "resources": "Tài nguyên",
+    "contact": "Liên hệ",
+    "shop": "Cửa hàng",
+    "donate": "Quyên góp",
+    "freeDownloads": "Tải xuống miễn phí",
+    "privacyPolicy": "Chính sách bảo mật",
+    "forClinicians": "Dành cho chuyên gia lâm sàng",
+    "forMedicalStudents": "Dành cho sinh viên y khoa",
+    "forScientists": "Dành cho nhà khoa học",
+    "mainMenu": "Menu chính",
+    "support": "Hỗ trợ"
+  },
+  "footer": {
+    "about": "Giới thiệu",
+    "resources": "Tài nguyên",
+    "contact": "Liên hệ",
+    "followUs": "Theo dõi chúng tôi",
+    "supportMission": "Ủng hộ sứ mệnh của chúng tôi",
+    "copyright": "Bảo lưu mọi quyền."
+  },
+  "buttons": {
+    "learnMore": "Tìm hiểu thêm",
+    "readMore": "Đọc thêm",
+    "viewAll": "Xem tất cả",
+    "back": "Quay lại",
+    "goBack": "Quay lại",
+    "getStarted": "Bắt đầu",
+    "donateNow": "Quyên góp ngay",
+    "contactUs": "Liên hệ với chúng tôi",
+    "explore": "Khám phá",
+    "browse": "Xem thêm",
+    "submit": "Gửi",
+    "search": "Tìm kiếm"
+  },
+  "labels": {
+    "featured": "Nổi bật",
+    "latest": "Mới nhất",
+    "relatedLinks": "Liên kết liên quan",
+    "newsAndEvents": "Tin tức và sự kiện",
+    "resources": "Tài nguyên",
+    "categories": "Danh mục",
+    "mainCategory": "Danh mục chính",
+    "support": "Hỗ trợ",
+    "language": "Ngôn ngữ"
+  },
+  "breadcrumbs": {
+    "home": "Trang chủ"
+  },
+  "sections": {
+    "supportMission": "Ủng hộ sứ mệnh của chúng tôi",
+    "featuredContent": "Nội dung nổi bật",
+    "latestNews": "Tin tức mới nhất",
+    "relatedLinks": "Liên kết liên quan",
+    "newsAndEvents": "Tin tức và sự kiện"
+  },
+  "contactOptions": {
+    "whatsapp": "Nhắn tin WhatsApp",
+    "zalo": "Nhắn tin Zalo",
+    "callNow": "Gọi ngay",
+    "email": "Email"
+  },
+  "product": {
+    "sku": "Mã sản phẩm",
+    "category": "Danh mục",
+    "description": "Mô tả"
+  },
+  "languageSwitcher": {
+    "english": "Tiếng Anh",
+    "vietnamese": "Tiếng Việt",
+    "switchToEnglish": "Chuyển sang Tiếng Anh",
+    "switchToVietnamese": "Chuyển sang Tiếng Việt"
+  },
+  "messages": {
+    "loading": "Đang tải...",
+    "noData": "Hiện chưa có dữ liệu.",
+    "notFound": "Không tìm thấy nội dung.",
+    "comingSoon": "Sắp ra mắt."
+  }
+}
