@@ -132,8 +132,8 @@ export default async function CategoryPage({ params }: PageProps) {
             <SidebarMenu
               mainMenu={mainMenu}
               helpMenu={helpMenu}
-              mainMenuHeading={locale.nav.mainMenu}
-              helpMenuHeading={locale.nav.support}
+              mainMenuHeading={locale.common.mainMenu}
+              helpMenuHeading={locale.common.support}
             />
           </div>
         </div>

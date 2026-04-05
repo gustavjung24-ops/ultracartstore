@@ -2,127 +2,97 @@
   "site": {
     "name": "Ủy ban Bác sĩ vì Y học có trách nhiệm",
     "shortName": "PCRM",
-    "tagline": "Dinh dưỡng dựa trên bằng chứng và khoa học có đạo đức",
-    "description": "Tổ chức y tế phi lợi nhuận thúc đẩy y học dự phòng, thực hiện nghiên cứu lâm sàng và vận động các chuẩn mực cao hơn về đạo đức, hiệu quả trong nghiên cứu và đào tạo y khoa."
+    "tagline": "Dinh dưỡng dựa trên bằng chứng và khoa học có đạo đức"
   },
-  "nav": {
-    "home": "Trang chủ",
-    "about": "Giới thiệu",
-    "goodNutrition": "Dinh dưỡng lành mạnh",
-    "ethicalScience": "Khoa học có đạo đức",
-    "clinicalResearch": "Nghiên cứu lâm sàng",
-    "research": "Nghiên cứu",
-    "news": "Tin tức",
-    "healthTopics": "Chủ đề sức khỏe",
-    "blog": "Tin tức",
-    "resources": "Tài nguyên",
-    "contact": "Liên hệ",
-    "shop": "Cửa hàng",
-    "donate": "Quyên góp",
-    "freeDownloads": "Tải xuống miễn phí",
-    "privacyPolicy": "Chính sách bảo mật",
+  "topNav": {
     "forClinicians": "Dành cho chuyên gia lâm sàng",
     "forMedicalStudents": "Dành cho sinh viên y khoa",
     "forScientists": "Dành cho nhà khoa học",
-    "mainMenu": "Menu chính",
-    "support": "Hỗ trợ"
+    "aboutUs": "Giới thiệu"
   },
-  "home": {
-    "title": "Chào mừng đến với PCRM",
-    "heroTitle": "Thay đổi thói quen ăn uống với hướng dẫn y khoa dựa trên bằng chứng và kỹ năng bếp thực tế.",
-    "ctaText": "Tham gia cộng đồng",
-    "newsTitle": "Tin tức sức khỏe và dinh dưỡng",
-    "scienceTitle": "Tin khoa học đổi mới",
-    "sections": {
-      "about": "Về chúng tôi",
-      "mission": "Sứ mệnh của chúng tôi",
-      "research": "Nghiên cứu lâm sàng"
-    }
+  "mainNav": {
+    "goodNutrition": "Dinh dưỡng lành mạnh",
+    "healthTopics": "Chủ đề sức khỏe",
+    "ethicalScience": "Khoa học có đạo đức",
+    "ourResearch": "Nghiên cứu của chúng tôi",
+    "news": "Tin tức",
+    "waysToGive": "Các cách ủng hộ",
+    "takeAction": "Cùng hành động"
   },
-  "about": {
-    "title": "Về Ủy ban Bác sĩ vì Y học có trách nhiệm",
-    "content": "Trong 40 năm qua, PCRM đã dẫn dắt các nỗ lực vì con người, động vật và hành tinh. Chúng tôi thúc đẩy y học dự phòng, thực hiện nghiên cứu lâm sàng tiên phong và vận động các chuẩn mực cao hơn trong đào tạo y khoa và khoa học có đạo đức.",
-    "mission": "Sứ mệnh của chúng tôi là thúc đẩy sức khỏe và lòng trắc ẩn thông qua khoa học và giáo dục.",
-    "values": {
-      "science": "Khoa học dựa trên bằng chứng",
-      "ethics": "Tiêu chuẩn đạo đức",
-      "compassion": "Lòng trắc ẩn cho tất cả"
-    }
+  "goodNutrition": {
+    "title": "Dinh dưỡng lành mạnh",
+    "plantBasedDiets": "Chế độ ăn dựa trên thực vật",
+    "nutritionInformation": "Kiến thức dinh dưỡng",
+    "findADoctor": "Tìm bác sĩ",
+    "findADietitian": "Tìm chuyên gia dinh dưỡng",
+    "healthyCommunities": "Cộng đồng khỏe mạnh",
+    "foodForLifeClasses": "Lớp học Food for Life",
+    "recipes": "Công thức món ăn",
+    "nutritionForAthletes": "Dinh dưỡng cho vận động viên",
+    "pregnancy": "Thai kỳ",
+    "nutritionForKids": "Dinh dưỡng cho trẻ em",
+    "veganStarterKit": "Bộ khởi đầu thuần chay",
+    "plantBasedNutritionFAQ": "Câu hỏi thường gặp về dinh dưỡng dựa trên thực vật",
+    "threeReasonsToGoVegan": "Ba lý do để ăn thuần chay",
+    "twentyOneDayKickstart": "Khởi động 21 ngày"
   },
-  "donate": {
-    "title": "Quyên góp hôm nay",
-    "subtitle": "Ủng hộ sứ mệnh cải thiện sức khỏe thông qua khoa học và lòng trắc ẩn.",
-    "paymentMethods": "Phương thức thanh toán",
-    "card": "Thẻ tín dụng",
-    "paypal": "PayPal",
-    "bankTransfer": "Chuyển khoản ngân hàng",
-    "submitButton": "Quyên góp ngay",
-    "impact": "Quyên góp của bạn tạo ra thay đổi thực sự"
+  "healthTopics": {
+    "title": "Chủ đề sức khỏe"
   },
-  "contact": {
-    "title": "Liên hệ với chúng tôi",
-    "email": "Email",
-    "phone": "Điện thoại",
-    "address": "Địa chỉ",
-    "message": "Lời nhắn",
-    "submitButton": "Gửi lời nhắn",
-    "successMessage": "Cảm ơn bạn đã gửi tin nhắn. Chúng tôi sẽ liên hệ lại với bạn sớm."
+  "ethicalScience": {
+    "title": "Khoa học có đạo đức"
   },
-  "footer": {
-    "about": "Giới thiệu",
-    "resources": "Tài nguyên",
+  "research": {
+    "title": "Nghiên cứu của chúng tôi",
+    "clinicalResearch": "Nghiên cứu lâm sàng"
+  },
+  "news": {
+    "title": "Tin tức",
+    "healthNutrition": "Tin tức sức khỏe và dinh dưỡng",
+    "mediaCenter": "Trung tâm truyền thông"
+  },
+  "waysToGive": {
+    "title": "Các cách ủng hộ",
+    "donate": "Quyên góp",
+    "donateNow": "Quyên góp ngay"
+  },
+  "utilityNav": {
+    "events": "Sự kiện",
+    "shop": "Cửa hàng",
     "contact": "Liên hệ",
-    "supportMission": "Ủng hộ sứ mệnh của chúng tôi",
-    "copyright": "© 2026 Ủy ban Bác sĩ vì Y học có trách nhiệm. Bảo lưu mọi quyền.",
-    "copyrightShort": "Bảo lưu mọi quyền.",
-    "privacy": "Chính sách bảo mật",
-    "terms": "Điều khoản dịch vụ",
-    "followUs": "Theo dõi chúng tôi"
+    "mediaCenter": "Trung tâm truyền thông",
+    "barnardMedicalCenter": "Trung tâm Y khoa Barnard",
+    "careers": "Tuyển dụng",
+    "spanishResources": "Tài nguyên tiếng Tây Ban Nha",
+    "frenchResources": "Tài nguyên tiếng Pháp"
   },
-  "buttons": {
-    "learnMore": "Tìm hiểu thêm",
-    "readMore": "Đọc thêm",
-    "viewAll": "Xem tất cả",
-    "back": "Quay lại",
-    "goBack": "Quay lại",
-    "getStarted": "Bắt đầu",
-    "donateNow": "Quyên góp ngay",
-    "contactUs": "Liên hệ với chúng tôi",
-    "explore": "Khám phá",
-    "browse": "Xem thêm",
-    "submit": "Gửi",
-    "search": "Tìm kiếm"
+  "footerLegal": {
+    "privacyPolicy": "Chính sách bảo mật",
+    "termsOfUse": "Điều khoản sử dụng"
   },
-  "labels": {
+  "common": {
     "home": "Trang chủ",
-    "learnMore": "Tìm hiểu thêm",
+    "back": "Quay lại",
     "readMore": "Đọc thêm",
-    "relatedLinks": "Liên kết liên quan",
-    "openSection": "Xem chuyên mục",
-    "newsAndEvents": "Tin tức và sự kiện",
-    "topicHighlights": "Tin theo chuyên mục",
-    "latestStories": "Bài viết mới nhất",
-    "mainMenu": "Menu chính",
-    "support": "Hỗ trợ",
-    "supportOurMission": "Ủng hộ sứ mệnh của chúng tôi",
-    "seeOurVictories": "Xem thành tựu",
-    "victory": "CHIẾN THẮNG!",
+    "learnMore": "Tìm hiểu thêm",
+    "viewAll": "Xem tất cả",
+    "browse": "Xem thêm",
+    "search": "Tìm kiếm",
+    "submit": "Gửi",
     "featured": "Nổi bật",
     "latest": "Mới nhất",
     "resources": "Tài nguyên",
-    "categories": "Danh mục",
-    "mainCategory": "Danh mục chính",
-    "language": "Ngôn ngữ"
-  },
-  "breadcrumbs": {
-    "home": "Trang chủ"
-  },
-  "sections": {
-    "supportMission": "Ủng hộ sứ mệnh của chúng tôi",
-    "featuredContent": "Nội dung nổi bật",
-    "latestNews": "Tin tức mới nhất",
+    "resource": "Tài nguyên",
     "relatedLinks": "Liên kết liên quan",
-    "newsAndEvents": "Tin tức và sự kiện"
+    "newsAndEvents": "Tin tức và sự kiện",
+    "supportOurMission": "Ủng hộ sứ mệnh của chúng tôi",
+    "mainMenu": "Menu chính",
+    "support": "Hỗ trợ",
+    "language": "Ngôn ngữ",
+    "loading": "Đang tải...",
+    "noData": "Hiện chưa có dữ liệu.",
+    "notFound": "Không tìm thấy nội dung.",
+    "comingSoon": "Sắp ra mắt."
   },
   "contactOptions": {
     "whatsapp": "Nhắn tin WhatsApp",
@@ -136,51 +106,9 @@
     "description": "Mô tả"
   },
   "languageSwitcher": {
-    "english": "Tiếng Anh",
+    "english": "English",
     "vietnamese": "Tiếng Việt",
-    "switchToEnglish": "Chuyển sang Tiếng Anh",
+    "switchToEnglish": "Chuyển sang English",
     "switchToVietnamese": "Chuyển sang Tiếng Việt"
-  },
-  "messages": {
-    "loading": "Đang tải...",
-    "noData": "Hiện chưa có dữ liệu.",
-    "notFound": "Không tìm thấy nội dung.",
-    "comingSoon": "Sắp ra mắt."
-  },
-  "dynamicPage": {
-    "breadcrumbHome": "Trang chủ",
-    "relatedLinksHeading": "Liên kết liên quan"
-  },
-  "sidebar": {
-    "mainMenuHeading": "Menu chính",
-    "helpMenuHeading": "Hỗ trợ"
-  },
-  "homepage": {
-    "hero": {
-      "imageAlt": "Chú heo trên bãi cỏ",
-      "title": "Đại học Brown dừng chương trình huấn luyện gây chết người!",
-      "summary": "Cập nhật mới từ chiến dịch khoa học có đạo đức của PCRM."
-    },
-    "sections": {
-      "healthAndNutrition": "Sức khỏe và dinh dưỡng",
-      "innovativeScienceNews": "Khoa học đổi mới",
-      "goodScienceDigest": "Bản tin khoa học",
-      "goodScienceDigestSummary": "Những cập nhật khoa học ngắn gọn, đáng tin cậy cho cộng đồng quan tâm sức khỏe."
-    },
-    "impact": {
-      "title": "40 năm tạo chuyển biến",
-      "fallbackSummary": "40 năm thúc đẩy y học dự phòng.",
-      "imageAlt": "Dấu ấn PCRM"
-    },
-    "support": {
-      "fallbackSummary": "Đồng hành cùng chúng tôi trong y học dự phòng và khoa học có đạo đức."
-    }
-  },
-  "common": {
-    "loading": "Đang tải...",
-    "error": "Đã xảy ra lỗi",
-    "backHome": "Quay lại trang chủ",
-    "readMore": "Đọc thêm",
-    "viewMore": "Xem thêm"
   }
 }

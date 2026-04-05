@@ -2,127 +2,97 @@
   "site": {
     "name": "Physicians Committee for Responsible Medicine",
     "shortName": "PCRM",
-    "tagline": "Evidence-based nutrition and ethical science",
-    "description": "A nonprofit health organization that promotes preventive medicine, conducts clinical research, and encourages higher standards for ethics and effectiveness in research and medical training."
+    "tagline": "Evidence-based nutrition and ethical science"
   },
-  "nav": {
-    "home": "Home",
-    "about": "About",
-    "goodNutrition": "Good Nutrition",
-    "ethicalScience": "Ethical Science",
-    "clinicalResearch": "Clinical Research",
-    "research": "Research",
-    "news": "News",
-    "healthTopics": "Health Topics",
-    "blog": "Blog",
-    "resources": "Resources",
-    "contact": "Contact",
-    "shop": "Shop",
-    "donate": "Donate",
-    "freeDownloads": "Free Downloads",
-    "privacyPolicy": "Privacy Policy",
+  "topNav": {
     "forClinicians": "For Clinicians",
     "forMedicalStudents": "For Medical Students",
     "forScientists": "For Scientists",
-    "mainMenu": "Main Menu",
-    "support": "Support"
+    "aboutUs": "About Us"
   },
-  "home": {
-    "title": "Welcome to PCRM",
-    "heroTitle": "Transform the way you eat with evidence-based medical guidance and practical kitchen skills.",
-    "ctaText": "Join Our Community",
-    "newsTitle": "Health and Nutrition News",
-    "scienceTitle": "Innovative Science News",
-    "sections": {
-      "about": "About Us",
-      "mission": "Our Mission",
-      "research": "Clinical Research"
-    }
+  "mainNav": {
+    "goodNutrition": "Good Nutrition",
+    "healthTopics": "Health Topics",
+    "ethicalScience": "Ethical Science",
+    "ourResearch": "Our Research",
+    "news": "News",
+    "waysToGive": "Ways to Give",
+    "takeAction": "Take Action"
   },
-  "about": {
-    "title": "About Physicians Committee for Responsible Medicine",
-    "content": "For 40 years, the Physicians Committee has been leading the way for people, animals, and the planet. We promote preventive medicine, conduct groundbreaking clinical research, and advocate for higher standards in medical training and ethical science.",
-    "mission": "Our mission is to promote health and compassion through science and education.",
-    "values": {
-      "science": "Evidence-Based Science",
-      "ethics": "Ethical Standards",
-      "compassion": "Compassion for All"
-    }
+  "goodNutrition": {
+    "title": "Good Nutrition",
+    "plantBasedDiets": "Plant-Based Diets",
+    "nutritionInformation": "Nutrition Information",
+    "findADoctor": "Find a Doctor",
+    "findADietitian": "Find a Dietitian",
+    "healthyCommunities": "Healthy Communities",
+    "foodForLifeClasses": "Food for Life Classes",
+    "recipes": "Recipes",
+    "nutritionForAthletes": "Nutrition for Athletes",
+    "pregnancy": "Pregnancy",
+    "nutritionForKids": "Nutrition for Kids",
+    "veganStarterKit": "Vegan Starter Kit",
+    "plantBasedNutritionFAQ": "Plant-Based Nutrition FAQ",
+    "threeReasonsToGoVegan": "Three Reasons to go VEGAN!",
+    "twentyOneDayKickstart": "21-Day Kickstart"
   },
-  "donate": {
-    "title": "Make a Donation Today",
-    "subtitle": "Support our mission to transform health through science and compassion.",
-    "paymentMethods": "Payment Methods",
-    "card": "Credit Card",
-    "paypal": "PayPal",
-    "bankTransfer": "Bank Transfer",
-    "submitButton": "Donate Now",
-    "impact": "Your donation creates real change"
+  "healthTopics": {
+    "title": "Health Topics"
   },
-  "contact": {
-    "title": "Contact Us",
-    "email": "Email",
-    "phone": "Phone",
-    "address": "Address",
-    "message": "Message",
-    "submitButton": "Send Message",
-    "successMessage": "Thank you for your message. We will get back to you soon."
+  "ethicalScience": {
+    "title": "Ethical Science"
   },
-  "footer": {
-    "about": "About",
-    "resources": "Resources",
+  "research": {
+    "title": "Our Research",
+    "clinicalResearch": "Clinical Research"
+  },
+  "news": {
+    "title": "News",
+    "healthNutrition": "Health and Nutrition News",
+    "mediaCenter": "Media Center"
+  },
+  "waysToGive": {
+    "title": "Ways to Give",
+    "donate": "Donate",
+    "donateNow": "Donate Now"
+  },
+  "utilityNav": {
+    "events": "Events",
+    "shop": "Shop",
     "contact": "Contact",
-    "supportMission": "Support Our Mission",
-    "copyright": "© 2026 Physicians Committee for Responsible Medicine. All rights reserved.",
-    "copyrightShort": "All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "followUs": "Follow Us"
+    "mediaCenter": "Media Center",
+    "barnardMedicalCenter": "Barnard Medical Center",
+    "careers": "Careers",
+    "spanishResources": "Recursos en Español",
+    "frenchResources": "Ressources en Français"
   },
-  "buttons": {
-    "learnMore": "Learn More",
-    "readMore": "Read More",
-    "viewAll": "View All",
-    "back": "Back",
-    "goBack": "Go Back",
-    "getStarted": "Get Started",
-    "donateNow": "Donate Now",
-    "contactUs": "Contact Us",
-    "explore": "Explore",
-    "browse": "Browse",
-    "submit": "Submit",
-    "search": "Search"
+  "footerLegal": {
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use"
   },
-  "labels": {
+  "common": {
     "home": "Home",
-    "learnMore": "Learn More",
-    "readMore": "Read More",
-    "relatedLinks": "Related Links",
-    "openSection": "Open Section",
-    "newsAndEvents": "News and Events",
-    "topicHighlights": "Topic Highlights",
-    "latestStories": "Latest Stories",
-    "mainMenu": "Main Menu",
-    "support": "Support",
-    "supportOurMission": "Support Our Mission",
-    "seeOurVictories": "See Our Victories",
-    "victory": "VICTORY!",
+    "back": "Back",
+    "readMore": "Read more",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "browse": "Browse",
+    "search": "Search",
+    "submit": "Submit",
     "featured": "Featured",
     "latest": "Latest",
     "resources": "Resources",
-    "categories": "Categories",
-    "mainCategory": "Main Category",
-    "language": "Language"
-  },
-  "breadcrumbs": {
-    "home": "Home"
-  },
-  "sections": {
-    "supportMission": "Support Our Mission",
-    "featuredContent": "Featured Content",
-    "latestNews": "Latest News",
+    "resource": "Resource",
     "relatedLinks": "Related Links",
-    "newsAndEvents": "News and Events"
+    "newsAndEvents": "News and Events",
+    "supportOurMission": "Support Our Mission",
+    "mainMenu": "Main Menu",
+    "support": "Support",
+    "language": "Language",
+    "loading": "Loading...",
+    "noData": "No data available.",
+    "notFound": "Content not found.",
+    "comingSoon": "Coming soon."
   },
   "contactOptions": {
     "whatsapp": "Message on WhatsApp",
@@ -140,47 +110,5 @@
     "vietnamese": "Tiếng Việt",
     "switchToEnglish": "Switch to English",
     "switchToVietnamese": "Chuyển sang Tiếng Việt"
-  },
-  "messages": {
-    "loading": "Loading...",
-    "noData": "No data available.",
-    "notFound": "Content not found.",
-    "comingSoon": "Coming soon."
-  },
-  "dynamicPage": {
-    "breadcrumbHome": "Home",
-    "relatedLinksHeading": "Related Links"
-  },
-  "sidebar": {
-    "mainMenuHeading": "Main Menu",
-    "helpMenuHeading": "Support"
-  },
-  "homepage": {
-    "hero": {
-      "imageAlt": "Pig in grass",
-      "title": "Brown University Halts Deadly Training Exercise!",
-      "summary": "Latest win from the Physicians Committee's ethical science campaign."
-    },
-    "sections": {
-      "healthAndNutrition": "Health and Nutrition",
-      "innovativeScienceNews": "Innovative Science News",
-      "goodScienceDigest": "Good Science Digest",
-      "goodScienceDigestSummary": "Short, practical science updates curated for readers and clinicians."
-    },
-    "impact": {
-      "title": "40 Years of Impact",
-      "fallbackSummary": "For 40 years, advancing preventive medicine.",
-      "imageAlt": "Impact"
-    },
-    "support": {
-      "fallbackSummary": "Join us in preventive medicine and ethical science."
-    }
-  },
-  "common": {
-    "loading": "Loading...",
-    "error": "An error occurred",
-    "backHome": "Back to Home",
-    "readMore": "Read More",
-    "viewMore": "View More"
   }
 }

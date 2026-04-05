@@ -151,8 +151,8 @@ export default async function ShopPage() {
             <SidebarMenu
               mainMenu={mainMenu}
               helpMenu={helpMenu}
-              mainMenuHeading={locale.nav.mainMenu}
-              helpMenuHeading={locale.nav.support}
+              mainMenuHeading={locale.common.mainMenu}
+              helpMenuHeading={locale.common.support}
             />
           </div>
         </div>
