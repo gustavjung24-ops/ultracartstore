@@ -77,11 +77,44 @@ const QA_TARGET_HUBS = new Set([
   "/clinical-research",
   "/news/blog",
 ]);
-const QA_TARGET_VISIBLE_NEWS_ARTICLES = new Set([
+const TOP_VISIBLE_NEWS_ARTICLE_PATHS = [
   "/news/health-nutrition/american-heart-association-recommends-plant-based-protein-over-meat",
   "/news/news-releases/physicians-committee-offering-grants-farmers-who-are-growing-health-promoting",
   "/news/news-releases/doctors-group-files-legal-petition-urging-usda-require-colorectal-cancer-warning",
-]);
+] as const;
+
+interface VisibleNewsArticleQaRule {
+  cleanTopSectionNoise: boolean;
+  cleanIntroSummary: boolean;
+  cleanRelatedLinks: boolean;
+  dedupeRelatedLinks: boolean;
+  viTitleOverride?: string;
+}
+
+// Auditable scope for this pass: only the first three article paths surfaced by homepage/news flow.
+const QA_VISIBLE_NEWS_ARTICLE_RULES: Record<string, VisibleNewsArticleQaRule> = {
+  [TOP_VISIBLE_NEWS_ARTICLE_PATHS[0]]: {
+    cleanTopSectionNoise: true,
+    cleanIntroSummary: true,
+    cleanRelatedLinks: true,
+    dedupeRelatedLinks: true,
+    viTitleOverride: "Hiệp hội Tim mạch Hoa Kỳ khuyến nghị ưu tiên protein từ thực vật thay vì thịt",
+  },
+  [TOP_VISIBLE_NEWS_ARTICLE_PATHS[1]]: {
+    cleanTopSectionNoise: true,
+    cleanIntroSummary: true,
+    cleanRelatedLinks: true,
+    dedupeRelatedLinks: true,
+  },
+  [TOP_VISIBLE_NEWS_ARTICLE_PATHS[2]]: {
+    cleanTopSectionNoise: true,
+    cleanIntroSummary: true,
+    cleanRelatedLinks: true,
+    dedupeRelatedLinks: true,
+  },
+};
+
+const QA_TARGET_VISIBLE_NEWS_ARTICLES = new Set(Object.keys(QA_VISIBLE_NEWS_ARTICLE_RULES));
 const MEMBERSHIP_CTA_EN = "Make your 2026 membership gift today!";
 const MEMBERSHIP_CTA_VI = "Hãy tặng quà thành viên năm 2026 ngay hôm nay!";
 
@@ -273,11 +306,6 @@ const QA_VI_LINK_TEXT_REPLACEMENTS: Record<string, string> = {
   "Đào tạo y tế": "Đào tạo nhân viên cấp cứu",
   "tin tức phát hành": "Thông cáo báo chí",
   "Chống lại cơn bốc hỏa bằng chế độ ăn kiêng": "Kiểm soát bốc hỏa bằng chế độ ăn",
-};
-
-const QA_VI_TITLE_REPLACEMENTS_BY_PATH: Record<string, string> = {
-  "/news/health-nutrition/american-heart-association-recommends-plant-based-protein-over-meat":
-    "Hiệp hội Tim mạch Hoa Kỳ khuyến nghị ưu tiên protein từ thực vật thay vì thịt",
 };
 
 const BLOG_PARAGRAPH_NOISE_EN = new Set([
@@ -492,16 +520,21 @@ function getPageLabelByPath(path: string, lang: ContentLanguage): string {
   );
 }
 
+function getVisibleNewsArticleQaRule(path: string): VisibleNewsArticleQaRule | undefined {
+  return QA_VISIBLE_NEWS_ARTICLE_RULES[path];
+}
+
 function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
   const isTargetHub = QA_TARGET_HUBS.has(page.path);
-  const isTargetVisibleNewsArticle = QA_TARGET_VISIBLE_NEWS_ARTICLES.has(page.path);
+  const visibleNewsArticleQa = getVisibleNewsArticleQaRule(page.path);
+  const isTargetVisibleNewsArticle = Boolean(visibleNewsArticleQa);
 
   if (!isTargetHub && !isTargetVisibleNewsArticle) {
     return page;
   }
 
   const excludedLinkKeys = QA_LINK_EXCLUDE_BY_PATH[page.path] ?? (
-    isTargetVisibleNewsArticle
+    visibleNewsArticleQa?.cleanRelatedLinks
       ? new Set([...QA_VISIBLE_NEWS_ARTICLE_LINK_EXCLUDE_BASE, page.path])
       : new Set<string>()
   );
@@ -626,14 +659,16 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
     paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, firstNonEmptyString(descriptionVi, descriptionEn));
   }
 
-  if (isTargetVisibleNewsArticle) {
+  if (visibleNewsArticleQa?.cleanTopSectionNoise) {
     paragraphsEn = paragraphsEn.filter(
       (paragraph) => !QA_VISIBLE_NEWS_ARTICLE_PARAGRAPH_NOISE_EN.has(paragraph),
     );
     paragraphsVi = paragraphsVi.filter(
       (paragraph) => !QA_VISIBLE_NEWS_ARTICLE_PARAGRAPH_NOISE_VI.has(paragraph),
     );
+  }
 
+  if (visibleNewsArticleQa?.cleanIntroSummary) {
     if (!isNonEmptyString(descriptionEn) || descriptionEn === MEMBERSHIP_CTA_EN) {
       descriptionEn = firstNonEmptyString(paragraphsEn[0], page.title_en, page.title);
     }
@@ -651,16 +686,16 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
   const paragraphViReplacements = QA_VI_PARAGRAPH_REPLACEMENTS_BY_PATH[page.path] ?? {};
   paragraphsVi = paragraphsVi.map((paragraph) => paragraphViReplacements[paragraph] ?? paragraph);
 
-  const titleViOverride = QA_VI_TITLE_REPLACEMENTS_BY_PATH[page.path];
+  const titleViOverride = visibleNewsArticleQa?.viTitleOverride;
   const existingH1Vi = page.h1_vi ?? page.h1;
   const normalizedH1Vi = titleViOverride
     ? [titleViOverride, ...existingH1Vi.slice(1)]
     : page.h1_vi;
 
-  const resolvedLinks = isTargetVisibleNewsArticle
+  const resolvedLinks = visibleNewsArticleQa?.dedupeRelatedLinks
     ? dedupeLinksPreserveOrder(filteredLinks)
     : filteredLinks;
-  const resolvedLinksVi = isTargetVisibleNewsArticle
+  const resolvedLinksVi = visibleNewsArticleQa?.dedupeRelatedLinks
     ? dedupeLinksPreserveOrder(
       filteredLinksVi.map((link) => ({
         text: link.text_vi || link.text,
