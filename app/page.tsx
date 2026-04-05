@@ -87,7 +87,7 @@ export default async function HomePage() {
       href: "/news/innovative-science-news",
       title: homeUi.innovativeScienceNews,
       summary: getSectionSummary(
-        [localizedHome.paragraphs[8], localizedHome.paragraphs[9]],
+        [homeUi.innovativeScienceSummary, localizedHome.paragraphs[8], localizedHome.paragraphs[9]],
         innovativeSciencePosts,
         homeUi.innovativeScienceNews,
         lang,
