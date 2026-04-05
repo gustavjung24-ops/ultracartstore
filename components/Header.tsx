@@ -195,8 +195,8 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 alt={locale.site.name}
                 width={502}
                 height={502}
-                className="h-[38px] w-auto object-contain sm:h-[46px] md:h-[50px]"
-                sizes="(min-width: 768px) 50px, (min-width: 640px) 46px, 38px"
+                className="h-[42px] w-auto object-contain drop-shadow-[0_2px_7px_rgba(15,92,115,0.24)] sm:h-[52px] md:h-[58px]"
+                sizes="(min-width: 768px) 58px, (min-width: 640px) 52px, 42px"
                 onError={handleLogoError}
                 unoptimized
                 priority
