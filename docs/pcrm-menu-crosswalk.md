@@ -4,6 +4,12 @@
 
 Tai lieu nay khoa key chinh thuc cho menu PCRM hien tai, de Header/Footer dung chung mot nguon va de cac pass sau bo sung locale ma khong doi key.
 
+## Scope note
+
+1. Tai lieu nay chi khoa PCRM-based navigation labels.
+2. Nhan UI noi bo cua repo (khong phai nhan goc PCRM) duoc quan ly rieng trong locale `repoUi.*`.
+3. Footer contact repeated text duoc quan ly trong locale `site.contact.*` va khong nam trong navigation crosswalk.
+
 ## Top-level catalog (locked)
 
 ### Header top navigation

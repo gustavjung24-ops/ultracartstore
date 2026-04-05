@@ -2,7 +2,14 @@
   "site": {
     "name": "Physicians Committee for Responsible Medicine",
     "shortName": "PCRM",
-    "tagline": "Evidence-based nutrition and ethical science"
+    "tagline": "Evidence-based nutrition and ethical science",
+    "contact": {
+      "addressLine1": "5100 Wisconsin Ave. NW, Suite 400",
+      "addressLine2": "Washington, D.C. 20016",
+      "email": "info@pcrm.org",
+      "phoneDisplay": "(202) 686-2210",
+      "phoneHref": "+1-202-686-2210"
+    }
   },
   "topNav": {
     "forClinicians": "For Clinicians",
@@ -68,7 +75,8 @@
   },
   "footerLegal": {
     "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms of Use"
+    "termsOfUse": "Terms of Use",
+    "allRightsReserved": "All rights reserved."
   },
   "common": {
     "home": "Home",
@@ -93,6 +101,10 @@
     "noData": "No data available.",
     "notFound": "Content not found.",
     "comingSoon": "Coming soon."
+  },
+  "repoUi": {
+    "quickAccess": "Quick Access",
+    "openMainSection": "Open Main Section"
   },
   "contactOptions": {
     "whatsapp": "Message on WhatsApp",

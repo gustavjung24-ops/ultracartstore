@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { type Language } from '@/lib/translations';
+import { getPreferredClientLanguage, persistClientLanguage } from '@/lib/client-language';
 import {
   COMMON_LOCALES,
   HEADER_MAIN_NAV_GROUPS,
   HEADER_TOP_NAV_GROUPS,
   resolveCatalogLabel,
-  resolveLocaleText,
   type CatalogItem,
   type CommonLocaleDictionary,
 } from '@/lib/navigation-catalog';
@@ -51,15 +51,14 @@ function toRenderItem(locale: CommonLocaleDictionary, language: Language, item: 
 export default function Header({ showDonateButton = false }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(() => getPreferredClientLanguage());
   const [mounted, setMounted] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem('language') as Language | null;
-    if (saved) setLanguage(saved);
+    setLanguage(getPreferredClientLanguage());
   }, []);
 
   useEffect(() => {
@@ -84,8 +83,7 @@ export default function Header({ showDonateButton = false }: HeaderProps) {
 
   const handleLanguageChange = (lang: Language) => {
     setLanguage(lang);
-    localStorage.setItem('language', lang);
-    document.cookie = `site_lang=${lang}; path=/; max-age=31536000`;
+    persistClientLanguage(lang);
     window.dispatchEvent(new CustomEvent('languagechange', { detail: { language: lang } }));
     window.location.reload();
   };
@@ -112,29 +110,13 @@ export default function Header({ showDonateButton = false }: HeaderProps) {
   }, [locale, language]);
 
   const currentLabels = useMemo(() => {
-    const donate =
-      resolveLocaleText(locale, 'waysToGive.donate') ||
-      (language === 'vi' ? 'Quyên góp' : 'Donate');
-
-    const menu =
-      resolveLocaleText(locale, 'common.mainMenu') ||
-      (language === 'vi' ? 'Menu' : 'Menu');
-
-    const quickAccess =
-      resolveLocaleText(locale, 'common.resources') ||
-      (language === 'vi' ? 'Truy cập nhanh' : 'Quick Access');
-
-    const openMainSection =
-      resolveLocaleText(locale, 'common.viewAll') ||
-      (language === 'vi' ? 'Xem mục chính' : 'Open main section');
-
     return {
-      donate,
-      menu,
-      quickAccess,
-      openMainSection,
+      donate: locale.waysToGive.donate,
+      menu: locale.common.mainMenu,
+      quickAccess: locale.repoUi.quickAccess,
+      openMainSection: locale.repoUi.openMainSection,
     };
-  }, [locale, language]);
+  }, [locale]);
 
   const mobileMenuGroups: Array<{ key: string; href: string; label: string; items: RenderNavItem[] }> = [
     ...topGroups.map((group) => ({

@@ -2,7 +2,14 @@
   "site": {
     "name": "Ủy ban Bác sĩ vì Y học có trách nhiệm",
     "shortName": "PCRM",
-    "tagline": "Dinh dưỡng dựa trên bằng chứng và khoa học có đạo đức"
+    "tagline": "Dinh dưỡng dựa trên bằng chứng và khoa học có đạo đức",
+    "contact": {
+      "addressLine1": "5100 Wisconsin Ave. NW, Suite 400",
+      "addressLine2": "Washington, D.C. 20016",
+      "email": "info@pcrm.org",
+      "phoneDisplay": "(202) 686-2210",
+      "phoneHref": "+1-202-686-2210"
+    }
   },
   "topNav": {
     "forClinicians": "Dành cho chuyên gia lâm sàng",
@@ -68,7 +75,8 @@
   },
   "footerLegal": {
     "privacyPolicy": "Chính sách bảo mật",
-    "termsOfUse": "Điều khoản sử dụng"
+    "termsOfUse": "Điều khoản sử dụng",
+    "allRightsReserved": "Bảo lưu mọi quyền."
   },
   "common": {
     "home": "Trang chủ",
@@ -93,6 +101,10 @@
     "noData": "Hiện chưa có dữ liệu.",
     "notFound": "Không tìm thấy nội dung.",
     "comingSoon": "Sắp ra mắt."
+  },
+  "repoUi": {
+    "quickAccess": "Truy cập nhanh",
+    "openMainSection": "Mở mục chính"
   },
   "contactOptions": {
     "whatsapp": "Nhắn tin WhatsApp",
