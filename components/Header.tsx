@@ -182,7 +182,9 @@ export default function Header() {
                 alt={locale.site.name}
                 width={423}
                 height={193}
-                className="h-auto w-[148px] sm:w-[260px]"
+                className="h-auto w-[148px] object-contain sm:w-[260px]"
+                sizes="(min-width: 640px) 260px, 148px"
+                unoptimized
                 priority
               />
             </Link>

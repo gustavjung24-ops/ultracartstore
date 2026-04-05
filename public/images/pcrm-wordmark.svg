@@ -1,4 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 423 193" role="img" aria-labelledby="logoTitle logoDesc">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="423"
+  height="193"
+  viewBox="0 0 423 193"
+  preserveAspectRatio="xMidYMid meet"
+  shape-rendering="geometricPrecision"
+  text-rendering="geometricPrecision"
+  role="img"
+  aria-labelledby="logoTitle logoDesc"
+>
   <title id="logoTitle">Y học nhân ái</title>
   <desc id="logoDesc">Logo Y học nhân ái với biểu tượng trái tim, bàn tay nâng đỡ và dòng chữ Vì sức khỏe, Vì sự sống.</desc>
   <defs>
