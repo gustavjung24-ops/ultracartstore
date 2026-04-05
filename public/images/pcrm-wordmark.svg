@@ -9,93 +9,103 @@
   role="img"
   aria-labelledby="logoTitle logoDesc"
 >
-  <title id="logoTitle">Y học nhân ái</title>
-  <desc id="logoDesc">Logo Y học nhân ái với biểu tượng trái tim, bàn tay nâng đỡ và dòng chữ Vì sức khỏe, Vì sự sống.</desc>
+  <title id="logoTitle">Yhoc nhân ái</title>
+  <desc id="logoDesc">Logo tim xanh với biểu tượng người và dòng chữ Yhoc nhân ái, Vi sue khoe, Vi su song.</desc>
   <defs>
-    <linearGradient id="leftHand" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#63bb1e" />
-      <stop offset="100%" stop-color="#0087b9" />
+    <linearGradient id="gradHeart" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#009fd4" />
+      <stop offset="100%" stop-color="#59c02c" />
     </linearGradient>
-    <linearGradient id="rightHand" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00a2d4" />
-      <stop offset="100%" stop-color="#0048b3" />
+    <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12b8e7" />
+      <stop offset="100%" stop-color="#0079c1" />
     </linearGradient>
-    <linearGradient id="heartStroke" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ff8b1a" />
-      <stop offset="100%" stop-color="#e83400" />
+    <linearGradient id="gradGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#79d63f" />
+      <stop offset="100%" stop-color="#00a95a" />
     </linearGradient>
-    <linearGradient id="innerWarm" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff9117" />
-      <stop offset="100%" stop-color="#d91000" />
+    <linearGradient id="gradTextMain" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3ac96a" />
+      <stop offset="60%" stop-color="#14b8de" />
+      <stop offset="100%" stop-color="#0e7fcd" />
     </linearGradient>
-    <linearGradient id="innerCool" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00a4d8" />
-      <stop offset="100%" stop-color="#0070ba" />
+    <linearGradient id="gradTagline" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6fd640" />
+      <stop offset="100%" stop-color="#1f9f54" />
     </linearGradient>
   </defs>
 
-  <g transform="translate(32 8)">
-    <path
-      d="M74 129C39 111 32 77 49 55C58 42 74 35 88 41C75 61 72 88 74 129Z"
-      fill="url(#leftHand)"
-    />
-    <path
-      d="M283 129C318 111 325 77 308 55C299 42 283 35 269 41C282 61 285 88 283 129Z"
-      fill="url(#rightHand)"
-    />
+  <g transform="translate(0 2)">
+    <g transform="translate(108 1)">
+      <path
+        d="M103 17C87 -3 55 -2 36 20C15 44 18 81 46 104C64 118 84 129 103 145C122 129 142 118 160 104C188 81 191 44 170 20C151 -2 119 -3 103 17Z"
+        fill="none"
+        stroke="url(#gradHeart)"
+        stroke-width="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
 
-    <path
-      d="M178 48C164 30 139 28 124 45C108 63 112 91 134 109C149 121 164 133 178 146C192 133 207 121 222 109C244 91 248 63 232 45C217 28 192 30 178 48Z"
-      fill="none"
-      stroke="url(#heartStroke)"
-      stroke-width="8"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
+      <path
+        d="M39 72C64 88 79 106 98 139C80 125 55 116 35 103C24 96 17 86 14 73C11 60 15 48 24 39C26 51 31 61 39 72Z"
+        fill="url(#gradGreen)"
+      />
+      <path
+        d="M172 74C161 93 145 113 109 139C126 122 136 102 158 88C168 82 176 73 180 61C182 68 182 76 180 84C177 92 175 96 170 103C165 109 157 115 147 119C139 122 128 126 119 131C142 114 155 97 172 74Z"
+        fill="url(#gradGreen)"
+      />
 
-    <path
-      d="M140 105C151 87 162 74 176 62C167 84 168 106 178 124C162 119 149 113 140 105Z"
-      fill="url(#innerCool)"
-    />
-    <path
-      d="M176 124C188 101 202 82 223 70C214 95 218 114 230 128C211 126 194 124 176 124Z"
-      fill="url(#innerWarm)"
-    />
+      <circle cx="105" cy="68" r="8.5" fill="url(#gradBlue)" />
+      <path
+        d="M62 76C77 84 89 93 105 105C121 93 133 84 148 76C137 91 129 108 118 131C114 140 110 144 105 145C100 144 96 140 92 131C81 108 73 91 62 76Z"
+        fill="url(#gradBlue)"
+      />
 
-    <circle cx="178" cy="76" r="9" fill="#00a3d8" />
-
-    <g fill="#63bb1e">
-      <rect x="260" y="18" width="12" height="36" rx="2" />
-      <rect x="248" y="30" width="36" height="12" rx="2" />
-      <rect x="219" y="49" width="9" height="26" rx="2" />
-      <rect x="211" y="57" width="25" height="9" rx="2" />
+      <g fill="url(#gradGreen)">
+        <rect x="128" y="36" width="12" height="36" rx="2.5" />
+        <rect x="116" y="48" width="36" height="12" rx="2.5" />
+      </g>
     </g>
+
+    <text
+      x="211.5"
+      y="152"
+      text-anchor="middle"
+      fill="url(#gradTextMain)"
+      stroke="#ffffff"
+      stroke-width="1.5"
+      paint-order="stroke fill"
+      font-size="58"
+      font-weight="700"
+      font-style="italic"
+      letter-spacing="0.2"
+      font-family="'Segoe Script', 'Brush Script MT', 'Lucida Handwriting', cursive"
+    >
+      Yhoc nhân ái
+    </text>
+
+    <path
+      d="M88 154C138 162 285 162 336 154"
+      fill="none"
+      stroke="url(#gradTextMain)"
+      stroke-width="2.4"
+      stroke-linecap="round"
+    />
+
+    <text
+      x="211.5"
+      y="178"
+      text-anchor="middle"
+      fill="url(#gradTagline)"
+      stroke="#ffffff"
+      stroke-width="1.2"
+      paint-order="stroke fill"
+      font-size="20"
+      font-weight="700"
+      font-style="italic"
+      font-family="'Segoe Script', 'Brush Script MT', 'Lucida Handwriting', cursive"
+    >
+      Vi sue khoe, Vi su song
+    </text>
   </g>
-
-  <text
-    x="211.5"
-    y="147"
-    text-anchor="middle"
-    fill="#006d94"
-    font-size="44"
-    font-weight="700"
-    font-style="italic"
-    font-family="Georgia, 'Times New Roman', serif"
-  >
-    Y học nhân ái
-  </text>
-
-  <path d="M92 155C151 164 272 164 332 155" fill="none" stroke="#0a86b2" stroke-width="2" />
-
-  <text
-    x="211.5"
-    y="178"
-    text-anchor="middle"
-    fill="#198d2f"
-    font-size="25"
-    font-style="italic"
-    font-family="Georgia, 'Times New Roman', serif"
-  >
-    Vì sức khỏe, Vì sự sống
-  </text>
 </svg>
