@@ -77,8 +77,42 @@ const QA_TARGET_HUBS = new Set([
   "/clinical-research",
   "/news/blog",
 ]);
+const QA_TARGET_VISIBLE_NEWS_ARTICLES = new Set([
+  "/news/health-nutrition/american-heart-association-recommends-plant-based-protein-over-meat",
+  "/news/news-releases/physicians-committee-offering-grants-farmers-who-are-growing-health-promoting",
+  "/news/news-releases/doctors-group-files-legal-petition-urging-usda-require-colorectal-cancer-warning",
+]);
 const MEMBERSHIP_CTA_EN = "Make your 2026 membership gift today!";
 const MEMBERSHIP_CTA_VI = "Hãy tặng quà thành viên năm 2026 ngay hôm nay!";
+
+const QA_VISIBLE_NEWS_ARTICLE_LINK_EXCLUDE_BASE = new Set([
+  "/#main-content",
+  "/",
+  "/good-nutrition/nutrition-for-clinicians",
+  "/good-nutrition/nutrition-for-clinicians/medical-students",
+  "/term/scientists",
+  "/about-us",
+  "/about-us#leadership",
+  "/about-us/our-victories",
+  "/about-us/careers",
+  "/about-us/careers/internships",
+  "/events",
+  "/about-us/financial-report",
+  "/barnard-medical-center",
+  "/contact-us",
+]);
+
+const QA_VISIBLE_NEWS_ARTICLE_PARAGRAPH_NOISE_EN = new Set([
+  MEMBERSHIP_CTA_EN,
+  "Health and Nutrition News",
+  "Subscribe to the Physicians Committee's Breaking Medical News.",
+]);
+
+const QA_VISIBLE_NEWS_ARTICLE_PARAGRAPH_NOISE_VI = new Set([
+  MEMBERSHIP_CTA_VI,
+  "Tin tức sức khỏe và dinh dưỡng",
+  "Đăng ký nhận Tin tức y tế mới nhất của Ủy ban bác sĩ.",
+]);
 
 const QA_LINK_EXCLUDE_BY_PATH: Record<string, Set<string>> = {
   "/about-us": new Set([
@@ -241,6 +275,11 @@ const QA_VI_LINK_TEXT_REPLACEMENTS: Record<string, string> = {
   "Chống lại cơn bốc hỏa bằng chế độ ăn kiêng": "Kiểm soát bốc hỏa bằng chế độ ăn",
 };
 
+const QA_VI_TITLE_REPLACEMENTS_BY_PATH: Record<string, string> = {
+  "/news/health-nutrition/american-heart-association-recommends-plant-based-protein-over-meat":
+    "Hiệp hội Tim mạch Hoa Kỳ khuyến nghị ưu tiên protein từ thực vật thay vì thịt",
+};
+
 const BLOG_PARAGRAPH_NOISE_EN = new Set([
   "Blog | Impact & Advocacy",
   "Xavier Toledo, MS, RD, LDN",
@@ -399,6 +438,19 @@ function dedupeParagraphsPreserveOrder(paragraphs: string[]): string[] {
   });
 }
 
+function dedupeLinksPreserveOrder(links: PcrmLink[]): PcrmLink[] {
+  const seen = new Set<string>();
+  return links.filter((link) => {
+    const key = `${link.url}::${link.text}`;
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+}
+
 function normalizePathFromHubLinkUrl(url: string): string | null {
   try {
     const parsed = new URL(url);
@@ -441,11 +493,18 @@ function getPageLabelByPath(path: string, lang: ContentLanguage): string {
 }
 
 function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
-  if (!QA_TARGET_HUBS.has(page.path)) {
+  const isTargetHub = QA_TARGET_HUBS.has(page.path);
+  const isTargetVisibleNewsArticle = QA_TARGET_VISIBLE_NEWS_ARTICLES.has(page.path);
+
+  if (!isTargetHub && !isTargetVisibleNewsArticle) {
     return page;
   }
 
-  const excludedLinkKeys = QA_LINK_EXCLUDE_BY_PATH[page.path] ?? new Set<string>();
+  const excludedLinkKeys = QA_LINK_EXCLUDE_BY_PATH[page.path] ?? (
+    isTargetVisibleNewsArticle
+      ? new Set([...QA_VISIBLE_NEWS_ARTICLE_LINK_EXCLUDE_BASE, page.path])
+      : new Set<string>()
+  );
   const seenLinkKeys = new Set<string>();
 
   const filteredLinks = page.links.filter((link) => {
@@ -567,21 +626,66 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
     paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, firstNonEmptyString(descriptionVi, descriptionEn));
   }
 
+  if (isTargetVisibleNewsArticle) {
+    paragraphsEn = paragraphsEn.filter(
+      (paragraph) => !QA_VISIBLE_NEWS_ARTICLE_PARAGRAPH_NOISE_EN.has(paragraph),
+    );
+    paragraphsVi = paragraphsVi.filter(
+      (paragraph) => !QA_VISIBLE_NEWS_ARTICLE_PARAGRAPH_NOISE_VI.has(paragraph),
+    );
+
+    if (!isNonEmptyString(descriptionEn) || descriptionEn === MEMBERSHIP_CTA_EN) {
+      descriptionEn = firstNonEmptyString(paragraphsEn[0], page.title_en, page.title);
+    }
+
+    if (!isNonEmptyString(descriptionVi) || descriptionVi === MEMBERSHIP_CTA_VI) {
+      descriptionVi = firstNonEmptyString(paragraphsVi[0], descriptionEn);
+    }
+
+    paragraphsEn = trimLeadingParagraphIfDuplicate(paragraphsEn, descriptionEn);
+    paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, descriptionVi);
+    paragraphsEn = dedupeParagraphsPreserveOrder(paragraphsEn);
+    paragraphsVi = dedupeParagraphsPreserveOrder(paragraphsVi);
+  }
+
   const paragraphViReplacements = QA_VI_PARAGRAPH_REPLACEMENTS_BY_PATH[page.path] ?? {};
   paragraphsVi = paragraphsVi.map((paragraph) => paragraphViReplacements[paragraph] ?? paragraph);
+
+  const titleViOverride = QA_VI_TITLE_REPLACEMENTS_BY_PATH[page.path];
+  const existingH1Vi = page.h1_vi ?? page.h1;
+  const normalizedH1Vi = titleViOverride
+    ? [titleViOverride, ...existingH1Vi.slice(1)]
+    : page.h1_vi;
+
+  const resolvedLinks = isTargetVisibleNewsArticle
+    ? dedupeLinksPreserveOrder(filteredLinks)
+    : filteredLinks;
+  const resolvedLinksVi = isTargetVisibleNewsArticle
+    ? dedupeLinksPreserveOrder(
+      filteredLinksVi.map((link) => ({
+        text: link.text_vi || link.text,
+        url: link.url,
+      })),
+    ).map((link) => ({
+      ...link,
+      text_vi: link.text,
+    }))
+    : filteredLinksVi;
 
   const normalizedDescriptionVi = QA_VI_LINK_TEXT_REPLACEMENTS[descriptionVi] ?? descriptionVi;
 
   return {
     ...page,
+    title_vi: titleViOverride ? titleViOverride : page.title_vi,
+    h1_vi: normalizedH1Vi,
     description: descriptionEn,
     description_en: descriptionEn,
     description_vi: normalizedDescriptionVi,
     paragraphs: paragraphsEn,
     paragraphs_en: paragraphsEn,
     paragraphs_vi: paragraphsVi,
-    links: filteredLinks,
-    links_vi: filteredLinksVi,
+    links: resolvedLinks,
+    links_vi: resolvedLinksVi,
   };
 }
 
