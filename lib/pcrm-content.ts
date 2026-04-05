@@ -85,11 +85,16 @@ const HOMEPAGE_FEATURED_ARTICLE_PATHS = [
 ] as const;
 
 // Next visible article paths in homepage/news flow after the cleaned featured top 3.
-// Current source data exposes 2 additional article paths (no third path currently available).
-const HOMEPAGE_NEXT_ARTICLE_PATHS_AFTER_FEATURED = [
+// Current source data exposes only 2 additional article paths; the third slot is explicitly empty.
+const HOMEPAGE_NEXT_THREE_ARTICLE_PATH_SLOTS_AFTER_FEATURED: readonly [string, string, string | null] = [
   "/news/exam-room-podcast/can-your-gut-predict-parkinsons-alzheimers-dr-trisha-pasricha",
   "/news/health-nutrition/plant-based-diets-reduce-risk-cancer",
+  null,
 ] as const;
+
+const HOMEPAGE_NEXT_ARTICLE_PATHS_AFTER_FEATURED = HOMEPAGE_NEXT_THREE_ARTICLE_PATH_SLOTS_AFTER_FEATURED.filter(
+  (path): path is string => typeof path === "string" && path.length > 0,
+);
 
 interface VisibleNewsArticleQaRule {
   cleanTopSectionNoise: boolean;
@@ -122,11 +127,11 @@ const QA_VISIBLE_NEWS_ARTICLE_RULES: Record<string, VisibleNewsArticleQaRule> = 
 
 // Auditable scope for this pass: next visible article pages after the cleaned featured top 3.
 const QA_NEXT_VISIBLE_NEWS_ARTICLE_RULES_BY_PATH: Record<string, VisibleNewsArticleQaRule> = {
-  [HOMEPAGE_NEXT_ARTICLE_PATHS_AFTER_FEATURED[0]]: {
+  [HOMEPAGE_NEXT_THREE_ARTICLE_PATH_SLOTS_AFTER_FEATURED[0]]: {
     cleanTopSectionNoise: true,
     cleanIntroSummary: true,
   },
-  [HOMEPAGE_NEXT_ARTICLE_PATHS_AFTER_FEATURED[1]]: {
+  [HOMEPAGE_NEXT_THREE_ARTICLE_PATH_SLOTS_AFTER_FEATURED[1]]: {
     cleanTopSectionNoise: true,
     cleanIntroSummary: true,
   },
@@ -152,12 +157,12 @@ const HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH: Record<string, Re
 };
 
 const HOMEPAGE_NEXT_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH: Record<string, RelatedLinksCleanupRule> = {
-  [HOMEPAGE_NEXT_ARTICLE_PATHS_AFTER_FEATURED[0]]: {
+  [HOMEPAGE_NEXT_THREE_ARTICLE_PATH_SLOTS_AFTER_FEATURED[0]]: {
     removeGlobalIrrelevantLinks: true,
     removeSelfLink: true,
     dedupeLinks: true,
   },
-  [HOMEPAGE_NEXT_ARTICLE_PATHS_AFTER_FEATURED[1]]: {
+  [HOMEPAGE_NEXT_THREE_ARTICLE_PATH_SLOTS_AFTER_FEATURED[1]]: {
     removeGlobalIrrelevantLinks: true,
     removeSelfLink: true,
     dedupeLinks: true,
