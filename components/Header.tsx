@@ -195,8 +195,8 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 alt={locale.site.name}
                 width={502}
                 height={502}
-                className="h-[34px] w-auto object-contain sm:h-[40px] md:h-[44px]"
-                sizes="(min-width: 768px) 44px, (min-width: 640px) 40px, 34px"
+                className="h-[38px] w-auto object-contain sm:h-[46px] md:h-[50px]"
+                sizes="(min-width: 768px) 50px, (min-width: 640px) 46px, 38px"
                 onError={handleLogoError}
                 unoptimized
                 priority
