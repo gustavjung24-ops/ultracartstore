@@ -84,6 +84,13 @@ const HOMEPAGE_FEATURED_ARTICLE_PATHS = [
   "/news/news-releases/doctors-group-files-legal-petition-urging-usda-require-colorectal-cancer-warning",
 ] as const;
 
+// Next visible article paths in homepage/news flow after the cleaned featured top 3.
+// Current source data exposes 2 additional article paths (no third path currently available).
+const HOMEPAGE_NEXT_ARTICLE_PATHS_AFTER_FEATURED = [
+  "/news/exam-room-podcast/can-your-gut-predict-parkinsons-alzheimers-dr-trisha-pasricha",
+  "/news/health-nutrition/plant-based-diets-reduce-risk-cancer",
+] as const;
+
 interface VisibleNewsArticleQaRule {
   cleanTopSectionNoise: boolean;
   cleanIntroSummary: boolean;
@@ -113,6 +120,18 @@ const QA_VISIBLE_NEWS_ARTICLE_RULES: Record<string, VisibleNewsArticleQaRule> = 
   },
 };
 
+// Auditable scope for this pass: next visible article pages after the cleaned featured top 3.
+const QA_NEXT_VISIBLE_NEWS_ARTICLE_RULES_BY_PATH: Record<string, VisibleNewsArticleQaRule> = {
+  [HOMEPAGE_NEXT_ARTICLE_PATHS_AFTER_FEATURED[0]]: {
+    cleanTopSectionNoise: true,
+    cleanIntroSummary: true,
+  },
+  [HOMEPAGE_NEXT_ARTICLE_PATHS_AFTER_FEATURED[1]]: {
+    cleanTopSectionNoise: true,
+    cleanIntroSummary: true,
+  },
+};
+
 // Path-specific related-links QA for the 3 homepage featured articles.
 const HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH: Record<string, RelatedLinksCleanupRule> = {
   [HOMEPAGE_FEATURED_ARTICLE_PATHS[0]]: {
@@ -132,9 +151,24 @@ const HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH: Record<string, Re
   },
 };
 
+const HOMEPAGE_NEXT_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH: Record<string, RelatedLinksCleanupRule> = {
+  [HOMEPAGE_NEXT_ARTICLE_PATHS_AFTER_FEATURED[0]]: {
+    removeGlobalIrrelevantLinks: true,
+    removeSelfLink: true,
+    dedupeLinks: true,
+  },
+  [HOMEPAGE_NEXT_ARTICLE_PATHS_AFTER_FEATURED[1]]: {
+    removeGlobalIrrelevantLinks: true,
+    removeSelfLink: true,
+    dedupeLinks: true,
+  },
+};
+
 const QA_TARGET_VISIBLE_NEWS_ARTICLES = new Set([
   ...Object.keys(QA_VISIBLE_NEWS_ARTICLE_RULES),
+  ...Object.keys(QA_NEXT_VISIBLE_NEWS_ARTICLE_RULES_BY_PATH),
   ...Object.keys(HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH),
+  ...Object.keys(HOMEPAGE_NEXT_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH),
 ]);
 const MEMBERSHIP_CTA_EN = "Make your 2026 membership gift today!";
 const MEMBERSHIP_CTA_VI = "Hãy tặng quà thành viên năm 2026 ngay hôm nay!";
@@ -542,11 +576,14 @@ function getPageLabelByPath(path: string, lang: ContentLanguage): string {
 }
 
 function getVisibleNewsArticleQaRule(path: string): VisibleNewsArticleQaRule | undefined {
-  return QA_VISIBLE_NEWS_ARTICLE_RULES[path];
+  return QA_VISIBLE_NEWS_ARTICLE_RULES[path] ?? QA_NEXT_VISIBLE_NEWS_ARTICLE_RULES_BY_PATH[path];
 }
 
-function getHomepageFeaturedArticleRelatedLinksCleanup(path: string): RelatedLinksCleanupRule | undefined {
-  return HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH[path];
+function getHomepageNewsFlowArticleRelatedLinksCleanup(path: string): RelatedLinksCleanupRule | undefined {
+  return (
+    HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH[path]
+    ?? HOMEPAGE_NEXT_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH[path]
+  );
 }
 
 function getExcludedLinkKeysForQa(
@@ -580,7 +617,7 @@ function getExcludedLinkKeysForQa(
 function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
   const isTargetHub = QA_TARGET_HUBS.has(page.path);
   const visibleNewsArticleQa = getVisibleNewsArticleQaRule(page.path);
-  const relatedLinksCleanup = getHomepageFeaturedArticleRelatedLinksCleanup(page.path);
+  const relatedLinksCleanup = getHomepageNewsFlowArticleRelatedLinksCleanup(page.path);
   const isTargetVisibleNewsArticle = Boolean(visibleNewsArticleQa || relatedLinksCleanup);
 
   if (!isTargetHub && !isTargetVisibleNewsArticle) {
