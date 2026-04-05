@@ -38,6 +38,20 @@ export interface PcrmPage {
 }
 
 export type ContentLanguage = "en" | "vi";
+export type PcrmContentSource = "generated_source_pages" | "translated_all" | "manual_pages";
+
+export interface PcrmResolvedPage extends PcrmPage {
+  path: string;
+  source_en: PcrmContentSource;
+  source_vi: PcrmContentSource;
+}
+
+export interface PcrmPageSourceResolution {
+  path: string;
+  source_en: PcrmContentSource;
+  source_vi: PcrmContentSource;
+  has_manual_entry: boolean;
+}
 
 export interface LocalizedPcrmPageContent {
   title: string;
@@ -49,15 +63,27 @@ export interface LocalizedPcrmPageContent {
   links: PcrmLink[];
 }
 
-const RAW = translatedAll as PcrmPage[];
-const GENERATED_RAW = generatedSourcePages as PcrmPage[];
 const BASE = "https://www.pcrm.org";
 const PATH_ALIASES: Record<string, string> = {
-  '/contact-us': '/contact',
+  "/contact-us": "/contact",
+};
+
+// Source-of-truth resolution for each normalized path.
+// EN reference: generated_source_pages -> translated_all -> manual_pages.
+// VI layer: translated_all -> generated_source_pages -> manual_pages.
+const SOURCE_PRIORITY = {
+  en: ["generated_source_pages", "translated_all", "manual_pages"],
+  vi: ["translated_all", "generated_source_pages", "manual_pages"],
+} as const;
+
+type PcrmInputPage = PcrmPage & { path?: string };
+type SourcedPcrmPage = PcrmPage & {
+  path: string;
+  contentSource: PcrmContentSource;
 };
 
 function normalizePath(path: string): string {
-  const clean = path.replace(/\/+$|^\/+/, "");
+  const clean = path.replace(/\/+$/g, "").replace(/^\/+/, "");
   if (!clean || clean === "home") return "/";
   return `/${clean}`;
 }
@@ -72,9 +98,60 @@ function likelyTrackingImage(src: string): boolean {
   return /pixel|tracking|p\.gif/i.test(src);
 }
 
+function isNonEmptyString(value: string | undefined | null): value is string {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function firstNonEmptyString(...values: Array<string | undefined | null>): string {
+  for (const value of values) {
+    if (isNonEmptyString(value)) {
+      return value;
+    }
+  }
+  return "";
+}
+
+function firstNonEmptyArray(...values: Array<string[] | undefined>): string[] {
+  for (const value of values) {
+    if (Array.isArray(value) && value.length > 0) {
+      return value.filter(isNonEmptyString);
+    }
+  }
+  return [];
+}
+
+function normalizeLinks(links: PcrmLink[] | undefined): PcrmLink[] {
+  if (!Array.isArray(links)) {
+    return [];
+  }
+
+  return links
+    .filter((link): link is PcrmLink => Boolean(link?.url))
+    .map((link) => ({
+      text: isNonEmptyString(link.text) ? link.text : link.url,
+      url: link.url,
+    }));
+}
+
+function normalizeLinksVi(
+  links: (PcrmLink & { text_vi?: string })[] | undefined,
+): (PcrmLink & { text_vi?: string })[] {
+  if (!Array.isArray(links)) {
+    return [];
+  }
+
+  return links
+    .filter((link): link is PcrmLink & { text_vi?: string } => Boolean(link?.url))
+    .map((link) => ({
+      text: isNonEmptyString(link.text) ? link.text : link.url,
+      text_vi: isNonEmptyString(link.text_vi) ? link.text_vi : undefined,
+      url: link.url,
+    }));
+}
+
 function pickLocalizedValue<T>(
   lang: ContentLanguage,
-  values: { vi?: T; en?: T; fallback: T }
+  values: { vi?: T; en?: T; fallback: T },
 ): T {
   if (lang === "vi") {
     return values.vi ?? values.en ?? values.fallback;
@@ -94,11 +171,15 @@ function getLocalizedLinks(page: PcrmPage, lang: ContentLanguage): PcrmLink[] {
   return page.links;
 }
 
-export function getLocalizedPcrmPageContent(page: PcrmPage, lang: ContentLanguage): LocalizedPcrmPageContent {
-  const title =
-    lang === "vi"
-      ? page.h1_vi?.[0] || page.title_vi || page.h1[0] || page.title
-      : page.h1_en?.[0] || page.title_en || page.h1[0] || page.title;
+export function getLocalizedPcrmPageContent(
+  page: PcrmPage,
+  lang: ContentLanguage,
+): LocalizedPcrmPageContent {
+  const title = pickLocalizedValue(lang, {
+    vi: firstNonEmptyString(page.h1_vi?.[0], page.title_vi),
+    en: firstNonEmptyString(page.h1_en?.[0], page.title_en),
+    fallback: firstNonEmptyString(page.h1[0], page.title),
+  });
 
   return {
     title,
@@ -131,24 +212,224 @@ export function getLocalizedPcrmPageContent(page: PcrmPage, lang: ContentLanguag
   };
 }
 
-const pages = RAW.map((page) => ({
-  ...page,
-  path: pathFromUrl(page.url),
-  images: page.images.filter((img) => !likelyTrackingImage(img.src)),
-}));
+function normalizeInputPage(page: PcrmInputPage, source: PcrmContentSource): SourcedPcrmPage {
+  const path = page.path ? normalizePath(page.path) : pathFromUrl(page.url);
 
-const generatedPages = GENERATED_RAW.map((page) => ({
-  ...page,
-  path: pathFromUrl(page.url),
-  images: page.images.filter((img) => !likelyTrackingImage(img.src)),
-}));
+  return {
+    ...page,
+    path,
+    contentSource: source,
+    title: page.title ?? "",
+    description: page.description ?? "",
+    h1: firstNonEmptyArray(page.h1),
+    h2: firstNonEmptyArray(page.h2),
+    h3: firstNonEmptyArray(page.h3),
+    paragraphs: firstNonEmptyArray(page.paragraphs),
+    h1_en: firstNonEmptyArray(page.h1_en),
+    h1_vi: firstNonEmptyArray(page.h1_vi),
+    h2_en: firstNonEmptyArray(page.h2_en),
+    h2_vi: firstNonEmptyArray(page.h2_vi),
+    h3_en: firstNonEmptyArray(page.h3_en),
+    h3_vi: firstNonEmptyArray(page.h3_vi),
+    paragraphs_en: firstNonEmptyArray(page.paragraphs_en),
+    paragraphs_vi: firstNonEmptyArray(page.paragraphs_vi),
+    images: (page.images ?? []).filter(
+      (img): img is PcrmMedia => Boolean(img?.src) && !likelyTrackingImage(img.src),
+    ),
+    links: normalizeLinks(page.links),
+    links_vi: normalizeLinksVi(page.links_vi),
+  };
+}
 
-const mergedPages = [...manualPages, ...pages, ...generatedPages];
+function buildSourceMap(rawPages: PcrmInputPage[], source: PcrmContentSource) {
+  return new Map<string, SourcedPcrmPage>(
+    rawPages.map((page) => {
+      const normalizedPage = normalizeInputPage(page, source);
+      return [normalizedPage.path, normalizedPage] as const;
+    }),
+  );
+}
 
-const byPath = new Map<string, (PcrmPage & { path: string })>(mergedPages.map((page) => [page.path, page]));
+const pagesBySource: Record<PcrmContentSource, Map<string, SourcedPcrmPage>> = {
+  generated_source_pages: buildSourceMap(
+    generatedSourcePages as PcrmInputPage[],
+    "generated_source_pages",
+  ),
+  translated_all: buildSourceMap(translatedAll as PcrmInputPage[], "translated_all"),
+  manual_pages: buildSourceMap(manualPages as PcrmInputPage[], "manual_pages"),
+};
+
+function pickSourcePage(path: string, lang: ContentLanguage): SourcedPcrmPage | undefined {
+  const normalizedPath = normalizePath(path);
+
+  for (const source of SOURCE_PRIORITY[lang]) {
+    const page = pagesBySource[source].get(normalizedPath);
+    if (page) {
+      return page;
+    }
+  }
+
+  return undefined;
+}
+
+function toLinksVi(
+  viLayer: SourcedPcrmPage | undefined,
+  englishLinks: PcrmLink[],
+): (PcrmLink & { text_vi?: string })[] {
+  if (viLayer?.links_vi?.length) {
+    return viLayer.links_vi;
+  }
+
+  if (viLayer?.links?.length) {
+    return viLayer.links.map((link) => ({
+      ...link,
+      text_vi: link.text,
+    }));
+  }
+
+  return englishLinks.map((link) => ({
+    ...link,
+    text_vi: link.text,
+  }));
+}
+
+function composeResolvedPage(
+  path: string,
+  enReference: SourcedPcrmPage,
+  viLayer: SourcedPcrmPage,
+  sourceEn: PcrmContentSource,
+  sourceVi: PcrmContentSource,
+): PcrmResolvedPage {
+  const titleEn = firstNonEmptyString(
+    enReference.title_en,
+    enReference.title,
+    enReference.h1_en?.[0],
+    enReference.h1[0],
+  );
+  const titleVi = firstNonEmptyString(
+    viLayer.title_vi,
+    viLayer.title,
+    viLayer.h1_vi?.[0],
+    viLayer.h1[0],
+    enReference.title_vi,
+    titleEn,
+  );
+
+  const descriptionEn = firstNonEmptyString(
+    enReference.description_en,
+    enReference.description,
+  );
+  const descriptionVi = firstNonEmptyString(
+    viLayer.description_vi,
+    viLayer.description,
+    enReference.description_vi,
+    descriptionEn,
+  );
+
+  const h1En = firstNonEmptyArray(enReference.h1_en, enReference.h1, titleEn ? [titleEn] : undefined);
+  const h1Vi = firstNonEmptyArray(viLayer.h1_vi, viLayer.h1, enReference.h1_vi, h1En);
+  const h2En = firstNonEmptyArray(enReference.h2_en, enReference.h2);
+  const h2Vi = firstNonEmptyArray(viLayer.h2_vi, viLayer.h2, enReference.h2_vi, h2En);
+  const h3En = firstNonEmptyArray(enReference.h3_en, enReference.h3);
+  const h3Vi = firstNonEmptyArray(viLayer.h3_vi, viLayer.h3, enReference.h3_vi, h3En);
+  const paragraphsEn = firstNonEmptyArray(enReference.paragraphs_en, enReference.paragraphs);
+  const paragraphsVi = firstNonEmptyArray(
+    viLayer.paragraphs_vi,
+    viLayer.paragraphs,
+    enReference.paragraphs_vi,
+    paragraphsEn,
+  );
+
+  const links = normalizeLinks(enReference.links);
+  const linksVi = toLinksVi(viLayer, links);
+  const images = enReference.images.length > 0 ? enReference.images : viLayer.images;
+  const canonicalUrl = firstNonEmptyString(
+    enReference.url,
+    viLayer.url,
+    `${BASE}${path === "/" ? "/home" : path}`,
+  );
+
+  return {
+    path,
+    source_en: sourceEn,
+    source_vi: sourceVi,
+    url: canonicalUrl,
+    title: titleEn,
+    title_en: titleEn,
+    title_vi: titleVi,
+    description: descriptionEn,
+    description_en: descriptionEn,
+    description_vi: descriptionVi,
+    h1: h1En,
+    h1_en: h1En,
+    h1_vi: h1Vi,
+    h2: h2En,
+    h2_en: h2En,
+    h2_vi: h2Vi,
+    h3: h3En,
+    h3_en: h3En,
+    h3_vi: h3Vi,
+    paragraphs: paragraphsEn,
+    paragraphs_en: paragraphsEn,
+    paragraphs_vi: paragraphsVi,
+    images,
+    links,
+    links_vi: linksVi,
+  };
+}
+
+const allKnownPaths = Array.from(
+  new Set([
+    ...pagesBySource.generated_source_pages.keys(),
+    ...pagesBySource.translated_all.keys(),
+    ...pagesBySource.manual_pages.keys(),
+  ]),
+);
+
+const resolvedPages: PcrmResolvedPage[] = allKnownPaths
+  .map((path) => {
+    const enPage = pickSourcePage(path, "en");
+    const viPage = pickSourcePage(path, "vi");
+    const fallbackPage = enPage ?? viPage;
+
+    if (!fallbackPage) {
+      return null;
+    }
+
+    const enReference = enPage ?? fallbackPage;
+    const viLayer = viPage ?? fallbackPage;
+
+    return composeResolvedPage(
+      path,
+      enReference,
+      viLayer,
+      enReference.contentSource,
+      viLayer.contentSource,
+    );
+  })
+  .filter((page): page is PcrmResolvedPage => Boolean(page));
+
+const byPath = new Map<string, PcrmResolvedPage>(resolvedPages.map((page) => [page.path, page]));
+
+const sourceResolutionByPath = new Map<string, PcrmPageSourceResolution>(
+  resolvedPages.map((page) => [
+    page.path,
+    {
+      path: page.path,
+      source_en: page.source_en,
+      source_vi: page.source_vi,
+      has_manual_entry: pagesBySource.manual_pages.has(page.path),
+    },
+  ]),
+);
+
+const blogPathOrder = [
+  ...pagesBySource.translated_all.keys(),
+  ...pagesBySource.generated_source_pages.keys(),
+];
 
 export function getAllPcrmPages() {
-  return mergedPages;
+  return resolvedPages;
 }
 
 export function getPcrmPageByPath(path: string) {
@@ -175,7 +456,7 @@ export function getMainNavigation() {
 
   return preferred
     .map((path) => getPcrmPageByPath(path))
-    .filter((page): page is PcrmPage & { path: string } => Boolean(page))
+    .filter((page): page is PcrmResolvedPage => Boolean(page))
     .map((page) => ({
       href: page.path,
       label: page.h1[0] || page.title,
@@ -183,9 +464,35 @@ export function getMainNavigation() {
 }
 
 export function getBlogPages() {
-  const contentPages = [...pages, ...generatedPages];
-  const dedupedByPath = new Map(contentPages.map((page) => [page.path, page]));
-  return [...dedupedByPath.values()].filter((page) => page.path.startsWith("/news/") && page.path !== "/news/blog");
+  const dedupedPath = new Set<string>();
+  const blogPages: PcrmResolvedPage[] = [];
+
+  for (const path of blogPathOrder) {
+    if (dedupedPath.has(path)) {
+      continue;
+    }
+
+    dedupedPath.add(path);
+
+    if (!path.startsWith("/news/") || path === "/news/blog") {
+      continue;
+    }
+
+    const page = byPath.get(path);
+    if (page) {
+      blogPages.push(page);
+    }
+  }
+
+  return blogPages;
+}
+
+export function getPcrmPageSourceResolution(path: string) {
+  return sourceResolutionByPath.get(normalizePath(path));
+}
+
+export function getAllPcrmPageSourceResolutions() {
+  return [...sourceResolutionByPath.values()];
 }
 
 export function sanitizeExternalLink(url: string) {
@@ -205,26 +512,26 @@ function closestKnownPath(path: string): string {
     return aliased;
   }
 
-  const segments = aliased.split('/').filter(Boolean);
+  const segments = aliased.split("/").filter(Boolean);
   while (segments.length > 0) {
     segments.pop();
-    const candidate = segments.length ? `/${segments.join('/')}` : '/';
+    const candidate = segments.length ? `/${segments.join("/")}` : "/";
     if (byPath.has(candidate)) {
       return candidate;
     }
   }
 
-  return '/';
+  return "/";
 }
 
 export function toInternalPcrmHref(url: string): { href: string; internal: boolean } {
   const trimmed = url.trim();
 
   if (!trimmed) {
-    return { href: '/', internal: true };
+    return { href: "/", internal: true };
   }
 
-  if (trimmed.startsWith('/')) {
+  if (trimmed.startsWith("/")) {
     return { href: closestKnownPath(trimmed), internal: true };
   }
 
@@ -232,7 +539,7 @@ export function toInternalPcrmHref(url: string): { href: string; internal: boole
     const parsed = new URL(trimmed);
     const hostname = parsed.hostname.toLowerCase();
 
-    if (hostname === 'www.pcrm.org' || hostname === 'pcrm.org') {
+    if (hostname === "www.pcrm.org" || hostname === "pcrm.org") {
       const pathname = closestKnownPath(parsed.pathname);
       return { href: `${pathname}${parsed.search}${parsed.hash}`, internal: true };
     }

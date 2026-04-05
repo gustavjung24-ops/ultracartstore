@@ -1,4 +1,8 @@
-import translatedAll from '@/pcrm_translated/translated_all.json';
+import {
+  getAllPcrmPages,
+  getLocalizedPcrmPageContent,
+  getPcrmPageByPath as getPcrmResolvedPageByPath,
+} from "./pcrm-content";
 import { type Language } from './translations';
 
 export type PageContent = {
@@ -20,29 +24,52 @@ type TranslatedPageData = PageContent & {
   url: string;
 };
 
+function normalizePagePathInput(pageUrl: string): string {
+  const trimmed = pageUrl.trim();
+  if (!trimmed) {
+    return "/";
+  }
+
+  let pathname = trimmed;
+
+  if (!trimmed.startsWith("/")) {
+    try {
+      pathname = new URL(trimmed).pathname || "/";
+    } catch {
+      pathname = `/${trimmed.replace(/^\/+/, "")}`;
+    }
+  }
+
+  const lowerCased = pathname.toLowerCase();
+  const clean = lowerCased.replace(/\/+$/g, "");
+  if (!clean || clean === "/home") {
+    return "/";
+  }
+
+  return clean.startsWith("/") ? clean : `/${clean}`;
+}
+
 export const getPageTranslation = (pageUrl: string, language: Language = 'en'): PageContent | null => {
-  const normalizedUrl = pageUrl.toLowerCase().trim();
-  
-  const page = (translatedAll as unknown as TranslatedPageData[]).find((p) => {
-    const pUrl = p.url?.toLowerCase() || '';
-    return pUrl === normalizedUrl || pUrl.includes(normalizedUrl);
-  });
+  const page = getPcrmResolvedPageByPath(normalizePagePathInput(pageUrl));
 
   if (!page) return null;
 
-  if (language === 'vi') {
-    return {
-      title: page.title_vi || page.title,
-      description: page.description_vi || page.description,
-      h1: page.h1_vi || page.h1,
-      h2: page.h2_vi || page.h2,
-      paragraphs: page.paragraphs_vi || page.paragraphs,
-      images: page.images,
-      url: page.url,
-    };
-  }
+  const localized = getLocalizedPcrmPageContent(page, language);
 
-  return page;
+  return {
+    url: page.url,
+    title: localized.title,
+    title_vi: page.title_vi,
+    description: localized.description,
+    description_vi: page.description_vi,
+    h1: localized.h1,
+    h1_vi: page.h1_vi,
+    h2: localized.h2,
+    h2_vi: page.h2_vi,
+    paragraphs: localized.paragraphs,
+    paragraphs_vi: page.paragraphs_vi,
+    images: page.images,
+  };
 };
 
 export const translateText = (text: string | undefined | null, language: Language = 'en'): string => {
@@ -79,12 +106,8 @@ export const translateText = (text: string | undefined | null, language: Languag
   return text;
 };
 
-export const getAllPages = () => translatedAll as unknown as TranslatedPageData[];
+export const getAllPages = () => getAllPcrmPages() as unknown as TranslatedPageData[];
 
 export const getPageByPath = (path: string) => {
-  const normalizedPath = path.toLowerCase();
-  return (translatedAll as unknown as TranslatedPageData[]).find((p) => {
-    const pUrl = p.url?.toLowerCase() || '';
-    return pUrl.includes(normalizedPath);
-  });
+  return getPcrmResolvedPageByPath(path) as unknown as TranslatedPageData | undefined;
 };
