@@ -165,12 +165,33 @@ const HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH: Recor
   },
 };
 
-const QA_TARGET_VISIBLE_NEWS_ARTICLES = new Set([
-  ...Object.keys(QA_VISIBLE_NEWS_ARTICLE_RULES),
-  ...Object.keys(QA_HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_RULES_BY_PATH),
-  ...Object.keys(HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH),
-  ...Object.keys(HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH),
+// Consolidated article/news paths currently visible from homepage/news flow.
+const FINAL_VISIBLE_NEWS_FLOW_ARTICLE_PATHS = new Set<string>([
+  ...HOMEPAGE_FEATURED_ARTICLE_PATHS,
+  HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_PATHS.first,
+  HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_PATHS.second,
+].filter(Boolean));
+
+const FINAL_VISIBLE_NEWS_ARTICLE_LINK_EXCLUDE_PATH_PREFIXES = [
+  "/about-us/staff/",
+  "/about-us/presidents-council",
+  "/good-nutrition/plant-based-diets/ffl",
+];
+
+const FINAL_VISIBLE_NEWS_ARTICLE_LINK_EXCLUDE_PATHS = new Set([
+  "/news",
+  "/news/blog",
+  "/news/news-releases",
+  "/good-nutrition/plant-based-diets/ffl",
 ]);
+
+const FINAL_VISIBLE_NEWS_ARTICLE_ALLOWED_NEWS_HUB_PATHS = new Set([
+  "/news/health-nutrition",
+  "/news/news-releases",
+  "/news/innovative-science-news",
+  "/news/good-science-digest",
+]);
+
 const MEMBERSHIP_CTA_EN = "Make your 2026 membership gift today!";
 const MEMBERSHIP_CTA_VI = "Hãy tặng quà thành viên năm 2026 ngay hôm nay!";
 
@@ -376,6 +397,9 @@ const QA_VI_LINK_TEXT_REPLACEMENTS: Record<string, string> = {
   "Đào tạo y tế": "Đào tạo nhân viên cấp cứu",
   "tin tức phát hành": "Thông cáo báo chí",
   "Chống lại cơn bốc hỏa bằng chế độ ăn kiêng": "Kiểm soát bốc hỏa bằng chế độ ăn",
+  "Ủy ban bác sĩ,": "Thông cáo báo chí",
+  "Chế độ ăn thuần chay có liên quan đến việc giảm nguy cơ ung thư vú và nhiều tin tức về ung thư hơn":
+    "Chế độ ăn thuần chay có liên quan đến việc giảm nguy cơ ung thư vú và thêm tin tức về ung thư",
 };
 
 const BLOG_PARAGRAPH_NOISE_EN = new Set([
@@ -525,6 +549,24 @@ function trimLeadingParagraphIfDuplicate(paragraphs: string[], lead: string): st
   return paragraphs[0] === lead ? paragraphs.slice(1) : paragraphs;
 }
 
+function normalizeComparableText(value: string): string {
+  return value
+    .replace(/\u00A0/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function trimLeadingParagraphIfSemanticallyDuplicate(paragraphs: string[], lead: string): string[] {
+  if (!paragraphs.length || !isNonEmptyString(lead)) {
+    return paragraphs;
+  }
+
+  return normalizeComparableText(paragraphs[0]) === normalizeComparableText(lead)
+    ? paragraphs.slice(1)
+    : paragraphs;
+}
+
 function removeKnownNoiseParagraphs(
   paragraphs: string[],
   lang: ContentLanguage,
@@ -648,6 +690,54 @@ function getExcludedLinkKeysForQa(
   return excluded;
 }
 
+function isSocialShareLink(url: string): boolean {
+  if (url.startsWith("mailto:")) {
+    return true;
+  }
+
+  try {
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.toLowerCase();
+
+    if ((hostname === "www.facebook.com" || hostname === "facebook.com") && parsed.pathname === "/sharer/sharer.php") {
+      return true;
+    }
+
+    if (hostname === "bsky.app" && parsed.pathname === "/intent/compose") {
+      return true;
+    }
+  } catch {
+    return false;
+  }
+
+  return false;
+}
+
+function shouldExcludeFinalVisibleNewsArticleLink(path: string, url: string, key: string): boolean {
+  if (!FINAL_VISIBLE_NEWS_FLOW_ARTICLE_PATHS.has(path)) {
+    return false;
+  }
+
+  if (isSocialShareLink(url)) {
+    return true;
+  }
+
+  const hashIndex = key.indexOf("#");
+  const keyPath = hashIndex >= 0 ? key.slice(0, hashIndex) : key;
+
+  if (FINAL_VISIBLE_NEWS_ARTICLE_LINK_EXCLUDE_PATHS.has(keyPath)) {
+    return true;
+  }
+
+  if (keyPath.startsWith("/news/")
+    && !FINAL_VISIBLE_NEWS_FLOW_ARTICLE_PATHS.has(keyPath)
+    && !FINAL_VISIBLE_NEWS_ARTICLE_ALLOWED_NEWS_HUB_PATHS.has(keyPath)) {
+    return true;
+  }
+
+  return FINAL_VISIBLE_NEWS_ARTICLE_LINK_EXCLUDE_PATH_PREFIXES.some((prefix) => keyPath.startsWith(prefix));
+}
+
 function isAllowedLinkKeyForPath(path: string, key: string): boolean {
   const allowlist = QA_LINK_ALLOWLIST_BY_PATH[path];
   if (!allowlist) {
@@ -678,6 +768,10 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
       return false;
     }
 
+    if (shouldExcludeFinalVisibleNewsArticleLink(page.path, link.url, key)) {
+      return false;
+    }
+
     if (!isAllowedLinkKeyForPath(page.path, key)) {
       return false;
     }
@@ -704,6 +798,10 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
         ?.filter((link) => {
           const key = normalizePcrmLinkKey(link.url);
           if (excludedLinkKeys.has(key)) {
+            return false;
+          }
+
+          if (shouldExcludeFinalVisibleNewsArticleLink(page.path, link.url, key)) {
             return false;
           }
 
@@ -843,8 +941,8 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
       descriptionVi = firstNonEmptyString(paragraphsVi[0], descriptionEn);
     }
 
-    paragraphsEn = trimLeadingParagraphIfDuplicate(paragraphsEn, descriptionEn);
-    paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, descriptionVi);
+    paragraphsEn = trimLeadingParagraphIfSemanticallyDuplicate(paragraphsEn, descriptionEn);
+    paragraphsVi = trimLeadingParagraphIfSemanticallyDuplicate(paragraphsVi, descriptionVi);
     paragraphsEn = dedupeParagraphsPreserveOrder(paragraphsEn);
     paragraphsVi = dedupeParagraphsPreserveOrder(paragraphsVi);
   }
