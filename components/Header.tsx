@@ -45,7 +45,7 @@ function toRenderItem(locale: CommonLocaleDictionary, language: Language, item: 
 }
 
 export default function Header() {
-  const logoCandidates = ['/images/1.PNG', '/images/1.png', '/images/pcrm-wordmark.svg'] as const;
+  const logoCandidates = ['/images/1.png', '/images/1.PNG', '/images/pcrm-wordmark.svg'] as const;
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
@@ -189,10 +189,10 @@ export default function Header() {
               <Image
                 src={logoSrc}
                 alt={locale.site.name}
-                width={520}
-                height={160}
-                className="h-[28px] w-auto object-contain sm:h-[34px] md:h-[38px]"
-                sizes="(min-width: 768px) 170px, 120px"
+                width={502}
+                height={502}
+                className="h-[34px] w-auto object-contain sm:h-[40px] md:h-[44px]"
+                sizes="(min-width: 768px) 44px, (min-width: 640px) 40px, 34px"
                 onError={handleLogoError}
                 unoptimized
                 priority
