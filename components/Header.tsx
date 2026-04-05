@@ -148,11 +148,11 @@ export default function Header({ initialLanguage }: HeaderProps) {
         className="inset-x-0 top-0 z-[9999] border-b border-slate-200 bg-white shadow-sm"
         style={{ position: 'fixed', top: 0, left: 0, right: 0 }}
       >
-        <div className="hidden border-b border-[#2a5d7d] bg-[#18354a] lg:block">
-          <div className="mx-auto max-w-7xl px-4 pt-1 text-center text-[10px] text-slate-200 md:px-6">
+        <div className="border-b border-[#2a5d7d] bg-[#18354a]">
+          <div className="mx-auto max-w-7xl px-3 py-1 text-center text-[11px] leading-5 text-slate-100 md:px-6">
             {locale.repoUi.sourceNotice}{" "}
             <a
-              href="https://www.pcrm.org"
+              href="http://www.pcrm.org"
               target="_blank"
               rel="noreferrer"
               className="font-medium text-slate-100 underline underline-offset-2 hover:text-white"
@@ -160,7 +160,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
               www.pcrm.org
             </a>
           </div>
-          <div className="mx-auto grid max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6">
+          <div className="mx-auto hidden max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6 lg:grid">
             {topGroups.map((group) => (
               <div key={group.id} className="group relative">
                 <Link
