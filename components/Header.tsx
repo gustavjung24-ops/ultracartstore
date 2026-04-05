@@ -136,6 +136,17 @@ export default function Header() {
         style={{ position: 'fixed', top: 0, left: 0, right: 0 }}
       >
         <div className="hidden border-b border-[#2a5d7d] bg-[#18354a] lg:block">
+          <div className="mx-auto max-w-7xl px-4 pt-1 text-center text-[10px] text-slate-200 md:px-6">
+            Nội dung trang web này được trích dẫn từ{" "}
+            <a
+              href="http://www.pcrm.org"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-slate-100 underline underline-offset-2 hover:text-white"
+            >
+              www.pcrm.org
+            </a>
+          </div>
           <div className="mx-auto grid max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6">
             {topGroups.map((group) => (
               <div key={group.id} className="group relative">
