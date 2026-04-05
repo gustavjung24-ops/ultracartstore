@@ -77,8 +77,8 @@ const QA_TARGET_HUBS = new Set([
   "/clinical-research",
   "/news/blog",
 ]);
-// This list mirrors homepage featuredPosts source order (newsPosts.slice(0, 3)).
-const TOP_VISIBLE_NEWS_ARTICLE_PATHS = [
+// Exact paths used by homepage featuredPosts (newsPosts.slice(0, 3)).
+const HOMEPAGE_FEATURED_ARTICLE_PATHS = [
   "/news/health-nutrition/american-heart-association-recommends-plant-based-protein-over-meat",
   "/news/news-releases/physicians-committee-offering-grants-farmers-who-are-growing-health-promoting",
   "/news/news-releases/doctors-group-files-legal-petition-urging-usda-require-colorectal-cancer-warning",
@@ -98,34 +98,34 @@ interface RelatedLinksCleanupRule {
 
 // Auditable scope for this pass: only the first three article paths surfaced by homepage/news flow.
 const QA_VISIBLE_NEWS_ARTICLE_RULES: Record<string, VisibleNewsArticleQaRule> = {
-  [TOP_VISIBLE_NEWS_ARTICLE_PATHS[0]]: {
+  [HOMEPAGE_FEATURED_ARTICLE_PATHS[0]]: {
     cleanTopSectionNoise: true,
     cleanIntroSummary: true,
     viTitleOverride: "Hiệp hội Tim mạch Hoa Kỳ khuyến nghị ưu tiên protein từ thực vật thay vì thịt",
   },
-  [TOP_VISIBLE_NEWS_ARTICLE_PATHS[1]]: {
+  [HOMEPAGE_FEATURED_ARTICLE_PATHS[1]]: {
     cleanTopSectionNoise: true,
     cleanIntroSummary: true,
   },
-  [TOP_VISIBLE_NEWS_ARTICLE_PATHS[2]]: {
+  [HOMEPAGE_FEATURED_ARTICLE_PATHS[2]]: {
     cleanTopSectionNoise: true,
     cleanIntroSummary: true,
   },
 };
 
 // Path-specific related-links QA for the 3 homepage featured articles.
-const QA_TOP_VISIBLE_NEWS_ARTICLE_RELATED_LINKS_CLEANUP: Record<string, RelatedLinksCleanupRule> = {
-  [TOP_VISIBLE_NEWS_ARTICLE_PATHS[0]]: {
+const HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH: Record<string, RelatedLinksCleanupRule> = {
+  [HOMEPAGE_FEATURED_ARTICLE_PATHS[0]]: {
     removeGlobalIrrelevantLinks: true,
     removeSelfLink: true,
     dedupeLinks: true,
   },
-  [TOP_VISIBLE_NEWS_ARTICLE_PATHS[1]]: {
+  [HOMEPAGE_FEATURED_ARTICLE_PATHS[1]]: {
     removeGlobalIrrelevantLinks: true,
     removeSelfLink: true,
     dedupeLinks: true,
   },
-  [TOP_VISIBLE_NEWS_ARTICLE_PATHS[2]]: {
+  [HOMEPAGE_FEATURED_ARTICLE_PATHS[2]]: {
     removeGlobalIrrelevantLinks: true,
     removeSelfLink: true,
     dedupeLinks: true,
@@ -134,7 +134,7 @@ const QA_TOP_VISIBLE_NEWS_ARTICLE_RELATED_LINKS_CLEANUP: Record<string, RelatedL
 
 const QA_TARGET_VISIBLE_NEWS_ARTICLES = new Set([
   ...Object.keys(QA_VISIBLE_NEWS_ARTICLE_RULES),
-  ...Object.keys(QA_TOP_VISIBLE_NEWS_ARTICLE_RELATED_LINKS_CLEANUP),
+  ...Object.keys(HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH),
 ]);
 const MEMBERSHIP_CTA_EN = "Make your 2026 membership gift today!";
 const MEMBERSHIP_CTA_VI = "Hãy tặng quà thành viên năm 2026 ngay hôm nay!";
@@ -545,8 +545,8 @@ function getVisibleNewsArticleQaRule(path: string): VisibleNewsArticleQaRule | u
   return QA_VISIBLE_NEWS_ARTICLE_RULES[path];
 }
 
-function getTopVisibleNewsArticleRelatedLinksCleanup(path: string): RelatedLinksCleanupRule | undefined {
-  return QA_TOP_VISIBLE_NEWS_ARTICLE_RELATED_LINKS_CLEANUP[path];
+function getHomepageFeaturedArticleRelatedLinksCleanup(path: string): RelatedLinksCleanupRule | undefined {
+  return HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH[path];
 }
 
 function getExcludedLinkKeysForQa(
@@ -580,7 +580,7 @@ function getExcludedLinkKeysForQa(
 function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
   const isTargetHub = QA_TARGET_HUBS.has(page.path);
   const visibleNewsArticleQa = getVisibleNewsArticleQaRule(page.path);
-  const relatedLinksCleanup = getTopVisibleNewsArticleRelatedLinksCleanup(page.path);
+  const relatedLinksCleanup = getHomepageFeaturedArticleRelatedLinksCleanup(page.path);
   const isTargetVisibleNewsArticle = Boolean(visibleNewsArticleQa || relatedLinksCleanup);
 
   if (!isTargetHub && !isTargetVisibleNewsArticle) {
