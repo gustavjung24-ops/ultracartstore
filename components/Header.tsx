@@ -45,12 +45,17 @@ function toRenderItem(locale: CommonLocaleDictionary, language: Language, item: 
 }
 
 export default function Header() {
+  const logoCandidates = ['/images/1.PNG', '/images/1.png', '/images/pcrm-wordmark.svg'] as const;
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const [language, setLanguage] = useState<Language>(() => getPreferredClientLanguage());
   const [mounted, setMounted] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
+  const [logoIndex, setLogoIndex] = useState(0);
   const headerRef = useRef<HTMLElement | null>(null);
+
+  const logoSrc = logoCandidates[logoIndex];
 
   useEffect(() => {
     setMounted(true);
@@ -82,6 +87,10 @@ export default function Header() {
     persistClientLanguage(lang);
     window.dispatchEvent(new CustomEvent('languagechange', { detail: { language: lang } }));
     window.location.reload();
+  };
+
+  const handleLogoError = () => {
+    setLogoIndex((current) => Math.min(current + 1, logoCandidates.length - 1));
   };
 
   const locale = useMemo(() => COMMON_LOCALES[language], [language]);
@@ -178,12 +187,13 @@ export default function Header() {
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
             <Link href="/" className="min-w-0 flex-1 no-underline hover:opacity-95">
               <Image
-                src="/images/pcrm-wordmark.svg"
+                src={logoSrc}
                 alt={locale.site.name}
-                width={423}
-                height={193}
-                className="h-auto w-[148px] object-contain sm:w-[260px]"
-                sizes="(min-width: 640px) 260px, 148px"
+                width={520}
+                height={160}
+                className="h-[28px] w-auto object-contain sm:h-[34px] md:h-[38px]"
+                sizes="(min-width: 768px) 170px, 120px"
+                onError={handleLogoError}
                 unoptimized
                 priority
               />
