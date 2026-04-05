@@ -16,6 +16,54 @@ const LOCALES: Record<Language, CommonLocale> = {
   vi: viCommon as CommonLocale,
 };
 
+const CONTACT_INTRO_TOKENS = ["{shopPhone}", "{shopEmail}", "{mainPhone}", "{mainEmail}"] as const;
+
+function renderContactIntro(
+  intro: string,
+  links: {
+    shopPhone: string;
+    shopEmail: string;
+    mainPhone: string;
+    mainEmail: string;
+  },
+) {
+  return intro.split(/(\{shopPhone\}|\{shopEmail\}|\{mainPhone\}|\{mainEmail\})/g).map((part, index) => {
+    if (!CONTACT_INTRO_TOKENS.includes(part as (typeof CONTACT_INTRO_TOKENS)[number])) {
+      return <span key={`text-${index}`}>{part}</span>;
+    }
+
+    if (part === "{shopPhone}") {
+      return (
+        <a key={`shop-phone-${index}`} href="tel:+12025277306" className="text-brand-teal hover:underline font-medium">
+          {links.shopPhone}
+        </a>
+      );
+    }
+
+    if (part === "{shopEmail}") {
+      return (
+        <a key={`shop-email-${index}`} href="mailto:fulfillment@PCRM.org" className="text-brand-teal hover:underline font-medium">
+          {links.shopEmail}
+        </a>
+      );
+    }
+
+    if (part === "{mainPhone}") {
+      return (
+        <a key={`main-phone-${index}`} href="tel:+12026862210" className="text-brand-teal hover:underline font-medium">
+          {links.mainPhone}
+        </a>
+      );
+    }
+
+    return (
+      <a key={`main-email-${index}`} href="mailto:info@PCRM.org" className="text-brand-teal hover:underline font-medium">
+        {links.mainEmail}
+      </a>
+    );
+  });
+}
+
 export default function ContactPage() {
   const [language, setLanguage] = useState<Language>(() => getPreferredClientLanguage());
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -34,14 +82,14 @@ export default function ContactPage() {
   }, []);
 
   const locale = useMemo(() => LOCALES[language], [language]);
-  const contactUi = locale.contactPage;
+  const contactUi = locale.repoUi.contact;
   const breadcrumbs = useMemo(
     () => [
-      { label: locale.common.home, href: "/" },
-      { label: locale.common.support, href: "#" },
-      { label: contactUi.title },
+      { label: contactUi.breadcrumbHome, href: "/" },
+      { label: contactUi.breadcrumbHelp, href: "#" },
+      { label: contactUi.breadcrumbCurrent },
     ],
-    [locale.common.home, locale.common.support, contactUi.title],
+    [contactUi.breadcrumbCurrent, contactUi.breadcrumbHelp, contactUi.breadcrumbHome],
   );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -70,29 +118,18 @@ export default function ContactPage() {
           </h1>
 
           <p className="text-gray-600 mb-6 leading-relaxed text-sm">
-            {contactUi.shopQuestionsPrefix}{" "}
-            <a href="tel:+12025277306" className="text-brand-teal hover:underline font-medium">
-              202-527-7306
-            </a>
-            , {contactUi.shopQuestionsMiddle}{" "}
-            <a href="mailto:fulfillment@PCRM.org" className="text-brand-teal hover:underline font-medium">
-              fulfillment@PCRM.org
-            </a>
-            . {contactUi.nonShopQuestionsPrefix}{" "}
-            <a href="tel:+12026862210" className="text-brand-teal hover:underline font-medium">
-              202-686-2210
-            </a>{" "}
-            {contactUi.orText}{" "}
-            <a href="mailto:info@PCRM.org" className="text-brand-teal hover:underline font-medium">
-              info@PCRM.org
-            </a>
-            . {contactUi.thankYou}
+            {renderContactIntro(contactUi.intro, {
+              shopPhone: "202-527-7306",
+              shopEmail: "fulfillment@PCRM.org",
+              mainPhone: "202-686-2210",
+              mainEmail: "info@PCRM.org",
+            })}
           </p>
 
           {sent ? (
             <div className="bg-brand-teal/10 border border-brand-teal/30 rounded p-6 text-brand-dark">
               <p className="font-semibold text-lg mb-1">{contactUi.successTitle}</p>
-              <p className="text-sm text-gray-600">{contactUi.successDescription}</p>
+              <p className="text-sm text-gray-600">{contactUi.successBody}</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -151,7 +188,7 @@ export default function ContactPage() {
                   type="submit"
                   className="bg-brand-teal hover:bg-brand-mid text-white font-bold uppercase tracking-wide py-3 px-8 transition-colors"
                 >
-                  {contactUi.submitButton}
+                    {contactUi.submit}
                 </button>
                 <span className="text-xs text-gray-400">{contactUi.responseTime}</span>
               </div>
@@ -167,8 +204,8 @@ export default function ContactPage() {
             >
               <span className="text-2xl">💬</span>
               <div>
-                <p className="font-semibold text-sm text-gray-800">{contactUi.whatsappLabel}</p>
-                <p className="text-xs text-gray-500">{contactUi.whatsappSubLabel}</p>
+                <p className="font-semibold text-sm text-gray-800">WhatsApp</p>
+                <p className="text-xs text-gray-500">{contactUi.quickMessage}</p>
               </div>
             </a>
             <a
@@ -178,7 +215,7 @@ export default function ContactPage() {
               <span className="text-2xl">📞</span>
               <div>
                 <p className="font-semibold text-sm text-gray-800">202-527-7306</p>
-                <p className="text-xs text-gray-500">{contactUi.callSubLabel}</p>
+                <p className="text-xs text-gray-500">{contactUi.quickCall}</p>
               </div>
             </a>
           </div>

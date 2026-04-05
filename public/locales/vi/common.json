@@ -123,6 +123,29 @@
       "latestStories": "Bài viết mới nhất",
       "seeOurVictories": "Xem thành tựu",
       "supportFallbackSummary": "Đồng hành cùng chúng tôi trong y học dự phòng và khoa học có đạo đức."
+    },
+    "contact": {
+      "title": "Biểu mẫu liên hệ",
+      "intro": "Nếu bạn có câu hỏi liên quan đến Physicians Committee Shop, vui lòng gọi {shopPhone}, điền vào biểu mẫu bên dưới hoặc gửi email tới {shopEmail}. Đối với các câu hỏi không liên quan đến cửa hàng, vui lòng liên hệ {mainPhone} hoặc {mainEmail}. Cảm ơn bạn!",
+      "breadcrumbHome": "Trang chủ",
+      "breadcrumbHelp": "Hỗ trợ",
+      "breadcrumbCurrent": "Biểu mẫu liên hệ",
+      "nameLabel": "Họ và tên",
+      "namePlaceholder": "Nguyễn Văn A",
+      "emailLabel": "Địa chỉ email",
+      "emailPlaceholder": "email@example.com",
+      "messageLabel": "Nội dung",
+      "messagePlaceholder": "Nhập câu hỏi hoặc nội dung cần hỗ trợ...",
+      "submit": "Gửi",
+      "successTitle": "Đã mở ứng dụng email của bạn.",
+      "successBody": "Vui lòng gửi email đã được điền sẵn để hoàn tất liên hệ.",
+      "responseTime": "Chúng tôi thường phản hồi trong 1-2 ngày làm việc",
+      "quickMessage": "Nhắn tin nhanh",
+      "quickCall": "Gọi điện trực tiếp",
+      "mailSubject": "Liên hệ từ cửa hàng PCRM",
+      "emailBodyName": "Tên",
+      "emailBodyEmail": "Email",
+      "emailBodyMessage": "Nội dung"
     }
   },
   "contactPage": {
