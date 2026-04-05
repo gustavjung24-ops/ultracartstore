@@ -44,12 +44,16 @@ function toRenderItem(locale: CommonLocaleDictionary, language: Language, item: 
   };
 }
 
-export default function Header() {
+type HeaderProps = {
+  initialLanguage?: Language;
+};
+
+export default function Header({ initialLanguage }: HeaderProps) {
   const logoCandidates = ['/images/1.png', '/images/1.PNG', '/images/pcrm-wordmark.svg'] as const;
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
-  const [language, setLanguage] = useState<Language>(() => getPreferredClientLanguage());
+  const [language, setLanguage] = useState<Language>(() => initialLanguage ?? getPreferredClientLanguage());
   const [mounted, setMounted] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const [logoIndex, setLogoIndex] = useState(0);
@@ -146,9 +150,9 @@ export default function Header() {
       >
         <div className="hidden border-b border-[#2a5d7d] bg-[#18354a] lg:block">
           <div className="mx-auto max-w-7xl px-4 pt-1 text-center text-[10px] text-slate-200 md:px-6">
-            Nội dung trang web này được trích dẫn từ{" "}
+            {locale.repoUi.sourceNotice}{" "}
             <a
-              href="http://www.pcrm.org"
+              href="https://www.pcrm.org"
               target="_blank"
               rel="noreferrer"
               className="font-medium text-slate-100 underline underline-offset-2 hover:text-white"

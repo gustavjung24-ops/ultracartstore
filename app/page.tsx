@@ -109,7 +109,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <Header />
+      <Header initialLanguage={lang} />
       <main className="pb-12 md:pb-16">
         <section className="mx-auto max-w-7xl px-4 pt-3 md:px-6 md:pt-5">
           <div className="overflow-hidden rounded-[34px] border border-[#cad8df] bg-white shadow-[0_18px_44px_rgba(15,35,45,0.16)]">
@@ -271,7 +271,7 @@ export default async function HomePage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer initialLanguage={lang} />
     </>
   );
 }

@@ -66,19 +66,30 @@ export default async function DynamicPcrmPage({ params }: Props) {
 
   const localizedPage = getLocalizedPcrmPageContent(page, lang);
   const { title, description, h2, h3, paragraphs, links } = localizedPage;
-  const normalizedLinks = links.map((link) => {
-    const mapped = toInternalPcrmHref(link.url);
-    return {
-      text: link.text,
-      href: mapped.href,
-      internal: mapped.internal,
-    };
-  });
+  const seenNormalizedLinkTargets = new Set<string>();
+  const normalizedLinks = links
+    .map((link) => {
+      const mapped = toInternalPcrmHref(link.url);
+      return {
+        text: link.text,
+        href: mapped.href,
+        internal: mapped.internal,
+      };
+    })
+    .filter((link) => {
+      const dedupeKey = `${link.internal ? "internal" : "external"}:${link.href}`;
+      if (seenNormalizedLinkTargets.has(dedupeKey)) {
+        return false;
+      }
+
+      seenNormalizedLinkTargets.add(dedupeKey);
+      return true;
+    });
   const showTrustBadges = page.path === "/about-us/financial-report";
 
   return (
     <>
-      <Header />
+      <Header initialLanguage={lang} />
       <main className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-10">
         <div className="mb-4 text-sm text-slate-500">
           <span>{locale.common.home}</span>
@@ -168,7 +179,7 @@ export default async function DynamicPcrmPage({ params }: Props) {
           ) : null}
         </article>
       </main>
-      <Footer />
+      <Footer initialLanguage={lang} />
     </>
   );
 }

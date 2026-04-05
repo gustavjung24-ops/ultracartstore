@@ -407,6 +407,11 @@ const QA_VI_PARAGRAPH_REPLACEMENTS_BY_PATH: Record<string, Record<string, string
   },
 };
 
+const QA_HUB_VI_TITLE_OVERRIDES: Record<string, string> = {
+  "/good-nutrition": "Dinh dưỡng lành mạnh",
+  "/ethical-science": "Khoa học có đạo đức",
+};
+
 // Source-of-truth resolution for each normalized path.
 // EN reference: generated_source_pages -> translated_all -> manual_pages.
 // VI layer: translated_all -> generated_source_pages -> manual_pages.
@@ -677,12 +682,11 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
       return false;
     }
 
-    const dedupeKey = `${key}::${link.text}`;
-    if (seenLinkKeys.has(dedupeKey)) {
+    if (seenLinkKeys.has(key)) {
       return false;
     }
 
-    seenLinkKeys.add(dedupeKey);
+    seenLinkKeys.add(key);
     return true;
   });
 
@@ -692,31 +696,43 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
       .filter((value): value is string => Boolean(value)),
   );
 
-  const filteredLinksVi = (
-    page.links_vi
-    ?.filter((link) => {
-      const key = normalizePcrmLinkKey(link.url);
-      if (excludedLinkKeys.has(key)) {
-        return false;
-      }
+  const filteredLinksVi = (() => {
+    const seenLocalizedLinkKeys = new Set<string>();
 
-      if (!isAllowedLinkKeyForPath(page.path, key)) {
-        return false;
-      }
+    return (
+      page.links_vi
+        ?.filter((link) => {
+          const key = normalizePcrmLinkKey(link.url);
+          if (excludedLinkKeys.has(key)) {
+            return false;
+          }
 
-      const dedupeKey = `${key}::${link.text}`;
-      return seenLinkKeys.has(dedupeKey);
-    })
-    .map((link) => {
-      const sourceText = link.text_vi || link.text;
-      const correctedText = QA_VI_LINK_TEXT_REPLACEMENTS[sourceText] ?? sourceText;
+          if (!isAllowedLinkKeyForPath(page.path, key)) {
+            return false;
+          }
 
-      return {
-        ...link,
-        text_vi: correctedText,
-      };
-    }) ?? []
-  );
+          if (!seenLinkKeys.has(key)) {
+            return false;
+          }
+
+          if (seenLocalizedLinkKeys.has(key)) {
+            return false;
+          }
+
+          seenLocalizedLinkKeys.add(key);
+          return true;
+        })
+        .map((link) => {
+          const sourceText = link.text_vi || link.text;
+          const correctedText = QA_VI_LINK_TEXT_REPLACEMENTS[sourceText] ?? sourceText;
+
+          return {
+            ...link,
+            text_vi: correctedText,
+          };
+        }) ?? []
+    );
+  })();
 
   for (const requiredPath of QA_REQUIRED_LINK_PATHS_BY_PAGE[page.path] ?? []) {
     if (seenLinkPathKeys.has(requiredPath)) {
@@ -836,7 +852,7 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
   const paragraphViReplacements = QA_VI_PARAGRAPH_REPLACEMENTS_BY_PATH[page.path] ?? {};
   paragraphsVi = paragraphsVi.map((paragraph) => paragraphViReplacements[paragraph] ?? paragraph);
 
-  const titleViOverride = visibleNewsArticleQa?.viTitleOverride;
+  const titleViOverride = visibleNewsArticleQa?.viTitleOverride ?? QA_HUB_VI_TITLE_OVERRIDES[page.path];
   const existingH1Vi = page.h1_vi ?? page.h1;
   const normalizedH1Vi = titleViOverride
     ? [titleViOverride, ...existingH1Vi.slice(1)]

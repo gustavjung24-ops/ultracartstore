@@ -35,8 +35,14 @@ export default async function BlogIndexPage() {
 
   return (
     <>
-      <Header />
+      <Header initialLanguage={lang} />
       <main className="mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-10">
+        <div className="mb-4 text-sm text-slate-500">
+          <span>{locale.common.home}</span>
+          <span className="mx-2">/</span>
+          <span>{pageTitle}</span>
+        </div>
+
         <div className="page-surface p-6 md:p-8">
           <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">{pageTitle}</h1>
           <p className="mt-3 max-w-3xl text-slate-700">{pageIntro}</p>
@@ -71,7 +77,7 @@ export default async function BlogIndexPage() {
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer initialLanguage={lang} />
     </>
   );
 }

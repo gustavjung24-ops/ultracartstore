@@ -13,8 +13,12 @@ import {
   resolveCatalogLabel,
 } from '@/lib/navigation-catalog';
 
-export default function Footer() {
-  const [language, setLanguage] = useState<Language>(() => getPreferredClientLanguage());
+type FooterProps = {
+  initialLanguage?: Language;
+};
+
+export default function Footer({ initialLanguage }: FooterProps) {
+  const [language, setLanguage] = useState<Language>(() => initialLanguage ?? getPreferredClientLanguage());
 
   useEffect(() => {
     setLanguage(getPreferredClientLanguage());
