@@ -31,6 +31,14 @@ function getSectionSummary(
   sectionTitle: string,
   lang: "en" | "vi",
 ) {
+  const postSummary = posts
+    .map((post) => getPostSummary(post, lang))
+    .find((summary) => !isNoisyNewsSummaryLine(summary, lang) && summary.trim() !== sectionTitle.trim());
+
+  if (postSummary) {
+    return postSummary;
+  }
+
   const candidateSummary = candidates.find((candidate) => {
     if (!candidate || isNoisyNewsSummaryLine(candidate, lang)) {
       return false;
@@ -43,11 +51,7 @@ function getSectionSummary(
     return candidateSummary;
   }
 
-  const postSummary = posts
-    .map((post) => getPostSummary(post, lang))
-    .find((summary) => !isNoisyNewsSummaryLine(summary, lang) && summary.trim() !== sectionTitle.trim());
-
-  return postSummary || sectionTitle;
+  return sectionTitle;
 }
 
 export default async function HomePage() {
@@ -59,20 +63,20 @@ export default async function HomePage() {
   if (!home) return null;
 
   const localizedHome = getLocalizedPcrmPageContent(home, lang);
-  const blog = getBlogPages().filter((post) => isNewsArticlePath(post.path)).slice(0, 9) as BlogPost[];
-  const featuredPosts = blog.slice(0, 3);
-  const latestPosts = blog.slice(0, 6);
+  const newsPosts = getBlogPages().filter((post) => isNewsArticlePath(post.path)) as BlogPost[];
+  const featuredPosts = newsPosts.slice(0, 3);
+  const latestPosts = newsPosts.slice(0, 6);
 
-  const healthAndNutritionPosts = blog.filter((post) => post.path.includes("/news/health-nutrition/")).slice(0, 2);
-  const innovativeSciencePosts = blog.filter((post) => post.path.includes("/news/innovative-science/")).slice(0, 2);
-  const scienceDigestPosts = blog.filter((post) => post.path.includes("/news/good-science-digest/")).slice(0, 2);
+  const healthAndNutritionPosts = newsPosts.filter((post) => post.path.includes("/news/health-nutrition/")).slice(0, 2);
+  const innovativeSciencePosts = newsPosts.filter((post) => post.path.includes("/news/innovative-science/")).slice(0, 2);
+  const scienceDigestPosts = newsPosts.filter((post) => post.path.includes("/news/good-science-digest/")).slice(0, 2);
 
   const sectionHighlights = [
     {
       href: "/news/health-nutrition",
       title: locale.news.healthNutrition,
       summary: getSectionSummary(
-        [localizedHome.paragraphs[6], localizedHome.paragraphs[5], localizedHome.description],
+        [localizedHome.paragraphs[6], localizedHome.paragraphs[7]],
         healthAndNutritionPosts,
         locale.news.healthNutrition,
         lang,
@@ -83,7 +87,7 @@ export default async function HomePage() {
       href: "/news/innovative-science-news",
       title: homeUi.innovativeScienceNews,
       summary: getSectionSummary(
-        [localizedHome.paragraphs[8], localizedHome.paragraphs[7], localizedHome.description],
+        [localizedHome.paragraphs[8], localizedHome.paragraphs[9]],
         innovativeSciencePosts,
         homeUi.innovativeScienceNews,
         lang,
@@ -94,7 +98,7 @@ export default async function HomePage() {
       href: "/news/good-science-digest",
       title: homeUi.goodScienceDigest,
       summary: getSectionSummary(
-        [homeUi.goodScienceDigestSummary, localizedHome.paragraphs[9], localizedHome.description],
+        [homeUi.goodScienceDigestSummary],
         scienceDigestPosts,
         homeUi.goodScienceDigest,
         lang,
