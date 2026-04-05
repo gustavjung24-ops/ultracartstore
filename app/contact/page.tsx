@@ -1,19 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { getPreferredClientLanguage } from "@/lib/client-language";
+import type { Language } from "@/lib/translations";
+import enCommon from "@/public/locales/en/common.json";
+import viCommon from "@/public/locales/vi/common.json";
 
-const breadcrumbs = [
-  { label: "Trang chủ", href: "/" },
-  { label: "Trợ giúp", href: "#" },
-  { label: "Biểu mẫu liên hệ" },
-];
+type CommonLocale = typeof enCommon;
+
+const LOCALES: Record<Language, CommonLocale> = {
+  en: enCommon,
+  vi: viCommon as CommonLocale,
+};
 
 export default function ContactPage() {
+  const [language, setLanguage] = useState<Language>(() => getPreferredClientLanguage());
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    const syncLanguage = () => {
+      setLanguage(getPreferredClientLanguage());
+    };
+
+    syncLanguage();
+    window.addEventListener("languagechange", syncLanguage);
+    return () => {
+      window.removeEventListener("languagechange", syncLanguage);
+    };
+  }, []);
+
+  const locale = useMemo(() => LOCALES[language], [language]);
+  const contactUi = locale.contactPage;
+  const breadcrumbs = useMemo(
+    () => [
+      { label: locale.common.home, href: "/" },
+      { label: locale.common.support, href: "#" },
+      { label: contactUi.title },
+    ],
+    [locale.common.home, locale.common.support, contactUi.title],
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -21,10 +50,9 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Gửi qua mailto (hoặc tích hợp API sau)
-    const subject = encodeURIComponent("Liên hệ từ cửa hàng PCRM");
+    const subject = encodeURIComponent(contactUi.mailSubject);
     const body = encodeURIComponent(
-      `Tên: ${form.name}\nEmail: ${form.email}\n\nNội dung:\n${form.message}`
+      `${contactUi.emailBodyName}: ${form.name}\n${contactUi.emailBodyEmail}: ${form.email}\n\n${contactUi.emailBodyMessage}:\n${form.message}`,
     );
     window.location.href = `mailto:fulfillment@PCRM.org?subject=${subject}&body=${body}`;
     setSent(true);
@@ -38,40 +66,39 @@ export default function ContactPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="max-w-xl">
           <h1 className="text-brand-teal font-bold text-2xl pb-3 mb-4 border-b border-gray-200 uppercase tracking-wide">
-            Biểu mẫu liên hệ
+            {contactUi.title}
           </h1>
 
           <p className="text-gray-600 mb-6 leading-relaxed text-sm">
-            Nếu bạn có câu hỏi liên quan đến Physicians Committee Shop, hãy gọi cho chúng tôi tại{" "}
+            {contactUi.shopQuestionsPrefix}{" "}
             <a href="tel:+12025277306" className="text-brand-teal hover:underline font-medium">
               202-527-7306
             </a>
-            , điền vào biểu mẫu bên dưới hoặc gửi email đến{" "}
+            , {contactUi.shopQuestionsMiddle}{" "}
             <a href="mailto:fulfillment@PCRM.org" className="text-brand-teal hover:underline font-medium">
               fulfillment@PCRM.org
             </a>
-            . Đối với các câu hỏi không liên quan đến cửa hàng, vui lòng liên hệ{" "}
+            . {contactUi.nonShopQuestionsPrefix}{" "}
             <a href="tel:+12026862210" className="text-brand-teal hover:underline font-medium">
               202-686-2210
             </a>{" "}
-            hoặc{" "}
+            {contactUi.orText}{" "}
             <a href="mailto:info@PCRM.org" className="text-brand-teal hover:underline font-medium">
               info@PCRM.org
             </a>
-            . Cảm ơn bạn!
+            . {contactUi.thankYou}
           </p>
 
           {sent ? (
             <div className="bg-brand-teal/10 border border-brand-teal/30 rounded p-6 text-brand-dark">
-              <p className="font-semibold text-lg mb-1">✅ Đã mở ứng dụng email của bạn!</p>
-              <p className="text-sm text-gray-600">Vui lòng gửi email đã được điền sẵn để hoàn tất liên hệ.</p>
+              <p className="font-semibold text-lg mb-1">{contactUi.successTitle}</p>
+              <p className="text-sm text-gray-600">{contactUi.successDescription}</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Họ tên */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Họ và tên
+                  {contactUi.nameLabel}
                 </label>
                 <input
                   type="text"
@@ -82,14 +109,13 @@ export default function ContactPage() {
                   value={form.name}
                   onChange={handleChange}
                   className="w-full border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent"
-                  placeholder="Nguyễn Văn A"
+                  placeholder={contactUi.namePlaceholder}
                 />
               </div>
 
-              {/* Email */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Địa chỉ email
+                  {contactUi.emailLabel}
                 </label>
                 <input
                   type="email"
@@ -100,14 +126,13 @@ export default function ContactPage() {
                   value={form.email}
                   onChange={handleChange}
                   className="w-full border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent"
-                  placeholder="email@example.com"
+                  placeholder={contactUi.emailPlaceholder}
                 />
               </div>
 
-              {/* Nội dung */}
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Nội dung
+                  {contactUi.messageLabel}
                 </label>
                 <textarea
                   id="message"
@@ -117,7 +142,7 @@ export default function ContactPage() {
                   value={form.message}
                   onChange={handleChange}
                   className="w-full border border-gray-300 px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-teal focus:border-transparent resize-y"
-                  placeholder="Nhập câu hỏi hoặc nội dung cần hỗ trợ..."
+                  placeholder={contactUi.messagePlaceholder}
                 />
               </div>
 
@@ -126,14 +151,13 @@ export default function ContactPage() {
                   type="submit"
                   className="bg-brand-teal hover:bg-brand-mid text-white font-bold uppercase tracking-wide py-3 px-8 transition-colors"
                 >
-                  Gửi
+                  {contactUi.submitButton}
                 </button>
-                <span className="text-xs text-gray-400">Chúng tôi thường phản hồi trong 1-2 ngày làm việc</span>
+                <span className="text-xs text-gray-400">{contactUi.responseTime}</span>
               </div>
             </form>
           )}
 
-          {/* Liên hệ nhanh */}
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <a
               href="https://wa.me/12025277306"
@@ -143,8 +167,8 @@ export default function ContactPage() {
             >
               <span className="text-2xl">💬</span>
               <div>
-                <p className="font-semibold text-sm text-gray-800">WhatsApp</p>
-                <p className="text-xs text-gray-500">Nhắn tin nhanh</p>
+                <p className="font-semibold text-sm text-gray-800">{contactUi.whatsappLabel}</p>
+                <p className="text-xs text-gray-500">{contactUi.whatsappSubLabel}</p>
               </div>
             </a>
             <a
@@ -154,7 +178,7 @@ export default function ContactPage() {
               <span className="text-2xl">📞</span>
               <div>
                 <p className="font-semibold text-sm text-gray-800">202-527-7306</p>
-                <p className="text-xs text-gray-500">Gọi điện trực tiếp</p>
+                <p className="text-xs text-gray-500">{contactUi.callSubLabel}</p>
               </div>
             </a>
           </div>

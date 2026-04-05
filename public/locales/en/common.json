@@ -125,6 +125,31 @@
       "supportFallbackSummary": "Join us in preventive medicine and ethical science."
     }
   },
+  "contactPage": {
+    "title": "Contact Form",
+    "shopQuestionsPrefix": "If you have questions related to the Physicians Committee Shop, please call",
+    "shopQuestionsMiddle": "fill out the form below, or email",
+    "nonShopQuestionsPrefix": "For non-shop questions, please contact",
+    "orText": "or",
+    "thankYou": "Thank you!",
+    "successTitle": "Your email app is ready.",
+    "successDescription": "Please send the prefilled email to complete your request.",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "Jane Doe",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "email@example.com",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Enter your question or support request...",
+    "submitButton": "Send",
+    "responseTime": "We usually respond within 1-2 business days",
+    "whatsappLabel": "WhatsApp",
+    "whatsappSubLabel": "Quick message",
+    "callSubLabel": "Call directly",
+    "mailSubject": "Contact request from the PCRM Shop",
+    "emailBodyName": "Name",
+    "emailBodyEmail": "Email",
+    "emailBodyMessage": "Message"
+  },
   "contactOptions": {
     "whatsapp": "Message on WhatsApp",
     "zalo": "Message on Zalo",
