@@ -108,12 +108,21 @@
     "quickAccess": "Quick Access",
     "openMainSection": "Open Main Section",
     "home": {
-      "victoryBadge": "VICTORY!",
+      "victory": "VICTORY!",
+      "heroTitle": "Brown University Halts Deadly Training Exercise!",
+      "heroSummary": "Latest win from the Physicians Committee's ethical science campaign.",
+      "heroImageAlt": "Pig in grass",
       "topicHighlights": "Topic Highlights",
+      "innovativeScienceNews": "Innovative Science News",
+      "goodScienceDigest": "Good Science Digest",
+      "goodScienceDigestSummary": "Short, practical science updates curated for readers and clinicians.",
       "openSection": "Open Section",
       "impactTitle": "40 Years of Impact",
+      "impactFallbackSummary": "For 40 years, advancing preventive medicine.",
+      "impactImageAlt": "Impact",
       "latestStories": "Latest Stories",
-      "seeOurVictories": "See Our Victories"
+      "seeOurVictories": "See Our Victories",
+      "supportFallbackSummary": "Join us in preventive medicine and ethical science."
     }
   },
   "contactOptions": {

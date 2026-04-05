@@ -21,34 +21,10 @@ function getPostSummary(post: BlogPost, lang: "en" | "vi") {
   return localized.paragraphs[0] || localized.description;
 }
 
-function getHomePageUi(lang: "en" | "vi") {
-  if (lang === "vi") {
-    return {
-      heroTitle: "Đại học Brown dừng chương trình huấn luyện gây chết người!",
-      heroSummary: "Cập nhật mới từ chiến dịch khoa học có đạo đức của PCRM.",
-      heroImageAlt: "Chú heo trên bãi cỏ",
-      goodScienceDigestSummary: "Những cập nhật khoa học ngắn gọn, đáng tin cậy cho cộng đồng quan tâm sức khỏe.",
-      impactFallbackSummary: "40 năm thúc đẩy y học dự phòng.",
-      impactImageAlt: "Dấu ấn PCRM",
-      supportFallbackSummary: "Đồng hành cùng chúng tôi trong y học dự phòng và khoa học có đạo đức.",
-    };
-  }
-
-  return {
-    heroTitle: "Brown University Halts Deadly Training Exercise!",
-    heroSummary: "Latest win from the Physicians Committee's ethical science campaign.",
-    heroImageAlt: "Pig in grass",
-    goodScienceDigestSummary: "Short, practical science updates curated for readers and clinicians.",
-    impactFallbackSummary: "For 40 years, advancing preventive medicine.",
-    impactImageAlt: "Impact",
-    supportFallbackSummary: "Join us in preventive medicine and ethical science.",
-  };
-}
-
 export default async function HomePage() {
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
-  const homeUi = getHomePageUi(lang);
+  const homeUi = locale.repoUi.home;
   const home = getPcrmPageByPath("/");
 
   if (!home) return null;
@@ -71,13 +47,13 @@ export default async function HomePage() {
     },
     {
       href: "/news/innovative-science-news",
-      title: locale.news.innovativeScienceNews,
+      title: homeUi.innovativeScienceNews,
       summary: localizedHome.paragraphs[8] || localizedHome.paragraphs[7] || localizedHome.description,
       posts: innovativeSciencePosts,
     },
     {
       href: "/news/good-science-digest",
-      title: locale.news.goodScienceDigest,
+      title: homeUi.goodScienceDigest,
       summary: homeUi.goodScienceDigestSummary,
       posts: scienceDigestPosts,
     },
@@ -103,7 +79,7 @@ export default async function HomePage() {
               <div className="flex items-center bg-[radial-gradient(circle_at_top_left,#1f7390_0%,#0f5c73_58%,#0c4a5e_100%)] px-5 py-8 text-white md:px-10 md:py-14">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#ddbb83]">
-                    {locale.repoUi.home.victoryBadge}
+                    {homeUi.victory}
                   </p>
                   <h1 className="home-hero-title mt-2.5 text-3xl font-extrabold leading-tight text-white sm:text-4xl md:mt-3 md:text-5xl">
                     {homeUi.heroTitle}
@@ -157,7 +133,7 @@ export default async function HomePage() {
 
         <section className="mx-auto mt-10 max-w-7xl px-4 md:mt-14 md:px-6">
           <h2 className="home-section-title mb-5 text-3xl font-bold text-[#0f5c73] md:mb-6 md:text-4xl">
-            {locale.repoUi.home.topicHighlights}
+            {homeUi.topicHighlights}
           </h2>
           <div className="grid gap-4 md:gap-6 md:grid-cols-3">
             {sectionHighlights.map((section) => (
@@ -172,7 +148,7 @@ export default async function HomePage() {
                   ))}
                 </div>
                 <Link href={section.href} className="mt-4 inline-block text-sm font-bold uppercase tracking-[0.08em] text-[#0f5c73] no-underline hover:underline">
-                  {locale.repoUi.home.openSection}
+                  {homeUi.openSection}
                 </Link>
               </article>
             ))}
@@ -183,7 +159,7 @@ export default async function HomePage() {
           <div className="smooth-surface grid items-center gap-6 rounded-3xl p-5 md:gap-8 md:p-10 md:grid-cols-2">
             <div>
               <h2 className="home-section-title text-3xl font-bold text-[#0f5c73] md:text-4xl">
-                {locale.repoUi.home.impactTitle}
+                {homeUi.impactTitle}
               </h2>
               <p className="home-hero-copy mt-3 text-base leading-8 text-slate-700 md:mt-4 md:text-lg">
                 {localizedHome.paragraphs[3] || homeUi.impactFallbackSummary}
@@ -205,7 +181,7 @@ export default async function HomePage() {
 
         <section className="mx-auto mt-10 max-w-7xl px-4 md:mt-14 md:px-6">
           <h2 className="home-section-title mb-5 text-3xl font-bold text-[#0f5c73] md:mb-6 md:text-4xl">
-            {locale.repoUi.home.latestStories}
+            {homeUi.latestStories}
           </h2>
           <div className="grid gap-4 md:gap-6 md:grid-cols-3">
             {latestPosts.map((post) => (
@@ -241,7 +217,7 @@ export default async function HomePage() {
             </p>
             <div className="mt-5 md:mt-6">
               <Link href="/about-us/our-victories" className="inline-block rounded-full border border-white/40 px-7 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-white/10 no-underline md:px-8 md:py-3 md:text-sm">
-                {locale.repoUi.home.seeOurVictories}
+                {homeUi.seeOurVictories}
               </Link>
             </div>
           </div>
