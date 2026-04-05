@@ -86,15 +86,11 @@ const HOMEPAGE_FEATURED_ARTICLE_PATHS = [
 
 // Next visible article paths in homepage/news flow after the cleaned featured top 3.
 // Current source data exposes only 2 additional article paths; the third slot is explicitly empty.
-const HOMEPAGE_NEXT_THREE_ARTICLE_PATH_SLOTS_AFTER_FEATURED: readonly [string, string, string | null] = [
-  "/news/exam-room-podcast/can-your-gut-predict-parkinsons-alzheimers-dr-trisha-pasricha",
-  "/news/health-nutrition/plant-based-diets-reduce-risk-cancer",
-  null,
-] as const;
-
-const HOMEPAGE_NEXT_ARTICLE_PATHS_AFTER_FEATURED = HOMEPAGE_NEXT_THREE_ARTICLE_PATH_SLOTS_AFTER_FEATURED.filter(
-  (path): path is string => typeof path === "string" && path.length > 0,
-);
+const HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_PATHS = {
+  first: "/news/exam-room-podcast/can-your-gut-predict-parkinsons-alzheimers-dr-trisha-pasricha",
+  second: "/news/health-nutrition/plant-based-diets-reduce-risk-cancer",
+  third: null,
+} as const;
 
 interface VisibleNewsArticleQaRule {
   cleanTopSectionNoise: boolean;
@@ -126,12 +122,12 @@ const QA_VISIBLE_NEWS_ARTICLE_RULES: Record<string, VisibleNewsArticleQaRule> = 
 };
 
 // Auditable scope for this pass: next visible article pages after the cleaned featured top 3.
-const QA_NEXT_VISIBLE_NEWS_ARTICLE_RULES_BY_PATH: Record<string, VisibleNewsArticleQaRule> = {
-  [HOMEPAGE_NEXT_THREE_ARTICLE_PATH_SLOTS_AFTER_FEATURED[0]]: {
+const QA_HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_RULES_BY_PATH: Record<string, VisibleNewsArticleQaRule> = {
+  [HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_PATHS.first]: {
     cleanTopSectionNoise: true,
     cleanIntroSummary: true,
   },
-  [HOMEPAGE_NEXT_THREE_ARTICLE_PATH_SLOTS_AFTER_FEATURED[1]]: {
+  [HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_PATHS.second]: {
     cleanTopSectionNoise: true,
     cleanIntroSummary: true,
   },
@@ -156,13 +152,13 @@ const HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH: Record<string, Re
   },
 };
 
-const HOMEPAGE_NEXT_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH: Record<string, RelatedLinksCleanupRule> = {
-  [HOMEPAGE_NEXT_THREE_ARTICLE_PATH_SLOTS_AFTER_FEATURED[0]]: {
+const HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH: Record<string, RelatedLinksCleanupRule> = {
+  [HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_PATHS.first]: {
     removeGlobalIrrelevantLinks: true,
     removeSelfLink: true,
     dedupeLinks: true,
   },
-  [HOMEPAGE_NEXT_THREE_ARTICLE_PATH_SLOTS_AFTER_FEATURED[1]]: {
+  [HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_PATHS.second]: {
     removeGlobalIrrelevantLinks: true,
     removeSelfLink: true,
     dedupeLinks: true,
@@ -171,9 +167,9 @@ const HOMEPAGE_NEXT_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH: Record<string, Relate
 
 const QA_TARGET_VISIBLE_NEWS_ARTICLES = new Set([
   ...Object.keys(QA_VISIBLE_NEWS_ARTICLE_RULES),
-  ...Object.keys(QA_NEXT_VISIBLE_NEWS_ARTICLE_RULES_BY_PATH),
+  ...Object.keys(QA_HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_RULES_BY_PATH),
   ...Object.keys(HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH),
-  ...Object.keys(HOMEPAGE_NEXT_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH),
+  ...Object.keys(HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH),
 ]);
 const MEMBERSHIP_CTA_EN = "Make your 2026 membership gift today!";
 const MEMBERSHIP_CTA_VI = "Hãy tặng quà thành viên năm 2026 ngay hôm nay!";
@@ -581,13 +577,23 @@ function getPageLabelByPath(path: string, lang: ContentLanguage): string {
 }
 
 function getVisibleNewsArticleQaRule(path: string): VisibleNewsArticleQaRule | undefined {
-  return QA_VISIBLE_NEWS_ARTICLE_RULES[path] ?? QA_NEXT_VISIBLE_NEWS_ARTICLE_RULES_BY_PATH[path];
+  return QA_VISIBLE_NEWS_ARTICLE_RULES[path] ?? getHomepageNewsFlowNextThreeArticleQaRule(path);
+}
+
+function getHomepageNewsFlowNextThreeArticleQaRule(path: string): VisibleNewsArticleQaRule | undefined {
+  return QA_HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_RULES_BY_PATH[path];
+}
+
+function getHomepageNewsFlowNextThreeArticleRelatedLinksCleanup(
+  path: string,
+): RelatedLinksCleanupRule | undefined {
+  return HOMEPAGE_NEWS_FLOW_NEXT_THREE_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH[path];
 }
 
 function getHomepageNewsFlowArticleRelatedLinksCleanup(path: string): RelatedLinksCleanupRule | undefined {
   return (
     HOMEPAGE_FEATURED_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH[path]
-    ?? HOMEPAGE_NEXT_ARTICLE_RELATED_LINKS_CLEANUP_BY_PATH[path]
+    ?? getHomepageNewsFlowNextThreeArticleRelatedLinksCleanup(path)
   );
 }
 
