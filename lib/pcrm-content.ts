@@ -68,6 +68,48 @@ const PATH_ALIASES: Record<string, string> = {
   "/contact-us": "/contact",
 };
 
+const QA_TARGET_HUBS = new Set(["/about-us", "/good-nutrition"]);
+const MEMBERSHIP_CTA_EN = "Make your 2026 membership gift today!";
+const MEMBERSHIP_CTA_VI = "Hãy tặng quà thành viên năm 2026 ngay hôm nay!";
+
+const QA_LINK_EXCLUDE_BY_PATH: Record<string, Set<string>> = {
+  "/about-us": new Set([
+    "/#main-content",
+    "/",
+    "/good-nutrition/nutrition-for-clinicians",
+    "/good-nutrition/nutrition-for-clinicians/medical-students",
+    "/term/scientists",
+    "/about-us",
+  ]),
+  "/good-nutrition": new Set([
+    "/#main-content",
+    "/",
+    "/good-nutrition/nutrition-for-clinicians",
+    "/good-nutrition/nutrition-for-clinicians/medical-students",
+    "/term/scientists",
+    "/about-us",
+    "/about-us#leadership",
+    "/about-us/our-victories",
+    "/about-us/careers",
+    "/about-us/careers/internships",
+    "/events",
+    "/about-us/financial-report",
+    "/barnard-medical-center",
+    "/contact-us",
+  ]),
+};
+
+const QA_VI_LINK_TEXT_REPLACEMENTS: Record<string, string> = {
+  "Khả năng lãnh đạo": "Ban lãnh đạo",
+  "Nghề nghiệp": "Tuyển dụng",
+  "Cách cho đi": "Các cách ủng hộ",
+  "Chủ tịch Hội đồng Tổng thống": "Chủ tịch Hội đồng Chủ tịch",
+  "Đánh dấu Hammond, MD": "Mark Hammond, MD",
+  "Ca sĩ Mikalah, JD, LLM": "Mikalah Singer, JD, LLM",
+  "Nhà xuất bản Deborah Dubow, Esq.": "Deborah Dubow Press, Esq.",
+  "Nô-ê Praamsma, MS, RDN": "Noah Praamsma, MS, RDN",
+};
+
 // Source-of-truth resolution for each normalized path.
 // EN reference: generated_source_pages -> translated_all -> manual_pages.
 // VI layer: translated_all -> generated_source_pages -> manual_pages.
@@ -147,6 +189,86 @@ function normalizeLinksVi(
       text_vi: isNonEmptyString(link.text_vi) ? link.text_vi : undefined,
       url: link.url,
     }));
+}
+
+function normalizePcrmLinkKey(url: string): string {
+  try {
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.toLowerCase();
+
+    if (hostname === "www.pcrm.org" || hostname === "pcrm.org") {
+      const pathname = normalizePath(parsed.pathname);
+      return `${pathname}${parsed.hash}`;
+    }
+
+    return parsed.href;
+  } catch {
+    return url;
+  }
+}
+
+function trimMembershipCtaParagraphs(paragraphs: string[], cta: string): string[] {
+  if (paragraphs.length === 0) {
+    return paragraphs;
+  }
+
+  return paragraphs[0] === cta ? paragraphs.slice(1) : paragraphs;
+}
+
+function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
+  if (!QA_TARGET_HUBS.has(page.path)) {
+    return page;
+  }
+
+  const excludedLinkKeys = QA_LINK_EXCLUDE_BY_PATH[page.path] ?? new Set<string>();
+  const seenLinkKeys = new Set<string>();
+
+  const filteredLinks = page.links.filter((link) => {
+    const key = normalizePcrmLinkKey(link.url);
+    if (excludedLinkKeys.has(key)) {
+      return false;
+    }
+
+    const dedupeKey = `${key}::${link.text}`;
+    if (seenLinkKeys.has(dedupeKey)) {
+      return false;
+    }
+
+    seenLinkKeys.add(dedupeKey);
+    return true;
+  });
+
+  const filteredLinksVi = page.links_vi
+    ?.filter((link) => {
+      const key = normalizePcrmLinkKey(link.url);
+      if (excludedLinkKeys.has(key)) {
+        return false;
+      }
+
+      const dedupeKey = `${key}::${link.text}`;
+      return seenLinkKeys.has(dedupeKey);
+    })
+    .map((link) => {
+      const sourceText = link.text_vi || link.text;
+      const correctedText = QA_VI_LINK_TEXT_REPLACEMENTS[sourceText] ?? sourceText;
+
+      return {
+        ...link,
+        text_vi: correctedText,
+      };
+    });
+
+  const paragraphsEn = trimMembershipCtaParagraphs(page.paragraphs_en ?? page.paragraphs, MEMBERSHIP_CTA_EN);
+  const paragraphsVi = trimMembershipCtaParagraphs(page.paragraphs_vi ?? page.paragraphs, MEMBERSHIP_CTA_VI);
+
+  return {
+    ...page,
+    paragraphs: paragraphsEn,
+    paragraphs_en: paragraphsEn,
+    paragraphs_vi: paragraphsVi,
+    links: filteredLinks,
+    links_vi: filteredLinksVi,
+  };
 }
 
 function pickLocalizedValue<T>(
@@ -399,12 +521,14 @@ const resolvedPages: PcrmResolvedPage[] = allKnownPaths
     const enReference = enPage ?? fallbackPage;
     const viLayer = viPage ?? fallbackPage;
 
-    return composeResolvedPage(
+    return applyHubPageQaFixes(
+      composeResolvedPage(
       path,
       enReference,
       viLayer,
       enReference.contentSource,
       viLayer.contentSource,
+      ),
     );
   })
   .filter((page): page is PcrmResolvedPage => Boolean(page));
