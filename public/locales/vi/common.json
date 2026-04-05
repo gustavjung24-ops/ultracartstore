@@ -56,7 +56,9 @@
   "news": {
     "title": "Tin tức",
     "healthNutrition": "Tin tức sức khỏe và dinh dưỡng",
-    "mediaCenter": "Trung tâm truyền thông"
+    "mediaCenter": "Trung tâm truyền thông",
+    "innovativeScienceNews": "Khoa học đổi mới",
+    "goodScienceDigest": "Bản tin khoa học"
   },
   "waysToGive": {
     "title": "Các cách ủng hộ",
@@ -104,7 +106,15 @@
   },
   "repoUi": {
     "quickAccess": "Truy cập nhanh",
-    "openMainSection": "Mở mục chính"
+    "openMainSection": "Mở mục chính",
+    "home": {
+      "victoryBadge": "CHIẾN THẮNG!",
+      "topicHighlights": "Tin theo chuyên mục",
+      "openSection": "Mở chuyên mục",
+      "impactTitle": "40 năm tạo chuyển biến",
+      "latestStories": "Bài viết mới nhất",
+      "seeOurVictories": "Xem thành tựu"
+    }
   },
   "contactOptions": {
     "whatsapp": "Nhắn tin WhatsApp",

@@ -56,7 +56,9 @@
   "news": {
     "title": "News",
     "healthNutrition": "Health and Nutrition News",
-    "mediaCenter": "Media Center"
+    "mediaCenter": "Media Center",
+    "innovativeScienceNews": "Innovative Science News",
+    "goodScienceDigest": "Good Science Digest"
   },
   "waysToGive": {
     "title": "Ways to Give",
@@ -104,7 +106,15 @@
   },
   "repoUi": {
     "quickAccess": "Quick Access",
-    "openMainSection": "Open Main Section"
+    "openMainSection": "Open Main Section",
+    "home": {
+      "victoryBadge": "VICTORY!",
+      "topicHighlights": "Topic Highlights",
+      "openSection": "Open Section",
+      "impactTitle": "40 Years of Impact",
+      "latestStories": "Latest Stories",
+      "seeOurVictories": "See Our Victories"
+    }
   },
   "contactOptions": {
     "whatsapp": "Message on WhatsApp",
