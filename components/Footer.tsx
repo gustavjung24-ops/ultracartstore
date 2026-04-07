@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
-import logoImage from '../yhoclanhmanh_logo.png';
+import logoImage from '../logo_main_2.png';
 import type { Language } from '@/lib/translations';
 import { getPreferredClientLanguage } from '@/lib/client-language';
 import {
