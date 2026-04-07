@@ -62,7 +62,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
           <div>
             <Link href="/" className="inline-block no-underline">
               <Image
-                src="/images/pcrm-wordmark.svg"
+                src="/images/7.png"
                 alt={locale.site.name}
                 width={210}
                 height={95}

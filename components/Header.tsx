@@ -49,17 +49,14 @@ type HeaderProps = {
 };
 
 export default function Header({ initialLanguage }: HeaderProps) {
-  const logoCandidates = ['/images/1.png', '/images/1.PNG', '/images/pcrm-wordmark.svg'] as const;
+  const logoSrc = '/images/7.png';
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const [language, setLanguage] = useState<Language>(() => initialLanguage ?? getPreferredClientLanguage());
   const [mounted, setMounted] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
-  const [logoIndex, setLogoIndex] = useState(0);
   const headerRef = useRef<HTMLElement | null>(null);
-
-  const logoSrc = logoCandidates[logoIndex];
 
   useEffect(() => {
     setMounted(true);
@@ -91,10 +88,6 @@ export default function Header({ initialLanguage }: HeaderProps) {
     persistClientLanguage(lang);
     window.dispatchEvent(new CustomEvent('languagechange', { detail: { language: lang } }));
     window.location.reload();
-  };
-
-  const handleLogoError = () => {
-    setLogoIndex((current) => Math.min(current + 1, logoCandidates.length - 1));
   };
 
   const locale = useMemo(() => COMMON_LOCALES[language], [language]);
@@ -197,7 +190,6 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 height={502}
                 className="h-[42px] w-auto object-contain drop-shadow-[0_2px_7px_rgba(15,92,115,0.24)] sm:h-[52px] md:h-[58px]"
                 sizes="(min-width: 768px) 58px, (min-width: 640px) 52px, 42px"
-                onError={handleLogoError}
                 unoptimized
                 priority
               />
