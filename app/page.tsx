@@ -67,6 +67,12 @@ export default async function HomePage() {
   const newsPosts = getBlogPages().filter((post) => isNewsArticlePath(post.path)) as BlogPost[];
   const featuredPosts = newsPosts.slice(0, 3);
   const latestPosts = newsPosts.slice(0, 6);
+  const heroPost = newsPosts.find((post) => {
+    const titleEn = getPostTitle(post, "en").toLowerCase();
+    const titleVi = getPostTitle(post, "vi").toLowerCase();
+    return titleEn.includes("brown university") || titleVi.includes("đại học brown");
+  });
+  const heroCtaHref = heroPost?.path ?? "/news/blog";
 
   const healthAndNutritionPosts = newsPosts.filter((post) => post.path.includes("/news/health-nutrition/")).slice(0, 2);
   const innovativeSciencePosts = newsPosts.filter((post) => post.path.includes("/news/innovative-science/")).slice(0, 2);
@@ -138,9 +144,7 @@ export default async function HomePage() {
                   </p>
                   <div className="mt-6 md:mt-8">
                     <Link
-                      href="https://act.pcrm.org/a/victory-brown-university"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={heroCtaHref}
                       className="rounded-full border border-white/45 px-6 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white no-underline transition hover:bg-white/10 md:px-7 md:py-3 md:text-sm"
                     >
                       {locale.common.learnMore}
