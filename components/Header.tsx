@@ -183,22 +183,22 @@ export default function Header({ initialLanguage }: HeaderProps) {
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
             <div className="order-1 flex shrink-0 items-center gap-1.5 md:gap-3">
               {mounted ? (
-                <div className="inline-flex overflow-hidden rounded-md border border-slate-300 bg-white lg:hidden">
+                <div className="inline-flex flex-nowrap overflow-hidden rounded-md border border-slate-300 bg-white lg:hidden">
                   <button
                     onClick={() => handleLanguageChange('vi')}
-                    className={`px-1.5 py-1 text-[10px] font-bold transition ${
+                    className={`whitespace-nowrap px-2 py-1 text-[10px] font-bold uppercase tracking-[0.02em] transition ${
                       language === 'vi' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
-                    VI
+                    TIẾNG VIỆT
                   </button>
                   <button
                     onClick={() => handleLanguageChange('en')}
-                    className={`border-l border-slate-300 px-1.5 py-1 text-[10px] font-bold transition ${
+                    className={`whitespace-nowrap border-l border-slate-300 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.02em] transition ${
                       language === 'en' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
-                    EN
+                    ENGLISH
                   </button>
                 </div>
               ) : null}
