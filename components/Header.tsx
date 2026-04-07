@@ -181,24 +181,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
 
         <div className="border-b border-slate-200 bg-white px-4 py-2 md:px-6 md:py-3">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
-            <Link href="/" className="min-w-0 flex-1 no-underline hover:opacity-95">
-              <div className="flex flex-col gap-0.5">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#0f5c73] sm:text-[11px]">
-                  {locale.site.tagline}
-                </p>
-                <Image
-                  src={logoImage}
-                  alt={locale.site.name}
-                  width={1024}
-                  height={1024}
-                  className="h-[46px] w-auto object-contain drop-shadow-[0_2px_7px_rgba(15,92,115,0.24)] sm:h-[54px] md:h-[62px]"
-                  sizes="(min-width: 768px) 62px, (min-width: 640px) 54px, 46px"
-                  priority
-                />
-              </div>
-            </Link>
-
-            <div className="flex shrink-0 items-center gap-1.5 md:gap-3">
+            <div className="order-1 flex shrink-0 items-center gap-1.5 md:gap-3">
               {mounted ? (
                 <div className="inline-flex overflow-hidden rounded-md border border-slate-300 bg-white lg:hidden">
                   <button
@@ -236,6 +219,23 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 </svg>
               </button>
             </div>
+
+            <Link href="/" className="order-2 ml-auto no-underline hover:opacity-95">
+              <div className="flex flex-col items-end gap-0.5 text-right">
+                <Image
+                  src={logoImage}
+                  alt={locale.site.name}
+                  width={1024}
+                  height={1024}
+                  className="h-[46px] w-auto object-contain drop-shadow-[0_2px_7px_rgba(15,92,115,0.24)] sm:h-[54px] md:h-[62px]"
+                  sizes="(min-width: 768px) 62px, (min-width: 640px) 54px, 46px"
+                  priority
+                />
+                <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#0f5c73] sm:text-[11px]">
+                  {locale.site.tagline}
+                </p>
+              </div>
+            </Link>
           </div>
         </div>
 
