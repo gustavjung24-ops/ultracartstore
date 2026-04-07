@@ -1,7 +1,7 @@
 {
   "site": {
-    "name": "Ủy ban Bác sĩ vì Y học có trách nhiệm",
-    "shortName": "PCRM",
+    "name": "Y học lành mạnh",
+    "shortName": "Y học lành mạnh",
     "tagline": "Dinh dưỡng dựa trên bằng chứng và khoa học có đạo đức"
   },
   "nav": {
@@ -14,7 +14,7 @@
     "news": "Tin tức",
     "resources": "Tài nguyên",
     "contact": "Liên hệ",
-    "shop": "Cửa hàng",
+    "shop": "Tài nguyên",
     "donate": "Quyên góp",
     "freeDownloads": "Tải xuống miễn phí",
     "privacyPolicy": "Chính sách bảo mật",
@@ -39,7 +39,7 @@
     "back": "Quay lại",
     "goBack": "Quay lại",
     "getStarted": "Bắt đầu",
-    "donateNow": "Quyên góp ngay",
+    "donateNow": "Xem nội dung",
     "contactUs": "Liên hệ với chúng tôi",
     "explore": "Khám phá",
     "browse": "Xem thêm",

@@ -9,13 +9,13 @@ import { getStoreData } from "@/lib/store-data";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 export const metadata: Metadata = {
-  title: "Cửa hàng - Physicians Committee Shop",
-  description: "Tài liệu giáo dục sức khỏe, sách và công cụ truyền thông từ Physicians Committee.",
+  title: "Tài nguyên sức khỏe | Y học lành mạnh",
+  description: "Tổng hợp tài liệu giáo dục sức khỏe, sách và công cụ truyền thông dựa trên bằng chứng.",
 };
 
 const breadcrumbs = [
   { label: "Trang chủ", href: "/" },
-  { label: "Cửa hàng" },
+  { label: "Tài nguyên" },
 ];
 
 export default async function ShopPage() {
@@ -37,7 +37,7 @@ export default async function ShopPage() {
 
             {/* Tiêu đề trang */}
             <h1 className="text-brand-teal font-bold text-2xl pb-3 mb-6 border-b border-gray-200 uppercase tracking-wide">
-              Cửa hàng
+              Tài nguyên
             </h1>
 
             {/* Danh mục */}
@@ -64,7 +64,7 @@ export default async function ShopPage() {
                     Theo chủ đề sức khỏe
                   </h2>
                   <p className="mt-1 max-w-2xl text-sm text-gray-600">
-                    Đây là nhóm nội dung đang còn thiếu độ sâu so với website mẫu, nên tôi đã bổ sung thêm các tài liệu theo bệnh lý và nhu cầu chăm sóc cụ thể để trang shop có cấu trúc rõ hơn.
+                    Đây là nhóm nội dung đang còn thiếu độ sâu so với website mẫu, nên tôi đã bổ sung thêm các tài liệu theo bệnh lý và nhu cầu chăm sóc cụ thể để chuyên mục tài nguyên có cấu trúc rõ hơn.
                   </p>
                 </div>
                 <Link href="/shop/health-topics" className="text-sm font-semibold text-brand-teal hover:underline">

@@ -1,7 +1,7 @@
 {
   "site": {
-    "name": "Physicians Committee for Responsible Medicine",
-    "shortName": "PCRM",
+    "name": "Healthy Medicine",
+    "shortName": "Healthy Medicine",
     "tagline": "Evidence-based nutrition and ethical science"
   },
   "nav": {
@@ -14,7 +14,7 @@
     "news": "News",
     "resources": "Resources",
     "contact": "Contact",
-    "shop": "Shop",
+    "shop": "Resources",
     "donate": "Donate",
     "freeDownloads": "Free Downloads",
     "privacyPolicy": "Privacy Policy",
@@ -39,7 +39,7 @@
     "back": "Back",
     "goBack": "Go Back",
     "getStarted": "Get Started",
-    "donateNow": "Donate Now",
+    "donateNow": "View Content",
     "contactUs": "Contact Us",
     "explore": "Explore",
     "browse": "Browse",

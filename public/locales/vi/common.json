@@ -1,7 +1,7 @@
 {
   "site": {
-    "name": "Ủy ban Bác sĩ vì Y học có trách nhiệm",
-    "shortName": "PCRM",
+    "name": "Y học lành mạnh",
+    "shortName": "Y học lành mạnh",
     "tagline": "Ăn hiền, sống lành để khoẻ mạnh",
     "contact": {
       "addressLine1": "5100 Wisconsin Ave. NW, Suite 400",
@@ -61,7 +61,7 @@
   },
   "utilityNav": {
     "events": "Sự kiện",
-    "shop": "Cửa hàng",
+    "shop": "Tài nguyên",
     "contact": "Liên hệ",
     "mediaCenter": "Trung tâm truyền thông",
     "barnardMedicalCenter": "Trung tâm Y khoa Barnard",
@@ -122,7 +122,7 @@
     },
     "contact": {
       "title": "Biểu mẫu liên hệ",
-      "intro": "Nếu bạn có câu hỏi liên quan đến Physicians Committee Shop, vui lòng gọi {shopPhone}, điền vào biểu mẫu bên dưới hoặc gửi email tới {shopEmail}. Đối với các câu hỏi không liên quan đến cửa hàng, vui lòng liên hệ {mainPhone} hoặc {mainEmail}. Cảm ơn bạn!",
+      "intro": "Nếu bạn có câu hỏi về nội dung trên website, vui lòng gọi {shopPhone}, điền vào biểu mẫu bên dưới hoặc gửi email tới {shopEmail}. Với các câu hỏi chung, vui lòng liên hệ {mainPhone} hoặc {mainEmail}. Cảm ơn bạn!",
       "breadcrumbHome": "Trang chủ",
       "breadcrumbHelp": "Hỗ trợ",
       "breadcrumbCurrent": "Biểu mẫu liên hệ",
@@ -138,7 +138,7 @@
       "responseTime": "Chúng tôi thường phản hồi trong 1-2 ngày làm việc",
       "quickMessage": "Nhắn tin nhanh",
       "quickCall": "Gọi điện trực tiếp",
-      "mailSubject": "Liên hệ từ cửa hàng PCRM",
+      "mailSubject": "Liên hệ từ website Y học lành mạnh",
       "emailBodyName": "Tên",
       "emailBodyEmail": "Email",
       "emailBodyMessage": "Nội dung"
@@ -146,9 +146,9 @@
   },
   "contactPage": {
     "title": "Biểu mẫu liên hệ",
-    "shopQuestionsPrefix": "Nếu bạn có câu hỏi liên quan đến Physicians Committee Shop, vui lòng gọi",
+    "shopQuestionsPrefix": "Nếu bạn có câu hỏi về nội dung trên website, vui lòng gọi",
     "shopQuestionsMiddle": "điền vào biểu mẫu bên dưới hoặc gửi email tới",
-    "nonShopQuestionsPrefix": "Đối với các câu hỏi không liên quan đến cửa hàng, vui lòng liên hệ",
+    "nonShopQuestionsPrefix": "Với các câu hỏi chung, vui lòng liên hệ",
     "orText": "hoặc",
     "thankYou": "Cảm ơn bạn!",
     "successTitle": "Đã mở ứng dụng email của bạn.",
@@ -164,7 +164,7 @@
     "whatsappLabel": "WhatsApp",
     "whatsappSubLabel": "Nhắn tin nhanh",
     "callSubLabel": "Gọi điện trực tiếp",
-    "mailSubject": "Liên hệ từ cửa hàng PCRM",
+    "mailSubject": "Liên hệ từ website Y học lành mạnh",
     "emailBodyName": "Tên",
     "emailBodyEmail": "Email",
     "emailBodyMessage": "Nội dung"

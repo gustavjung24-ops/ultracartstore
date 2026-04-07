@@ -5,8 +5,8 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Tải miễn phí - Physicians Committee Shop",
-  description: "Tải miễn phí tài liệu giáo dục sức khỏe từ Physicians Committee.",
+  title: "Tải miễn phí | Y học lành mạnh",
+  description: "Tải miễn phí tài liệu giáo dục sức khỏe dựa trên bằng chứng.",
 };
 
 const breadcrumbs = [
@@ -76,7 +76,7 @@ export default function FreeDownloadsPage() {
           Tải miễn phí
         </h1>
         <p className="text-gray-600 mb-8 text-sm leading-relaxed max-w-2xl">
-          Physicians Committee cung cấp miễn phí nhiều tài liệu giáo dục sức khỏe dưới dạng PDF.
+          Y học lành mạnh cung cấp miễn phí nhiều tài liệu giáo dục sức khỏe dưới dạng PDF.
           Tải về và chia sẻ với cộng đồng, bệnh nhân hoặc những người thân mà bạn yêu quý.
         </p>
 
@@ -118,7 +118,7 @@ export default function FreeDownloadsPage() {
             href="/shop"
             className="inline-block bg-brand-teal hover:bg-brand-mid text-white font-bold py-2 px-6 transition-colors"
           >
-            Xem cửa hàng
+            Xem nội dung
           </Link>
         </div>
       </div>

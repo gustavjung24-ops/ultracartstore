@@ -17,9 +17,20 @@ const headingFont = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: "Cửa hàng Physicians Committee",
+  title: "Y học lành mạnh",
   description:
-    "Tài liệu giáo dục sức khỏe dành cho cộng đồng, nhà giáo dục và người lãnh đạo.",
+    "Nội dung về dinh dưỡng thực vật, y học dự phòng và khoa học có đạo đức.",
+  applicationName: "Y học lành mạnh",
+  openGraph: {
+    title: "Y học lành mạnh",
+    description:
+      "Nội dung về dinh dưỡng thực vật, y học dự phòng và khoa học có đạo đức.",
+    siteName: "Y học lành mạnh",
+    type: "website",
+  },
+  appleWebApp: {
+    title: "Y học lành mạnh",
+  },
 };
 
 export const viewport: Viewport = {

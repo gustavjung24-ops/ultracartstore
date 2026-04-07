@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import heroImage from "../44.png";
@@ -17,6 +18,17 @@ import {
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 type BlogPost = PcrmPage & { path: string };
+
+export const metadata: Metadata = {
+  title: "Y học lành mạnh | Dinh dưỡng thực vật và y học dự phòng",
+  description: "Khám phá nội dung về dinh dưỡng thực vật, y học dự phòng và khoa học có đạo đức.",
+  openGraph: {
+    title: "Y học lành mạnh | Dinh dưỡng thực vật và y học dự phòng",
+    description: "Khám phá nội dung về dinh dưỡng thực vật, y học dự phòng và khoa học có đạo đức.",
+    siteName: "Y học lành mạnh",
+    type: "website",
+  },
+};
 
 function getPostTitle(post: BlogPost, lang: "en" | "vi") {
   return getLocalizedPcrmPageContent(post, lang).title;
@@ -55,6 +67,11 @@ function getSectionSummary(
   return sectionTitle;
 }
 
+function neutralizeDonateWording(text: string, lang: "en" | "vi") {
+  const replacement = lang === "vi" ? "Tìm hiểu thêm" : "Learn more";
+  return text.replace(/đóng góp ngay|quyên góp ngay|donate now/gi, replacement);
+}
+
 export default async function HomePage() {
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
@@ -77,6 +94,11 @@ export default async function HomePage() {
   const healthAndNutritionPosts = newsPosts.filter((post) => post.path.includes("/news/health-nutrition/")).slice(0, 2);
   const innovativeSciencePosts = newsPosts.filter((post) => post.path.includes("/news/innovative-science/")).slice(0, 2);
   const scienceDigestPosts = newsPosts.filter((post) => post.path.includes("/news/good-science-digest/")).slice(0, 2);
+  const supportSummary = neutralizeDonateWording(
+    localizedHome.paragraphs[4] || homeUi.supportFallbackSummary,
+    lang,
+  );
+  const supportCtaLabel = lang === "vi" ? "Xem nội dung" : "View Content";
 
   const sectionHighlights = [
     {
@@ -270,11 +292,11 @@ export default async function HomePage() {
               {locale.common.supportOurMission}
             </h2>
             <p className="home-hero-copy mx-auto mt-3 max-w-3xl text-slate-200 md:mt-4">
-              {localizedHome.paragraphs[4] || homeUi.supportFallbackSummary}
+              {supportSummary}
             </p>
             <div className="mt-5 md:mt-6">
               <Link href="/about-us/our-victories" className="inline-block rounded-full border border-white/40 px-7 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-white/10 no-underline md:px-8 md:py-3 md:text-sm">
-                {homeUi.seeOurVictories}
+                {supportCtaLabel}
               </Link>
             </div>
           </div>

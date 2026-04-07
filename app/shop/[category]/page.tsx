@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const cat = categories.find((c) => c.slug === category);
   if (!cat) return {};
   return {
-    title: `${cat.label} - Physicians Committee Shop`,
+    title: `${cat.label} | Y học lành mạnh`,
     description: cat.description,
   };
 }
@@ -56,7 +56,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
   const breadcrumbs = [
     { label: "Trang chủ", href: "/" },
-    { label: "Cửa hàng", href: "/shop" },
+    { label: "Tài nguyên", href: "/shop" },
     { label: cat.label },
   ];
 
@@ -90,7 +90,7 @@ export default async function CategoryPage({ params }: PageProps) {
               <div className="py-16 text-center text-gray-400">
                 <p className="text-lg">Chưa có sản phẩm trong danh mục này.</p>
                 <Link href="/shop" className="mt-4 inline-block text-brand-teal hover:underline text-sm">
-                  ← Quay lại cửa hàng
+                  ← Quay lại tài nguyên
                 </Link>
               </div>
             ) : (

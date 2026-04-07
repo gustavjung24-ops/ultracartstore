@@ -1336,7 +1336,7 @@ export const categories = [
 // ──────────────────────────────────────────────
 export const mainMenu = [
   { label: "Trang chủ", href: "/" },
-  { label: "Cửa hàng", href: "/shop" },
+  { label: "Tài nguyên", href: "/shop" },
   { label: "Tải miễn phí", href: "/free-downloads" },
 ];
 
@@ -1350,7 +1350,7 @@ export const helpMenu = [
 // FOOTER
 // ──────────────────────────────────────────────
 export const footerInfo = {
-  brandName: "Physicians Committee Shop",
+  brandName: "Y học lành mạnh",
   address: "5100 Wisconsin Avenue, NW, Suite 400",
   city: "Washington, DC 20016",
   phone: "ĐT: 202-527-7306",

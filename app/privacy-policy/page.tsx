@@ -4,8 +4,8 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Chính sách bảo mật - Physicians Committee Shop",
-  description: "Chính sách bảo mật của Physicians Committee Shop.",
+  title: "Chính sách bảo mật | Y học lành mạnh",
+  description: "Chính sách bảo mật của website Y học lành mạnh.",
 };
 
 const breadcrumbs = [
@@ -28,9 +28,8 @@ export default function PrivacyPolicyPage() {
 
           <div className="prose prose-sm max-w-none text-gray-600 space-y-6">
             <p>
-              Physicians Committee for Responsible Medicine (PCRM) cam kết bảo vệ quyền riêng tư
-              của bạn. Chính sách này mô tả cách chúng tôi thu thập, sử dụng và bảo vệ thông tin
-              cá nhân khi bạn sử dụng Physicians Committee Shop.
+              Y học lành mạnh cam kết bảo vệ quyền riêng tư của bạn. Chính sách này mô tả cách
+              chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân khi bạn sử dụng website.
             </p>
 
             <section>

@@ -352,7 +352,7 @@ export const HEADER_MAIN_NAV_GROUPS: HeaderMainGroup[] = [
 
 export const FOOTER_UTILITY_LINKS: CatalogItem[] = [
   { href: "/events", key: "utilityNav.events", localePath: "utilityNav.events", fallback: { en: "Events", vi: "Sự kiện" } },
-  { href: "/shop", key: "utilityNav.shop", localePath: "utilityNav.shop", fallback: { en: "Shop", vi: "Cửa hàng" } },
+  { href: "/shop", key: "utilityNav.shop", localePath: "utilityNav.shop", fallback: { en: "Resources", vi: "Tài nguyên" } },
   { href: "/contact", key: "utilityNav.contact", localePath: "utilityNav.contact", fallback: { en: "Contact", vi: "Liên hệ" } },
   { href: "/news/media-center", key: "utilityNav.mediaCenter", localePath: "utilityNav.mediaCenter", fallback: { en: "Media Center", vi: "Trung tâm truyền thông" } },
   { href: "/barnard-medical-center", key: "utilityNav.barnardMedicalCenter", localePath: "utilityNav.barnardMedicalCenter", fallback: { en: "Barnard Medical Center", vi: "Trung tâm Y khoa Barnard" } },

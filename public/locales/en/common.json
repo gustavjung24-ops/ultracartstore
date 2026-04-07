@@ -1,7 +1,7 @@
 {
   "site": {
-    "name": "Physicians Committee for Responsible Medicine",
-    "shortName": "PCRM",
+    "name": "Healthy Medicine",
+    "shortName": "Healthy Medicine",
     "tagline": "Eat kindly, live wholesomely to stay healthy.",
     "contact": {
       "addressLine1": "5100 Wisconsin Ave. NW, Suite 400",
@@ -61,7 +61,7 @@
   },
   "utilityNav": {
     "events": "Events",
-    "shop": "Shop",
+    "shop": "Resources",
     "contact": "Contact",
     "mediaCenter": "Media Center",
     "barnardMedicalCenter": "Barnard Medical Center",
@@ -122,7 +122,7 @@
     },
     "contact": {
       "title": "Contact Form",
-      "intro": "If you have questions related to the Physicians Committee Shop, please call {shopPhone}, fill out the form below, or email {shopEmail}. For non-shop questions, please contact {mainPhone} or {mainEmail}. Thank you!",
+      "intro": "If you have questions about website content, please call {shopPhone}, fill out the form below, or email {shopEmail}. For general inquiries, please contact {mainPhone} or {mainEmail}. Thank you!",
       "breadcrumbHome": "Home",
       "breadcrumbHelp": "Support",
       "breadcrumbCurrent": "Contact Form",
@@ -138,7 +138,7 @@
       "responseTime": "We usually respond within 1-2 business days",
       "quickMessage": "Quick message",
       "quickCall": "Call directly",
-      "mailSubject": "Contact request from the PCRM Shop",
+      "mailSubject": "Contact request from Healthy Medicine website",
       "emailBodyName": "Name",
       "emailBodyEmail": "Email",
       "emailBodyMessage": "Message"
@@ -146,9 +146,9 @@
   },
   "contactPage": {
     "title": "Contact Form",
-    "shopQuestionsPrefix": "If you have questions related to the Physicians Committee Shop, please call",
+    "shopQuestionsPrefix": "If you have questions about website content, please call",
     "shopQuestionsMiddle": "fill out the form below, or email",
-    "nonShopQuestionsPrefix": "For non-shop questions, please contact",
+    "nonShopQuestionsPrefix": "For general inquiries, please contact",
     "orText": "or",
     "thankYou": "Thank you!",
     "successTitle": "Your email app is ready.",
@@ -164,7 +164,7 @@
     "whatsappLabel": "WhatsApp",
     "whatsappSubLabel": "Quick message",
     "callSubLabel": "Call directly",
-    "mailSubject": "Contact request from the PCRM Shop",
+    "mailSubject": "Contact request from Healthy Medicine website",
     "emailBodyName": "Name",
     "emailBodyEmail": "Email",
     "emailBodyMessage": "Message"

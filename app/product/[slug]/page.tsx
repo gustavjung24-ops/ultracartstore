@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const product = products.find((item) => item.slug === slug);
   if (!product) return {};
   return {
-    title: `${product.title} - Physicians Committee Shop`,
+    title: `${product.title} | Y học lành mạnh`,
     description: product.shortDescription,
   };
 }
@@ -44,7 +44,7 @@ export default async function ProductPage({ params }: PageProps) {
 
   const breadcrumbs = [
     { label: "Trang chủ", href: "/" },
-    { label: "Cửa hàng", href: "/shop" },
+    { label: "Tài nguyên", href: "/shop" },
     { label: product.categoryLabel, href: `/shop/${product.category}` },
     { label: product.title },
   ];

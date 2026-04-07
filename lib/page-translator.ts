@@ -86,7 +86,7 @@ export const translateText = (text: string | undefined | null, language: Languag
     'Contact': 'Liên hệ',
     'Donate': 'Quyên góp',
     'Products': 'Sản phẩm',
-    'Shop': 'Cửa hàng',
+    'Shop': 'Tài nguyên',
     'Nutrition': 'Dinh dưỡng',
     'Health': 'Sức khỏe',
     'Medical': 'Y tế',

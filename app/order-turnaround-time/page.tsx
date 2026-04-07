@@ -4,8 +4,8 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Thời gian xử lý đơn hàng - Physicians Committee Shop",
-  description: "Thông tin về thời gian xử lý và giao hàng tại Physicians Committee Shop.",
+  title: "Thời gian xử lý đơn hàng | Y học lành mạnh",
+  description: "Thông tin về thời gian xử lý và giao hàng trên website Y học lành mạnh.",
 };
 
 const breadcrumbs = [
