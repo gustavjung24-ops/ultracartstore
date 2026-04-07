@@ -179,8 +179,8 @@ export default function Header({ initialLanguage }: HeaderProps) {
           </div>
         </div>
 
-        <div className="border-b border-slate-200 bg-white px-4 py-2 md:px-6 md:py-3">
-          <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
+        <div className="border-b border-slate-200 bg-white px-2 py-2 sm:px-4 md:px-6 md:py-3">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-1 sm:gap-2">
             <div className="order-1 flex shrink-0 items-center gap-1.5 md:gap-3">
               {mounted ? (
                 <div className="inline-flex flex-nowrap overflow-hidden rounded-md border border-slate-300 bg-white lg:hidden">
@@ -221,22 +221,25 @@ export default function Header({ initialLanguage }: HeaderProps) {
             </div>
 
             <Link href="/" className="order-2 ml-auto shrink-0 no-underline hover:opacity-95">
-              <div className="flex flex-col items-end gap-0.5 text-right">
+              <div className="flex flex-col items-center gap-0.5 text-center sm:items-end sm:text-right">
                 <Image
                   src={logoImage}
                   alt={locale.site.name}
                   width={1024}
                   height={1024}
-                  className="h-[42px] w-auto object-contain drop-shadow-[0_2px_7px_rgba(15,92,115,0.24)] sm:h-[54px] md:h-[62px]"
+                  className="h-[30px] w-auto object-contain drop-shadow-[0_2px_7px_rgba(15,92,115,0.24)] sm:h-[54px] md:h-[62px]"
                   sizes="(min-width: 768px) 62px, (min-width: 640px) 54px, 46px"
                   priority
                 />
-                <p className="text-[8px] font-semibold tracking-[0.02em] text-[#0f5c73] whitespace-nowrap sm:text-[11px] sm:uppercase sm:tracking-[0.08em]">
+                <p className="hidden text-[8px] font-semibold tracking-[0.02em] text-[#0f5c73] whitespace-nowrap sm:block sm:text-[11px] sm:uppercase sm:tracking-[0.08em]">
                   {locale.site.tagline}
                 </p>
               </div>
             </Link>
           </div>
+          <p className="mt-1 text-center text-[8px] font-semibold uppercase tracking-[0.08em] text-[#0f5c73] sm:hidden">
+            {locale.site.tagline}
+          </p>
         </div>
 
         <nav className="hidden bg-[#007fab] lg:block">
