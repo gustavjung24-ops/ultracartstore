@@ -49,8 +49,8 @@ export default function ContactFormClient({ contactUi }: ContactFormClientProps)
             202-686-2210
           </a>{" "}
           {contactUi.orText}{" "}
-          <a href="mailto:info@PCRM.org" className="text-brand-teal hover:underline font-medium">
-            info@PCRM.org
+          <a href="mailto:yhoclanhmanh@gmail.com" className="text-brand-teal hover:underline font-medium">
+            yhoclanhmanh@gmail.com
           </a>
           . {contactUi.thankYou}
         </p>
