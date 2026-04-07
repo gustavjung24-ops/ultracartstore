@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import heroImage from "../44.png";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
@@ -116,10 +117,10 @@ export default async function HomePage() {
             <div className="grid md:grid-cols-2">
               <div className="relative min-h-[260px] bg-[#dce8ee] md:min-h-[500px]">
                 <Image
-                  src="/images/pig-in-grass.jpg"
+                  src={heroImage}
                   alt={homeUi.heroImageAlt}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   priority
                 />
               </div>
