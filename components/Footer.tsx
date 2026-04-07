@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import logoImage from '../yhoclanhmanh_logo.png';
 import type { Language } from '@/lib/translations';
 import { getPreferredClientLanguage } from '@/lib/client-language';
 import {
@@ -62,10 +63,10 @@ export default function Footer({ initialLanguage }: FooterProps) {
           <div>
             <Link href="/" className="inline-block no-underline">
               <Image
-                src="/images/7.png"
+                src={logoImage}
                 alt={locale.site.name}
-                width={210}
-                height={95}
+                width={1024}
+                height={1024}
                 className="h-auto w-[180px]"
               />
             </Link>

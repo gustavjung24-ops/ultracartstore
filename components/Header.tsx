@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import logoImage from '../yhoclanhmanh_logo.png';
 import LanguageSwitcher from './LanguageSwitcher';
 import { type Language } from '@/lib/translations';
 import { getPreferredClientLanguage, persistClientLanguage } from '@/lib/client-language';
@@ -49,8 +50,6 @@ type HeaderProps = {
 };
 
 export default function Header({ initialLanguage }: HeaderProps) {
-  const logoSrc = '/images/7.png';
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const [language, setLanguage] = useState<Language>(() => initialLanguage ?? getPreferredClientLanguage());
@@ -183,16 +182,20 @@ export default function Header({ initialLanguage }: HeaderProps) {
         <div className="border-b border-slate-200 bg-white px-4 py-2 md:px-6 md:py-3">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
             <Link href="/" className="min-w-0 flex-1 no-underline hover:opacity-95">
-              <Image
-                src={logoSrc}
-                alt={locale.site.name}
-                width={502}
-                height={502}
-                className="h-[42px] w-auto object-contain drop-shadow-[0_2px_7px_rgba(15,92,115,0.24)] sm:h-[52px] md:h-[58px]"
-                sizes="(min-width: 768px) 58px, (min-width: 640px) 52px, 42px"
-                unoptimized
-                priority
-              />
+              <div className="flex flex-col gap-0.5">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#0f5c73] sm:text-[11px]">
+                  {locale.site.tagline}
+                </p>
+                <Image
+                  src={logoImage}
+                  alt={locale.site.name}
+                  width={1024}
+                  height={1024}
+                  className="h-[46px] w-auto object-contain drop-shadow-[0_2px_7px_rgba(15,92,115,0.24)] sm:h-[54px] md:h-[62px]"
+                  sizes="(min-width: 768px) 62px, (min-width: 640px) 54px, 46px"
+                  priority
+                />
+              </div>
             </Link>
 
             <div className="flex shrink-0 items-center gap-1.5 md:gap-3">
