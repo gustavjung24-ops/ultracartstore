@@ -141,7 +141,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
         style={{ position: 'fixed', top: 0, left: 0, right: 0 }}
       >
         <div className="border-b border-[#2a5d7d] bg-[#18354a]">
-          <div className="mx-auto max-w-7xl px-3 py-1 text-center text-[11px] leading-5 text-slate-100 md:px-6">
+          <div className="mx-auto max-w-7xl overflow-hidden px-3 py-1 text-center text-[9px] leading-4 text-slate-100 whitespace-nowrap md:px-6 md:text-[11px] md:leading-5">
             {locale.repoUi.sourceNotice}{" "}
             <a
               href="http://www.pcrm.org"
@@ -231,7 +231,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   sizes="(min-width: 768px) 62px, (min-width: 640px) 54px, 46px"
                   priority
                 />
-                <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#0f5c73] sm:text-[11px]">
+                <p className="text-[8px] font-semibold tracking-[0.02em] text-[#0f5c73] whitespace-nowrap sm:text-[11px] sm:uppercase sm:tracking-[0.08em]">
                   {locale.site.tagline}
                 </p>
               </div>
