@@ -181,24 +181,26 @@ export default function Header({ initialLanguage }: HeaderProps) {
 
         <div className="border-b border-slate-200 bg-white px-4 py-2 md:px-6 md:py-3">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
-            <div className="order-1 flex shrink-0 items-center gap-1.5 md:gap-3">
+            <div className="order-1 flex shrink-0 items-center gap-1 md:gap-3">
               {mounted ? (
-                <div className="inline-flex flex-nowrap overflow-hidden rounded-md border border-slate-300 bg-white lg:hidden">
+                <div className="inline-flex max-w-[122px] flex-nowrap overflow-hidden rounded-md border border-slate-300 bg-white lg:hidden sm:max-w-none">
                   <button
                     onClick={() => handleLanguageChange('vi')}
-                    className={`whitespace-nowrap px-2 py-1 text-[10px] font-bold uppercase tracking-[0.02em] transition ${
+                    className={`whitespace-nowrap px-1.5 py-1 text-[9px] font-bold uppercase tracking-[0.02em] transition sm:px-2 sm:text-[10px] ${
                       language === 'vi' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
-                    TIẾNG VIỆT
+                    <span className="sm:hidden">VI</span>
+                    <span className="hidden sm:inline">TIẾNG VIỆT</span>
                   </button>
                   <button
                     onClick={() => handleLanguageChange('en')}
-                    className={`whitespace-nowrap border-l border-slate-300 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.02em] transition ${
+                    className={`whitespace-nowrap border-l border-slate-300 px-1.5 py-1 text-[9px] font-bold uppercase tracking-[0.02em] transition sm:px-2 sm:text-[10px] ${
                       language === 'en' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
-                    ENGLISH
+                    <span className="sm:hidden">EN</span>
+                    <span className="hidden sm:inline">ENGLISH</span>
                   </button>
                 </div>
               ) : null}
@@ -220,18 +222,18 @@ export default function Header({ initialLanguage }: HeaderProps) {
               </button>
             </div>
 
-            <Link href="/" className="order-2 ml-auto no-underline hover:opacity-95">
+            <Link href="/" className="order-2 ml-auto shrink-0 no-underline hover:opacity-95">
               <div className="flex flex-col items-end gap-0.5 text-right">
                 <Image
                   src={logoImage}
                   alt={locale.site.name}
                   width={1024}
                   height={1024}
-                  className="h-[46px] w-auto object-contain drop-shadow-[0_2px_7px_rgba(15,92,115,0.24)] sm:h-[54px] md:h-[62px]"
+                  className="h-[42px] w-auto object-contain drop-shadow-[0_2px_7px_rgba(15,92,115,0.24)] sm:h-[54px] md:h-[62px]"
                   sizes="(min-width: 768px) 62px, (min-width: 640px) 54px, 46px"
                   priority
                 />
-                <p className="text-[8px] font-semibold tracking-[0.02em] text-[#0f5c73] whitespace-nowrap sm:text-[11px] sm:uppercase sm:tracking-[0.08em]">
+                <p className="hidden text-[8px] font-semibold tracking-[0.02em] text-[#0f5c73] whitespace-nowrap sm:block sm:text-[11px] sm:uppercase sm:tracking-[0.08em]">
                   {locale.site.tagline}
                 </p>
               </div>
