@@ -160,8 +160,8 @@ export default async function HomePage() {
             {featuredPosts.map((post) => (
               <article key={post.path} className="smooth-card rounded-2xl">
                 {post.images[0]?.src ? (
-                  <div className="relative h-48 w-full overflow-hidden rounded-t-2xl md:h-52">
-                    <Image src={post.images[0].src} alt={getPostTitle(post, lang)} fill className="object-cover" unoptimized />
+                  <div className="relative aspect-video w-full overflow-hidden rounded-t-2xl bg-slate-100">
+                    <Image src={post.images[0].src} alt={getPostTitle(post, lang)} fill className="object-contain" unoptimized />
                   </div>
                 ) : null}
                 <div className="p-4 md:p-5">
@@ -221,8 +221,12 @@ export default async function HomePage() {
               </Link>
             </div>
             {home.images[1]?.src ? (
-              <div className="relative h-72 overflow-hidden rounded-2xl bg-slate-100 md:h-80">
-                <Image src={home.images[1].src} alt={homeUi.impactImageAlt} fill className="object-cover" unoptimized />
+              <div className="flex justify-center">
+                <div className="w-full max-w-[420px] overflow-hidden rounded-2xl bg-slate-100 p-2">
+                  <div className="relative aspect-video w-full">
+                    <Image src={home.images[1].src} alt={homeUi.impactImageAlt} fill className="object-contain" unoptimized />
+                  </div>
+                </div>
               </div>
             ) : null}
           </div>
@@ -236,8 +240,8 @@ export default async function HomePage() {
             {latestPosts.map((post) => (
               <article key={post.path} className="smooth-card rounded-2xl">
                 {post.images[0]?.src ? (
-                  <div className="relative h-44 w-full overflow-hidden rounded-t-2xl">
-                    <Image src={post.images[0].src} alt={getPostTitle(post, lang)} fill className="object-cover" unoptimized />
+                  <div className="relative aspect-video w-full overflow-hidden rounded-t-2xl bg-slate-100">
+                    <Image src={post.images[0].src} alt={getPostTitle(post, lang)} fill className="object-contain" unoptimized />
                   </div>
                 ) : null}
                 <div className="p-4">

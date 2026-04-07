@@ -51,12 +51,12 @@ export default async function BlogIndexPage() {
             {posts.map((post) => (
               <article key={post.path} className="article-card">
                 {post.images[0]?.src ? (
-                  <div className="relative h-44 w-full">
+                  <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
                     <Image
                       src={post.images[0].src}
                       alt={getPostTitle(post, lang)}
                       fill
-                      className="object-cover"
+                      className="object-contain"
                       unoptimized
                     />
                   </div>

@@ -102,8 +102,10 @@ export default async function DynamicPcrmPage({ params }: Props) {
           <p className="mt-4 max-w-4xl text-base leading-7 text-slate-700 md:text-lg">{description}</p>
 
           {page.images[0]?.src ? (
-            <div className="relative mt-8 h-[280px] overflow-hidden rounded-sm md:h-[420px]">
-              <Image src={page.images[0].src} alt={title} fill className="object-cover" unoptimized />
+            <div className="mt-8 flex justify-center">
+              <div className="relative aspect-video w-full max-w-4xl overflow-hidden rounded-sm bg-slate-100">
+                <Image src={page.images[0].src} alt={title} fill className="object-contain" unoptimized />
+              </div>
             </div>
           ) : null}
 
