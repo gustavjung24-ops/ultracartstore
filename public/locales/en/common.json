@@ -74,6 +74,11 @@
     "termsOfUse": "Terms of Use",
     "allRightsReserved": "All rights reserved."
   },
+  "footerAuthor": {
+    "title": "Authors",
+    "description": "A few contributors behind articles on this website.",
+    "facebookLabel": "Facebook"
+  },
   "common": {
     "home": "Home",
     "back": "Back",

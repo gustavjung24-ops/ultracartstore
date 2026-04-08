@@ -18,6 +18,18 @@ type FooterProps = {
   initialLanguage?: Language;
 };
 
+type FooterAuthor = {
+  name: string;
+  facebook: string;
+};
+
+const FOOTER_AUTHORS: FooterAuthor[] = [
+  {
+    name: 'Neal Barnard, MD',
+    facebook: 'https://www.facebook.com/NealBarnardMD',
+  },
+];
+
 export default function Footer({ initialLanguage }: FooterProps) {
   const [language, setLanguage] = useState<Language>(() => initialLanguage ?? getPreferredClientLanguage());
 
@@ -130,6 +142,19 @@ export default function Footer({ initialLanguage }: FooterProps) {
               <a href={`tel:${locale.site.contact.phoneHref}`} className="block text-[#1f2d3d] no-underline hover:text-[#007fab]">
                 {locale.site.contact.phoneDisplay}
               </a>
+            </div>
+            <div className="mt-4 border-t border-[#e2e8f0] pt-3">
+              <p className="text-xs font-semibold uppercase tracking-wide text-[#007fab]">{locale.footerAuthor.title}</p>
+              <p className="mt-1 text-xs leading-relaxed text-[#64748b]">{locale.footerAuthor.description}</p>
+              <ul className="mt-2 space-y-1 text-sm">
+                {FOOTER_AUTHORS.map((author) => (
+                  <li key={author.facebook}>
+                    <a href={author.facebook} target="_blank" rel="noreferrer" className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
+                      {author.name} ({locale.footerAuthor.facebookLabel})
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

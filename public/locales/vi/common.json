@@ -74,6 +74,11 @@
     "termsOfUse": "Điều khoản sử dụng",
     "allRightsReserved": "Bảo lưu mọi quyền."
   },
+  "footerAuthor": {
+    "title": "Tác giả",
+    "description": "Một số tác giả đứng sau các bài viết trên website.",
+    "facebookLabel": "Facebook"
+  },
   "common": {
     "home": "Trang chủ",
     "back": "Quay lại",
