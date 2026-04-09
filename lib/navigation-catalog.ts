@@ -340,6 +340,15 @@ export const HEADER_MAIN_NAV_GROUPS: HeaderMainGroup[] = [
     ],
   },
   {
+    id: "authors",
+    href: "/authors",
+    columns: 2,
+    key: "mainNav.authors",
+    localePath: "mainNav.authors",
+    fallback: { en: "Authors", vi: "Tác giả" },
+    items: [],
+  },
+  {
     id: "takeAction",
     href: "/take-action",
     columns: 2,

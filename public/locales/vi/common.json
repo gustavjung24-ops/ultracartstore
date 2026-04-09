@@ -23,6 +23,7 @@
     "ethicalScience": "Khoa học có đạo đức",
     "ourResearch": "Nghiên cứu của chúng tôi",
     "news": "Tin tức",
+    "authors": "Tác giả",
     "takeAction": "Cùng hành động"
   },
   "goodNutrition": {
@@ -93,6 +94,8 @@
     "resources": "Tài nguyên",
     "resource": "Tài nguyên",
     "relatedLinks": "Liên kết liên quan",
+    "aboutAuthor": "Về tác giả",
+    "viewAuthorProfile": "Xem hồ sơ tác giả",
     "newsAndEvents": "Thông tin & sự kiện",
     "supportOurMission": "Sứ mệnh và tác động",
     "mainMenu": "Menu chính",

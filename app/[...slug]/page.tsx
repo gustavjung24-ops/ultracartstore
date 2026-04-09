@@ -3,12 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AuthorAboutBox from "@/components/AuthorAboutBox";
 import {
   getAllPcrmPages,
   getLocalizedPcrmPageContent,
   getPcrmPageBySegments,
   toInternalPcrmHref,
 } from "@/lib/pcrm-content";
+import { isNewsArticlePath } from "@/lib/news-summary";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 type Props = {
@@ -146,6 +148,10 @@ export default async function DynamicPcrmPage({ params }: Props) {
                 ))}
               </ul>
             </section>
+          ) : null}
+
+          {isNewsArticlePath(page.path) ? (
+            <AuthorAboutBox articlePath={page.path} language={lang} />
           ) : null}
 
           {showTrustBadges ? (

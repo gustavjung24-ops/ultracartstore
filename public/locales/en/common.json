@@ -23,6 +23,7 @@
     "ethicalScience": "Ethical Science",
     "ourResearch": "Our Research",
     "news": "News",
+    "authors": "Authors",
     "takeAction": "Take Action"
   },
   "goodNutrition": {
@@ -93,6 +94,8 @@
     "resources": "Resources",
     "resource": "Resource",
     "relatedLinks": "Related Links",
+    "aboutAuthor": "About the Author",
+    "viewAuthorProfile": "View Author Profile",
     "newsAndEvents": "News & Events",
     "supportOurMission": "Mission and Impact",
     "mainMenu": "Main Menu",
