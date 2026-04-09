@@ -444,6 +444,15 @@ const SOURCE_PRIORITY = {
   vi: ["translated_all", "generated_source_pages", "manual_pages"],
 } as const;
 
+const PRIORITY_NEWS_ARTICLE_PATHS = new Set([
+  "/news/news-releases/swapping-meat-and-dairy-plant-based-foods-cuts-climate-pollution-35-randomized",
+  "/news/innovative-science/progress-expanding-organ-donor-pool",
+  "/news/blog/chicken-ick-fecal-soup",
+  "/news/good-science-digest/human-health-human-science-how-physicians-committee-improving-public",
+  "/news/news-releases/doctors-group-files-legal-petition-urging-usda-require-colorectal-cancer-warning",
+  "/news/news-releases/physicians-committee-offering-grants-farmers-who-are-growing-health-promoting",
+]);
+
 type PcrmInputPage = PcrmPage & { path?: string };
 type SourcedPcrmPage = PcrmPage & {
   path: string;
@@ -1101,6 +1110,13 @@ const pagesBySource: Record<PcrmContentSource, Map<string, SourcedPcrmPage>> = {
 function pickSourcePage(path: string, lang: ContentLanguage): SourcedPcrmPage | undefined {
   const normalizedPath = normalizePath(path);
 
+  if (PRIORITY_NEWS_ARTICLE_PATHS.has(normalizedPath)) {
+    const manualOverride = pagesBySource.manual_pages.get(normalizedPath);
+    if (manualOverride) {
+      return manualOverride;
+    }
+  }
+
   for (const source of SOURCE_PRIORITY[lang]) {
     const page = pagesBySource[source].get(normalizedPath);
     if (page) {
@@ -1267,6 +1283,7 @@ const sourceResolutionByPath = new Map<string, PcrmPageSourceResolution>(
 const blogPathOrder = [
   ...pagesBySource.translated_all.keys(),
   ...pagesBySource.generated_source_pages.keys(),
+  ...pagesBySource.manual_pages.keys(),
 ];
 
 export function getAllPcrmPages() {

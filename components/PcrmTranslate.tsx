@@ -8,7 +8,7 @@ type Props = {
 };
 
 const QUICK_MAP: Record<string, string> = {
-  "News & Events": "Tin tức và sự kiện",
+  "News & Events": "Thông tin & sự kiện",
   "Donate": "Quyên góp",
   "Contact": "Liên hệ",
   "About Us": "Về chúng tôi",
