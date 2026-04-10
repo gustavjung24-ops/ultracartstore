@@ -157,9 +157,7 @@ export default async function AuthorProfilePage({ params }: Props) {
               {renderStringField("Vai trò hiện tại", author.currentRole)}
               {renderStringField("Tổ chức hiện tại", author.currentOrganization)}
               {renderStringField("Trọng tâm nghiên cứu", author.professionalFocus)}
-              {renderListField("Mối quan tâm nghiên cứu", author.researchInterests)}
-              {renderListField("Cột mốc nghề nghiệp", author.keyCareerMilestones)}
-              {renderListField("Công trình nổi bật", author.notableWorks)}
+              {renderListField("Cột mốc nổi bật", author.keyCareerMilestones)}
               {renderLinkListField("Liên kết nguồn hồ sơ", author.profileSourceLinks)}
             </div>
           </div>

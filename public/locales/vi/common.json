@@ -12,10 +12,10 @@
     }
   },
   "topNav": {
-    "forClinicians": "DÃ nh cho chuyÃªn gia lÃ¢m sÃ ng",
-    "forMedicalStudents": "DÃ nh cho sinh viÃªn y khoa",
-    "forScientists": "DÃ nh cho nhÃ  khoa há»c",
-    "aboutUs": "Vá» chÃºng tÃ´i"
+    "forClinicians": "Dành cho chuyên gia lâm sàng",
+    "forMedicalStudents": "Dành cho sinh viên y khoa",
+    "forScientists": "Dành cho nhà khoa học",
+    "aboutUs": "Về chúng tôi"
   },
   "mainNav": {
     "goodNutrition": "Dinh dÆ°á»¡ng lÃ nh máº¡nh",
@@ -65,14 +65,14 @@
     "shop": "Tài nguyên",
     "contact": "Liên hệ",
     "mediaCenter": "Trung tâm truyền thông",
-    "barnardMedicalCenter": "Trung tÃ¢m Y khoa Barnard",
+    "barnardMedicalCenter": "Trung tâm Y khoa Barnard",
     "careers": "Tuyển dụng",
-    "spanishResources": "TÃ i nguyÃªn tiáº¿ng TÃ¢y Ban Nha",
-    "frenchResources": "TÃ i nguyÃªn tiáº¿ng PhÃ¡p"
+    "spanishResources": "Tài nguyên tiếng Tây Ban Nha",
+    "frenchResources": "Tài nguyên tiếng Pháp"
   },
   "footerLegal": {
-    "privacyPolicy": "ChÃ­nh sÃ¡ch báº£o máº­t",
-    "termsOfUse": "Äiá»u khoáº£n sá»­ dá»¥ng",
+    "privacyPolicy": "Chính sách bảo mật",
+    "termsOfUse": "Điều khoản sử dụng",
     "allRightsReserved": "Báº£o lÆ°u má»i quyá»n."
   },
   "footerAuthor": {
@@ -195,4 +195,5 @@
     "switchToVietnamese": "Chuyá»ƒn sang Tiáº¿ng Viá»‡t"
   }
 }
+
 

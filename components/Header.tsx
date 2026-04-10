@@ -148,15 +148,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
       >
         <div className="border-b border-[#2a5d7d] bg-[#18354a]">
           <div className="mx-auto max-w-7xl overflow-hidden px-3 py-1 text-center text-[9px] leading-4 text-slate-100 whitespace-nowrap md:px-6 md:text-[11px] md:leading-5">
-            {locale.repoUi.sourceNotice}{" "}
-            <a
-              href="http://www.pcrm.org"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium text-slate-100 underline underline-offset-2 hover:text-white"
-            >
-              www.pcrm.org
-            </a>
+            {locale.site.tagline}
           </div>
           <div className="mx-auto hidden max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6 lg:grid">
             {topGroups.map((group) => (

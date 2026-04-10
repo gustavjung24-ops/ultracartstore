@@ -59,7 +59,6 @@ export default function Footer({ initialLanguage }: FooterProps) {
   );
 
   const footerAuthors = useMemo(() => getAuthors().slice(0, 3), []);
-  const headquartersLabel = 'Trụ sở PCRM';
 
   return (
     <footer
@@ -126,23 +125,15 @@ export default function Footer({ initialLanguage }: FooterProps) {
 
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#007fab]">{locale.utilityNav.contact}</h4>
-            <p className="mb-1 text-xs font-semibold uppercase tracking-[0.08em] text-slate-500">{headquartersLabel}</p>
-            <address className="not-italic text-sm leading-relaxed text-[#4a6072]">
-              {locale.site.contact.addressLine1}
-              <br />
-              {locale.site.contact.addressLine2}
-            </address>
-            <div className="mt-3 space-y-1 text-sm">
-              <a
-                href={`tel:${locale.site.contact.phoneHref}`}
-                className="inline-flex items-center gap-2 text-[#1f2d3d] no-underline hover:text-[#007fab]"
-              >
-                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.77.65 2.61a2 2 0 0 1-.45 2.11L8.07 9.67a16 16 0 0 0 6.26 6.26l1.23-1.24a2 2 0 0 1 2.11-.45c.84.31 1.71.53 2.61.65A2 2 0 0 1 22 16.92z" />
-                </svg>
-                <span>{locale.site.contact.phoneDisplay}</span>
-              </a>
-            </div>
+            <p className="text-sm leading-relaxed text-[#4a6072]">
+              Kênh liên hệ chính thức dành cho phản hồi nội dung và trao đổi học thuật.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-3 inline-flex rounded-full border border-[#0f5c73] px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] text-[#0f5c73] no-underline transition hover:bg-[#0f5c73] hover:text-white"
+            >
+              Đến trang liên hệ
+            </Link>
             <div className="mt-4 border-t border-[#e2e8f0] pt-3">
               <p className="text-xs font-semibold uppercase tracking-wide text-[#007fab]">{locale.footerAuthor.title}</p>
               <p className="mt-1 text-xs leading-relaxed text-[#64748b]">{locale.footerAuthor.description}</p>
