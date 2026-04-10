@@ -20,6 +20,7 @@ type StoryLinkProps = {
 type OverlayLanguage = "en" | "vi";
 type ArticleCardHeadingTag = "h3" | "h4";
 type ArticleTitleOverlayByPath = Record<string, Record<OverlayLanguage, string>>;
+type ArticleTitleTextByPath = Record<string, Record<OverlayLanguage, string>>;
 
 const HOMEPAGE_SEO_TITLE = "Y học lành mạnh | Dinh dưỡng thực vật và y học dự phòng";
 const HOMEPAGE_SEO_DESCRIPTION =
@@ -79,14 +80,18 @@ const sharedArticleCardSummaryClass =
   "home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 tracking-normal text-slate-600";
 const sharedArticleCardReadMoreClass =
   "mt-4 inline-block text-sm font-semibold leading-6 tracking-[0.01em] text-[#0f5c73] no-underline hover:underline";
+const HEART_PROTEIN_ARTICLE_PATH =
+  "/news/health-nutrition/american-heart-association-recommends-plant-based-protein-over-meat";
 const ARTICLE_TITLE_OVERLAY_BY_PATH: ArticleTitleOverlayByPath = {
-  "/news/health-nutrition/plant-based-diets-reduce-risk-cancer": {
-    en: "/overlays/article-title-cancer-en.svg",
-    vi: "/overlays/article-title-cancer-vi.svg",
-  },
-  "/news/health-nutrition/american-heart-association-recommends-plant-based-protein-over-meat": {
+  [HEART_PROTEIN_ARTICLE_PATH]: {
     en: "/overlays/article-title-heart-en.svg",
     vi: "/overlays/article-title-heart-vi.svg",
+  },
+};
+const ARTICLE_TITLE_TEXT_BY_PATH: ArticleTitleTextByPath = {
+  [HEART_PROTEIN_ARTICLE_PATH]: {
+    en: "American Heart Association Recommends Plant-Based Protein Over Meat",
+    vi: "Hiệp hội Tim mạch Hoa Kỳ khuyến nghị ưu tiên protein thực vật thay cho thịt",
   },
 };
 
@@ -99,6 +104,10 @@ function getArticleTitleOverlaySrc(path: string, lang: OverlayLanguage): string 
   return overlay[lang];
 }
 
+function getArticleTitleAccessibleText(path: string, lang: OverlayLanguage, fallbackTitle: string): string {
+  return ARTICLE_TITLE_TEXT_BY_PATH[path]?.[lang] ?? fallbackTitle;
+}
+
 type ArticleCardTitleProps = {
   story: HomepageStory;
   className: string;
@@ -108,6 +117,7 @@ type ArticleCardTitleProps = {
 
 function ArticleCardTitle({ story, className, headingTag, lang }: ArticleCardTitleProps) {
   const overlaySrc = getArticleTitleOverlaySrc(story.path, lang);
+  const accessibleTitle = getArticleTitleAccessibleText(story.path, lang, story.title);
   const HeadingTag = headingTag;
 
   if (!overlaySrc) {
@@ -116,7 +126,7 @@ function ArticleCardTitle({ story, className, headingTag, lang }: ArticleCardTit
 
   return (
     <HeadingTag className={className.replace("line-clamp-2 ", "")}>
-      <span className="sr-only">{story.title}</span>
+      <span className="sr-only">{accessibleTitle}</span>
       <span aria-hidden="true" className="relative block h-[2.8em] w-full">
         <Image src={overlaySrc} alt="" fill className="object-contain object-left" />
       </span>
