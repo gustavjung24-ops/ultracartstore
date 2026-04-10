@@ -140,7 +140,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
         className="fixed inset-x-0 top-0 z-[9999] border-b border-slate-200 bg-white shadow-sm"
       >
         <div className="border-b border-[#2a5d7d] bg-[#18354a]">
-          <div className="mx-auto max-w-7xl overflow-hidden px-3 py-1.5 text-center text-xs leading-5 text-slate-100 whitespace-nowrap md:px-6 md:text-[13px]">
+          <div className="mx-auto max-w-7xl overflow-hidden px-3 py-1.5 text-center text-xs font-medium leading-5 tracking-[0.005em] text-slate-100 whitespace-nowrap md:px-6 md:text-[13px]">
             {locale.site.tagline}
           </div>
           <div className="mx-auto hidden max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6 lg:grid">
