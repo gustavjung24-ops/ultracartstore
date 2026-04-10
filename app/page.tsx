@@ -46,6 +46,13 @@ function StoryLink({ story, className, children }: StoryLinkProps) {
   );
 }
 
+const compactArticleCardTitleClass =
+  "home-card-title mt-2 line-clamp-2 text-base font-semibold leading-tight text-slate-900";
+const compactArticleCardCopyClass =
+  "home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 text-slate-600";
+const compactArticleCardLinkClass =
+  "mt-3 inline-block text-sm font-semibold tracking-[0.01em] text-[#0f5c73] no-underline hover:underline";
+
 export default async function HomePage() {
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
@@ -176,10 +183,11 @@ export default async function HomePage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="p-4">
+                <div className="p-4 md:p-5">
                   <p className="text-xs font-semibold tracking-[0.01em] text-[#0f5c73]">{story.label}</p>
-                  <h4 className="home-card-title mt-2 line-clamp-2 text-base font-semibold text-slate-900">{story.title}</h4>
-                  <StoryLink story={story} className="mt-3 inline-block text-sm font-semibold text-[#0f5c73] no-underline hover:underline">
+                  <h4 className={compactArticleCardTitleClass}>{story.title}</h4>
+                  <p className={compactArticleCardCopyClass}>{story.summary}</p>
+                  <StoryLink story={story} className={compactArticleCardLinkClass}>
                     {locale.common.readMore}
                   </StoryLink>
                 </div>
@@ -274,9 +282,9 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="home-card-title line-clamp-2 text-base font-semibold text-gray-900">{story.title}</h3>
-                  <p className="home-card-copy mt-2 line-clamp-3 text-sm text-gray-600">{story.summary}</p>
-                  <StoryLink story={story} className="mt-3 inline-block text-sm font-semibold text-[#0f5c73] hover:underline no-underline">
+                  <h3 className={compactArticleCardTitleClass}>{story.title}</h3>
+                  <p className={compactArticleCardCopyClass}>{story.summary}</p>
+                  <StoryLink story={story} className={compactArticleCardLinkClass}>
                     {locale.common.readMore}
                   </StoryLink>
                 </div>
