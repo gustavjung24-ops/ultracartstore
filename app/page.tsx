@@ -69,11 +69,12 @@ const leadArticleCardTitleClass =
 const leadArticleCardCopyClass = "home-card-copy mt-3 text-sm leading-7 tracking-normal text-slate-600";
 const articleCardLinkClass =
   "mt-4 inline-block text-sm font-semibold leading-6 tracking-[0.01em] text-[#0f5c73] no-underline hover:underline";
-const compactArticleCardTitleClass =
+const sharedArticleCardTitleClass =
   "home-card-title mt-2 line-clamp-2 text-base font-semibold leading-[1.35] tracking-normal text-slate-900";
-const compactArticleCardCopyClass =
+const sharedArticleCardSummaryClass =
   "home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 tracking-normal text-slate-600";
-const compactArticleCardLinkClass = articleCardLinkClass;
+const sharedArticleCardReadMoreClass =
+  "mt-4 inline-block text-sm font-semibold leading-6 tracking-[0.01em] text-[#0f5c73] no-underline hover:underline";
 
 export default async function HomePage() {
   const lang = await getSiteLanguageFromCookie();
@@ -201,9 +202,9 @@ export default async function HomePage() {
                 </div>
                 <div className="p-4 md:p-5">
                   <p className="text-xs font-semibold tracking-[0.01em] text-[#0f5c73]">{story.label}</p>
-                  <h4 className={compactArticleCardTitleClass}>{story.title}</h4>
-                  <p className={compactArticleCardCopyClass}>{story.summary}</p>
-                  <StoryLink story={story} className={compactArticleCardLinkClass}>
+                  <h4 className={sharedArticleCardTitleClass}>{story.title}</h4>
+                  <p className={sharedArticleCardSummaryClass}>{story.summary}</p>
+                  <StoryLink story={story} className={sharedArticleCardReadMoreClass}>
                     {locale.common.readMore}
                   </StoryLink>
                 </div>
@@ -298,9 +299,9 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className={compactArticleCardTitleClass}>{story.title}</h3>
-                  <p className={compactArticleCardCopyClass}>{story.summary}</p>
-                  <StoryLink story={story} className={compactArticleCardLinkClass}>
+                  <h3 className={sharedArticleCardTitleClass}>{story.title}</h3>
+                  <p className={sharedArticleCardSummaryClass}>{story.summary}</p>
+                  <StoryLink story={story} className={sharedArticleCardReadMoreClass}>
                     {locale.common.readMore}
                   </StoryLink>
                 </div>
