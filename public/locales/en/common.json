@@ -2,7 +2,7 @@
   "site": {
     "name": "Healthy Medicine",
     "shortName": "Healthy Medicine",
-    "tagline": "Eat Kindly, Live Wholesomely To Stay Healthy.",
+    "tagline": "Ăn hiền, sống lành để khỏe mạnh.",
     "contact": {
       "addressLine1": "5100 Wisconsin Ave. NW, Suite 400",
       "addressLine2": "Washington, D.C. 20016",
@@ -18,13 +18,13 @@
     "aboutUs": "About Us"
   },
   "mainNav": {
-    "goodNutrition": "Good Nutrition",
-    "healthTopics": "Health Topics",
-    "ethicalScience": "Ethical Science",
-    "ourResearch": "Our Research",
-    "news": "News",
-    "authors": "Authors",
-    "takeAction": "Take Action"
+    "goodNutrition": "Dinh dưỡng lành mạnh",
+    "healthTopics": "Chủ đề sức khỏe",
+    "ethicalScience": "Khoa học có đạo đức",
+    "ourResearch": "Nghiên cứu của chúng tôi",
+    "news": "Tin tức",
+    "authors": "Tác giả",
+    "takeAction": "Cùng hành động"
   },
   "goodNutrition": {
     "title": "Good Nutrition",
@@ -62,8 +62,8 @@
   },
   "utilityNav": {
     "events": "Events",
-    "shop": "Resources",
-    "contact": "Contact",
+    "shop": "Tài nguyên",
+    "contact": "Liên hệ",
     "mediaCenter": "Media Center",
     "barnardMedicalCenter": "Barnard Medical Center",
     "careers": "Careers",
@@ -76,8 +76,8 @@
     "allRightsReserved": "All rights reserved."
   },
   "footerAuthor": {
-    "title": "Authors",
-    "description": "A few contributors behind articles on this website.",
+    "title": "Tác giả",
+    "description": "Một số tác giả đứng sau các bài viết trên website.",
     "facebookLabel": "Facebook"
   },
   "common": {

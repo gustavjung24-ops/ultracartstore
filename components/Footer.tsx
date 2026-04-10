@@ -58,7 +58,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
   );
 
   const footerAuthors = useMemo(() => getAuthors().slice(0, 3), []);
-  const headquartersLabel = language === 'vi' ? 'Trụ sở PCRM' : 'PCRM Headquarters';
+  const headquartersLabel = 'Trụ sở PCRM';
 
   return (
     <footer className="mt-16 border-t border-[#dbe5ec] bg-white text-[#1f2d3d]">

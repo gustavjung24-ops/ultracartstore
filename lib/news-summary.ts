@@ -12,6 +12,10 @@ const SUMMARY_NOISE_BY_LANGUAGE: Record<ContentLanguage, Set<string>> = {
     "Innovative Science News",
     "Good Science Digest",
     "Subscribe to the Physicians Committee's Breaking Medical News.",
+    "Support our work. Become a member.",
+    "Support The Exam Room Podcast and Physicians Committee.",
+    "Physicians Committee Shop",
+    "To order Diet and Diabetes: Recipes for Success as a printed booklet, please visit our Physicians Committee Shop.",
   ]),
   vi: new Set([
     "Hãy tặng quà thành viên năm 2026 ngay hôm nay!",
@@ -26,6 +30,13 @@ const SUMMARY_NOISE_BY_LANGUAGE: Record<ContentLanguage, Set<string>> = {
     "Khoa học đổi mới",
     "Bản tin khoa học",
     "Đăng ký nhận Tin tức y tế mới nhất của Ủy ban bác sĩ.",
+    "Hỗ trợ công việc của chúng tôi. Trở thành thành viên.",
+    "Support our work. Become a member.",
+    "Hỗ trợ podcast The Exam Room và Physicians Committee.",
+    "Support The Exam Room Podcast and Physicians Committee.",
+    "Cửa hàng Ủy ban Bác sĩ",
+    "Physicians Committee Shop",
+    "Để đặt mua Diet and Diabetes: Recipes for Success dưới dạng tập sách in, vui lòng truy cập Cửa hàng Ủy ban Bác sĩ.",
   ]),
 };
 

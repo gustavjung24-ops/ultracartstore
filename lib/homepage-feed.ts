@@ -139,6 +139,34 @@ const TOP_PROMOTED_STORY_SPECS: HomepageStorySpec[] = [
   },
 ];
 
+function localizeHomepageLabel(label: string, lang: Language): string {
+  if (lang !== "vi") {
+    return label;
+  }
+
+  const normalized = label.trim();
+  switch (normalized) {
+    case "News Release":
+      return "Thông cáo báo chí";
+    case "Health and Nutrition News":
+      return "Tin sức khỏe và dinh dưỡng";
+    case "Innovative Science News":
+      return "Tin khoa học đổi mới";
+    case "Good Science Digest":
+      return "Bản tin khoa học";
+    case "Event":
+      return "Sự kiện";
+    case "Resource":
+      return "Tài nguyên";
+    case "Exam Room Podcast":
+      return "Podcast Exam Room";
+    case "News":
+      return "Tin tức";
+    default:
+      return label;
+  }
+}
+
 function toAbsolutePcrmUrl(path: string): string {
   return `${BASE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 }
@@ -186,7 +214,7 @@ function buildStoryFromSpec(
     path: spec.path,
     title,
     summary,
-    label: spec.label,
+    label: localizeHomepageLabel(spec.label, lang),
     href: page ? page.path : toAbsolutePcrmUrl(spec.path),
     internal: Boolean(page),
     imageSrc: resolvedImage.src,
@@ -234,7 +262,7 @@ function getDigestStories(lang: Language): HomepageStory[] {
       {
         id: `digest-${index}`,
         path: item.path,
-        label: "Good Science Digest",
+        label: localizeHomepageLabel("Good Science Digest", lang),
         fallbackTitle: item.text || "Good Science Digest",
         imageIndex: index,
       },
@@ -256,11 +284,11 @@ function toLatestNewsStories(lang: Language): HomepageStory[] {
       path: post.path,
       title: localized.title,
       summary: getCleanNewsSummary(localized, lang),
-      label: post.path.includes("/news/news-releases/")
+      label: localizeHomepageLabel(post.path.includes("/news/news-releases/")
         ? "News Release"
         : post.path.includes("/news/health-nutrition/")
           ? "Health and Nutrition News"
-          : "News",
+          : "News", lang),
       href: post.path,
       internal: true,
       imageSrc: resolvedImage.src,

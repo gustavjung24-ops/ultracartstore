@@ -36,8 +36,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       localizedHub?.description ||
       (lang === "vi"
-        ? "Tin tức và bài viết được đồng bộ từ dữ liệu pcrm.org."
-        : "News and articles synchronized from pcrm.org data."),
+        ? "Tin tức và bài viết nổi bật về dinh dưỡng thực vật, y học dự phòng và khoa học nhân đạo."
+        : "News and featured articles on plant-based nutrition, preventive medicine, and ethical science."),
     paragraphs: localizedHub?.paragraphs || [],
     image: leadImage,
     type: "website",
@@ -56,8 +56,8 @@ export default async function BlogIndexPage() {
   const pageIntro =
     localizedHub?.description ||
     (lang === "vi"
-      ? "Danh sách bài viết được đồng bộ từ dữ liệu pcrm.org."
-      : "Article index synchronized from pcrm.org data.");
+      ? "Danh sách bài viết theo dòng tin công khai trên website."
+      : "Public article index on this website.");
 
   return (
     <>
@@ -85,12 +85,12 @@ export default async function BlogIndexPage() {
                   />
                 </div>
                 <div className="p-4">
-                    <h2 className="line-clamp-2 text-base font-semibold text-slate-900">
-                      {getPostTitle(post, lang)}
-                    </h2>
-                    <p className="mt-2 line-clamp-3 text-sm text-slate-600">
-                      {getPostSummary(post, lang)}
-                    </p>
+                  <h2 className="line-clamp-2 text-base font-semibold text-slate-900">
+                    {getPostTitle(post, lang)}
+                  </h2>
+                  <p className="mt-2 line-clamp-3 text-sm text-slate-600">
+                    {getPostSummary(post, lang)}
+                  </p>
                   <Link href={post.path} className="mt-4 inline-block text-sm font-semibold text-[#006c96] hover:underline">
                     {locale.common.readMore}
                   </Link>

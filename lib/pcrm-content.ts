@@ -193,7 +193,18 @@ const FINAL_VISIBLE_NEWS_ARTICLE_ALLOWED_NEWS_HUB_PATHS = new Set([
 ]);
 
 const MEMBERSHIP_CTA_EN = "Make your 2026 membership gift today!";
-const MEMBERSHIP_CTA_VI = "Hãy tặng quà thành viên năm 2026 ngay hôm nay!";
+const MEMBERSHIP_CTA_VI = "H\u00e3y t\u1eb7ng qu\u00e0 th\u00e0nh vi\u00ean n\u0103m 2026 ngay h\u00f4m nay!";
+
+const PUBLIC_WORDING_BLOCKLIST = [
+  "Support our work. Become a member.",
+  "Become a member",
+  "Physicians Committee Shop",
+  "Support The Exam Room Podcast and Physicians Committee.",
+  "H\u1ed7 tr\u1ee3 c\u00f4ng vi\u1ec7c c\u1ee7a ch\u00fang t\u00f4i. Tr\u1edf th\u00e0nh th\u00e0nh vi\u00ean.",
+  "Tr\u1edf th\u00e0nh th\u00e0nh vi\u00ean",
+  "C\u1eeda h\u00e0ng \u1ee6y ban B\u00e1c s\u0129",
+  "H\u1ed7 tr\u1ee3 podcast The Exam Room v\u00e0 Physicians Committee.",
+] as const;
 
 const QA_VISIBLE_NEWS_ARTICLE_LINK_EXCLUDE_BASE = new Set([
   "/#main-content",
@@ -568,6 +579,74 @@ function normalizeComparableText(value: string): string {
     .replace(/\s+/g, " ")
     .trim()
     .toLowerCase();
+}
+
+const PUBLIC_WORDING_BLOCKLIST_NORMALIZED = PUBLIC_WORDING_BLOCKLIST.map((phrase) =>
+  phrase
+    .replace(/\u00A0/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase(),
+);
+
+function containsBlockedPublicWording(value: string | undefined): boolean {
+  if (!isNonEmptyString(value)) {
+    return false;
+  }
+
+  const normalized = normalizeComparableText(value);
+  return PUBLIC_WORDING_BLOCKLIST_NORMALIZED.some((blocked) => normalized.includes(blocked));
+}
+
+function filterBlockedPublicParagraphs(paragraphs: string[]): string[] {
+  return paragraphs.filter((paragraph) => !containsBlockedPublicWording(paragraph));
+}
+
+function sanitizeDescriptionForPublic(
+  description: string,
+  title: string,
+  paragraphs: string[],
+): string {
+  if (!containsBlockedPublicWording(description)) {
+    return description;
+  }
+
+  const fallback = paragraphs.find((paragraph) => !containsBlockedPublicWording(paragraph));
+  return firstNonEmptyString(fallback, title);
+}
+
+function sanitizePublicPageWording(page: PcrmResolvedPage): PcrmResolvedPage {
+  const cleanedParagraphsEn = filterBlockedPublicParagraphs(page.paragraphs_en ?? page.paragraphs);
+  const paragraphsEn = cleanedParagraphsEn.length > 0 ? cleanedParagraphsEn : (page.paragraphs_en ?? page.paragraphs);
+
+  const cleanedParagraphsVi = filterBlockedPublicParagraphs(page.paragraphs_vi ?? page.paragraphs);
+  const paragraphsVi = cleanedParagraphsVi.length > 0 ? cleanedParagraphsVi : (page.paragraphs_vi ?? paragraphsEn);
+
+  const links = page.links.filter((link) => !containsBlockedPublicWording(link.text));
+  const linksVi = page.links_vi?.filter((link) => !containsBlockedPublicWording(link.text_vi || link.text));
+
+  const descriptionEn = sanitizeDescriptionForPublic(
+    page.description_en ?? page.description,
+    page.title_en ?? page.title,
+    paragraphsEn,
+  );
+  const descriptionVi = sanitizeDescriptionForPublic(
+    page.description_vi ?? descriptionEn,
+    page.title_vi ?? page.title ?? descriptionEn,
+    paragraphsVi,
+  );
+
+  return {
+    ...page,
+    description: descriptionEn,
+    description_en: descriptionEn,
+    description_vi: descriptionVi,
+    paragraphs: paragraphsEn,
+    paragraphs_en: paragraphsEn,
+    paragraphs_vi: paragraphsVi,
+    links,
+    links_vi: linksVi,
+  };
 }
 
 function trimLeadingParagraphIfSemanticallyDuplicate(paragraphs: string[], lead: string): string[] {
@@ -1258,13 +1337,15 @@ const resolvedPages: PcrmResolvedPage[] = allKnownPaths
     const enReference = enPage ?? fallbackPage;
     const viLayer = viPage ?? fallbackPage;
 
-    return applyHubPageQaFixes(
-      composeResolvedPage(
-      path,
-      enReference,
-      viLayer,
-      enReference.contentSource,
-      viLayer.contentSource,
+    return sanitizePublicPageWording(
+      applyHubPageQaFixes(
+        composeResolvedPage(
+          path,
+          enReference,
+          viLayer,
+          enReference.contentSource,
+          viLayer.contentSource,
+        ),
       ),
     );
   })

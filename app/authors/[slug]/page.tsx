@@ -197,26 +197,26 @@ export default async function AuthorProfilePage({ params }: Props) {
               <div>
                 <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">{author.fullName}</h1>
                 <p className="mt-2 text-base text-slate-700">{author.headline}</p>
-                <p className="mt-1 text-sm text-slate-500">ID: {author.id} | Slug: {author.slug}</p>
+                <p className="mt-1 text-sm text-slate-500">Mã tác giả: {author.id} | Định danh: {author.slug}</p>
               </div>
             </div>
 
             <p className="mt-6 text-base leading-8 text-slate-700">{author.shortBio}</p>
 
             <div className="mt-6 rounded-xl border border-[#d9e4eb] bg-[#f8fbfd] p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">Metadata</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">Thông tin dữ liệu</p>
               <div className="mt-2 grid gap-2 text-sm text-slate-700 md:grid-cols-2">
                 <p>
-                  <span className="font-semibold">Featured:</span> {author.featured ? "true" : "false"}
+                  <span className="font-semibold">Nổi bật:</span> {author.featured ? "Có" : "Không"}
                 </p>
                 <p>
-                  <span className="font-semibold">Sort Order:</span> {author.sortOrder}
+                  <span className="font-semibold">Thứ tự sắp xếp:</span> {author.sortOrder}
                 </p>
                 <p>
-                  <span className="font-semibold">Status:</span> {author.status}
+                  <span className="font-semibold">Trạng thái:</span> {author.status}
                 </p>
                 <p>
-                  <span className="font-semibold">Last Reviewed:</span> {author.lastReviewedAt}
+                  <span className="font-semibold">Ngày rà soát:</span> {author.lastReviewedAt}
                 </p>
               </div>
             </div>
@@ -235,15 +235,15 @@ export default async function AuthorProfilePage({ params }: Props) {
               {renderListField("Công trình nổi bật", author.notableWorks)}
               {renderListField("Sách", author.books)}
               {renderListField("Podcast", author.podcasts)}
-              {renderListField("Talks", author.talks)}
+              {renderListField("Bài nói chuyện", author.talks)}
               {renderListField("Hoạt động chính", author.majorActivities)}
               {renderListField("Danh mục công bố", author.publicationList)}
               {renderListField("Chủ đề tác giả", author.authorThemes)}
               {renderStringField("Vì sao tác giả viết chủ đề này", author.whyThisAuthorWritesThisTopic)}
-              {renderListField("Related Article Slugs", author.relatedArticleSlugs)}
-              {renderLinkListField("Profile Source Links", author.profileSourceLinks)}
-              {renderExternalLinks("External Links", author.externalLinks)}
-              {renderSocialLinks("Social Links", author.socialLinks)}
+              {renderListField("Slug bài viết liên quan", author.relatedArticleSlugs)}
+              {renderLinkListField("Liên kết nguồn hồ sơ", author.profileSourceLinks)}
+              {renderExternalLinks("Liên kết ngoài", author.externalLinks)}
+              {renderSocialLinks("Liên kết mạng xã hội", author.socialLinks)}
             </div>
           </div>
         </article>
