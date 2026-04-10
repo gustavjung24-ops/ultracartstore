@@ -1,23 +1,20 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getPublishedAuthors } from "@/lib/authors";
+import { getAuthorInitials, getAuthorProfileHref, getAuthors } from "@/lib/authors";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
+
+export const metadata: Metadata = {
+  title: "Tác giả | Y học lành mạnh",
+  description: "Danh sách tác giả và hồ sơ chuyên môn trên website Y học lành mạnh.",
+};
 
 export default async function AuthorsPage() {
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
-  const authors = getPublishedAuthors();
-
-  const title = lang === "vi" ? "Tác giả" : "Authors";
-  const intro =
-    lang === "vi"
-      ? "Danh sách hồ sơ tác giả được biên tập thủ công từ nguồn chính thức đã kiểm chứng."
-      : "A curated list of author profiles entered manually from verified official sources.";
-  const empty =
-    lang === "vi"
-      ? "Chưa có hồ sơ tác giả được xuất bản."
-      : "No author profiles have been published yet.";
+  const authorList = getAuthors();
 
   return (
     <>
@@ -26,32 +23,50 @@ export default async function AuthorsPage() {
         <div className="mb-4 text-sm text-slate-500">
           <span>{locale.common.home}</span>
           <span className="mx-2">/</span>
-          <span>{title}</span>
+          <span>Tác giả</span>
         </div>
 
         <section className="page-surface p-6 md:p-8">
-          <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">{title}</h1>
-          <p className="mt-3 max-w-3xl text-slate-700">{intro}</p>
+          <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">Tác giả</h1>
+          <p className="mt-3 max-w-3xl text-slate-700">
+            Danh sách hồ sơ tác giả theo định dạng học thuật để thuận tiện cho việc biên tập, đối chiếu nguồn và
+            gắn bài viết theo author slug/id.
+          </p>
 
-          {authors.length ? (
-            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {authors.map((author) => (
-                <article key={author.id} className="rounded-md border border-slate-200 bg-white p-5">
-                  <h2 className="text-lg font-semibold text-slate-900">{author.displayName || author.fullName}</h2>
-                  {author.headline ? <p className="mt-1 text-sm text-slate-700">{author.headline}</p> : null}
-                  {author.shortBio ? <p className="mt-3 line-clamp-4 text-sm leading-6 text-slate-700">{author.shortBio}</p> : null}
-                  <Link
-                    href={`/authors/${author.slug}`}
-                    className="mt-4 inline-block text-sm font-semibold text-[#006c96] hover:underline"
-                  >
-                    {lang === "vi" ? "Xem hồ sơ tác giả" : "View Author Profile"}
-                  </Link>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <p className="mt-8 text-sm text-slate-600">{empty}</p>
-          )}
+          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {authorList.map((author) => (
+              <article key={author.id} className="smooth-card rounded-2xl p-5">
+                <div className="flex items-center gap-3">
+                  {author.avatar ? (
+                    <div className="relative h-14 w-14 overflow-hidden rounded-full border border-slate-200 bg-white">
+                      <Image src={author.avatar} alt={author.displayName} fill className="object-cover" unoptimized />
+                    </div>
+                  ) : (
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full border border-slate-200 bg-white text-sm font-bold text-[#0f5c73]">
+                      {getAuthorInitials(author.displayName)}
+                    </div>
+                  )}
+
+                  <div>
+                    <h2 className="text-lg font-bold text-slate-900">{author.displayName}</h2>
+                    <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.06em] text-slate-500">
+                      {author.degrees.join(", ")}
+                    </p>
+                  </div>
+                </div>
+
+                <p className="mt-4 text-sm font-medium text-slate-700">{author.headline}</p>
+                <p className="mt-3 line-clamp-4 text-sm leading-7 text-slate-600">{author.shortBio}</p>
+
+                <Link
+                  href={getAuthorProfileHref(author)}
+                  className="mt-4 inline-flex rounded-full border border-[#0f5c73] px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] text-[#0f5c73] no-underline transition hover:bg-[#0f5c73] hover:text-white"
+                >
+                  Xem hồ sơ tác giả
+                </Link>
+              </article>
+            ))}
+          </div>
         </section>
       </main>
       <Footer initialLanguage={lang} />

@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AuthorAboutBox from "@/components/AuthorAboutBox";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AuthorAboutBox from "@/components/AuthorAboutBox";
+import { getAuthorForArticlePath } from "@/lib/authors";
+import { resolveNewsImage } from "@/lib/news-media";
 import {
   getAllPcrmPages,
   getLocalizedPcrmPageContent,
@@ -88,6 +90,9 @@ export default async function DynamicPcrmPage({ params }: Props) {
       return true;
     });
   const showTrustBadges = page.path === "/about-us/financial-report";
+  const articleAuthor = isNewsArticlePath(page.path) ? getAuthorForArticlePath(page.path) : undefined;
+  const heroImage = resolveNewsImage(page.path, page.images);
+  const shouldRenderHeroImage = heroImage.fromSource;
 
   return (
     <>
@@ -103,10 +108,10 @@ export default async function DynamicPcrmPage({ params }: Props) {
           <h1 className="text-3xl font-extrabold leading-tight text-slate-900 md:text-4xl">{title}</h1>
           <p className="mt-4 max-w-4xl text-base leading-7 text-slate-700 md:text-lg">{description}</p>
 
-          {page.images[0]?.src ? (
+          {shouldRenderHeroImage ? (
             <div className="mt-8 flex justify-center">
               <div className="relative aspect-video w-full max-w-4xl overflow-hidden rounded-sm bg-slate-100">
-                <Image src={page.images[0].src} alt={title} fill className="object-contain" unoptimized />
+                <Image src={heroImage.src} alt={title} fill className="object-contain" unoptimized />
               </div>
             </div>
           ) : null}
@@ -150,10 +155,6 @@ export default async function DynamicPcrmPage({ params }: Props) {
             </section>
           ) : null}
 
-          {isNewsArticlePath(page.path) ? (
-            <AuthorAboutBox articlePath={page.path} language={lang} />
-          ) : null}
-
           {showTrustBadges ? (
             <section className="mt-10 rounded-sm bg-[#0b485a] p-5 md:p-8">
               <div className="flex flex-wrap items-start gap-6 md:gap-8">
@@ -185,6 +186,8 @@ export default async function DynamicPcrmPage({ params }: Props) {
               </div>
             </section>
           ) : null}
+
+          {articleAuthor ? <AuthorAboutBox author={articleAuthor} /> : null}
         </article>
       </main>
       <Footer initialLanguage={lang} />

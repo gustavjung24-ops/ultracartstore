@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { resolveNewsImage } from "@/lib/news-media";
 import {
   getBlogPages,
   getLocalizedPcrmPageContent,
@@ -50,17 +51,15 @@ export default async function BlogIndexPage() {
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {posts.map((post) => (
               <article key={post.path} className="article-card">
-                {post.images[0]?.src ? (
-                  <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
-                    <Image
-                      src={post.images[0].src}
-                      alt={getPostTitle(post, lang)}
-                      fill
-                      className="object-contain"
-                      unoptimized
-                    />
-                  </div>
-                ) : null}
+                <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
+                  <Image
+                    src={resolveNewsImage(post.path, post.images).src}
+                    alt={getPostTitle(post, lang)}
+                    fill
+                    className="object-contain"
+                    unoptimized
+                  />
+                </div>
                 <div className="p-4">
                     <h2 className="line-clamp-2 text-base font-semibold text-slate-900">
                       {getPostTitle(post, lang)}

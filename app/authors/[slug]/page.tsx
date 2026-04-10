@@ -1,166 +1,144 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getPublishedAuthorBySlug, getPublishedAuthors, type AuthorExternalLink, type AuthorProfile, type AuthorSocialLink } from "@/lib/authors";
+import type { AuthorProfile } from "@/data/authors";
+import {
+  getAuthorBySlug,
+  getAuthorInitials,
+  getAuthors,
+} from "@/lib/authors";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-function asArticleHref(value: string): string {
-  if (!value) {
-    return "/news";
-  }
-
-  if (value.startsWith("/")) {
-    return value;
-  }
-
-  if (value.startsWith("news/")) {
-    return `/${value}`;
-  }
-
-  return `/news/${value}`;
+export async function generateStaticParams() {
+  return getAuthors().map((author) => ({ slug: author.slug }));
 }
 
-function RenderList({ items }: { items: string[] }) {
-  if (!items.length) {
-    return <p className="text-sm text-slate-600">-</p>;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const author = getAuthorBySlug(slug);
+
+  if (!author) {
+    return {};
+  }
+
+  return {
+    title: `${author.displayName} | Tác giả`,
+    description: author.shortBio,
+  };
+}
+
+function renderStringField(label: string, value: string) {
+  if (!value.trim()) {
+    return null;
   }
 
   return (
-    <ul className="list-disc space-y-1 pl-5 text-sm leading-6 text-slate-700">
-      {items.map((item) => (
-        <li key={item}>{item}</li>
-      ))}
-    </ul>
-  );
-}
-
-function RenderExternalLinks({ links }: { links: AuthorExternalLink[] }) {
-  if (!links.length) {
-    return <p className="text-sm text-slate-600">-</p>;
-  }
-
-  return (
-    <ul className="space-y-2 text-sm text-slate-700">
-      {links.map((link) => (
-        <li key={`${link.label}-${link.url}`}>
-          <a href={link.url} target="_blank" rel="noreferrer" className="text-[#006c96] hover:underline">
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function RenderSocialLinks({ links }: { links: AuthorSocialLink[] }) {
-  if (!links.length) {
-    return <p className="text-sm text-slate-600">-</p>;
-  }
-
-  return (
-    <ul className="space-y-2 text-sm text-slate-700">
-      {links.map((link) => (
-        <li key={`${link.platform}-${link.url}`}>
-          <a href={link.url} target="_blank" rel="noreferrer" className="text-[#006c96] hover:underline">
-            {link.platform}
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <section className="mt-8 border-t border-slate-200 pt-6">
-      <h2 className="text-xl font-bold text-slate-900">{title}</h2>
-      <div className="mt-3">{children}</div>
+    <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
+      <h2 className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{label}</h2>
+      <p className="mt-2 text-sm leading-7 text-slate-700">{value}</p>
     </section>
   );
 }
 
-function getSectionTitle(lang: "en" | "vi") {
-  if (lang === "vi") {
-    return {
-      intro: "Giới thiệu",
-      expertise: "Thông tin chuyên môn",
-      interests: "Lĩnh vực quan tâm",
-      milestones: "Mốc nghề nghiệp",
-      works: "Công trình và hoạt động nổi bật",
-      whyWrite: "Vì sao tác giả này viết chủ đề này",
-      related: "Bài viết liên quan",
-      sources: "Nguồn tham khảo",
-      profileList: "Tác giả",
-    };
+function renderListField(label: string, items: string[]) {
+  const cleaned = items.map((item) => item.trim()).filter(Boolean);
+
+  if (!cleaned.length) {
+    return null;
   }
 
-  return {
-    intro: "Introduction",
-    expertise: "Professional Profile",
-    interests: "Areas of Interest",
-    milestones: "Career Milestones",
-    works: "Notable Works and Activities",
-    whyWrite: "Why This Author Writes This Topic",
-    related: "Related Articles",
-    sources: "References",
-    profileList: "Authors",
-  };
-}
-
-function renderExpertise(author: AuthorProfile) {
   return (
-    <div className="grid gap-4 md:grid-cols-2">
-      <div>
-        <p className="text-sm font-semibold text-slate-800">Bằng cấp</p>
-        <RenderList items={author.degrees} />
-      </div>
-      <div>
-        <p className="text-sm font-semibold text-slate-800">Chuyên môn</p>
-        <RenderList items={author.specialty} />
-      </div>
-      <div>
-        <p className="text-sm font-semibold text-slate-800">Vai trò hiện tại</p>
-        <p className="text-sm text-slate-700">{author.currentRole || "-"}</p>
-      </div>
-      <div>
-        <p className="text-sm font-semibold text-slate-800">Tổ chức hiện tại</p>
-        <p className="text-sm text-slate-700">{author.currentOrganization || "-"}</p>
-      </div>
-      <div>
-        <p className="text-sm font-semibold text-slate-800">Trọng tâm nghề nghiệp</p>
-        <RenderList items={author.professionalFocus} />
-      </div>
-      <div>
-        <p className="text-sm font-semibold text-slate-800">Học vấn</p>
-        <RenderList items={author.education} />
-      </div>
-      <div>
-        <p className="text-sm font-semibold text-slate-800">Chứng chỉ</p>
-        <RenderList items={author.certifications} />
-      </div>
-      <div>
-        <p className="text-sm font-semibold text-slate-800">Giải thưởng</p>
-        <RenderList items={author.awards} />
-      </div>
-    </div>
+    <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
+      <h2 className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{label}</h2>
+      <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
+        {cleaned.map((item) => (
+          <li key={`${label}-${item}`} className="flex gap-2">
+            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
-export async function generateStaticParams() {
-  return getPublishedAuthors().map((author) => ({ slug: author.slug }));
+function renderLinkListField(label: string, items: string[]) {
+  const cleaned = items.map((item) => item.trim()).filter(Boolean);
+
+  if (!cleaned.length) {
+    return null;
+  }
+
+  return (
+    <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
+      <h2 className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{label}</h2>
+      <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
+        {cleaned.map((item) => (
+          <li key={`${label}-${item}`}>
+            <a href={item} target="_blank" rel="noreferrer" className="text-[#0f5c73] hover:underline">
+              {item}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function renderExternalLinks(label: string, links: AuthorProfile["externalLinks"]) {
+  if (!links.length) {
+    return null;
+  }
+
+  return (
+    <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
+      <h2 className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{label}</h2>
+      <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
+        {links.map((link, index) => (
+          <li key={`${label}-${link.url}-${index}`}>
+            <a href={link.url} target="_blank" rel="noreferrer" className="text-[#0f5c73] hover:underline">
+              {link.label || link.url}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function renderSocialLinks(label: string, links: AuthorProfile["socialLinks"]) {
+  if (!links.length) {
+    return null;
+  }
+
+  return (
+    <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
+      <h2 className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{label}</h2>
+      <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
+        {links.map((link, index) => (
+          <li key={`${label}-${link.url}-${index}`}>
+            <a href={link.url} target="_blank" rel="noreferrer" className="text-[#0f5c73] hover:underline">
+              {link.label || link.url}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
 }
 
 export default async function AuthorProfilePage({ params }: Props) {
   const { slug } = await params;
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
-  const sectionTitle = getSectionTitle(lang);
-  const author = getPublishedAuthorBySlug(slug);
+  const author = getAuthorBySlug(slug);
 
   if (!author) {
     notFound();
@@ -169,109 +147,94 @@ export default async function AuthorProfilePage({ params }: Props) {
   return (
     <>
       <Header initialLanguage={lang} />
-      <main className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-10">
+      <main className="mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-10">
         <div className="mb-4 text-sm text-slate-500">
-          <span>{locale.common.home}</span>
-          <span className="mx-2">/</span>
-          <Link href="/authors" className="hover:underline">
-            {sectionTitle.profileList}
+          <Link href="/" className="text-slate-500 no-underline hover:underline">
+            {locale.common.home}
           </Link>
           <span className="mx-2">/</span>
-          <span>{author.displayName || author.fullName}</span>
+          <Link href="/authors" className="text-slate-500 no-underline hover:underline">
+            Tác giả
+          </Link>
+          <span className="mx-2">/</span>
+          <span>{author.displayName}</span>
         </div>
 
-        <article className="page-surface p-6 md:p-8">
-          <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">{author.displayName || author.fullName}</h1>
-          {author.headline ? <p className="mt-3 text-base text-slate-700">{author.headline}</p> : null}
+        <article className="page-surface overflow-hidden">
+          {author.coverImage ? (
+            <div className="relative h-52 w-full bg-slate-100 md:h-64">
+              <Image src={author.coverImage} alt={author.displayName} fill className="object-cover" unoptimized />
+            </div>
+          ) : (
+            <div className="h-28 w-full bg-gradient-to-r from-[#0f5c73] via-[#1b708d] to-[#2d8ca9]" />
+          )}
 
-          <Section title={sectionTitle.intro}>
-            <p className="text-sm leading-7 text-slate-700">{author.shortBio || "-"}</p>
-          </Section>
+          <div className="p-6 md:p-8">
+            <div className="flex flex-wrap items-center gap-4">
+              {author.avatar ? (
+                <div className="relative h-20 w-20 overflow-hidden rounded-full border border-slate-200 bg-white">
+                  <Image src={author.avatar} alt={author.displayName} fill className="object-cover" unoptimized />
+                </div>
+              ) : (
+                <div className="flex h-20 w-20 items-center justify-center rounded-full border border-slate-200 bg-white text-2xl font-bold text-[#0f5c73]">
+                  {getAuthorInitials(author.displayName)}
+                </div>
+              )}
 
-          <Section title={sectionTitle.expertise}>{renderExpertise(author)}</Section>
-
-          <Section title={sectionTitle.interests}>
-            <div className="grid gap-4 md:grid-cols-2">
               <div>
-                <p className="text-sm font-semibold text-slate-800">Research Interests</p>
-                <RenderList items={author.researchInterests} />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-800">Author Themes</p>
-                <RenderList items={author.authorThemes} />
+                <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">{author.fullName}</h1>
+                <p className="mt-2 text-base text-slate-700">{author.headline}</p>
+                <p className="mt-1 text-sm text-slate-500">
+                  ID: {author.id} • Slug: {author.slug}
+                </p>
               </div>
             </div>
-          </Section>
 
-          <Section title={sectionTitle.milestones}>
-            <RenderList items={author.keyCareerMilestones} />
-          </Section>
+            <p className="mt-6 text-base leading-8 text-slate-700">{author.shortBio}</p>
 
-          <Section title={sectionTitle.works}>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div>
-                <p className="text-sm font-semibold text-slate-800">Notable Works</p>
-                <RenderList items={author.notableWorks} />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-800">Books</p>
-                <RenderList items={author.books} />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-800">Podcasts</p>
-                <RenderList items={author.podcasts} />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-800">Talks</p>
-                <RenderList items={author.talks} />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-800">Major Activities</p>
-                <RenderList items={author.majorActivities} />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-800">Publication List</p>
-                <RenderList items={author.publicationList} />
+            <div className="mt-6 rounded-xl border border-[#d9e4eb] bg-[#f8fbfd] p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">Metadata</p>
+              <div className="mt-2 grid gap-2 text-sm text-slate-700 md:grid-cols-2">
+                <p>
+                  <span className="font-semibold">Featured:</span> {author.featured ? "true" : "false"}
+                </p>
+                <p>
+                  <span className="font-semibold">Sort Order:</span> {author.sortOrder}
+                </p>
+                <p>
+                  <span className="font-semibold">Status:</span> {author.status}
+                </p>
+                <p>
+                  <span className="font-semibold">Last Reviewed:</span> {author.lastReviewedAt}
+                </p>
               </div>
             </div>
-          </Section>
 
-          <Section title={sectionTitle.whyWrite}>
-            <p className="text-sm leading-7 text-slate-700">{author.whyThisAuthorWritesThisTopic || "-"}</p>
-          </Section>
-
-          <Section title={sectionTitle.related}>
-            {author.relatedArticleSlugs.length ? (
-              <ul className="list-disc space-y-1 pl-5 text-sm leading-6 text-slate-700">
-                {author.relatedArticleSlugs.map((articleSlug) => (
-                  <li key={articleSlug}>
-                    <Link href={asArticleHref(articleSlug)} className="text-[#006c96] hover:underline">
-                      {articleSlug}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-sm text-slate-600">-</p>
-            )}
-          </Section>
-
-          <Section title={sectionTitle.sources}>
-            <div className="grid gap-4 md:grid-cols-3">
-              <div>
-                <p className="text-sm font-semibold text-slate-800">Profile Source Links</p>
-                <RenderExternalLinks links={author.profileSourceLinks} />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-800">External Links</p>
-                <RenderExternalLinks links={author.externalLinks} />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-slate-800">Social Links</p>
-                <RenderSocialLinks links={author.socialLinks} />
-              </div>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {renderListField("Bằng cấp", author.degrees)}
+              {renderStringField("Chuyên môn", author.specialty)}
+              {renderStringField("Vai trò hiện tại", author.currentRole)}
+              {renderStringField("Tổ chức hiện tại", author.currentOrganization)}
+              {renderStringField("Trọng tâm chuyên môn", author.professionalFocus)}
+              {renderListField("Mối quan tâm nghiên cứu", author.researchInterests)}
+              {renderListField("Học vấn", author.education)}
+              {renderListField("Chứng chỉ", author.certifications)}
+              {renderListField("Giải thưởng", author.awards)}
+              {renderListField("Cột mốc nghề nghiệp", author.keyCareerMilestones)}
+              {renderListField("Công trình nổi bật", author.notableWorks)}
+              {renderListField("Sách", author.books)}
+              {renderListField("Podcast", author.podcasts)}
+              {renderListField("Talks", author.talks)}
+              {renderListField("Hoạt động chính", author.majorActivities)}
+              {renderListField("Danh mục công bố", author.publicationList)}
+              {renderListField("Chủ đề tác giả", author.authorThemes)}
+              {renderStringField("Vì sao tác giả viết chủ đề này", author.whyThisAuthorWritesThisTopic)}
+              {renderListField("Related Article Slugs", author.relatedArticleSlugs)}
+              {renderLinkListField("Profile Source Links", author.profileSourceLinks)}
+              {renderExternalLinks("External Links", author.externalLinks)}
+              {renderSocialLinks("Social Links", author.socialLinks)}
             </div>
-          </Section>
+          </div>
         </article>
       </main>
       <Footer initialLanguage={lang} />

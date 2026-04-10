@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from 'react';
 import logoImage from '../logo_main_2.png';
 import type { Language } from '@/lib/translations';
 import { getPreferredClientLanguage } from '@/lib/client-language';
+import { getAuthorProfileHref, getAuthors } from '@/lib/authors';
 import {
   COMMON_LOCALES,
   FOOTER_LEGAL_LINKS,
@@ -17,18 +18,6 @@ import {
 type FooterProps = {
   initialLanguage?: Language;
 };
-
-type FooterAuthor = {
-  name: string;
-  facebook: string;
-};
-
-const FOOTER_AUTHORS: FooterAuthor[] = [
-  {
-    name: 'Neal Barnard, MD',
-    facebook: 'https://www.facebook.com/NealBarnardMD',
-  },
-];
 
 export default function Footer({ initialLanguage }: FooterProps) {
   const [language, setLanguage] = useState<Language>(() => initialLanguage ?? getPreferredClientLanguage());
@@ -67,6 +56,8 @@ export default function Footer({ initialLanguage }: FooterProps) {
       })),
     [locale, language]
   );
+
+  const footerAuthors = useMemo(() => getAuthors().slice(0, 3), []);
 
   return (
     <footer className="mt-16 border-t border-[#dbe5ec] bg-white text-[#1f2d3d]">
@@ -147,11 +138,11 @@ export default function Footer({ initialLanguage }: FooterProps) {
               <p className="text-xs font-semibold uppercase tracking-wide text-[#007fab]">{locale.footerAuthor.title}</p>
               <p className="mt-1 text-xs leading-relaxed text-[#64748b]">{locale.footerAuthor.description}</p>
               <ul className="mt-2 space-y-1 text-sm">
-                {FOOTER_AUTHORS.map((author) => (
-                  <li key={author.facebook}>
-                    <a href={author.facebook} target="_blank" rel="noreferrer" className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
-                      {author.name} ({locale.footerAuthor.facebookLabel})
-                    </a>
+                {footerAuthors.map((author) => (
+                  <li key={author.id}>
+                    <Link href={getAuthorProfileHref(author)} className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
+                      {author.displayName}
+                    </Link>
                   </li>
                 ))}
               </ul>
