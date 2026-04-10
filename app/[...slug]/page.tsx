@@ -92,7 +92,7 @@ export default async function DynamicPcrmPage({ params }: Props) {
   const showTrustBadges = page.path === "/about-us/financial-report";
   const articleAuthor = isNewsArticlePath(page.path) ? getAuthorForArticlePath(page.path) : undefined;
   const heroImage = resolveNewsImage(page.path, page.images);
-  const shouldRenderHeroImage = heroImage.fromSource;
+  const shouldRenderHeroImage = page.path.startsWith("/news/") ? true : heroImage.fromSource;
 
   return (
     <>

@@ -184,14 +184,17 @@ export default async function HomePage() {
                 <div className="p-4 md:p-5">
                   <h3 className="home-card-title text-xl font-bold text-slate-900">{section.title}</h3>
                   <p className="home-card-copy mt-2.5 text-sm leading-7 text-slate-600 md:mt-3">{section.summary}</p>
-                  <div className="mt-3.5 space-y-2 md:mt-4">
+                  <div className="mt-3.5 space-y-3 md:mt-4">
                     {section.stories.map((story) => (
                       <StoryLink
                         key={`${section.id}-${story.id}`}
                         story={story}
-                        className="block text-sm font-semibold text-[#0f5c73] no-underline hover:underline"
+                        className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-2 text-sm font-semibold text-[#0f5c73] no-underline transition hover:border-[#0f5c73]/50"
                       >
-                        {story.title}
+                        <span className="relative h-14 w-20 shrink-0 overflow-hidden rounded bg-slate-100">
+                          <Image src={story.imageSrc} alt={story.title} fill className="object-cover" unoptimized />
+                        </span>
+                        <span className="line-clamp-2">{story.title}</span>
                       </StoryLink>
                     ))}
                   </div>
