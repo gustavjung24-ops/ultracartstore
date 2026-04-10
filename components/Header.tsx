@@ -341,11 +341,11 @@ export default function Header({ initialLanguage }: HeaderProps) {
               ))}
 
               <div className="flex flex-col gap-2 border-t border-slate-200 pt-4 text-sm text-slate-700">
-                <a href={`tel:${locale.site.contact.phoneHref}`} className="no-underline hover:text-[#007fab]">
-                  {locale.site.contact.phoneDisplay}
-                </a>
-                <a href={`mailto:${locale.site.contact.email}`} className="no-underline hover:text-[#007fab]">
-                  {locale.site.contact.email}
+                <a href={`tel:${locale.site.contact.phoneHref}`} className="inline-flex items-center gap-2 no-underline hover:text-[#007fab]">
+                  <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.77.65 2.61a2 2 0 0 1-.45 2.11L8.07 9.67a16 16 0 0 0 6.26 6.26l1.23-1.24a2 2 0 0 1 2.11-.45c.84.31 1.71.53 2.61.65A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                  <span>{locale.site.contact.phoneDisplay}</span>
                 </a>
               </div>
             </div>

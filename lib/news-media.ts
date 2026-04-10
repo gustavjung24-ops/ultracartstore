@@ -7,6 +7,15 @@ const TRUST_BADGE_IMAGE_PATTERN =
 
 const TRACKING_IMAGE_PATTERN = /p\.gif|pixel|tracking/i;
 
+const NEWS_IMAGE_OVERRIDES_BY_PATH: Record<string, string> = {
+  "/news/news-releases/physicians-committee-offering-grants-farmers-who-are-growing-health-promoting":
+    "https://www.pcrm.org/sites/default/files/2024-11/farmer-tangerines.jpg",
+  "/news/news-releases/doctors-group-files-legal-petition-urging-usda-require-colorectal-cancer-warning":
+    "https://www.pcrm.org/sites/default/files/2026-04/Processed-Meat-Warning-Label.jpg",
+  "/news/news-releases/swapping-meat-and-dairy-plant-based-foods-cuts-climate-pollution-35-randomized":
+    "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2021-04/doctors-climate-change.jpg?h=d1cb525d&itok=Xtj42DRr",
+};
+
 export function isRenderableNewsImage(src: string): boolean {
   const normalized = src.trim();
   if (!normalized) {
@@ -71,6 +80,11 @@ export function resolveNewsImage(
   const fromPage = getFirstRenderableNewsImage(images);
   if (fromPage) {
     return { src: fromPage.src, fromSource: true };
+  }
+
+  const pathOverride = NEWS_IMAGE_OVERRIDES_BY_PATH[path];
+  if (pathOverride && isRenderableNewsImage(pathOverride)) {
+    return { src: pathOverride, fromSource: true };
   }
 
   if (externalFallbackImage && isRenderableNewsImage(externalFallbackImage)) {
