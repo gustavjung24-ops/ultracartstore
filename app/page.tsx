@@ -243,7 +243,13 @@ export default async function HomePage() {
             <div className="flex justify-center">
               <div className="w-full max-w-[420px] overflow-hidden rounded-2xl bg-slate-100 p-2">
                 <div className="relative aspect-video w-full">
-                  <Image src="/images/1.png" alt={homeUi.impactImageAlt} fill className="object-contain" />
+                  <Image
+                    src="https://img.youtube.com/vi/lKq8-2G0kjo/hqdefault.jpg"
+                    alt={homeUi.impactImageAlt}
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
                 </div>
               </div>
             </div>
