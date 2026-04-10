@@ -4,7 +4,9 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import NewsImage from "@/components/NewsImage";
 import { buildHomepageFeed, type HomepageStory } from "@/lib/homepage-feed";
+import { getNewsPlaceholderImage } from "@/lib/news-media";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 type StoryLinkProps = {
@@ -55,8 +57,8 @@ export default async function HomePage() {
   });
 
   const heroCtaHref = feed.featuredNews[0]?.internal ? feed.featuredNews[0].href : "/news/blog";
-  const topPromotedTitle = lang === "vi" ? "Top Promoted Stories" : "Top Promoted Stories";
-  const featuredTitle = lang === "vi" ? "Featured News" : "Featured News";
+  const topPromotedTitle = "Top Promoted Stories";
+  const featuredTitle = "Featured News";
 
   return (
     <>
@@ -104,7 +106,12 @@ export default async function HomePage() {
             {feed.featuredNews.map((story) => (
               <article key={story.id} className="smooth-card overflow-hidden rounded-2xl">
                 <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
-                  <Image src={story.imageSrc} alt={story.title} fill className="object-cover" unoptimized />
+                  <NewsImage
+                    src={story.imageSrc}
+                    alt={story.title}
+                    fallbackSrc={getNewsPlaceholderImage(story.path)}
+                    className="object-cover"
+                  />
                 </div>
                 <div className="p-4 md:p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{story.label}</p>
@@ -131,7 +138,12 @@ export default async function HomePage() {
             <article className="smooth-card overflow-hidden rounded-2xl">
               <div className="grid md:grid-cols-2">
                 <div className="relative aspect-video w-full bg-slate-100 md:aspect-auto md:min-h-[280px]">
-                  <Image src={feed.newsEventsLead.imageSrc} alt={feed.newsEventsLead.title} fill className="object-cover" unoptimized />
+                  <NewsImage
+                    src={feed.newsEventsLead.imageSrc}
+                    alt={feed.newsEventsLead.title}
+                    fallbackSrc={getNewsPlaceholderImage(feed.newsEventsLead.path)}
+                    className="object-cover"
+                  />
                 </div>
                 <div className="p-5 md:p-7">
                   <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{feed.newsEventsLead.label}</p>
@@ -153,7 +165,12 @@ export default async function HomePage() {
             {feed.topPromotedStories.map((story) => (
               <article key={story.id} className="smooth-card overflow-hidden rounded-2xl">
                 <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
-                  <Image src={story.imageSrc} alt={story.title} fill className="object-cover" unoptimized />
+                  <NewsImage
+                    src={story.imageSrc}
+                    alt={story.title}
+                    fallbackSrc={getNewsPlaceholderImage(story.path)}
+                    className="object-cover"
+                  />
                 </div>
                 <div className="p-4">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.07em] text-[#0f5c73]">{story.label}</p>
@@ -173,12 +190,11 @@ export default async function HomePage() {
             {feed.topicHighlights.map((section) => (
               <article key={section.id} className="smooth-card overflow-hidden rounded-2xl">
                 <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
-                  <Image
+                  <NewsImage
                     src={section.stories[0]?.imageSrc || "/images/placeholder-main.svg"}
                     alt={section.stories[0]?.title || section.title}
-                    fill
+                    fallbackSrc={getNewsPlaceholderImage(section.stories[0]?.path || section.href)}
                     className="object-cover"
-                    unoptimized
                   />
                 </div>
                 <div className="p-4 md:p-5">
@@ -192,7 +208,12 @@ export default async function HomePage() {
                         className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-2 text-sm font-semibold text-[#0f5c73] no-underline transition hover:border-[#0f5c73]/50"
                       >
                         <span className="relative h-14 w-20 shrink-0 overflow-hidden rounded bg-slate-100">
-                          <Image src={story.imageSrc} alt={story.title} fill className="object-cover" unoptimized />
+                          <NewsImage
+                            src={story.imageSrc}
+                            alt={story.title}
+                            fallbackSrc={getNewsPlaceholderImage(story.path)}
+                            className="object-cover"
+                          />
                         </span>
                         <span className="line-clamp-2">{story.title}</span>
                       </StoryLink>
@@ -235,7 +256,12 @@ export default async function HomePage() {
             {feed.latestNews.map((story) => (
               <article key={story.id} className="smooth-card rounded-2xl overflow-hidden">
                 <div className="relative aspect-video w-full overflow-hidden rounded-t-2xl bg-slate-100">
-                  <Image src={story.imageSrc} alt={story.title} fill className="object-cover" unoptimized />
+                  <NewsImage
+                    src={story.imageSrc}
+                    alt={story.title}
+                    fallbackSrc={getNewsPlaceholderImage(story.path)}
+                    className="object-cover"
+                  />
                 </div>
                 <div className="p-4">
                   <h3 className="home-card-title line-clamp-2 text-base font-bold text-gray-900">{story.title}</h3>

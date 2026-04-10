@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { resolveNewsImage } from "@/lib/news-media";
+import NewsImage from "@/components/NewsImage";
+import { getNewsPlaceholderImage, resolveNewsImage } from "@/lib/news-media";
 import {
   getBlogPages,
   getLocalizedPcrmPageContent,
@@ -52,12 +52,11 @@ export default async function BlogIndexPage() {
             {posts.map((post) => (
               <article key={post.path} className="article-card">
                 <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
-                  <Image
+                  <NewsImage
                     src={resolveNewsImage(post.path, post.images).src}
                     alt={getPostTitle(post, lang)}
-                    fill
+                    fallbackSrc={getNewsPlaceholderImage(post.path)}
                     className="object-contain"
-                    unoptimized
                   />
                 </div>
                 <div className="p-4">

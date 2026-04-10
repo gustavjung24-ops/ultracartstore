@@ -4,8 +4,9 @@ import { notFound } from "next/navigation";
 import AuthorAboutBox from "@/components/AuthorAboutBox";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import NewsImage from "@/components/NewsImage";
 import { getAuthorForArticlePath } from "@/lib/authors";
-import { resolveNewsImage } from "@/lib/news-media";
+import { getNewsPlaceholderImage, resolveNewsImage } from "@/lib/news-media";
 import {
   getAllPcrmPages,
   getLocalizedPcrmPageContent,
@@ -111,7 +112,12 @@ export default async function DynamicPcrmPage({ params }: Props) {
           {shouldRenderHeroImage ? (
             <div className="mt-8 flex justify-center">
               <div className="relative aspect-video w-full max-w-4xl overflow-hidden rounded-sm bg-slate-100">
-                <Image src={heroImage.src} alt={title} fill className="object-contain" unoptimized />
+                <NewsImage
+                  src={heroImage.src}
+                  alt={title}
+                  fallbackSrc={getNewsPlaceholderImage(page.path)}
+                  className="object-contain"
+                />
               </div>
             </div>
           ) : null}
