@@ -16,6 +16,8 @@ type StoryLinkProps = {
   children: ReactNode;
 };
 
+const HOMEPAGE_HERO_IMAGE_SRC = "/44.png";
+
 export const metadata: Metadata = buildPageMetadata({
   path: "/",
   title: DEFAULT_SITE_TITLE,
@@ -68,7 +70,7 @@ export default async function HomePage() {
             <div className="grid md:grid-cols-2">
               <div className="relative min-h-[260px] bg-[#dce8ee] md:min-h-[500px]">
                 <Image
-                  src="/images/pig-in-grass.jpg"
+                  src={HOMEPAGE_HERO_IMAGE_SRC}
                   alt={homeUi.heroImageAlt}
                   fill
                   className="object-cover"
