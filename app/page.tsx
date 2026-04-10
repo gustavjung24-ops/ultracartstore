@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import heroCoverImage from "@/55.jpg";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import NewsImage from "@/components/NewsImage";
@@ -16,16 +17,29 @@ type StoryLinkProps = {
   children: ReactNode;
 };
 
-const HOMEPAGE_HERO_IMAGE_SRC = "/55.png";
 const HOMEPAGE_SEO_TITLE = "Y học lành mạnh | Dinh dưỡng thực vật và y học dự phòng";
 const HOMEPAGE_SEO_DESCRIPTION =
   "Kiến thức y học dự phòng và dinh dưỡng thực vật dựa trên bằng chứng, dành cho sinh viên y khoa và người làm chuyên môn y tế.";
+const HOMEPAGE_HERO_CONTENT = {
+  en: {
+    title: "Plant-based nutrition for medical learners and health professionals",
+    summary:
+      "Explore curated resources on evidence-based nutrition, preventive medicine, and ethical science for study, teaching, and clinical communication.",
+    imageAlt: "Medical professionals with vegetables and farm animals outdoors",
+  },
+  vi: {
+    title: "Dinh dưỡng thực vật cho người học y và người làm chuyên môn y tế",
+    summary:
+      "Khám phá nội dung biên soạn về dinh dưỡng dựa trên bằng chứng, y học dự phòng và khoa học có đạo đức để học tập, giảng dạy và ứng dụng lâm sàng.",
+    imageAlt: "Đội ngũ chuyên môn y tế với rau củ và vật nuôi trong không gian ngoài trời",
+  },
+} as const;
 
 export const metadata: Metadata = buildPageMetadata({
   path: "/",
   title: HOMEPAGE_SEO_TITLE,
   description: HOMEPAGE_SEO_DESCRIPTION,
-  image: HOMEPAGE_HERO_IMAGE_SRC,
+  image: heroCoverImage.src,
   type: "website",
   language: "vi",
 });
@@ -46,17 +60,26 @@ function StoryLink({ story, className, children }: StoryLinkProps) {
   );
 }
 
+const featureArticleCardTitleClass =
+  "home-card-title mt-2 line-clamp-2 text-lg font-semibold leading-[1.35] tracking-normal text-slate-900";
+const featureArticleCardCopyClass =
+  "home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 tracking-normal text-slate-600 md:mt-3";
+const leadArticleCardTitleClass =
+  "home-card-title mt-2 text-[1.5rem] font-semibold leading-[1.25] tracking-normal text-slate-900 md:text-[1.875rem]";
+const leadArticleCardCopyClass = "home-card-copy mt-3 text-sm leading-7 tracking-normal text-slate-600";
+const articleCardLinkClass =
+  "mt-4 inline-block text-sm font-semibold leading-6 tracking-[0.01em] text-[#0f5c73] no-underline hover:underline";
 const compactArticleCardTitleClass =
-  "home-card-title mt-2 line-clamp-2 text-base font-semibold leading-tight text-slate-900";
+  "home-card-title mt-2 line-clamp-2 text-base font-semibold leading-[1.35] tracking-normal text-slate-900";
 const compactArticleCardCopyClass =
-  "home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 text-slate-600";
-const compactArticleCardLinkClass =
-  "mt-3 inline-block text-sm font-semibold tracking-[0.01em] text-[#0f5c73] no-underline hover:underline";
+  "home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 tracking-normal text-slate-600";
+const compactArticleCardLinkClass = articleCardLinkClass;
 
 export default async function HomePage() {
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
   const homeUi = locale.repoUi.home;
+  const heroContent = HOMEPAGE_HERO_CONTENT[lang];
 
   const feed = buildHomepageFeed({
     lang,
@@ -67,7 +90,6 @@ export default async function HomePage() {
     goodScienceSummary: homeUi.goodScienceDigestSummary,
   });
 
-  const heroCtaHref = feed.featuredNews[0]?.internal ? feed.featuredNews[0].href : "/news/blog";
   const topPromotedTitle = homeUi.topPromotedStories;
   const featuredTitle = homeUi.victory || locale.common.featured;
 
@@ -80,8 +102,8 @@ export default async function HomePage() {
             <div className="grid md:grid-cols-2">
               <div className="relative min-h-[260px] bg-[#dce8ee] md:min-h-[500px]">
                 <Image
-                  src={HOMEPAGE_HERO_IMAGE_SRC}
-                  alt={homeUi.heroImageAlt}
+                  src={heroCoverImage}
+                  alt={heroContent.imageAlt}
                   fill
                   className="object-cover"
                   priority
@@ -90,16 +112,16 @@ export default async function HomePage() {
 
               <div className="flex items-center bg-[radial-gradient(circle_at_top_left,#1f7390_0%,#0f5c73_58%,#0c4a5e_100%)] px-5 py-8 text-white md:px-10 md:py-14">
                 <div>
-                  <p className="text-[11px] font-semibold tracking-[0.01em] text-[#ddbb83] md:text-xs">{homeUi.victory}</p>
+                  <p className="text-[11px] font-semibold tracking-[0.01em] text-[#ddbb83] md:text-xs">{locale.site.name}</p>
                   <h1 className="home-hero-title mt-2.5 text-3xl font-bold leading-tight text-white sm:text-4xl md:mt-3 md:text-5xl">
-                    {homeUi.heroTitle}
+                    {heroContent.title}
                   </h1>
                   <p className="home-hero-copy mt-4 max-w-xl text-base leading-8 text-slate-100 md:mt-5 md:text-lg">
-                    {homeUi.heroSummary}
+                    {heroContent.summary}
                   </p>
                   <div className="mt-6 md:mt-8">
                     <Link
-                      href={heroCtaHref}
+                      href="/good-nutrition"
                       className="rounded-full border border-white/45 px-6 py-2.5 text-sm font-semibold tracking-[0.01em] text-white no-underline transition hover:bg-white/10 md:px-7 md:py-3"
                     >
                       {locale.common.learnMore}
@@ -126,12 +148,9 @@ export default async function HomePage() {
                 </div>
                 <div className="p-4 md:p-5">
                   <p className="text-xs font-semibold tracking-[0.01em] text-[#0f5c73]">{story.label}</p>
-                  <h3 className="home-card-title mt-2 line-clamp-2 text-xl font-semibold leading-tight text-slate-900">{story.title}</h3>
-                  <p className="home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 text-slate-600 md:mt-3">{story.summary}</p>
-                  <StoryLink
-                    story={story}
-                    className="mt-4 inline-block text-sm font-semibold tracking-[0.01em] text-[#0f5c73] no-underline hover:underline"
-                  >
+                  <h3 className={featureArticleCardTitleClass}>{story.title}</h3>
+                  <p className={featureArticleCardCopyClass}>{story.summary}</p>
+                  <StoryLink story={story} className={articleCardLinkClass}>
                     {locale.common.readMore}
                   </StoryLink>
                 </div>
@@ -158,12 +177,9 @@ export default async function HomePage() {
                 </div>
                 <div className="p-5 md:p-7">
                   <p className="text-xs font-semibold tracking-[0.01em] text-[#0f5c73]">{feed.newsEventsLead.label}</p>
-                  <h3 className="home-card-title mt-2 text-2xl font-semibold text-slate-900 md:text-3xl">{feed.newsEventsLead.title}</h3>
-                  <p className="home-card-copy mt-3 text-sm leading-7 text-slate-600">{feed.newsEventsLead.summary}</p>
-                  <StoryLink
-                    story={feed.newsEventsLead}
-                    className="mt-4 inline-block text-sm font-semibold tracking-[0.01em] text-[#0f5c73] no-underline hover:underline"
-                  >
+                  <h3 className={leadArticleCardTitleClass}>{feed.newsEventsLead.title}</h3>
+                  <p className={leadArticleCardCopyClass}>{feed.newsEventsLead.summary}</p>
+                  <StoryLink story={feed.newsEventsLead} className={articleCardLinkClass}>
                     {locale.common.readMore}
                   </StoryLink>
                 </div>
