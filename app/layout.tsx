@@ -18,6 +18,8 @@ const bodyFont = Be_Vietnam_Pro({
   display: "swap",
 });
 
+const rootBodyClass = `${bodyFont.variable} font-sans bg-gray-50`;
+
 const defaultOgImage = createOgImage(DEFAULT_SOCIAL_IMAGE, SITE_NAME);
 
 export const metadata: Metadata = {
@@ -77,7 +79,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body className={`${bodyFont.variable} font-sans antialiased bg-gray-50`}>
+      <body className={rootBodyClass}>
         {children}
       </body>
     </html>

@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+const sansFontStack = ["var(--font-body)", "Segoe UI", "Noto Sans", "Arial", "system-ui", "sans-serif"];
+
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,7 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-body)", "Segoe UI", "Noto Sans", "Arial", "system-ui", "sans-serif"],
+        sans: sansFontStack,
       },
       colors: {
         background: "var(--background)",

@@ -74,8 +74,8 @@ export default function Footer({ initialLanguage }: FooterProps) {
                 className="h-auto w-[180px]"
               />
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-[#4a6072]">{locale.site.tagline}</p>
-            <div className="mt-4 flex gap-3 text-sm font-medium">
+            <p className="mt-4 text-[15px] leading-7 text-[#4a6072]">{locale.site.tagline}</p>
+            <div className="mt-4 flex gap-3 text-[15px] font-medium">
               <a href="https://www.facebook.com/PCRM.org" target="_blank" rel="noreferrer" className="no-underline hover:text-[#007fab]">
                 Facebook
               </a>
@@ -89,7 +89,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold tracking-[0.01em] text-[#007fab]">{locale.common.mainMenu}</h4>
+            <h4 className="mb-4 text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.common.mainMenu}</h4>
             <ul className="space-y-2 text-[15px] leading-6">
               {mainNavLinks.map((item) => (
                 <li key={item.href}>
@@ -102,7 +102,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold tracking-[0.01em] text-[#007fab]">{locale.common.resources}</h4>
+            <h4 className="mb-4 text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.common.resources}</h4>
             <ul className="space-y-2 text-[15px] leading-6">
               {utilityLinks.map((item) => (
                 <li key={item.href}>
@@ -121,7 +121,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold tracking-[0.01em] text-[#007fab]">{locale.utilityNav.contact}</h4>
+            <h4 className="mb-4 text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.utilityNav.contact}</h4>
             <p className="text-sm leading-relaxed text-[#4a6072]">
               Kênh liên hệ chính thức dành cho phản hồi nội dung và trao đổi học thuật.
             </p>
@@ -132,7 +132,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
               Đến trang liên hệ
             </Link>
             <div className="mt-4 border-t border-[#e2e8f0] pt-3">
-              <p className="text-sm font-semibold tracking-[0.01em] text-[#007fab]">{locale.footerAuthor.title}</p>
+              <p className="text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.footerAuthor.title}</p>
               <p className="mt-1 text-[13px] leading-relaxed text-[#64748b]">{locale.footerAuthor.description}</p>
               <ul className="mt-3 space-y-2 text-sm">
                 {footerAuthors.map((author) => (

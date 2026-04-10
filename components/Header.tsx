@@ -140,7 +140,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
         className="fixed inset-x-0 top-0 z-[9999] border-b border-slate-200 bg-white shadow-sm"
       >
         <div className="border-b border-[#2a5d7d] bg-[#18354a]">
-          <div className="mx-auto max-w-7xl overflow-hidden px-3 py-1.5 text-center text-xs font-medium leading-5 tracking-[0.005em] text-slate-100 whitespace-nowrap md:px-6 md:text-[13px]">
+          <div className="mx-auto max-w-7xl overflow-hidden px-3 py-1.5 text-center text-xs font-medium leading-5 tracking-[0.005em] text-slate-100 whitespace-nowrap md:px-6 md:text-sm">
             {locale.site.tagline}
           </div>
           <div className="mx-auto hidden max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6 lg:grid">
@@ -148,7 +148,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
               <div key={group.id} className="group relative">
                 <Link
                   href={group.href}
-                  className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-2.5 py-2 text-center text-xs font-semibold leading-5 tracking-[0.01em] text-white no-underline transition hover:bg-white/18"
+                  className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-3 py-2 text-center text-[13px] font-medium leading-5 tracking-[0.005em] text-white no-underline transition hover:bg-white/18"
                 >
                   <span className="line-clamp-1">{group.label}</span>
                   <span className="ml-1 text-[11px]">{"\u25BE"}</span>
@@ -222,7 +222,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   sizes="(min-width: 768px) 62px, (min-width: 640px) 54px, 46px"
                   priority
                 />
-                <p className="hidden text-xs font-medium tracking-[0.005em] text-[#0f5c73] whitespace-nowrap sm:block sm:text-[13px]">
+                <p className="hidden text-xs font-medium tracking-[0.005em] text-[#0f5c73] whitespace-nowrap sm:block sm:text-sm">
                   {locale.site.tagline}
                 </p>
               </div>
@@ -244,14 +244,14 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 <div key={group.id} className="group relative">
                   <Link
                     href={group.href}
-                    className="flex h-full items-center px-4 py-4 text-sm font-semibold leading-6 tracking-[0.01em] text-white no-underline hover:bg-[#005f87]"
+                    className="flex h-full items-center px-4 py-4 text-sm font-semibold leading-[1.35rem] tracking-[0.005em] text-white no-underline hover:bg-[#005f87]"
                   >
                     {group.label}
                   </Link>
 
                   {group.items.length > 0 ? (
                     <div className={`absolute ${alignClass} top-full z-50 hidden ${panelWidthClass} max-w-[94vw] border border-slate-200 bg-white p-5 shadow-2xl group-hover:block`}>
-                      <div className="mb-3 border-b border-slate-200 pb-2 text-sm font-semibold tracking-[0.01em] text-[#007fab]">
+                      <div className="mb-3 border-b border-slate-200 pb-2 text-[13px] font-semibold tracking-[0.005em] text-[#007fab]">
                         {group.label}
                       </div>
                       <div className={`grid max-h-[68vh] ${gridColsClass} gap-x-6 gap-y-2 overflow-auto pr-1`}>
@@ -278,7 +278,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
             <div className="space-y-4">
               {mounted ? (
                 <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-                  <div className="mb-2 text-sm font-medium tracking-[0.01em] text-slate-500">
+                  <div className="mb-2 text-[13px] font-medium tracking-[0.005em] text-slate-500">
                     {currentLabels.quickAccess}
                   </div>
                   <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
@@ -289,7 +289,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 <div key={group.key} className="rounded-lg border border-slate-200">
                   <button
                     onClick={() => setOpenMobileGroup((prev) => (prev === group.key ? null : group.key))}
-                    className="flex w-full items-center justify-between border-b border-slate-200 px-4 py-3 text-left text-[15px] font-semibold leading-snug text-[#007fab]"
+                    className="flex w-full items-center justify-between border-b border-slate-200 px-4 py-3 text-left text-[15px] font-medium leading-snug text-[#007fab]"
                     aria-expanded={openMobileGroup === group.key}
                   >
                     <span>{group.label}</span>
