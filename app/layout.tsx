@@ -1,5 +1,5 @@
 ﻿import type { Metadata, Viewport } from "next";
-import { Be_Vietnam_Pro, Merriweather } from "next/font/google";
+import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import {
   DEFAULT_SITE_DESCRIPTION,
@@ -15,13 +15,6 @@ const bodyFont = Be_Vietnam_Pro({
   subsets: ["latin", "vietnamese"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-body",
-  display: "swap",
-});
-
-const headingFont = Merriweather({
-  subsets: ["latin", "vietnamese"],
-  weight: ["400", "700", "900"],
-  variable: "--font-heading",
   display: "swap",
 });
 
@@ -84,7 +77,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body className={`${bodyFont.variable} ${headingFont.variable} font-sans antialiased bg-gray-50`}>
+      <body className={`${bodyFont.variable} font-sans antialiased bg-gray-50`}>
         {children}
       </body>
     </html>

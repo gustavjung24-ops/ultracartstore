@@ -137,17 +137,10 @@ export default function Header({ initialLanguage }: HeaderProps) {
     <>
       <header
         ref={headerRef}
-        className="inset-x-0 top-0 z-[9999] border-b border-slate-200 bg-white shadow-sm"
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          fontFamily: 'var(--font-body), "Segoe UI", "Noto Sans", Arial, system-ui, sans-serif',
-        }}
+        className="fixed inset-x-0 top-0 z-[9999] border-b border-slate-200 bg-white shadow-sm"
       >
         <div className="border-b border-[#2a5d7d] bg-[#18354a]">
-          <div className="mx-auto max-w-7xl overflow-hidden px-3 py-1 text-center text-[9px] leading-4 text-slate-100 whitespace-nowrap md:px-6 md:text-[11px] md:leading-5">
+          <div className="mx-auto max-w-7xl overflow-hidden px-3 py-1 text-center text-[11px] leading-5 text-slate-100 whitespace-nowrap md:px-6 md:text-xs">
             {locale.site.tagline}
           </div>
           <div className="mx-auto hidden max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6 lg:grid">
@@ -155,10 +148,10 @@ export default function Header({ initialLanguage }: HeaderProps) {
               <div key={group.id} className="group relative">
                 <Link
                   href={group.href}
-                  className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-2 py-2 text-center text-[11px] font-semibold text-white no-underline transition hover:bg-white/18"
+                  className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-2 py-2 text-center text-xs font-semibold text-white no-underline transition hover:bg-white/18"
                 >
                   <span className="line-clamp-1">{group.label}</span>
-                  <span className="ml-1 text-[10px]">{"\u25BE"}</span>
+                  <span className="ml-1 text-[11px]">{"\u25BE"}</span>
                 </Link>
 
                 <div className="absolute left-0 top-full z-50 hidden min-w-[260px] rounded-md border border-slate-200 bg-white p-2 shadow-2xl lg:group-hover:block lg:group-focus-within:block">
@@ -184,7 +177,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 <div className="inline-flex flex-nowrap overflow-hidden rounded-md border border-slate-300 bg-white lg:hidden">
                   <button
                     onClick={() => handleLanguageChange('vi')}
-                    className={`whitespace-nowrap px-2 py-1 text-[10px] font-bold uppercase tracking-[0.02em] transition ${
+                    className={`whitespace-nowrap px-2 py-1 text-[11px] font-semibold tracking-[0.01em] transition ${
                       language === 'vi' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
@@ -192,7 +185,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   </button>
                   <button
                     onClick={() => handleLanguageChange('en')}
-                    className={`whitespace-nowrap border-l border-slate-300 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.02em] transition ${
+                    className={`whitespace-nowrap border-l border-slate-300 px-2 py-1 text-[11px] font-semibold tracking-[0.01em] transition ${
                       language === 'en' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
@@ -229,13 +222,13 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   sizes="(min-width: 768px) 62px, (min-width: 640px) 54px, 46px"
                   priority
                 />
-                <p className="hidden text-[8px] font-semibold tracking-[0.02em] text-[#0f5c73] whitespace-nowrap sm:block sm:text-[11px] sm:uppercase sm:tracking-[0.08em]">
+                <p className="hidden text-[10px] font-semibold tracking-[0.02em] text-[#0f5c73] whitespace-nowrap sm:block sm:text-[11px]">
                   {locale.site.tagline}
                 </p>
               </div>
             </Link>
           </div>
-          <p className="mt-1 text-center text-[8px] font-semibold uppercase tracking-[0.08em] text-[#0f5c73] sm:hidden">
+          <p className="mt-1 text-center text-[10px] font-semibold tracking-[0.02em] text-[#0f5c73] sm:hidden">
             {locale.site.tagline}
           </p>
         </div>
@@ -251,14 +244,14 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 <div key={group.id} className="group relative">
                   <Link
                     href={group.href}
-                    className="flex h-full items-center px-4 py-4 text-sm font-bold uppercase tracking-[0.05em] text-white no-underline hover:bg-[#005f87]"
+                    className="flex h-full items-center px-4 py-4 text-sm font-semibold tracking-[0.02em] text-white no-underline hover:bg-[#005f87]"
                   >
                     {group.label}
                   </Link>
 
                   {group.items.length > 0 ? (
                     <div className={`absolute ${alignClass} top-full z-50 hidden ${panelWidthClass} max-w-[94vw] border border-slate-200 bg-white p-5 shadow-2xl group-hover:block`}>
-                      <div className="mb-3 border-b border-slate-200 pb-2 text-sm font-bold uppercase tracking-[0.06em] text-[#007fab]">
+                      <div className="mb-3 border-b border-slate-200 pb-2 text-sm font-semibold tracking-[0.02em] text-[#007fab]">
                         {group.label}
                       </div>
                       <div className={`grid max-h-[68vh] ${gridColsClass} gap-x-6 gap-y-2 overflow-auto pr-1`}>
@@ -285,7 +278,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
             <div className="space-y-4">
               {mounted ? (
                 <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-                  <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                  <div className="mb-2 text-xs font-medium tracking-[0.03em] text-slate-500">
                     {currentLabels.quickAccess}
                   </div>
                   <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />

@@ -22,11 +22,10 @@ export default function LanguageSwitcher({
   };
 
   return (
-    <div className="inline-flex flex-nowrap items-center gap-1 rounded-md bg-gray-100 p-1"
-      style={{ fontFamily: 'var(--font-body), "Segoe UI", "Noto Sans", Arial, system-ui, sans-serif' }}>
+    <div className="inline-flex flex-nowrap items-center gap-1 rounded-md bg-gray-100 p-1">
       <button
         onClick={() => handleChange('en')}
-        className={`whitespace-nowrap rounded px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.02em] transition sm:px-3 ${
+        className={`whitespace-nowrap rounded px-2 py-1 text-[11px] font-semibold tracking-[0.01em] transition sm:px-3 ${
           language === 'en'
             ? 'bg-[#007fab] text-white'
             : 'text-gray-700 hover:text-gray-900'
@@ -36,7 +35,7 @@ export default function LanguageSwitcher({
       </button>
       <button
         onClick={() => handleChange('vi')}
-        className={`whitespace-nowrap rounded px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.02em] transition sm:px-3 ${
+        className={`whitespace-nowrap rounded px-2 py-1 text-[11px] font-semibold tracking-[0.01em] transition sm:px-3 ${
           language === 'vi'
             ? 'bg-[#007fab] text-white'
             : 'text-gray-700 hover:text-gray-900'
