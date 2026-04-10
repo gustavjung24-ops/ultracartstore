@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -14,6 +15,7 @@ import {
   toInternalPcrmHref,
 } from "@/lib/pcrm-content";
 import { isNewsArticlePath } from "@/lib/news-summary";
+import { buildPageMetadata, resolveSeoImage } from "@/lib/seo";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 type Props = {
@@ -57,6 +59,34 @@ export async function generateStaticParams() {
   return getAllPcrmPages()
     .filter((page) => page.path !== "/")
     .map((page) => ({ slug: page.path.split("/").filter(Boolean) }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const page = getPcrmPageBySegments(slug);
+
+  if (!page || page.path === "/") {
+    return {};
+  }
+
+  const lang = await getSiteLanguageFromCookie();
+  const localizedPage = getLocalizedPcrmPageContent(page, lang);
+  const resolvedNewsImage = resolveNewsImage(page.path, page.images);
+  const seoImage = resolveSeoImage(
+    page.path,
+    page.images,
+    resolvedNewsImage.fromSource ? resolvedNewsImage.src : undefined,
+  );
+
+  return buildPageMetadata({
+    path: page.path,
+    title: localizedPage.title,
+    description: localizedPage.description,
+    paragraphs: localizedPage.paragraphs,
+    image: seoImage,
+    type: isNewsArticlePath(page.path) ? "article" : "website",
+    language: lang,
+  });
 }
 
 export default async function DynamicPcrmPage({ params }: Props) {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -10,6 +11,7 @@ import {
   type PcrmResolvedPage,
 } from "@/lib/pcrm-content";
 import { getCleanNewsSummary, isNewsArticlePath } from "@/lib/news-summary";
+import { buildPageMetadata, resolveSeoImage } from "@/lib/seo";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 function getPostTitle(post: PcrmResolvedPage, lang: "en" | "vi") {
@@ -18,6 +20,29 @@ function getPostTitle(post: PcrmResolvedPage, lang: "en" | "vi") {
 
 function getPostSummary(post: PcrmResolvedPage, lang: "en" | "vi") {
   return getCleanNewsSummary(getLocalizedPcrmPageContent(post, lang), lang);
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const lang = await getSiteLanguageFromCookie();
+  const hubPage = getPcrmPageByPath("/news/blog");
+  const localizedHub = hubPage ? getLocalizedPcrmPageContent(hubPage, lang) : null;
+  const posts = getBlogPages().filter((post) => isNewsArticlePath(post.path));
+  const leadPost = posts[0];
+  const leadImage = leadPost ? resolveSeoImage(leadPost.path, leadPost.images) : undefined;
+
+  return buildPageMetadata({
+    path: "/news/blog",
+    title: localizedHub?.title || "Tin tức",
+    description:
+      localizedHub?.description ||
+      (lang === "vi"
+        ? "Tin tức và bài viết được đồng bộ từ dữ liệu pcrm.org."
+        : "News and articles synchronized from pcrm.org data."),
+    paragraphs: localizedHub?.paragraphs || [],
+    image: leadImage,
+    type: "website",
+    language: lang,
+  });
 }
 
 export default async function BlogIndexPage() {

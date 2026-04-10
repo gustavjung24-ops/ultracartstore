@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
+  path: "/donate",
+  title: "Support Information",
+  description: "Thông tin hỗ trợ và phạm vi sử dụng của website Y học lành mạnh.",
+  type: "website",
+  language: "vi",
+});
 
 export default function DonatePage() {
   return (

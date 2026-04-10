@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
@@ -6,16 +6,20 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SidebarMenu from "@/components/SidebarMenu";
 import { getStoreData } from "@/lib/store-data";
+import { buildPageMetadata } from "@/lib/seo";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
-export const metadata: Metadata = {
-  title: "Tài nguyên sức khỏe | Y học lành mạnh",
+export const metadata: Metadata = buildPageMetadata({
+  path: "/shop",
+  title: "Tài nguyên sức khỏe",
   description: "Tổng hợp tài liệu giáo dục sức khỏe, sách và công cụ truyền thông dựa trên bằng chứng.",
-};
+  type: "website",
+  language: "vi",
+});
 
 const breadcrumbs = [
-  { label: "Trang chủ", href: "/" },
-  { label: "Tài nguyên" },
+  { label: "Trang chá»§", href: "/" },
+  { label: "TÃ i nguyÃªn" },
 ];
 
 export default async function ShopPage() {
@@ -32,17 +36,17 @@ export default async function ShopPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
 
-          {/* Nội dung chính */}
+          {/* Ná»™i dung chÃ­nh */}
           <div className="flex-1 min-w-0">
 
-            {/* Tiêu đề trang */}
+            {/* TiÃªu Ä‘á» trang */}
             <h1 className="text-brand-teal font-bold text-2xl pb-3 mb-6 border-b border-gray-200 uppercase tracking-wide">
-              Tài nguyên
+              TÃ i nguyÃªn
             </h1>
 
-            {/* Danh mục */}
+            {/* Danh má»¥c */}
             <section className="mb-10">
-              <h2 className="text-gray-700 font-semibold text-base mb-4">Duyệt theo danh mục</h2>
+              <h2 className="text-gray-700 font-semibold text-base mb-4">Duyá»‡t theo danh má»¥c</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                 {categories.map((cat) => (
                   <Link
@@ -61,14 +65,14 @@ export default async function ShopPage() {
               <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                 <div>
                   <h2 className="text-brand-dark font-bold text-lg uppercase tracking-wide">
-                    Theo chủ đề sức khỏe
+                    Theo chá»§ Ä‘á» sá»©c khá»e
                   </h2>
                   <p className="mt-1 max-w-2xl text-sm text-gray-600">
-                    Đây là nhóm nội dung đang còn thiếu độ sâu so với website mẫu, nên tôi đã bổ sung thêm các tài liệu theo bệnh lý và nhu cầu chăm sóc cụ thể để chuyên mục tài nguyên có cấu trúc rõ hơn.
+                    ÄÃ¢y lÃ  nhÃ³m ná»™i dung Ä‘ang cÃ²n thiáº¿u Ä‘á»™ sÃ¢u so vá»›i website máº«u, nÃªn tÃ´i Ä‘Ã£ bá»• sung thÃªm cÃ¡c tÃ i liá»‡u theo bá»‡nh lÃ½ vÃ  nhu cáº§u chÄƒm sÃ³c cá»¥ thá»ƒ Ä‘á»ƒ chuyÃªn má»¥c tÃ i nguyÃªn cÃ³ cáº¥u trÃºc rÃµ hÆ¡n.
                   </p>
                 </div>
                 <Link href="/shop/health-topics" className="text-sm font-semibold text-brand-teal hover:underline">
-                  Xem toàn bộ chủ đề
+                  Xem toÃ n bá»™ chá»§ Ä‘á»
                 </Link>
               </div>
 
@@ -98,10 +102,10 @@ export default async function ShopPage() {
               </div>
             </section>
 
-            {/* Tất cả sản phẩm */}
+            {/* Táº¥t cáº£ sáº£n pháº©m */}
             <section>
               <h2 className="text-gray-700 font-semibold text-base mb-4 pb-2 border-b border-gray-100">
-                Tất cả sản phẩm
+                Táº¥t cáº£ sáº£n pháº©m
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {products.map((p) => (
@@ -137,7 +141,7 @@ export default async function ShopPage() {
                         href={`/product/${p.slug}`}
                         className="mt-2 inline-block text-center bg-brand-teal hover:bg-brand-mid text-white text-sm font-semibold py-2 px-4 transition-colors"
                       >
-                        Xem chi tiết
+                        Xem chi tiáº¿t
                       </Link>
                     </div>
                   </article>
@@ -162,3 +166,4 @@ export default async function ShopPage() {
     </>
   );
 }
+

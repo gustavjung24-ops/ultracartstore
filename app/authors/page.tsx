@@ -1,15 +1,19 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getAuthorInitials, getAuthorProfileHref, getAuthors } from "@/lib/authors";
+import { buildPageMetadata } from "@/lib/seo";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
-export const metadata: Metadata = {
-  title: "Tác giả | Y học lành mạnh",
+export const metadata: Metadata = buildPageMetadata({
+  path: "/authors",
+  title: "Tác giả",
   description: "Danh sách tác giả và hồ sơ chuyên môn trên website Y học lành mạnh.",
-};
+  type: "website",
+  language: "vi",
+});
 
 export default async function AuthorsPage() {
   const lang = await getSiteLanguageFromCookie();
@@ -23,14 +27,14 @@ export default async function AuthorsPage() {
         <div className="mb-4 text-sm text-slate-500">
           <span>{locale.common.home}</span>
           <span className="mx-2">/</span>
-          <span>Tác giả</span>
+          <span>TÃ¡c giáº£</span>
         </div>
 
         <section className="page-surface p-6 md:p-8">
-          <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">Tác giả</h1>
+          <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">TÃ¡c giáº£</h1>
           <p className="mt-3 max-w-3xl text-slate-700">
-            Danh sách hồ sơ tác giả theo định dạng học thuật để thuận tiện cho việc biên tập, đối chiếu nguồn và
-            gắn bài viết theo author slug/id.
+            Danh sÃ¡ch há»“ sÆ¡ tÃ¡c giáº£ theo Ä‘á»‹nh dáº¡ng há»c thuáº­t Ä‘á»ƒ thuáº­n tiá»‡n cho viá»‡c biÃªn táº­p, Ä‘á»‘i chiáº¿u nguá»“n vÃ 
+            gáº¯n bÃ i viáº¿t theo author slug/id.
           </p>
 
           <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -62,7 +66,7 @@ export default async function AuthorsPage() {
                   href={getAuthorProfileHref(author)}
                   className="mt-4 inline-flex rounded-full border border-[#0f5c73] px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] text-[#0f5c73] no-underline transition hover:bg-[#0f5c73] hover:text-white"
                 >
-                  Xem hồ sơ tác giả
+                  Xem há»“ sÆ¡ tÃ¡c giáº£
                 </Link>
               </article>
             ))}
@@ -73,3 +77,4 @@ export default async function AuthorsPage() {
     </>
   );
 }
+

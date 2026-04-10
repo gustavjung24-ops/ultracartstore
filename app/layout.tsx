@@ -1,6 +1,15 @@
-import type { Metadata, Viewport } from "next";
+﻿import type { Metadata, Viewport } from "next";
 import { Be_Vietnam_Pro, Merriweather } from "next/font/google";
 import "./globals.css";
+import {
+  DEFAULT_SITE_DESCRIPTION,
+  DEFAULT_SITE_TITLE,
+  DEFAULT_SOCIAL_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+  createOgImage,
+  toAbsoluteUrl,
+} from "@/lib/seo";
 
 const bodyFont = Be_Vietnam_Pro({
   subsets: ["latin", "vietnamese"],
@@ -16,20 +25,49 @@ const headingFont = Merriweather({
   display: "swap",
 });
 
+const defaultOgImage = createOgImage(DEFAULT_SOCIAL_IMAGE, SITE_NAME);
+
 export const metadata: Metadata = {
-  title: "Y học lành mạnh",
-  description:
-    "Nội dung về dinh dưỡng thực vật, y học dự phòng và khoa học có đạo đức.",
-  applicationName: "Y học lành mạnh",
+  metadataBase: new URL(SITE_URL),
+  title: DEFAULT_SITE_TITLE,
+  description: DEFAULT_SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  alternates: {
+    canonical: SITE_URL,
+  },
+  icons: {
+    icon: [{ url: "/favicon.ico" }],
+    shortcut: [{ url: "/favicon.ico" }],
+    apple: [{ url: "/favicon.ico" }],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Y học lành mạnh",
-    description:
-      "Nội dung về dinh dưỡng thực vật, y học dự phòng và khoa học có đạo đức.",
-    siteName: "Y học lành mạnh",
+    title: DEFAULT_SITE_TITLE,
+    description: DEFAULT_SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     type: "website",
+    locale: "vi_VN",
+    images: [defaultOgImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_SITE_TITLE,
+    description: DEFAULT_SITE_DESCRIPTION,
+    images: [toAbsoluteUrl(DEFAULT_SOCIAL_IMAGE)],
   },
   appleWebApp: {
-    title: "Y học lành mạnh",
+    title: SITE_NAME,
   },
 };
 

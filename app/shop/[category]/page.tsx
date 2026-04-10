@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -7,20 +7,21 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SidebarMenu from "@/components/SidebarMenu";
 import { getProductsByCategoryFromData, getStoreData } from "@/lib/store-data";
+import { buildPageMetadata } from "@/lib/seo";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 const healthTopicHighlights = [
   {
-    title: "Ung thư và phục hồi thể trạng",
-    summary: "Tập trung vào thực đơn dễ ăn, giàu dưỡng chất và hỗ trợ người đang điều trị hoặc hồi phục.",
+    title: "Ung thÆ° vÃ  phá»¥c há»“i thá»ƒ tráº¡ng",
+    summary: "Táº­p trung vÃ o thá»±c Ä‘Æ¡n dá»… Äƒn, giÃ u dÆ°á»¡ng cháº¥t vÃ  há»— trá»£ ngÆ°á»i Ä‘ang Ä‘iá»u trá»‹ hoáº·c há»“i phá»¥c.",
   },
   {
-    title: "Tiểu đường và kiểm soát đường huyết",
-    summary: "Nhấn mạnh các bữa ăn thực vật cân bằng, đơn giản, phù hợp để áp dụng hàng ngày.",
+    title: "Tiá»ƒu Ä‘Æ°á»ng vÃ  kiá»ƒm soÃ¡t Ä‘Æ°á»ng huyáº¿t",
+    summary: "Nháº¥n máº¡nh cÃ¡c bá»¯a Äƒn thá»±c váº­t cÃ¢n báº±ng, Ä‘Æ¡n giáº£n, phÃ¹ há»£p Ä‘á»ƒ Ã¡p dá»¥ng hÃ ng ngÃ y.",
   },
   {
-    title: "Tim mạch và cholesterol",
-    summary: "Ưu tiên kiến thức nền tảng, kế hoạch 7 ngày và nhóm thực phẩm nên sử dụng thường xuyên.",
+    title: "Tim máº¡ch vÃ  cholesterol",
+    summary: "Æ¯u tiÃªn kiáº¿n thá»©c ná»n táº£ng, káº¿ hoáº¡ch 7 ngÃ y vÃ  nhÃ³m thá»±c pháº©m nÃªn sá»­ dá»¥ng thÆ°á»ng xuyÃªn.",
   },
 ];
 
@@ -35,13 +36,24 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category } = await params;
-  const { categories } = await getStoreData();
+  const { categories, products } = await getStoreData();
   const cat = categories.find((c) => c.slug === category);
-  if (!cat) return {};
-  return {
-    title: `${cat.label} | Y học lành mạnh`,
+
+  if (!cat) {
+    return {};
+  }
+
+  const categoryProducts = getProductsByCategoryFromData(products, category);
+  const previewImage = categoryProducts[0]?.images?.[0];
+
+  return buildPageMetadata({
+    path: `/shop/${category}`,
+    title: cat.label,
     description: cat.description,
-  };
+    image: previewImage,
+    type: "website",
+    language: "vi",
+  });
 }
 
 export default async function CategoryPage({ params }: PageProps) {
@@ -55,8 +67,8 @@ export default async function CategoryPage({ params }: PageProps) {
   const categoryProducts = getProductsByCategoryFromData(products, category);
 
   const breadcrumbs = [
-    { label: "Trang chủ", href: "/" },
-    { label: "Tài nguyên", href: "/shop" },
+    { label: "Trang chá»§", href: "/" },
+    { label: "TÃ i nguyÃªn", href: "/shop" },
     { label: cat.label },
   ];
 
@@ -68,7 +80,7 @@ export default async function CategoryPage({ params }: PageProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
 
-          {/* Nội dung chính */}
+          {/* Ná»™i dung chÃ­nh */}
           <div className="flex-1 min-w-0">
             <h1 className="text-brand-teal font-bold text-2xl pb-3 mb-2 border-b border-gray-200 uppercase tracking-wide">
               {cat.label}
@@ -88,9 +100,9 @@ export default async function CategoryPage({ params }: PageProps) {
 
             {categoryProducts.length === 0 ? (
               <div className="py-16 text-center text-gray-400">
-                <p className="text-lg">Chưa có sản phẩm trong danh mục này.</p>
+                <p className="text-lg">ChÆ°a cÃ³ sáº£n pháº©m trong danh má»¥c nÃ y.</p>
                 <Link href="/shop" className="mt-4 inline-block text-brand-teal hover:underline text-sm">
-                  ← Quay lại tài nguyên
+                  â† Quay láº¡i tÃ i nguyÃªn
                 </Link>
               </div>
             ) : (
@@ -118,7 +130,7 @@ export default async function CategoryPage({ params }: PageProps) {
                         href={`/product/${p.slug}`}
                         className="mt-2 inline-block text-center bg-brand-teal hover:bg-brand-mid text-white text-sm font-semibold py-2 px-4 transition-colors"
                       >
-                        Xem chi tiết
+                        Xem chi tiáº¿t
                       </Link>
                     </div>
                   </article>
@@ -143,3 +155,4 @@ export default async function CategoryPage({ params }: PageProps) {
     </>
   );
 }
+

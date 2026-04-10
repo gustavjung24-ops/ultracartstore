@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import Header from "@/components/Header";
@@ -10,6 +10,7 @@ import RelatedResources from "@/components/RelatedResources";
 import Footer from "@/components/Footer";
 
 import { getStoreData } from "@/lib/store-data";
+import { buildPageMetadata } from "@/lib/seo";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 interface PageProps {
@@ -25,11 +26,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const { products } = await getStoreData();
   const product = products.find((item) => item.slug === slug);
-  if (!product) return {};
-  return {
-    title: `${product.title} | Y học lành mạnh`,
+
+  if (!product) {
+    return {};
+  }
+
+  return buildPageMetadata({
+    path: `/product/${slug}`,
+    title: product.title,
     description: product.shortDescription,
-  };
+    image: product.images?.[0],
+    type: "website",
+    language: "vi",
+  });
 }
 
 export default async function ProductPage({ params }: PageProps) {
@@ -43,8 +52,8 @@ export default async function ProductPage({ params }: PageProps) {
   }
 
   const breadcrumbs = [
-    { label: "Trang chủ", href: "/" },
-    { label: "Tài nguyên", href: "/shop" },
+    { label: "Trang chá»§", href: "/" },
+    { label: "TÃ i nguyÃªn", href: "/shop" },
     { label: product.categoryLabel, href: `/shop/${product.category}` },
     { label: product.title },
   ];
@@ -75,7 +84,7 @@ export default async function ProductPage({ params }: PageProps) {
             {/* Extended description */}
             <section className="mt-8 bg-white rounded-2xl border border-gray-200 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">
-                Giới thiệu về sản phẩm
+                Giá»›i thiá»‡u vá» sáº£n pháº©m
               </h2>
               <div className="prose prose-sm max-w-none text-gray-600 space-y-3 whitespace-pre-line">
                 {product.longDescription}
@@ -102,3 +111,4 @@ export default async function ProductPage({ params }: PageProps) {
     </>
   );
 }
+

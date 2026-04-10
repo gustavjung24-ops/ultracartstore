@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import NewsImage from "@/components/NewsImage";
 import { buildHomepageFeed, type HomepageStory } from "@/lib/homepage-feed";
 import { getNewsPlaceholderImage } from "@/lib/news-media";
+import { buildPageMetadata, DEFAULT_SITE_DESCRIPTION, DEFAULT_SITE_TITLE, DEFAULT_SOCIAL_IMAGE } from "@/lib/seo";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 type StoryLinkProps = {
@@ -15,16 +16,14 @@ type StoryLinkProps = {
   children: ReactNode;
 };
 
-export const metadata: Metadata = {
-  title: "Y học lành mạnh | Dinh dưỡng thực vật và y học dự phòng",
-  description: "Khám phá nội dung về dinh dưỡng thực vật, y học dự phòng và khoa học có đạo đức.",
-  openGraph: {
-    title: "Y học lành mạnh | Dinh dưỡng thực vật và y học dự phòng",
-    description: "Khám phá nội dung về dinh dưỡng thực vật, y học dự phòng và khoa học có đạo đức.",
-    siteName: "Y học lành mạnh",
-    type: "website",
-  },
-};
+export const metadata: Metadata = buildPageMetadata({
+  path: "/",
+  title: DEFAULT_SITE_TITLE,
+  description: DEFAULT_SITE_DESCRIPTION,
+  image: DEFAULT_SOCIAL_IMAGE,
+  type: "website",
+  language: "vi",
+});
 
 function StoryLink({ story, className, children }: StoryLinkProps) {
   if (story.internal) {

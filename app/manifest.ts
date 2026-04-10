@@ -1,14 +1,22 @@
-import type { MetadataRoute } from "next";
+﻿import type { MetadataRoute } from "next";
+import { DEFAULT_SITE_DESCRIPTION, SITE_NAME } from "@/lib/seo";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Y học lành mạnh",
-    short_name: "Y học lành mạnh",
-    description: "Nội dung về dinh dưỡng thực vật, y học dự phòng và khoa học có đạo đức.",
+    name: SITE_NAME,
+    short_name: SITE_NAME,
+    description: DEFAULT_SITE_DESCRIPTION,
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
     theme_color: "#0f5c73",
     lang: "vi",
+    icons: [
+      {
+        src: "/favicon.ico",
+        sizes: "any",
+        type: "image/x-icon",
+      },
+    ],
   };
 }
