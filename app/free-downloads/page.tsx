@@ -76,7 +76,7 @@ export default function FreeDownloadsPage() {
       <Breadcrumbs items={breadcrumbs} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <h1 className="text-brand-teal font-bold text-2xl pb-3 mb-4 border-b border-gray-200 uppercase tracking-wide">
+        <h1 className="text-brand-teal text-3xl font-semibold leading-tight pb-3 mb-4 border-b border-gray-200">
           Táº£i miá»…n phÃ­
         </h1>
         <p className="text-gray-600 mb-8 text-sm leading-relaxed max-w-2xl">
@@ -91,7 +91,7 @@ export default function FreeDownloadsPage() {
               className="bg-white border border-gray-200 p-5 flex flex-col gap-3 hover:shadow-sm transition-shadow"
             >
               <div className="flex items-start gap-3">
-                <span className="bg-brand-teal/10 text-brand-teal text-xs font-bold px-2 py-0.5 rounded uppercase flex-shrink-0 mt-0.5">
+                <span className="bg-brand-teal/10 text-brand-teal text-[11px] font-semibold tracking-[0.01em] px-2 py-0.5 rounded flex-shrink-0 mt-0.5">
                   {res.type}
                 </span>
                 <h3 className="font-semibold text-gray-900 text-sm leading-snug">{res.title}</h3>
@@ -120,7 +120,7 @@ export default function FreeDownloadsPage() {
           </p>
           <Link
             href="/shop"
-            className="inline-block bg-brand-teal hover:bg-brand-mid text-white font-bold py-2 px-6 transition-colors"
+            className="inline-block bg-brand-teal hover:bg-brand-mid text-white text-sm font-semibold tracking-[0.01em] py-2 px-6 transition-colors"
           >
             Xem ná»™i dung
           </Link>

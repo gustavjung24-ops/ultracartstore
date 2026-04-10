@@ -148,7 +148,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
               <div key={group.id} className="group relative">
                 <Link
                   href={group.href}
-                  className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-2.5 py-2 text-center text-xs font-medium leading-5 text-white no-underline transition hover:bg-white/18"
+                  className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-2.5 py-2 text-center text-xs font-semibold leading-5 tracking-[0.01em] text-white no-underline transition hover:bg-white/18"
                 >
                   <span className="line-clamp-1">{group.label}</span>
                   <span className="ml-1 text-[11px]">{"\u25BE"}</span>
@@ -159,7 +159,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                     <Link
                       key={`${group.id}-${item.href}`}
                       href={item.href}
-                      className="block rounded px-2.5 py-2 text-sm font-medium text-slate-700 no-underline hover:bg-slate-50 hover:text-[#007fab]"
+                      className="block rounded px-2.5 py-2 text-sm font-medium leading-6 text-slate-700 no-underline hover:bg-slate-50 hover:text-[#007fab]"
                     >
                       {item.label}
                     </Link>
@@ -177,7 +177,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 <div className="inline-flex flex-nowrap overflow-hidden rounded-md border border-slate-300 bg-white lg:hidden">
                   <button
                     onClick={() => handleLanguageChange('vi')}
-                    className={`whitespace-nowrap px-2.5 py-1.5 text-xs font-medium tracking-[0.005em] transition ${
+                    className={`whitespace-nowrap px-2.5 py-1.5 text-xs font-semibold tracking-[0.005em] transition ${
                       language === 'vi' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
@@ -185,7 +185,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   </button>
                   <button
                     onClick={() => handleLanguageChange('en')}
-                    className={`whitespace-nowrap border-l border-slate-300 px-2.5 py-1.5 text-xs font-medium tracking-[0.005em] transition ${
+                    className={`whitespace-nowrap border-l border-slate-300 px-2.5 py-1.5 text-xs font-semibold tracking-[0.005em] transition ${
                       language === 'en' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
@@ -222,13 +222,13 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   sizes="(min-width: 768px) 62px, (min-width: 640px) 54px, 46px"
                   priority
                 />
-                <p className="hidden text-xs font-medium tracking-[0.01em] text-[#0f5c73] whitespace-nowrap sm:block sm:text-[13px]">
+                <p className="hidden text-xs font-medium tracking-[0.005em] text-[#0f5c73] whitespace-nowrap sm:block sm:text-[13px]">
                   {locale.site.tagline}
                 </p>
               </div>
             </Link>
           </div>
-          <p className="mt-1 text-center text-xs font-medium tracking-[0.01em] text-[#0f5c73] sm:hidden">
+          <p className="mt-1 text-center text-xs font-medium tracking-[0.005em] text-[#0f5c73] sm:hidden">
             {locale.site.tagline}
           </p>
         </div>
@@ -244,7 +244,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 <div key={group.id} className="group relative">
                   <Link
                     href={group.href}
-                    className="flex h-full items-center px-4 py-4 text-[15px] font-medium tracking-[0.01em] text-white no-underline hover:bg-[#005f87]"
+                    className="flex h-full items-center px-4 py-4 text-sm font-semibold leading-6 tracking-[0.01em] text-white no-underline hover:bg-[#005f87]"
                   >
                     {group.label}
                   </Link>
@@ -259,7 +259,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                           <Link
                             key={`${group.id}-${item.href}`}
                             href={item.href}
-                            className="block rounded-sm px-2 py-2 text-sm font-medium text-slate-700 no-underline hover:bg-slate-50 hover:text-[#007fab]"
+                            className="block rounded-sm px-2 py-2 text-sm font-medium leading-6 text-slate-700 no-underline hover:bg-slate-50 hover:text-[#007fab]"
                           >
                             {item.label}
                           </Link>
@@ -299,7 +299,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                     <div className="grid gap-1 p-2">
                       <Link
                         href={group.href}
-                        className="rounded px-3 py-2 text-sm font-semibold text-[#0f5c73] no-underline hover:bg-slate-50"
+                        className="rounded px-3 py-2 text-sm font-semibold leading-6 text-[#0f5c73] no-underline hover:bg-slate-50"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {currentLabels.openMainSection}
@@ -311,7 +311,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                             href={item.href}
                             target="_blank"
                             rel="noreferrer"
-                            className="rounded px-3 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50"
+                            className="rounded px-3 py-2 text-sm font-medium leading-6 text-slate-700 no-underline hover:bg-slate-50"
                           >
                             {item.label}
                           </a>
@@ -319,7 +319,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                           <Link
                             key={`${group.key}-${item.href}`}
                             href={item.href}
-                            className="rounded px-3 py-2 text-sm text-slate-700 no-underline hover:bg-slate-50"
+                            className="rounded px-3 py-2 text-sm font-medium leading-6 text-slate-700 no-underline hover:bg-slate-50"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             {item.label}

@@ -136,7 +136,7 @@ export default async function DynamicPcrmPage({ params }: Props) {
         </div>
 
         <article className="page-surface overflow-hidden p-6 md:p-10">
-          <h1 className="text-3xl font-extrabold leading-tight text-slate-900 md:text-4xl">{title}</h1>
+          <h1 className="text-3xl font-bold leading-tight text-slate-900 md:text-4xl">{title}</h1>
           <p className="mt-4 max-w-4xl text-base leading-7 text-slate-700 md:text-lg">{description}</p>
 
           {shouldRenderHeroImage ? (

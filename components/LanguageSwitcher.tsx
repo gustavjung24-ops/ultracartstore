@@ -25,7 +25,7 @@ export default function LanguageSwitcher({
     <div className="inline-flex flex-nowrap items-center gap-1.5 rounded-md bg-gray-100 p-1.5">
       <button
         onClick={() => handleChange('en')}
-        className={`whitespace-nowrap rounded px-3 py-1.5 text-xs font-medium tracking-[0.005em] transition ${
+        className={`whitespace-nowrap rounded px-3 py-1.5 text-xs font-semibold tracking-[0.005em] transition ${
           language === 'en'
             ? 'bg-[#007fab] text-white'
             : 'text-gray-700 hover:text-gray-900'
@@ -35,7 +35,7 @@ export default function LanguageSwitcher({
       </button>
       <button
         onClick={() => handleChange('vi')}
-        className={`whitespace-nowrap rounded px-3 py-1.5 text-xs font-medium tracking-[0.005em] transition ${
+        className={`whitespace-nowrap rounded px-3 py-1.5 text-xs font-semibold tracking-[0.005em] transition ${
           language === 'vi'
             ? 'bg-[#007fab] text-white'
             : 'text-gray-700 hover:text-gray-900'

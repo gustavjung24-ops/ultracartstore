@@ -31,7 +31,7 @@ export default function ContactFormClient({ contactUi }: ContactFormClientProps)
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="max-w-xl">
-        <h1 className="text-brand-teal font-bold text-2xl pb-3 mb-4 border-b border-gray-200 uppercase tracking-wide">
+        <h1 className="text-brand-teal text-3xl font-semibold leading-tight pb-3 mb-4 border-b border-gray-200">
           {contactUi.title}
         </h1>
 
@@ -115,7 +115,7 @@ export default function ContactFormClient({ contactUi }: ContactFormClientProps)
             <div className="flex items-center gap-4">
               <button
                 type="submit"
-                className="bg-brand-teal hover:bg-brand-mid text-white font-bold uppercase tracking-wide py-3 px-8 transition-colors"
+                className="bg-brand-teal hover:bg-brand-mid text-white text-sm font-semibold tracking-[0.01em] py-3 px-8 transition-colors"
               >
                 {contactUi.submitButton}
               </button>

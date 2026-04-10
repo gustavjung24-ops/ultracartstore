@@ -40,7 +40,7 @@ export default async function ShopPage() {
           <div className="flex-1 min-w-0">
 
             {/* TiÃªu Ä‘á» trang */}
-            <h1 className="text-brand-teal font-bold text-2xl pb-3 mb-6 border-b border-gray-200 uppercase tracking-wide">
+            <h1 className="text-brand-teal text-3xl font-semibold leading-tight pb-3 mb-6 border-b border-gray-200">
               TÃ i nguyÃªn
             </h1>
 
@@ -64,7 +64,7 @@ export default async function ShopPage() {
             <section className="mb-10 rounded-2xl border border-brand-teal/20 bg-brand-teal/5 p-5 sm:p-6">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <h2 className="text-brand-dark font-bold text-lg uppercase tracking-wide">
+                  <h2 className="text-brand-dark text-lg font-semibold tracking-[0.01em]">
                     Theo chá»§ Ä‘á» sá»©c khá»e
                   </h2>
                   <p className="mt-1 max-w-2xl text-sm text-gray-600">
@@ -124,7 +124,7 @@ export default async function ShopPage() {
                       />
                     </div>
                     <div className="p-4 flex flex-col gap-2 flex-1">
-                      <span className="text-xs text-brand-teal font-medium uppercase tracking-wide">
+                      <span className="text-xs text-brand-teal font-medium tracking-[0.01em]">
                         {p.categoryLabel}
                       </span>
                       <h3 className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2">

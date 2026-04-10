@@ -70,7 +70,7 @@ export default async function BlogIndexPage() {
         </div>
 
         <div className="page-surface p-6 md:p-8">
-          <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">{pageTitle}</h1>
+          <h1 className="text-3xl font-bold text-slate-900 md:text-4xl">{pageTitle}</h1>
           <p className="mt-3 max-w-3xl text-slate-700">{pageIntro}</p>
 
           <div className="mt-8 grid gap-6 md:grid-cols-3">

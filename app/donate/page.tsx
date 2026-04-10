@@ -16,7 +16,7 @@ export default function DonatePage() {
     <>
       <Header />
       <main className="mx-auto max-w-4xl px-4 py-10 md:px-6">
-        <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">Support Information</h1>
+        <h1 className="text-3xl font-bold text-slate-900 md:text-4xl">Support Information</h1>
         <p className="mt-4 text-base leading-7 text-slate-700">
           This website is a supporting reference resource and does not accept donations.
         </p>

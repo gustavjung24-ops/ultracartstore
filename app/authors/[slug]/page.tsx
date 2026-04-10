@@ -53,7 +53,7 @@ function renderStringField(label: string, value: string) {
 
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
-      <h2 className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{label}</h2>
+      <h2 className="text-sm font-semibold tracking-[0.01em] text-[#0f5c73]">{label}</h2>
       <p className="mt-2 text-sm leading-7 text-slate-700">{value}</p>
     </section>
   );
@@ -68,7 +68,7 @@ function renderListField(label: string, items: string[]) {
 
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
-      <h2 className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{label}</h2>
+      <h2 className="text-sm font-semibold tracking-[0.01em] text-[#0f5c73]">{label}</h2>
       <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
         {cleaned.map((item) => (
           <li key={`${label}-${item}`} className="flex gap-2">
@@ -90,7 +90,7 @@ function renderLinkListField(label: string, items: string[]) {
 
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
-      <h2 className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{label}</h2>
+      <h2 className="text-sm font-semibold tracking-[0.01em] text-[#0f5c73]">{label}</h2>
       <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
         {cleaned.map((item) => (
           <li key={`${label}-${item}`}>
@@ -144,7 +144,7 @@ export default async function AuthorProfilePage({ params }: Props) {
               <AuthorAvatar author={author} size="lg" />
 
               <div>
-                <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">{author.fullName}</h1>
+                <h1 className="text-3xl font-bold text-slate-900 md:text-4xl">{author.fullName}</h1>
                 <p className="mt-2 text-base text-slate-700">{author.headline}</p>
               </div>
             </div>

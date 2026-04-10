@@ -82,7 +82,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
           {/* Ná»™i dung chÃ­nh */}
           <div className="flex-1 min-w-0">
-            <h1 className="text-brand-teal font-bold text-2xl pb-3 mb-2 border-b border-gray-200 uppercase tracking-wide">
+            <h1 className="text-brand-teal text-3xl font-semibold leading-tight pb-3 mb-2 border-b border-gray-200">
               {cat.label}
             </h1>
             <p className="text-gray-500 text-sm mb-6">{cat.description}</p>

@@ -83,8 +83,8 @@ export default async function HomePage() {
 
               <div className="flex items-center bg-[radial-gradient(circle_at_top_left,#1f7390_0%,#0f5c73_58%,#0c4a5e_100%)] px-5 py-8 text-white md:px-10 md:py-14">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#ddbb83]">{homeUi.victory}</p>
-                  <h1 className="home-hero-title mt-2.5 text-3xl font-extrabold leading-tight text-white sm:text-4xl md:mt-3 md:text-5xl">
+                  <p className="text-[11px] font-semibold tracking-[0.01em] text-[#ddbb83] md:text-xs">{homeUi.victory}</p>
+                  <h1 className="home-hero-title mt-2.5 text-3xl font-bold leading-tight text-white sm:text-4xl md:mt-3 md:text-5xl">
                     {homeUi.heroTitle}
                   </h1>
                   <p className="home-hero-copy mt-4 max-w-xl text-base leading-8 text-slate-100 md:mt-5 md:text-lg">
@@ -93,7 +93,7 @@ export default async function HomePage() {
                   <div className="mt-6 md:mt-8">
                     <Link
                       href={heroCtaHref}
-                      className="rounded-full border border-white/45 px-6 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white no-underline transition hover:bg-white/10 md:px-7 md:py-3 md:text-sm"
+                      className="rounded-full border border-white/45 px-6 py-2.5 text-sm font-semibold tracking-[0.01em] text-white no-underline transition hover:bg-white/10 md:px-7 md:py-3"
                     >
                       {locale.common.learnMore}
                     </Link>
@@ -118,12 +118,12 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-4 md:p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{story.label}</p>
-                  <h3 className="home-card-title mt-2 line-clamp-2 text-xl font-bold leading-tight text-slate-900">{story.title}</h3>
+                  <p className="text-xs font-semibold tracking-[0.01em] text-[#0f5c73]">{story.label}</p>
+                  <h3 className="home-card-title mt-2 line-clamp-2 text-xl font-semibold leading-tight text-slate-900">{story.title}</h3>
                   <p className="home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 text-slate-600 md:mt-3">{story.summary}</p>
                   <StoryLink
                     story={story}
-                    className="mt-4 inline-block text-sm font-bold uppercase tracking-[0.08em] text-[#0f5c73] no-underline hover:underline"
+                    className="mt-4 inline-block text-sm font-semibold tracking-[0.01em] text-[#0f5c73] no-underline hover:underline"
                   >
                     {locale.common.readMore}
                   </StoryLink>
@@ -150,12 +150,12 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-5 md:p-7">
-                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{feed.newsEventsLead.label}</p>
-                  <h3 className="home-card-title mt-2 text-2xl font-bold text-slate-900 md:text-3xl">{feed.newsEventsLead.title}</h3>
+                  <p className="text-xs font-semibold tracking-[0.01em] text-[#0f5c73]">{feed.newsEventsLead.label}</p>
+                  <h3 className="home-card-title mt-2 text-2xl font-semibold text-slate-900 md:text-3xl">{feed.newsEventsLead.title}</h3>
                   <p className="home-card-copy mt-3 text-sm leading-7 text-slate-600">{feed.newsEventsLead.summary}</p>
                   <StoryLink
                     story={feed.newsEventsLead}
-                    className="mt-4 inline-block text-sm font-bold uppercase tracking-[0.08em] text-[#0f5c73] no-underline hover:underline"
+                    className="mt-4 inline-block text-sm font-semibold tracking-[0.01em] text-[#0f5c73] no-underline hover:underline"
                   >
                     {locale.common.readMore}
                   </StoryLink>
@@ -177,8 +177,8 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.07em] text-[#0f5c73]">{story.label}</p>
-                  <h4 className="home-card-title mt-2 line-clamp-2 text-base font-bold text-slate-900">{story.title}</h4>
+                  <p className="text-xs font-semibold tracking-[0.01em] text-[#0f5c73]">{story.label}</p>
+                  <h4 className="home-card-title mt-2 line-clamp-2 text-base font-semibold text-slate-900">{story.title}</h4>
                   <StoryLink story={story} className="mt-3 inline-block text-sm font-semibold text-[#0f5c73] no-underline hover:underline">
                     {locale.common.readMore}
                   </StoryLink>
@@ -202,7 +202,7 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-4 md:p-5">
-                  <h3 className="home-card-title text-xl font-bold text-slate-900">{section.title}</h3>
+                  <h3 className="home-card-title text-xl font-semibold text-slate-900">{section.title}</h3>
                   <p className="home-card-copy mt-2.5 text-sm leading-7 text-slate-600 md:mt-3">{section.summary}</p>
                   <div className="mt-3.5 space-y-3 md:mt-4">
                     {section.stories.map((story) => (
@@ -223,7 +223,7 @@ export default async function HomePage() {
                       </StoryLink>
                     ))}
                   </div>
-                  <Link href={section.href} className="mt-4 inline-block text-sm font-bold uppercase tracking-[0.08em] text-[#0f5c73] no-underline hover:underline">
+                  <Link href={section.href} className="mt-4 inline-block text-sm font-semibold tracking-[0.01em] text-[#0f5c73] no-underline hover:underline">
                     {homeUi.openSection}
                   </Link>
                 </div>
@@ -239,7 +239,7 @@ export default async function HomePage() {
               <p className="home-hero-copy mt-3 text-base leading-8 text-slate-700 md:mt-4 md:text-lg">{homeUi.impactFallbackSummary}</p>
               <Link
                 href="/about-us"
-                className="mt-5 inline-block rounded-full bg-[#0f5c73] px-6 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white no-underline hover:opacity-90 md:mt-6 md:py-3 md:text-sm"
+                className="mt-5 inline-block rounded-full bg-[#0f5c73] px-6 py-2.5 text-sm font-semibold tracking-[0.01em] text-white no-underline hover:opacity-90 md:mt-6 md:py-3"
               >
                 {locale.common.learnMore}
               </Link>
@@ -274,7 +274,7 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="home-card-title line-clamp-2 text-base font-bold text-gray-900">{story.title}</h3>
+                  <h3 className="home-card-title line-clamp-2 text-base font-semibold text-gray-900">{story.title}</h3>
                   <p className="home-card-copy mt-2 line-clamp-3 text-sm text-gray-600">{story.summary}</p>
                   <StoryLink story={story} className="mt-3 inline-block text-sm font-semibold text-[#0f5c73] hover:underline no-underline">
                     {locale.common.readMore}
@@ -290,7 +290,7 @@ export default async function HomePage() {
             <h2 className="home-section-title text-3xl font-bold md:text-4xl">{locale.common.supportOurMission}</h2>
             <p className="home-hero-copy mx-auto mt-3 max-w-3xl text-slate-200 md:mt-4">{homeUi.supportFallbackSummary}</p>
             <div className="mt-5 md:mt-6">
-              <Link href="/about-us/our-victories" className="inline-block rounded-full border border-white/40 px-7 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-white/10 no-underline md:px-8 md:py-3 md:text-sm">
+              <Link href="/about-us/our-victories" className="inline-block rounded-full border border-white/40 px-7 py-2.5 text-sm font-semibold tracking-[0.01em] text-white transition hover:bg-white/10 no-underline md:px-8 md:py-3">
                 Xem nội dung
               </Link>
             </div>

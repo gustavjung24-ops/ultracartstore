@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="max-w-3xl">
-          <h1 className="text-brand-teal font-bold text-2xl pb-3 mb-6 border-b border-gray-200 uppercase tracking-wide">
+          <h1 className="text-brand-teal text-3xl font-semibold leading-tight pb-3 mb-6 border-b border-gray-200">
             ChÃ­nh sÃ¡ch báº£o máº­t
           </h1>
 

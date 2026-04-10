@@ -17,7 +17,7 @@ export default function SidebarMenu({
     <aside className="space-y-6">
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
         <div className="bg-brand-dark px-4 py-3">
-          <h2 className="text-brand-teal font-semibold text-sm uppercase tracking-wide">
+          <h2 className="text-brand-teal text-sm font-semibold tracking-[0.01em]">
             {mainMenuHeading}
           </h2>
         </div>
@@ -51,7 +51,7 @@ export default function SidebarMenu({
 
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
         <div className="bg-brand-mid px-4 py-3">
-          <h2 className="text-white font-semibold text-sm uppercase tracking-wide">
+          <h2 className="text-white text-sm font-semibold tracking-[0.01em]">
             {helpMenuHeading}
           </h2>
         </div>
