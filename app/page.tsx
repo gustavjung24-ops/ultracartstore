@@ -95,8 +95,30 @@ const ARTICLE_TITLE_TEXT_BY_PATH: ArticleTitleTextByPath = {
   },
 };
 
+function normalizeStoryPath(path: string): string {
+  const trimmed = path.trim();
+  if (!trimmed) {
+    return "";
+  }
+
+  let pathname = trimmed;
+  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+    try {
+      pathname = new URL(trimmed).pathname;
+    } catch {
+      pathname = trimmed;
+    }
+  }
+
+  const normalizedPath = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  const withoutTrailingSlash =
+    normalizedPath.length > 1 ? normalizedPath.replace(/\/+$/, "") : normalizedPath;
+
+  return withoutTrailingSlash.toLowerCase();
+}
+
 function getArticleTitleOverlaySrc(path: string, lang: OverlayLanguage): string | null {
-  const overlay = ARTICLE_TITLE_OVERLAY_BY_PATH[path];
+  const overlay = ARTICLE_TITLE_OVERLAY_BY_PATH[normalizeStoryPath(path)];
   if (!overlay) {
     return null;
   }
@@ -105,7 +127,7 @@ function getArticleTitleOverlaySrc(path: string, lang: OverlayLanguage): string 
 }
 
 function getArticleTitleAccessibleText(path: string, lang: OverlayLanguage, fallbackTitle: string): string {
-  return ARTICLE_TITLE_TEXT_BY_PATH[path]?.[lang] ?? fallbackTitle;
+  return ARTICLE_TITLE_TEXT_BY_PATH[normalizeStoryPath(path)]?.[lang] ?? fallbackTitle;
 }
 
 type ArticleCardTitleProps = {
