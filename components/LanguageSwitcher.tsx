@@ -5,11 +5,15 @@ import { type Language } from '@/lib/translations';
 interface LanguageSwitcherProps {
   language?: Language;
   onLanguageChange?: (lang: Language) => void;
+  englishLabel?: string;
+  vietnameseLabel?: string;
 }
 
 export default function LanguageSwitcher({
   language = 'vi',
   onLanguageChange,
+  englishLabel = 'English',
+  vietnameseLabel = 'Vietnamese',
 }: LanguageSwitcherProps) {
   const handleChange = (lang: Language) => {
     localStorage.setItem('language', lang);
@@ -31,7 +35,7 @@ export default function LanguageSwitcher({
             : 'text-gray-700 hover:text-gray-900'
         }`}
       >
-        ENGLISH
+        {englishLabel}
       </button>
       <button
         onClick={() => handleChange('vi')}
@@ -41,7 +45,7 @@ export default function LanguageSwitcher({
             : 'text-gray-700 hover:text-gray-900'
         }`}
       >
-        {"TI\u1ebeNG VI\u1ec6T"}
+        {vietnameseLabel}
       </button>
     </div>
   );

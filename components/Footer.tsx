@@ -59,6 +59,14 @@ export default function Footer({ initialLanguage }: FooterProps) {
   );
 
   const footerAuthors = useMemo(() => getAuthors().slice(0, 3), []);
+  const footerQuickLinks = useMemo(
+    () => [
+      { href: "/news/blog", label: locale.mainNav.news },
+      { href: "/authors", label: locale.mainNav.authors },
+      { href: "/contact", label: locale.utilityNav.contact },
+    ],
+    [locale],
+  );
 
   return (
     <footer className="mt-16 border-t border-[#dbe5ec] bg-white text-[#1f2d3d]">
@@ -76,15 +84,11 @@ export default function Footer({ initialLanguage }: FooterProps) {
             </Link>
             <p className="mt-4 text-[15px] leading-7 text-[#4a6072]">{locale.site.tagline}</p>
             <div className="mt-4 flex gap-3 text-[15px] font-medium">
-              <a href="https://www.facebook.com/PCRM.org" target="_blank" rel="noreferrer" className="no-underline hover:text-[#007fab]">
-                Facebook
-              </a>
-              <a href="https://www.instagram.com/pcrmhealth/" target="_blank" rel="noreferrer" className="no-underline hover:text-[#007fab]">
-                Instagram
-              </a>
-              <a href="https://www.youtube.com/user/PCRMvideos" target="_blank" rel="noreferrer" className="no-underline hover:text-[#007fab]">
-                YouTube
-              </a>
+              {footerQuickLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="no-underline hover:text-[#007fab]">
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -122,14 +126,12 @@ export default function Footer({ initialLanguage }: FooterProps) {
 
           <div>
             <h4 className="mb-4 text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.utilityNav.contact}</h4>
-            <p className="text-sm leading-relaxed text-[#4a6072]">
-              Kênh liên hệ chính thức dành cho phản hồi nội dung và trao đổi học thuật.
-            </p>
+            <p className="text-sm leading-relaxed text-[#4a6072]">{locale.footer.contactDescription}</p>
             <Link
               href="/contact"
-              className="mt-3 inline-flex rounded-full border border-[#0f5c73] px-4 py-2 text-sm font-semibold tracking-[0.01em] text-[#0f5c73] no-underline transition hover:bg-[#0f5c73] hover:text-white"
+              className="mt-3 inline-flex rounded-full border border-[#0f5c73] px-4 py-2 text-sm font-semibold tracking-[0.005em] text-[#0f5c73] no-underline transition hover:bg-[#0f5c73] hover:text-white"
             >
-              Đến trang liên hệ
+              {locale.footer.contactCta}
             </Link>
             <div className="mt-4 border-t border-[#e2e8f0] pt-3">
               <p className="text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.footerAuthor.title}</p>

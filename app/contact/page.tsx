@@ -27,7 +27,7 @@ export default async function ContactPage() {
   return (
     <>
       <Header initialLanguage={lang} />
-      <Breadcrumbs items={breadcrumbs} />
+      <Breadcrumbs items={breadcrumbs} ariaLabel={locale.breadcrumbs.ariaLabel} />
       <ContactFormClient contactUi={contactUi} />
 
       <Footer initialLanguage={lang} />

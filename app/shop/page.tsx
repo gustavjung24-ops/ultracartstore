@@ -17,21 +17,20 @@ export const metadata: Metadata = buildPageMetadata({
   language: "vi",
 });
 
-const breadcrumbs = [
-  { label: "Trang chá»§", href: "/" },
-  { label: "TÃ i nguyÃªn" },
-];
-
-export default async function ShopPage() {
+export default async function ResourceLibraryPage() {
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
   const { products, categories, mainMenu, helpMenu } = await getStoreData();
   const healthTopicProducts = products.filter((product) => product.category === "health-topics");
+  const breadcrumbs = [
+    { label: locale.common.home, href: "/" },
+    { label: locale.common.resources },
+  ];
 
   return (
     <>
       <Header />
-      <Breadcrumbs items={breadcrumbs} />
+      <Breadcrumbs items={breadcrumbs} ariaLabel={locale.breadcrumbs.ariaLabel} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col lg:flex-row gap-8">

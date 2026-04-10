@@ -37,6 +37,8 @@ body {
   line-height: 1.68;
   overscroll-behavior-y: auto;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background:
     radial-gradient(circle at top right, #f4efe2 0%, transparent 45%),
     radial-gradient(circle at bottom left, #e9f1f4 0%, transparent 40%),
@@ -51,7 +53,7 @@ h5,
 h6 {
   color: var(--color-text);
   font-family: var(--font-body), "Segoe UI", "Noto Sans", Arial, system-ui, sans-serif;
-  letter-spacing: 0.001em;
+  letter-spacing: 0;
 }
 
 h1 {

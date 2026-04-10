@@ -1,9 +1,9 @@
-import {
+﻿import {
   getAllPcrmPages,
   getLocalizedPcrmPageContent,
   getPcrmPageByPath as getPcrmResolvedPageByPath,
 } from "./pcrm-content";
-import { type Language } from './translations';
+import { type Language } from "./translations";
 
 export type PageContent = {
   url?: string;
@@ -49,7 +49,7 @@ function normalizePagePathInput(pageUrl: string): string {
   return clean.startsWith("/") ? clean : `/${clean}`;
 }
 
-export const getPageTranslation = (pageUrl: string, language: Language = 'en'): PageContent | null => {
+export const getPageTranslation = (pageUrl: string, language: Language = "en"): PageContent | null => {
   const page = getPcrmResolvedPageByPath(normalizePagePathInput(pageUrl));
 
   if (!page) return null;
@@ -72,32 +72,30 @@ export const getPageTranslation = (pageUrl: string, language: Language = 'en'): 
   };
 };
 
-export const translateText = (text: string | undefined | null, language: Language = 'en'): string => {
-  if (!text) return '';
-  if (language === 'en') return text;
-  
-  // Simple Vietnamese translations for common phrases
+export const translateText = (text: string | undefined | null, language: Language = "en"): string => {
+  if (!text) return "";
+  if (language === "en") return text;
+
   const dictionary: Record<string, string> = {
-    'Home': 'Trang chủ',
-    'About': 'Về chúng tôi',
-    'About Us': 'Về chúng tôi',
-    'News': 'Tin tức',
-    'Blog': 'Blog',
-    'Contact': 'Liên hệ',
-    'Donate': 'Quyên góp',
-    'Products': 'Sản phẩm',
-    'Shop': 'Tài nguyên',
-    'Nutrition': 'Dinh dưỡng',
-    'Health': 'Sức khỏe',
-    'Medical': 'Y tế',
-    'Research': 'Nghiên cứu',
-    'Learn More': 'Tìm hiểu thêm',
-    'Read More': 'Đọc tiếp',
-    'back': 'quay lại',
+    Home: "Trang chủ",
+    About: "Giới thiệu",
+    "About Us": "Về chúng tôi",
+    News: "Tin tức",
+    Blog: "Blog",
+    Contact: "Liên hệ",
+    Products: "Sản phẩm",
+    Nutrition: "Dinh dưỡng",
+    Health: "Sức khỏe",
+    Medical: "Y khoa",
+    Research: "Nghiên cứu",
+    Resources: "Tài nguyên",
+    "Learn More": "Tìm hiểu thêm",
+    "Read More": "Đọc thêm",
+    back: "quay lại",
   };
 
   for (const [en, vi] of Object.entries(dictionary)) {
-    const regex = new RegExp(`\\b${en}\\b`, 'gi');
+    const regex = new RegExp(`\\b${en}\\b`, "gi");
     if (regex.test(text)) {
       text = text.replace(regex, vi);
     }

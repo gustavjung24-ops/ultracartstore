@@ -1,4 +1,4 @@
-import translatedAll from "@/pcrm_translated/translated_all.json";
+﻿import translatedAll from "@/pcrm_translated/translated_all.json";
 import generatedSourcePages from "@/pcrm_translated/generated_source_pages.json";
 import { manualPages } from "@/lib/manual-pages";
 
@@ -109,7 +109,7 @@ const QA_VISIBLE_NEWS_ARTICLE_RULES: Record<string, VisibleNewsArticleQaRule> = 
   [HOMEPAGE_FEATURED_ARTICLE_PATHS[0]]: {
     cleanTopSectionNoise: true,
     cleanIntroSummary: true,
-    viTitleOverride: "Hiệp hội Tim mạch Hoa Kỳ khuyến nghị ưu tiên protein từ thực vật thay vì thịt",
+    viTitleOverride: "Hiá»‡p há»™i Tim máº¡ch Hoa Ká»³ khuyáº¿n nghá»‹ Æ°u tiÃªn protein tá»« thá»±c váº­t thay vÃ¬ thá»‹t",
   },
   [HOMEPAGE_FEATURED_ARTICLE_PATHS[1]]: {
     cleanTopSectionNoise: true,
@@ -196,10 +196,10 @@ const MEMBERSHIP_CTA_EN = "Make your 2026 membership gift today!";
 const MEMBERSHIP_CTA_VI = "H\u00e3y t\u1eb7ng qu\u00e0 th\u00e0nh vi\u00ean n\u0103m 2026 ngay h\u00f4m nay!";
 
 const PUBLIC_WORDING_BLOCKLIST = [
-  "Support our work. Become a member.",
-  "Become a member",
-  "Physicians Committee Shop",
-  "Support The Exam Room Podcast and Physicians Committee.",
+  "support our work. become a member.",
+  "become a member",
+  "physicians committee shop",
+  "support the exam room podcast and physicians committee.",
   "H\u1ed7 tr\u1ee3 c\u00f4ng vi\u1ec7c c\u1ee7a ch\u00fang t\u00f4i. Tr\u1edf th\u00e0nh th\u00e0nh vi\u00ean.",
   "Tr\u1edf th\u00e0nh th\u00e0nh vi\u00ean",
   "C\u1eeda h\u00e0ng \u1ee6y ban B\u00e1c s\u0129",
@@ -231,8 +231,8 @@ const QA_VISIBLE_NEWS_ARTICLE_PARAGRAPH_NOISE_EN = new Set([
 
 const QA_VISIBLE_NEWS_ARTICLE_PARAGRAPH_NOISE_VI = new Set([
   MEMBERSHIP_CTA_VI,
-  "Tin tức sức khỏe và dinh dưỡng",
-  "Đăng ký nhận Tin tức y tế mới nhất của Ủy ban bác sĩ.",
+  "Tin tá»©c sá»©c khá»e vÃ  dinh dÆ°á»¡ng",
+  "ÄÄƒng kÃ½ nháº­n Tin tá»©c y táº¿ má»›i nháº¥t cá»§a á»¦y ban bÃ¡c sÄ©.",
 ]);
 
 const QA_LINK_EXCLUDE_BY_PATH: Record<string, Set<string>> = {
@@ -360,57 +360,57 @@ const QA_REQUIRED_LINK_PATHS_BY_PAGE: Record<string, string[]> = {
 const QA_FALLBACK_LINK_LABELS_BY_PATH: Record<string, { en: string; vi: string }> = {
   "/clinical-research/recruitment": {
     en: "Type 1 Diabetes Research Study",
-    vi: "Nghiên cứu bệnh tiểu đường loại 1",
+    vi: "NghiÃªn cá»©u bá»‡nh tiá»ƒu Ä‘Æ°á»ng loáº¡i 1",
   },
   "/clinical-research/endometriosis": {
     en: "Endometriosis Study",
-    vi: "Nghiên cứu lạc nội mạc tử cung",
+    vi: "NghiÃªn cá»©u láº¡c ná»™i máº¡c tá»­ cung",
   },
   "/clinical-research/fighting-hot-flashes-with-diet": {
     en: "Fighting Hot Flashes With Diet",
-    vi: "Kiểm soát bốc hỏa bằng chế độ ăn",
+    vi: "Kiá»ƒm soÃ¡t bá»‘c há»a báº±ng cháº¿ Ä‘á»™ Äƒn",
   },
   "/ethical-science/ethical-education-and-training/surgery-training": {
     en: "Replacing Animals in Surgery Training",
-    vi: "Thay thế động vật trong đào tạo phẫu thuật",
+    vi: "Thay tháº¿ Ä‘á»™ng váº­t trong Ä‘Ã o táº¡o pháº«u thuáº­t",
   },
   "/ethical-science/ethical-education-and-training/paramedic-training": {
     en: "Paramedic Training",
-    vi: "Đào tạo nhân viên cấp cứu",
+    vi: "ÄÃ o táº¡o nhÃ¢n viÃªn cáº¥p cá»©u",
   },
   "/ethical-science/animals-in-medical-research": {
     en: "Animals in Medical Research",
-    vi: "Động vật trong nghiên cứu y khoa",
+    vi: "Äá»™ng váº­t trong nghiÃªn cá»©u y khoa",
   },
   "/ethical-science/animal-testing-and-alternatives": {
     en: "Animal Testing and Alternatives",
-    vi: "Thử nghiệm trên động vật và giải pháp thay thế",
+    vi: "Thá»­ nghiá»‡m trÃªn Ä‘á»™ng váº­t vÃ  giáº£i phÃ¡p thay tháº¿",
   },
   "/take-action": {
-    en: "Take Action",
-    vi: "Hãy hành động",
+    en: "Practical Guides",
+    vi: "Hướng dẫn thực hành",
   },
 };
 
 const QA_VI_LINK_TEXT_REPLACEMENTS: Record<string, string> = {
-  "Khả năng lãnh đạo": "Ban lãnh đạo",
-  "Nghề nghiệp": "Tuyển dụng",
-  "Cách cho đi": "Thông tin hỗ trợ",
-  "Chủ tịch Hội đồng Tổng thống": "Chủ tịch Hội đồng Chủ tịch",
-  "Đánh dấu Hammond, MD": "Mark Hammond, MD",
-  "Ca sĩ Mikalah, JD, LLM": "Mikalah Singer, JD, LLM",
-  "Nhà xuất bản Deborah Dubow, Esq.": "Deborah Dubow Press, Esq.",
-  "Nô-ê Praamsma, MS, RDN": "Noah Praamsma, MS, RDN",
-  "bệnh Alzheimer": "Bệnh Alzheimer",
-  "Bệnh ung thư": "Ung thư",
-  "Động vật trong nghiên cứu y học": "Động vật trong nghiên cứu y khoa",
-  "Thử nghiệm và thay thế động vật": "Thử nghiệm trên động vật và giải pháp thay thế",
-  "Đào tạo y tế": "Đào tạo nhân viên cấp cứu",
-  "tin tức phát hành": "Thông cáo báo chí",
-  "Chống lại cơn bốc hỏa bằng chế độ ăn kiêng": "Kiểm soát bốc hỏa bằng chế độ ăn",
-  "Ủy ban bác sĩ,": "Thông cáo báo chí",
-  "Chế độ ăn thuần chay có liên quan đến việc giảm nguy cơ ung thư vú và nhiều tin tức về ung thư hơn":
-    "Chế độ ăn thuần chay có liên quan đến việc giảm nguy cơ ung thư vú và thêm tin tức về ung thư",
+  "Kháº£ nÄƒng lÃ£nh Ä‘áº¡o": "Ban lÃ£nh Ä‘áº¡o",
+  "Nghá» nghiá»‡p": "Tuyá»ƒn dá»¥ng",
+  "CÃ¡ch cho Ä‘i": "ThÃ´ng tin há»— trá»£",
+  "Chá»§ tá»‹ch Há»™i Ä‘á»“ng Tá»•ng thá»‘ng": "Chá»§ tá»‹ch Há»™i Ä‘á»“ng Chá»§ tá»‹ch",
+  "ÄÃ¡nh dáº¥u Hammond, MD": "Mark Hammond, MD",
+  "Ca sÄ© Mikalah, JD, LLM": "Mikalah Singer, JD, LLM",
+  "NhÃ  xuáº¥t báº£n Deborah Dubow, Esq.": "Deborah Dubow Press, Esq.",
+  "NÃ´-Ãª Praamsma, MS, RDN": "Noah Praamsma, MS, RDN",
+  "bá»‡nh Alzheimer": "Bá»‡nh Alzheimer",
+  "Bá»‡nh ung thÆ°": "Ung thÆ°",
+  "Äá»™ng váº­t trong nghiÃªn cá»©u y há»c": "Äá»™ng váº­t trong nghiÃªn cá»©u y khoa",
+  "Thá»­ nghiá»‡m vÃ  thay tháº¿ Ä‘á»™ng váº­t": "Thá»­ nghiá»‡m trÃªn Ä‘á»™ng váº­t vÃ  giáº£i phÃ¡p thay tháº¿",
+  "ÄÃ o táº¡o y táº¿": "ÄÃ o táº¡o nhÃ¢n viÃªn cáº¥p cá»©u",
+  "tin tá»©c phÃ¡t hÃ nh": "ThÃ´ng cÃ¡o bÃ¡o chÃ­",
+  "Chá»‘ng láº¡i cÆ¡n bá»‘c há»a báº±ng cháº¿ Ä‘á»™ Äƒn kiÃªng": "Kiá»ƒm soÃ¡t bá»‘c há»a báº±ng cháº¿ Ä‘á»™ Äƒn",
+  "á»¦y ban bÃ¡c sÄ©,": "ThÃ´ng cÃ¡o bÃ¡o chÃ­",
+  "Cháº¿ Ä‘á»™ Äƒn thuáº§n chay cÃ³ liÃªn quan Ä‘áº¿n viá»‡c giáº£m nguy cÆ¡ ung thÆ° vÃº vÃ  nhiá»u tin tá»©c vá» ung thÆ° hÆ¡n":
+    "Cháº¿ Ä‘á»™ Äƒn thuáº§n chay cÃ³ liÃªn quan Ä‘áº¿n viá»‡c giáº£m nguy cÆ¡ ung thÆ° vÃº vÃ  thÃªm tin tá»©c vá» ung thÆ°",
 };
 
 const BLOG_PARAGRAPH_NOISE_EN = new Set([
@@ -422,29 +422,29 @@ const BLOG_PARAGRAPH_NOISE_EN = new Set([
 ]);
 
 const BLOG_PARAGRAPH_NOISE_VI = new Set([
-  "Blog | Tác động & Vận động",
+  "Blog | TÃ¡c Ä‘á»™ng & Váº­n Ä‘á»™ng",
   "Xavier Toledo, MS, RD, LDN",
-  "Phòng ngừa bắt đầu từ hôm nay. Tham gia Khởi động thuần chay 21 ngày.",
-  "Khỏe mạnh nhờ dinh dưỡng tốt",
-  "Các lớp học Food for Life hướng dẫn bạn cách cải thiện sức khỏe của mình bằng chế độ ăn dựa trên thực vật.",
+  "PhÃ²ng ngá»«a báº¯t Ä‘áº§u tá»« hÃ´m nay. Tham gia Khá»Ÿi Ä‘á»™ng thuáº§n chay 21 ngÃ y.",
+  "Khá»e máº¡nh nhá» dinh dÆ°á»¡ng tá»‘t",
+  "CÃ¡c lá»›p há»c Food for Life hÆ°á»›ng dáº«n báº¡n cÃ¡ch cáº£i thiá»‡n sá»©c khá»e cá»§a mÃ¬nh báº±ng cháº¿ Ä‘á»™ Äƒn dá»±a trÃªn thá»±c váº­t.",
 ]);
 
 const QA_VI_PARAGRAPH_REPLACEMENTS_BY_PATH: Record<string, Record<string, string>> = {
   "/about-us": {
-    "Ủy ban Bác sĩ được dành riêng để cứu và cải thiện cuộc sống của con người và động vật thông qua chế độ ăn dựa trên thực vật và nghiên cứu khoa học có đạo đức và hiệu quả.":
-      "Ủy ban Bác sĩ cam kết cứu sống và cải thiện cuộc sống của con người và động vật thông qua chế độ ăn dựa trên thực vật cùng nghiên cứu khoa học hiệu quả, có đạo đức.",
+    "á»¦y ban BÃ¡c sÄ© Ä‘Æ°á»£c dÃ nh riÃªng Ä‘á»ƒ cá»©u vÃ  cáº£i thiá»‡n cuá»™c sá»‘ng cá»§a con ngÆ°á»i vÃ  Ä‘á»™ng váº­t thÃ´ng qua cháº¿ Ä‘á»™ Äƒn dá»±a trÃªn thá»±c váº­t vÃ  nghiÃªn cá»©u khoa há»c cÃ³ Ä‘áº¡o Ä‘á»©c vÃ  hiá»‡u quáº£.":
+      "á»¦y ban BÃ¡c sÄ© cam káº¿t cá»©u sá»‘ng vÃ  cáº£i thiá»‡n cuá»™c sá»‘ng cá»§a con ngÆ°á»i vÃ  Ä‘á»™ng váº­t thÃ´ng qua cháº¿ Ä‘á»™ Äƒn dá»±a trÃªn thá»±c váº­t cÃ¹ng nghiÃªn cá»©u khoa há»c hiá»‡u quáº£, cÃ³ Ä‘áº¡o Ä‘á»©c.",
   },
   "/ethical-science": {
-    "Chuyển đổi từ động vật sang các phương pháp liên quan đến con người":
-      "Chuyển đổi từ việc sử dụng động vật sang các phương pháp phù hợp với con người",
-    "Các phương pháp vô địch để thay thế thử nghiệm trên động vật":
-      "Thúc đẩy các phương pháp thay thế thử nghiệm trên động vật",
+    "Chuyá»ƒn Ä‘á»•i tá»« Ä‘á»™ng váº­t sang cÃ¡c phÆ°Æ¡ng phÃ¡p liÃªn quan Ä‘áº¿n con ngÆ°á»i":
+      "Chuyá»ƒn Ä‘á»•i tá»« viá»‡c sá»­ dá»¥ng Ä‘á»™ng váº­t sang cÃ¡c phÆ°Æ¡ng phÃ¡p phÃ¹ há»£p vá»›i con ngÆ°á»i",
+    "CÃ¡c phÆ°Æ¡ng phÃ¡p vÃ´ Ä‘á»‹ch Ä‘á»ƒ thay tháº¿ thá»­ nghiá»‡m trÃªn Ä‘á»™ng váº­t":
+      "ThÃºc Ä‘áº©y cÃ¡c phÆ°Æ¡ng phÃ¡p thay tháº¿ thá»­ nghiá»‡m trÃªn Ä‘á»™ng váº­t",
   },
 };
 
 const QA_HUB_VI_TITLE_OVERRIDES: Record<string, string> = {
-  "/good-nutrition": "Dinh dưỡng lành mạnh",
-  "/ethical-science": "Khoa học có đạo đức",
+  "/good-nutrition": "Dinh dÆ°á»¡ng lÃ nh máº¡nh",
+  "/ethical-science": "Khoa há»c cÃ³ Ä‘áº¡o Ä‘á»©c",
 };
 
 // Source-of-truth resolution for each normalized path.
@@ -1012,7 +1012,7 @@ function applyHubPageQaFixes(page: PcrmResolvedPage): PcrmResolvedPage {
     // Keep intro stable: do not repeat the same summary paragraph under the page title.
     paragraphsEn = trimLeadingParagraphIfDuplicate(paragraphsEn, descriptionEn);
     paragraphsVi = trimLeadingParagraphIfDuplicate(paragraphsVi, descriptionVi);
-    descriptionVi = descriptionVi.replace("kiến ​​thức", "kiến thức");
+    descriptionVi = descriptionVi.replace("kiáº¿n â€‹â€‹thá»©c", "kiáº¿n thá»©c");
   }
 
   if (visibleNewsArticleQa?.cleanTopSectionNoise) {
@@ -1495,3 +1495,5 @@ export function toInternalPcrmHref(url: string): { href: string; internal: boole
     return { href: sanitizeExternalLink(trimmed), internal: false };
   }
 }
+
+

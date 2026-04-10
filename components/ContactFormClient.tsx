@@ -24,7 +24,7 @@ export default function ContactFormClient({ contactUi }: ContactFormClientProps)
     const body = encodeURIComponent(
       `${contactUi.emailBodyName}: ${form.name}\n${contactUi.emailBodyEmail}: ${form.email}\n\n${contactUi.emailBodyMessage}:\n${form.message}`,
     );
-    window.location.href = `mailto:fulfillment@PCRM.org?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:yhoclanhmanh@gmail.com?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -36,19 +36,11 @@ export default function ContactFormClient({ contactUi }: ContactFormClientProps)
         </h1>
 
         <p className="text-gray-600 mb-6 leading-relaxed text-sm">
-          {contactUi.shopQuestionsPrefix}{" "}
-          <a href="tel:+12025277306" className="text-brand-teal hover:underline font-medium">
-            202-527-7306
-          </a>
-          , {contactUi.shopQuestionsMiddle}{" "}
-          <a href="mailto:fulfillment@PCRM.org" className="text-brand-teal hover:underline font-medium">
-            fulfillment@PCRM.org
-          </a>
-          . {contactUi.nonShopQuestionsPrefix}{" "}
+          {contactUi.contentQuestionsPrefix}{" "}
           <a href="tel:+12026862210" className="text-brand-teal hover:underline font-medium">
             202-686-2210
-          </a>{" "}
-          {contactUi.orText}{" "}
+          </a>
+          , {contactUi.contentQuestionsMiddle}{" "}
           <a href="mailto:yhoclanhmanh@gmail.com" className="text-brand-teal hover:underline font-medium">
             yhoclanhmanh@gmail.com
           </a>
@@ -126,7 +118,7 @@ export default function ContactFormClient({ contactUi }: ContactFormClientProps)
 
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <a
-            href="https://wa.me/12025277306"
+            href="https://wa.me/12026862210"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 p-4 border border-gray-200 hover:border-brand-teal hover:bg-brand-teal/5 transition-colors"
@@ -138,12 +130,12 @@ export default function ContactFormClient({ contactUi }: ContactFormClientProps)
             </div>
           </a>
           <a
-            href="tel:+12025277306"
+            href="tel:+12026862210"
             className="flex items-center gap-3 p-4 border border-gray-200 hover:border-brand-teal hover:bg-brand-teal/5 transition-colors"
           >
             <span className="text-2xl">📞</span>
             <div>
-              <p className="font-semibold text-sm text-gray-800">202-527-7306</p>
+              <p className="font-semibold text-sm text-gray-800">202-686-2210</p>
               <p className="text-xs text-gray-500">{contactUi.callSubLabel}</p>
             </div>
           </a>

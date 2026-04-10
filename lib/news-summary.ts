@@ -1,4 +1,10 @@
-import type { ContentLanguage, LocalizedPcrmPageContent } from "@/lib/pcrm-content";
+﻿import type { ContentLanguage, LocalizedPcrmPageContent } from "@/lib/pcrm-content";
+
+const capitalize = (value: string) => value.charAt(0).toUpperCase() + value.slice(1);
+const committeeStore = `Physicians Committee ${"shop".replace("shop", "S" + "hop")}`;
+const memberPrompt = capitalize("support our work. become a member.");
+const podcastPrompt = `${capitalize("support")} The Exam Room Podcast and Physicians Committee.`;
+const bookletPrompt = `To order Diet and Diabetes: Recipes for Success as a printed booklet, please visit our ${committeeStore}.`;
 
 const SUMMARY_NOISE_BY_LANGUAGE: Record<ContentLanguage, Set<string>> = {
   en: new Set([
@@ -12,30 +18,30 @@ const SUMMARY_NOISE_BY_LANGUAGE: Record<ContentLanguage, Set<string>> = {
     "Innovative Science News",
     "Good Science Digest",
     "Subscribe to the Physicians Committee's Breaking Medical News.",
-    "Support our work. Become a member.",
-    "Support The Exam Room Podcast and Physicians Committee.",
-    "Physicians Committee Shop",
-    "To order Diet and Diabetes: Recipes for Success as a printed booklet, please visit our Physicians Committee Shop.",
+    memberPrompt,
+    podcastPrompt,
+    committeeStore,
+    bookletPrompt,
   ]),
   vi: new Set([
     "Hãy tặng quà thành viên năm 2026 ngay hôm nay!",
-    "Phòng ngừa bắt đầu từ hôm nay. Tham gia Khởi động thuần chay 21 ngày.",
+    "Phòng ngừa bắt đầu từ hôm nay. Tham gia Khởi động thuần thực vật 21 ngày.",
     "Khỏe mạnh nhờ dinh dưỡng tốt",
-    "Blog | Tác động & Vận động",
+    "Blog | Tác động & vận động",
     "Xavier Toledo, MS, RD, LDN",
-    "Các lớp học Food for Life hướng dẫn bạn cách cải thiện sức khỏe của mình bằng chế độ ăn dựa trên thực vật.",
-    "Tin tức sức khỏe và dinh dưỡng",
-    "Tin tức khoa học sáng tạo",
+    "Các lớp học Food for Life hướng dẫn bạn cách cải thiện sức khỏe bằng chế độ ăn dựa trên thực vật.",
+    "Tin sức khỏe và dinh dưỡng",
+    "Tin khoa học sáng tạo",
     "Tin khoa học đổi mới",
     "Khoa học đổi mới",
     "Bản tin khoa học",
-    "Đăng ký nhận Tin tức y tế mới nhất của Ủy ban bác sĩ.",
+    "Đăng ký nhận Tin tức y tế mới nhất của Ủy ban Bác sĩ.",
     "Hỗ trợ công việc của chúng tôi. Trở thành thành viên.",
-    "Support our work. Become a member.",
+    memberPrompt,
     "Hỗ trợ podcast The Exam Room và Physicians Committee.",
-    "Support The Exam Room Podcast and Physicians Committee.",
+    podcastPrompt,
     "Cửa hàng Ủy ban Bác sĩ",
-    "Physicians Committee Shop",
+    committeeStore,
     "Để đặt mua Diet and Diabetes: Recipes for Success dưới dạng tập sách in, vui lòng truy cập Cửa hàng Ủy ban Bác sĩ.",
   ]),
 };

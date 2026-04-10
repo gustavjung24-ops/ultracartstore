@@ -223,7 +223,15 @@ export default async function DynamicPcrmPage({ params }: Props) {
             </section>
           ) : null}
 
-          {articleAuthor ? <AuthorAboutBox author={articleAuthor} /> : null}
+          {articleAuthor ? (
+            <AuthorAboutBox
+              author={articleAuthor}
+              ui={{
+                aboutLabel: locale.common.aboutAuthor,
+                viewProfileLabel: locale.common.viewAuthorProfile,
+              }}
+            />
+          ) : null}
         </article>
       </main>
       <Footer initialLanguage={lang} />

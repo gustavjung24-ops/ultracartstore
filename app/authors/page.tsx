@@ -27,14 +27,12 @@ export default async function AuthorsPage() {
         <div className="mb-4 text-sm text-slate-500">
           <span>{locale.common.home}</span>
           <span className="mx-2">/</span>
-          <span>Tác giả</span>
+          <span>{locale.authorsPage.title}</span>
         </div>
 
         <section className="page-surface p-6 font-sans md:p-8">
-          <h1 className="text-3xl font-bold text-slate-900 md:text-4xl">Tác giả</h1>
-          <p className="mt-3 max-w-3xl text-slate-700">
-            Danh sách hồ sơ chuyên môn của đội ngũ tác giả, trình bày theo hướng gọn, rõ và học thuật.
-          </p>
+          <h1 className="text-3xl font-bold text-slate-900 md:text-4xl">{locale.authorsPage.title}</h1>
+          <p className="mt-3 max-w-3xl text-slate-700">{locale.authorsPage.description}</p>
 
           <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {authorList.map((author) => (
@@ -44,9 +42,7 @@ export default async function AuthorsPage() {
 
                   <div>
                     <h2 className="text-lg font-bold text-slate-900">{author.displayName}</h2>
-                    <p className="mt-0.5 text-sm font-medium tracking-[0.01em] text-slate-500">
-                      {author.degrees.join(", ")}
-                    </p>
+                    <p className="mt-0.5 text-sm font-medium text-slate-500">{author.degrees.join(", ")}</p>
                   </div>
                 </div>
 
@@ -55,9 +51,9 @@ export default async function AuthorsPage() {
 
                 <Link
                   href={getAuthorProfileHref(author)}
-                  className="mt-4 inline-flex rounded-full border border-[#0f5c73] px-4 py-2 text-sm font-semibold tracking-[0.01em] text-[#0f5c73] no-underline transition hover:bg-[#0f5c73] hover:text-white"
+                  className="mt-4 inline-flex rounded-full border border-[#0f5c73] px-4 py-2 text-sm font-semibold tracking-[0.005em] text-[#0f5c73] no-underline transition hover:bg-[#0f5c73] hover:text-white"
                 >
-                  Xem hồ sơ tác giả
+                  {locale.common.viewAuthorProfile}
                 </Link>
               </article>
             ))}

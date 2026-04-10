@@ -5,10 +5,7 @@ import { notFound } from "next/navigation";
 import AuthorAvatar from "@/components/AuthorAvatar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import {
-  getAuthorBySlug,
-  getAuthors,
-} from "@/lib/authors";
+import { getAuthorBySlug, getAuthors } from "@/lib/authors";
 import { buildPageMetadata, resolveSeoImage } from "@/lib/seo";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
@@ -53,7 +50,7 @@ function renderStringField(label: string, value: string) {
 
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
-      <h2 className="text-sm font-semibold tracking-[0.01em] text-[#0f5c73]">{label}</h2>
+      <h2 className="text-sm font-semibold tracking-[0.005em] text-[#0f5c73]">{label}</h2>
       <p className="mt-2 text-sm leading-7 text-slate-700">{value}</p>
     </section>
   );
@@ -68,7 +65,7 @@ function renderListField(label: string, items: string[]) {
 
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
-      <h2 className="text-sm font-semibold tracking-[0.01em] text-[#0f5c73]">{label}</h2>
+      <h2 className="text-sm font-semibold tracking-[0.005em] text-[#0f5c73]">{label}</h2>
       <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
         {cleaned.map((item) => (
           <li key={`${label}-${item}`} className="flex gap-2">
@@ -90,7 +87,7 @@ function renderLinkListField(label: string, items: string[]) {
 
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
-      <h2 className="text-sm font-semibold tracking-[0.01em] text-[#0f5c73]">{label}</h2>
+      <h2 className="text-sm font-semibold tracking-[0.005em] text-[#0f5c73]">{label}</h2>
       <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
         {cleaned.map((item) => (
           <li key={`${label}-${item}`}>
@@ -124,7 +121,7 @@ export default async function AuthorProfilePage({ params }: Props) {
           </Link>
           <span className="mx-2">/</span>
           <Link href="/authors" className="text-slate-500 no-underline hover:underline">
-            Tác giả
+            {locale.mainNav.authors}
           </Link>
           <span className="mx-2">/</span>
           <span>{author.displayName}</span>
@@ -152,13 +149,13 @@ export default async function AuthorProfilePage({ params }: Props) {
             <p className="mt-6 text-base leading-8 text-slate-700">{author.shortBio}</p>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2">
-              {renderListField("Bằng cấp", author.degrees)}
-              {renderStringField("Chuyên môn", author.specialty)}
-              {renderStringField("Vai trò hiện tại", author.currentRole)}
-              {renderStringField("Tổ chức hiện tại", author.currentOrganization)}
-              {renderStringField("Trọng tâm nghiên cứu", author.professionalFocus)}
-              {renderListField("Cột mốc nổi bật", author.keyCareerMilestones)}
-              {renderLinkListField("Liên kết nguồn hồ sơ", author.profileSourceLinks)}
+              {renderListField(locale.authorProfile.degrees, author.degrees)}
+              {renderStringField(locale.authorProfile.specialty, author.specialty)}
+              {renderStringField(locale.authorProfile.currentRole, author.currentRole)}
+              {renderStringField(locale.authorProfile.currentOrganization, author.currentOrganization)}
+              {renderStringField(locale.authorProfile.professionalFocus, author.professionalFocus)}
+              {renderListField(locale.authorProfile.milestones, author.keyCareerMilestones)}
+              {renderLinkListField(locale.authorProfile.sourceLinks, author.profileSourceLinks)}
             </div>
           </div>
         </article>

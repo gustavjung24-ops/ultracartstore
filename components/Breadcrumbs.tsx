@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 interface BreadcrumbItem {
   label: string;
@@ -7,14 +7,12 @@ interface BreadcrumbItem {
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
+  ariaLabel?: string;
 }
 
-export default function Breadcrumbs({ items }: BreadcrumbsProps) {
+export default function Breadcrumbs({ items, ariaLabel = "Breadcrumb" }: BreadcrumbsProps) {
   return (
-    <nav
-      aria-label="Đường dẫn"
-      className="bg-gray-50 border-b border-gray-200"
-    >
+    <nav aria-label={ariaLabel} className="bg-gray-50 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
         <ol className="flex flex-wrap items-center gap-1 text-sm text-gray-500">
           {items.map((item, index) => (
@@ -28,30 +26,17 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
                   stroke="currentColor"
                   strokeWidth={2}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               )}
               {item.href && index < items.length - 1 ? (
-                <Link
-                  href={item.href}
-                  className="hover:text-brand-teal hover:underline transition-colors"
-                >
+                <Link href={item.href} className="hover:text-brand-teal hover:underline transition-colors">
                   {item.label}
                 </Link>
               ) : (
                 <span
-                  className={
-                    index === items.length - 1
-                      ? "text-gray-700 font-medium"
-                      : ""
-                  }
-                  aria-current={
-                    index === items.length - 1 ? "page" : undefined
-                  }
+                  className={index === items.length - 1 ? "text-gray-700 font-medium" : ""}
+                  aria-current={index === items.length - 1 ? "page" : undefined}
                 >
                   {item.label}
                 </span>

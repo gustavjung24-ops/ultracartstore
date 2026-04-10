@@ -1,8 +1,8 @@
-{
+﻿{
   "site": {
     "name": "Healthy Medicine",
     "shortName": "Healthy Medicine",
-    "tagline": "Ăn hiền, sống lành để khỏe mạnh.",
+    "tagline": "Plant-based nutrition and preventive medicine, presented for medical learning and practice.",
     "contact": {
       "addressLine1": "5100 Wisconsin Ave. NW, Suite 400",
       "addressLine2": "Washington, D.C. 20016",
@@ -18,13 +18,13 @@
     "aboutUs": "About Us"
   },
   "mainNav": {
-    "goodNutrition": "Dinh dưỡng lành mạnh",
-    "healthTopics": "Chủ đề sức khỏe",
-    "ethicalScience": "Khoa học có đạo đức",
-    "ourResearch": "Nghiên cứu của chúng tôi",
-    "news": "Tin tức",
-    "authors": "Tác giả",
-    "takeAction": "Cùng hành động"
+    "goodNutrition": "Good Nutrition",
+    "healthTopics": "Health Topics",
+    "ethicalScience": "Ethical Science",
+    "ourResearch": "Our Research",
+    "news": "News & Events",
+    "authors": "Authors",
+    "resources": "Resources"
   },
   "goodNutrition": {
     "title": "Good Nutrition",
@@ -40,8 +40,9 @@
     "nutritionForKids": "Nutrition for Kids",
     "veganStarterKit": "Vegan Starter Kit",
     "plantBasedNutritionFAQ": "Plant-Based Nutrition FAQ",
-    "threeReasonsToGoVegan": "Three Reasons to go VEGAN!",
-    "twentyOneDayKickstart": "21-Day Kickstart"
+    "threeReasonsToGoVegan": "Three Reasons to Go Vegan",
+    "twentyOneDayKickstart": "21-Day Kickstart",
+    "nutritionForClinicians": "Nutrition for Clinicians"
   },
   "healthTopics": {
     "title": "Health Topics"
@@ -54,7 +55,7 @@
     "clinicalResearch": "Clinical Research"
   },
   "news": {
-    "title": "News",
+    "title": "News & Events",
     "healthNutrition": "Health and Nutrition News",
     "mediaCenter": "Media Center",
     "innovativeScienceNews": "Innovative Science News",
@@ -62,13 +63,10 @@
   },
   "utilityNav": {
     "events": "Events",
-    "shop": "Tài nguyên",
-    "contact": "Liên hệ",
+    "resources": "Resources",
+    "contact": "Contact",
     "mediaCenter": "Media Center",
-    "barnardMedicalCenter": "Barnard Medical Center",
-    "careers": "Careers",
-    "spanishResources": "Recursos en Español",
-    "frenchResources": "Ressources en Français"
+    "careers": "Careers"
   },
   "footerLegal": {
     "privacyPolicy": "Privacy Policy",
@@ -76,9 +74,13 @@
     "allRightsReserved": "All rights reserved."
   },
   "footerAuthor": {
-    "title": "Tác giả",
-    "description": "Một số tác giả đứng sau các bài viết trên website.",
+    "title": "Authors",
+    "description": "A few contributors behind the articles featured on this website.",
     "facebookLabel": "Facebook"
+  },
+  "footer": {
+    "contactDescription": "Official channel for editorial feedback and academic inquiries.",
+    "contactCta": "Visit contact page"
   },
   "common": {
     "home": "Home",
@@ -97,9 +99,9 @@
     "aboutAuthor": "About the Author",
     "viewAuthorProfile": "View Author Profile",
     "newsAndEvents": "News & Events",
-    "supportOurMission": "Mission and Impact",
+    "supportOurMission": "Editorial Mission",
     "mainMenu": "Main Menu",
-    "support": "Support",
+    "support": "Help",
     "language": "Language",
     "loading": "Loading...",
     "noData": "No data available.",
@@ -108,38 +110,40 @@
   },
   "repoUi": {
     "quickAccess": "Quick Access",
-    "openMainSection": "Open Main Section",
+    "openMainSection": "Open Section Overview",
     "sourceNotice": "Content on this website is quoted from",
     "home": {
       "victory": "Featured News",
       "heroTitle": "Brown University Halts Deadly Training Exercise",
-      "heroSummary": "A nonprofit health organization promoting preventive medicine, clinical research, and high standards for ethics and effectiveness in research and training.",
-      "heroImageAlt": "Pig in grass",
+      "heroSummary": "Evidence-based resources on nutrition, preventive medicine, and ethical science for medical learners and health professionals.",
+      "heroImageAlt": "Homepage hero cover",
       "topicHighlights": "Topic Highlights",
       "innovativeScienceNews": "Innovative Science News",
-      "innovativeScienceSummary": "News about humane, human-relevant science.",
+      "innovativeScienceSummary": "Updates on humane, human-relevant science.",
       "goodScienceDigest": "Good Science Digest",
-      "goodScienceDigestSummary": "Science updates from Physicians Committee experts.",
+      "goodScienceDigestSummary": "Science updates prepared for medical readers.",
       "openSection": "View Section",
       "impactTitle": "40 Years of Impact",
-      "impactFallbackSummary": "Promoting preventive medicine and ethical, effective scientific research.",
-      "impactImageAlt": "Impact",
+      "impactFallbackSummary": "A focused editorial space for preventive medicine, plant-based nutrition, and responsible science.",
+      "impactImageAlt": "Impact overview",
       "latestStories": "Latest News",
-      "seeOurVictories": "See Our Victories",
-      "supportFallbackSummary": "Explore selected resources on preventive medicine and ethical science."
+      "seeOurVictories": "View impact overview",
+      "supportFallbackSummary": "Explore curated materials on nutrition, prevention, and ethical science.",
+      "topPromotedStories": "Featured stories",
+      "exploreHighlights": "Explore this section"
     },
     "contact": {
       "title": "Contact Form",
-      "intro": "If you have questions about website content, please call {shopPhone}, fill out the form below, or email {shopEmail}. For general inquiries, please contact {mainPhone} or {mainEmail}. Thank you!",
+      "intro": "If you have questions about website content, please call {mainPhone}, fill out the form below, or email {mainEmail}. Thank you!",
       "breadcrumbHome": "Home",
-      "breadcrumbHelp": "Support",
+      "breadcrumbHelp": "Help",
       "breadcrumbCurrent": "Contact Form",
       "nameLabel": "Full Name",
       "namePlaceholder": "Jane Doe",
       "emailLabel": "Email Address",
       "emailPlaceholder": "email@example.com",
       "messageLabel": "Message",
-      "messagePlaceholder": "Enter your question or support request...",
+      "messagePlaceholder": "Enter your question or request...",
       "submit": "Send",
       "successTitle": "Your email app is ready.",
       "successBody": "Please send the prefilled email to complete your request.",
@@ -154,9 +158,8 @@
   },
   "contactPage": {
     "title": "Contact Form",
-    "shopQuestionsPrefix": "If you have questions about website content, please call",
-    "shopQuestionsMiddle": "fill out the form below, or email",
-    "nonShopQuestionsPrefix": "For general inquiries, please contact",
+    "contentQuestionsPrefix": "If you have questions about website content, please call",
+    "contentQuestionsMiddle": "fill out the form below, or email",
     "orText": "or",
     "thankYou": "Thank you!",
     "successTitle": "Your email app is ready.",
@@ -166,7 +169,7 @@
     "emailLabel": "Email Address",
     "emailPlaceholder": "email@example.com",
     "messageLabel": "Message",
-    "messagePlaceholder": "Enter your question or support request...",
+    "messagePlaceholder": "Enter your question or request...",
     "submitButton": "Send",
     "responseTime": "We usually respond within 1-2 business days",
     "whatsappLabel": "WhatsApp",
@@ -190,8 +193,24 @@
   },
   "languageSwitcher": {
     "english": "English",
-    "vietnamese": "Tiếng Việt",
+    "vietnamese": "Vietnamese",
     "switchToEnglish": "Switch to English",
-    "switchToVietnamese": "Chuyển sang Tiếng Việt"
+    "switchToVietnamese": "Switch to Vietnamese"
+  },
+  "breadcrumbs": {
+    "ariaLabel": "Breadcrumb"
+  },
+  "authorsPage": {
+    "title": "Authors",
+    "description": "Professional profiles of contributors featured across Healthy Medicine."
+  },
+  "authorProfile": {
+    "degrees": "Degrees",
+    "specialty": "Specialty",
+    "currentRole": "Current Role",
+    "currentOrganization": "Current Organization",
+    "professionalFocus": "Professional Focus",
+    "milestones": "Key Milestones",
+    "sourceLinks": "Profile Sources"
   }
 }

@@ -28,43 +28,9 @@ export interface HeaderMainGroup extends CatalogLabel {
   items: CatalogItem[];
 }
 
-function repairMojibakeText(value: string): string {
-  const suspiciousPattern = /Ã|Â|Ä|â|áº|á»|á¼|Ã¡|Ã©|Ã³|Ã£|Ãª|Ã´|Ã‘|Â©/;
-  if (!suspiciousPattern.test(value)) {
-    return value;
-  }
-
-  try {
-    const repaired = decodeURIComponent(escape(value));
-    return repaired || value;
-  } catch {
-    return value;
-  }
-}
-
-function repairMojibakeDeep<T>(input: T): T {
-  if (typeof input === "string") {
-    return repairMojibakeText(input) as T;
-  }
-
-  if (Array.isArray(input)) {
-    return input.map((item) => repairMojibakeDeep(item)) as T;
-  }
-
-  if (input && typeof input === "object") {
-    const output: Record<string, unknown> = {};
-    for (const [key, value] of Object.entries(input as Record<string, unknown>)) {
-      output[key] = repairMojibakeDeep(value);
-    }
-    return output as T;
-  }
-
-  return input;
-}
-
 export const COMMON_LOCALES: Record<Language, CommonLocaleDictionary> = {
   en: enCommon,
-  vi: repairMojibakeDeep(viCommon as CommonLocaleDictionary),
+  vi: viCommon,
 };
 
 function lookupPath(obj: unknown, path: string): unknown {
@@ -83,15 +49,15 @@ export function resolveLocaleText(locale: CommonLocaleDictionary, path?: string)
   }
 
   const value = lookupPath(locale, path);
-  return typeof value === "string" ? repairMojibakeText(value) : undefined;
+  return typeof value === "string" ? value : undefined;
 }
 
 export function resolveCatalogLabel(
   locale: CommonLocaleDictionary,
   language: Language,
-  label: CatalogLabel
+  label: CatalogLabel,
 ): string {
-  return resolveLocaleText(locale, label.localePath) || repairMojibakeText(label.fallback[language]);
+  return resolveLocaleText(locale, label.localePath) ?? label.fallback[language];
 }
 
 export const HEADER_TOP_NAV_GROUPS: HeaderTopGroup[] = [
@@ -100,34 +66,30 @@ export const HEADER_TOP_NAV_GROUPS: HeaderTopGroup[] = [
     href: "/good-nutrition/nutrition-for-clinicians",
     key: "topNav.forClinicians",
     localePath: "topNav.forClinicians",
-    fallback: { en: "For Clinicians", vi: "DÃ nh cho chuyÃªn gia lÃ¢m sÃ ng" },
+    fallback: { en: "For Clinicians", vi: "Dành cho chuyên gia lâm sàng" },
     items: [
       {
         href: "/good-nutrition/nutrition-for-clinicians",
-        key: "topNavMenus.forClinicians.nutritionForClinicians",
-        fallback: { en: "Nutrition for Clinicians", vi: "Dinh dÆ°á»¡ng cho chuyÃªn gia lÃ¢m sÃ ng" },
-      },
-      {
-        href: "/good-nutrition/nutrition-for-clinicians/medical-students",
-        key: "topNavMenus.forClinicians.medicalStudents",
-        localePath: "topNav.forMedicalStudents",
-        fallback: { en: "Medical Students", vi: "Sinh viÃªn y khoa" },
+        key: "goodNutrition.nutritionForClinicians",
+        localePath: "goodNutrition.nutritionForClinicians",
+        fallback: { en: "Nutrition for Clinicians", vi: "Dinh dưỡng cho chuyên gia lâm sàng" },
       },
       {
         href: "/good-nutrition/nutrition-information",
-        key: "topNavMenus.forClinicians.nutritionInformation",
+        key: "goodNutrition.nutritionInformation",
         localePath: "goodNutrition.nutritionInformation",
-        fallback: { en: "Nutrition Information", vi: "Kiáº¿n thá»©c dinh dÆ°á»¡ng" },
+        fallback: { en: "Nutrition Information", vi: "Kiến thức dinh dưỡng" },
       },
       {
-        href: "/good-nutrition/nutrition-information/protein",
-        key: "topNavMenus.forClinicians.protein",
-        fallback: { en: "Protein", vi: "Protein" },
+        href: "/good-nutrition/plant-based-diets",
+        key: "goodNutrition.plantBasedDiets",
+        localePath: "goodNutrition.plantBasedDiets",
+        fallback: { en: "Plant-Based Diets", vi: "Chế độ ăn dựa trên thực vật" },
       },
       {
-        href: "/good-nutrition/nutrition-information/fiber",
-        key: "topNavMenus.forClinicians.fiber",
-        fallback: { en: "Fiber", vi: "Cháº¥t xÆ¡" },
+        href: "/health-topics/heart-disease",
+        key: "healthTopicsMenu.heartDisease",
+        fallback: { en: "Heart Disease", vi: "Bệnh tim mạch" },
       },
     ],
   },
@@ -136,59 +98,63 @@ export const HEADER_TOP_NAV_GROUPS: HeaderTopGroup[] = [
     href: "/good-nutrition/nutrition-for-clinicians/medical-students",
     key: "topNav.forMedicalStudents",
     localePath: "topNav.forMedicalStudents",
-    fallback: { en: "For Medical Students", vi: "DÃ nh cho sinh viÃªn y khoa" },
+    fallback: { en: "For Medical Students", vi: "Dành cho sinh viên y khoa" },
     items: [
       {
         href: "/good-nutrition/nutrition-for-clinicians/medical-students",
-        key: "topNavMenus.forMedicalStudents.overview",
-        fallback: { en: "Overview", vi: "Tá»•ng quan" },
+        key: "topNav.forMedicalStudents",
+        localePath: "topNav.forMedicalStudents",
+        fallback: { en: "For Medical Students", vi: "Dành cho sinh viên y khoa" },
       },
       {
         href: "/clinical-research/recruitment",
-        key: "topNavMenus.forMedicalStudents.researchRecruitment",
-        fallback: { en: "Research Recruitment", vi: "Tuyá»ƒn ngÆ°á»i tham gia nghiÃªn cá»©u" },
-      },
-      {
-        href: "/events",
-        key: "topNavMenus.forMedicalStudents.events",
-        localePath: "utilityNav.events",
-        fallback: { en: "Events", vi: "Sá»± kiá»‡n" },
+        key: "researchMenu.recruitment",
+        fallback: { en: "Research Recruitment", vi: "Tuyển người tham gia nghiên cứu" },
       },
       {
         href: "/news/good-science-digest",
-        key: "topNavMenus.forMedicalStudents.goodScienceDigest",
-        fallback: { en: "Good Science Digest", vi: "Báº£n tin khoa há»c" },
+        key: "news.goodScienceDigest",
+        localePath: "news.goodScienceDigest",
+        fallback: { en: "Good Science Digest", vi: "Bản tin khoa học" },
+      },
+      {
+        href: "/events",
+        key: "utilityNav.events",
+        localePath: "utilityNav.events",
+        fallback: { en: "Events", vi: "Sự kiện" },
       },
     ],
   },
   {
     id: "forScientists",
-    href: "/term/scientists",
+    href: "/ethical-science",
     key: "topNav.forScientists",
     localePath: "topNav.forScientists",
-    fallback: { en: "For Scientists", vi: "DÃ nh cho nhÃ  khoa há»c" },
+    fallback: { en: "For Scientists", vi: "Dành cho nhà khoa học" },
     items: [
       {
-        href: "/term/scientists",
-        key: "topNavMenus.forScientists.overview",
-        fallback: { en: "Overview", vi: "Tá»•ng quan" },
-      },
-      {
         href: "/ethical-science",
-        key: "topNavMenus.forScientists.ethicalScience",
+        key: "mainNav.ethicalScience",
         localePath: "mainNav.ethicalScience",
-        fallback: { en: "Ethical Science", vi: "Khoa há»c cÃ³ Ä‘áº¡o Ä‘á»©c" },
+        fallback: { en: "Ethical Science", vi: "Khoa học có đạo đức" },
       },
       {
         href: "/clinical-research",
-        key: "topNavMenus.forScientists.clinicalResearch",
+        key: "research.clinicalResearch",
         localePath: "research.clinicalResearch",
-        fallback: { en: "Clinical Research", vi: "NghiÃªn cá»©u lÃ¢m sÃ ng" },
+        fallback: { en: "Clinical Research", vi: "Nghiên cứu lâm sàng" },
       },
       {
         href: "/news/innovative-science-news",
-        key: "topNavMenus.forScientists.innovativeScienceNews",
-        fallback: { en: "Innovative Science News", vi: "Tin khoa há»c Ä‘á»•i má»›i" },
+        key: "news.innovativeScienceNews",
+        localePath: "news.innovativeScienceNews",
+        fallback: { en: "Innovative Science News", vi: "Tin khoa học đổi mới" },
+      },
+      {
+        href: "/term/scientists",
+        key: "topNav.forScientists",
+        localePath: "topNav.forScientists",
+        fallback: { en: "For Scientists", vi: "Dành cho nhà khoa học" },
       },
     ],
   },
@@ -197,51 +163,41 @@ export const HEADER_TOP_NAV_GROUPS: HeaderTopGroup[] = [
     href: "/about-us",
     key: "topNav.aboutUs",
     localePath: "topNav.aboutUs",
-    fallback: { en: "About Us", vi: "Giá»›i thiá»‡u" },
+    fallback: { en: "About Us", vi: "Về chúng tôi" },
     items: [
       {
-        href: "/about-us#leadership",
-        key: "topNavMenus.aboutUs.leadership",
-        fallback: { en: "Leadership", vi: "Ban lÃ£nh Ä‘áº¡o" },
+        href: "/about-us",
+        key: "topNav.aboutUs",
+        localePath: "topNav.aboutUs",
+        fallback: { en: "About Us", vi: "Về chúng tôi" },
       },
       {
         href: "/about-us/our-victories",
-        key: "topNavMenus.aboutUs.ourVictories",
-        fallback: { en: "Our Victories", vi: "ThÃ nh tá»±u cá»§a chÃºng tÃ´i" },
-      },
-      {
-        href: "/about-us/careers",
-        key: "topNavMenus.aboutUs.careers",
-        localePath: "utilityNav.careers",
-        fallback: { en: "Careers", vi: "Tuyá»ƒn dá»¥ng" },
-      },
-      {
-        href: "/about-us/careers/internships",
-        key: "topNavMenus.aboutUs.internships",
-        fallback: { en: "Internships", vi: "Thá»±c táº­p" },
-      },
-      {
-        href: "/events",
-        key: "topNavMenus.aboutUs.events",
-        localePath: "utilityNav.events",
-        fallback: { en: "Events", vi: "Sá»± kiá»‡n" },
+        key: "aboutUs.impact",
+        fallback: { en: "Impact Overview", vi: "Tổng quan tác động" },
       },
       {
         href: "/about-us/financial-report",
-        key: "topNavMenus.aboutUs.annualFinancialReports",
-        fallback: { en: "Annual & Financial Reports", vi: "BÃ¡o cÃ¡o thÆ°á»ng niÃªn vÃ  tÃ i chÃ­nh" },
+        key: "aboutUs.financialReport",
+        fallback: { en: "Annual and Financial Reports", vi: "Báo cáo thường niên và tài chính" },
       },
       {
-        href: "/barnard-medical-center",
-        key: "topNavMenus.aboutUs.barnardMedicalCenter",
-        localePath: "utilityNav.barnardMedicalCenter",
-        fallback: { en: "Barnard Medical Center", vi: "Trung tÃ¢m Y khoa Barnard" },
+        href: "/about-us/careers",
+        key: "utilityNav.careers",
+        localePath: "utilityNav.careers",
+        fallback: { en: "Careers", vi: "Tuyển dụng" },
       },
       {
         href: "/contact",
-        key: "topNavMenus.aboutUs.contactUs",
+        key: "utilityNav.contact",
         localePath: "utilityNav.contact",
-        fallback: { en: "Contact Us", vi: "LiÃªn há»‡" },
+        fallback: { en: "Contact", vi: "Liên hệ" },
+      },
+      {
+        href: "/authors",
+        key: "mainNav.authors",
+        localePath: "mainNav.authors",
+        fallback: { en: "Authors", vi: "Tác giả" },
       },
     ],
   },
@@ -254,36 +210,20 @@ export const HEADER_MAIN_NAV_GROUPS: HeaderMainGroup[] = [
     columns: 3,
     key: "mainNav.goodNutrition",
     localePath: "mainNav.goodNutrition",
-    fallback: { en: "Good Nutrition", vi: "Dinh dÆ°á»¡ng lÃ nh máº¡nh" },
+    fallback: { en: "Good Nutrition", vi: "Dinh dưỡng lành mạnh" },
     items: [
-      { href: "/good-nutrition", key: "goodNutritionMenu.overview", fallback: { en: "Overview", vi: "Tá»•ng quan" } },
-      { href: "/good-nutrition/plant-based-diets", key: "goodNutrition.plantBasedDiets", localePath: "goodNutrition.plantBasedDiets", fallback: { en: "Plant-Based Diets", vi: "Cháº¿ Ä‘á»™ Äƒn dá»±a trÃªn thá»±c váº­t" } },
-      { href: "/good-nutrition/three-reasons-go-vegan", key: "goodNutrition.threeReasonsToGoVegan", localePath: "goodNutrition.threeReasonsToGoVegan", fallback: { en: "Three Reasons to go VEGAN!", vi: "Ba lÃ½ do Ä‘á»ƒ Äƒn thuáº§n chay" } },
-      { href: "/good-nutrition/plant-based-diets/ffl", key: "goodNutrition.foodForLifeClasses", localePath: "goodNutrition.foodForLifeClasses", fallback: { en: "Food for Life Classes", vi: "Lá»›p há»c Food for Life" } },
-      { href: "/good-nutrition/plant-based-diets/nutrition-faq", key: "goodNutrition.plantBasedNutritionFAQ", localePath: "goodNutrition.plantBasedNutritionFAQ", fallback: { en: "Plant-Based Nutrition FAQ", vi: "CÃ¢u há»i thÆ°á»ng gáº·p vá» dinh dÆ°á»¡ng dá»±a trÃªn thá»±c váº­t" } },
-      { href: "/veganstarterkit", key: "goodNutrition.veganStarterKit", localePath: "goodNutrition.veganStarterKit", fallback: { en: "Vegan Starter Kit", vi: "Bá»™ khá»Ÿi Ä‘áº§u thuáº§n chay" } },
-      { href: "/good-nutrition/plant-based-diets/recipes", key: "goodNutrition.recipes", localePath: "goodNutrition.recipes", fallback: { en: "Recipes", vi: "CÃ´ng thá»©c mÃ³n Äƒn" } },
-      { href: "/good-nutrition/nutrition-for-athletes", key: "goodNutrition.nutritionForAthletes", localePath: "goodNutrition.nutritionForAthletes", fallback: { en: "Nutrition for Athletes", vi: "Dinh dÆ°á»¡ng cho váº­n Ä‘á»™ng viÃªn" } },
-      { href: "/good-nutrition/plant-based-diets/pregnancy", key: "goodNutrition.pregnancy", localePath: "goodNutrition.pregnancy", fallback: { en: "Pregnancy", vi: "Thai ká»³" } },
-      { href: "/good-nutrition/nutrition-for-kids", key: "goodNutrition.nutritionForKids", localePath: "goodNutrition.nutritionForKids", fallback: { en: "Nutrition for Kids", vi: "Dinh dÆ°á»¡ng cho tráº» em" } },
-      { href: "/universalmeals", key: "goodNutritionMenu.universalMeals", fallback: { en: "Universal Meals", vi: "Bá»¯a Äƒn toÃ n dÃ¢n" } },
-      { href: "/good-nutrition/nutrition-information", key: "goodNutrition.nutritionInformation", localePath: "goodNutrition.nutritionInformation", fallback: { en: "Nutrition Information", vi: "Kiáº¿n thá»©c dinh dÆ°á»¡ng" } },
-      { href: "/good-nutrition/nutrition-information/the-carbohydrate-advantage", key: "goodNutritionMenu.carbohydrateAdvantage", fallback: { en: "The Carbohydrate Advantage", vi: "Lá»£i tháº¿ carbohydrate" } },
-      { href: "/good-nutrition/nutrition-information/fiber", key: "goodNutritionMenu.fiber", fallback: { en: "Fiber", vi: "Cháº¥t xÆ¡" } },
-      { href: "/good-nutrition/nutrition-information/protein", key: "goodNutritionMenu.protein", fallback: { en: "Protein", vi: "Protein" } },
-      { href: "/good-nutrition/nutrition-information/soy-and-health", key: "goodNutritionMenu.soyAndHealth", fallback: { en: "Soy and Health", vi: "Äáº­u nÃ nh vÃ  sá»©c khá»e" } },
-      { href: "/good-nutrition/nutrition-information/lowering-cholesterol-with-a-plant-based-diet", key: "goodNutritionMenu.loweringCholesterol", fallback: { en: "Lowering Cholesterol", vi: "Giáº£m cholesterol" } },
-      { href: "/good-nutrition/nutrition-information/health-concerns-about-dairy", key: "goodNutritionMenu.concernsAboutDairy", fallback: { en: "Concerns About Dairy", vi: "Lo ngáº¡i vá» sáº£n pháº©m sá»¯a" } },
-      { href: "/good-nutrition/nutrition-information/chicken", key: "goodNutritionMenu.chicken", fallback: { en: "Chicken", vi: "Thá»‹t gÃ " } },
-      { href: "/good-nutrition/nutrition-information/health-concerns-with-eggs", key: "goodNutritionMenu.concernsWithEggs", fallback: { en: "Concerns With Eggs", vi: "Lo ngáº¡i vá» trá»©ng" } },
-      { href: "/good-nutrition/nutrition-information/processed-meat", key: "goodNutritionMenu.processedMeat", fallback: { en: "Processed Meat", vi: "Thá»‹t cháº¿ biáº¿n sáºµn" } },
-      { href: "/good-nutrition/vegan-diet-environment", key: "goodNutritionMenu.veganDietEnvironment", fallback: { en: "Vegan Diet and Environment", vi: "Ä‚n thuáº§n chay vÃ  mÃ´i trÆ°á»ng" } },
-      { href: "/good-nutrition/nutrition-for-clinicians", key: "goodNutritionMenu.nutritionForClinicians", fallback: { en: "Nutrition for Clinicians", vi: "Dinh dÆ°á»¡ng cho chuyÃªn gia lÃ¢m sÃ ng" } },
-      { href: "/good-nutrition/healthy-communities", key: "goodNutrition.healthyCommunities", localePath: "goodNutrition.healthyCommunities", fallback: { en: "Healthy Communities", vi: "Cá»™ng Ä‘á»“ng khá»e máº¡nh" } },
-      { href: "/good-nutrition/nutrition-programs-policies", key: "goodNutritionMenu.programsPolicies", fallback: { en: "Programs & Policies", vi: "ChÆ°Æ¡ng trÃ¬nh vÃ  chÃ­nh sÃ¡ch" } },
-      { href: "/take-action", key: "mainNav.takeAction", localePath: "mainNav.takeAction", fallback: { en: "Take Action", vi: "CÃ¹ng hÃ nh Ä‘á»™ng" } },
-      { href: "/findadoctor", key: "goodNutrition.findADoctor", localePath: "goodNutrition.findADoctor", fallback: { en: "Find a Doctor", vi: "TÃ¬m bÃ¡c sÄ©" } },
-      { href: "/findadietitian", key: "goodNutrition.findADietitian", localePath: "goodNutrition.findADietitian", fallback: { en: "Find a Dietitian", vi: "TÃ¬m chuyÃªn gia dinh dÆ°á»¡ng" } }
+      { href: "/good-nutrition", key: "goodNutrition.title", localePath: "goodNutrition.title", fallback: { en: "Good Nutrition", vi: "Dinh dưỡng lành mạnh" } },
+      { href: "/good-nutrition/plant-based-diets", key: "goodNutrition.plantBasedDiets", localePath: "goodNutrition.plantBasedDiets", fallback: { en: "Plant-Based Diets", vi: "Chế độ ăn dựa trên thực vật" } },
+      { href: "/good-nutrition/nutrition-information", key: "goodNutrition.nutritionInformation", localePath: "goodNutrition.nutritionInformation", fallback: { en: "Nutrition Information", vi: "Kiến thức dinh dưỡng" } },
+      { href: "/good-nutrition/plant-based-diets/nutrition-faq", key: "goodNutrition.plantBasedNutritionFAQ", localePath: "goodNutrition.plantBasedNutritionFAQ", fallback: { en: "Plant-Based Nutrition FAQ", vi: "Câu hỏi thường gặp về dinh dưỡng thực vật" } },
+      { href: "/good-nutrition/plant-based-diets/recipes", key: "goodNutrition.recipes", localePath: "goodNutrition.recipes", fallback: { en: "Recipes", vi: "Công thức món ăn" } },
+      { href: "/good-nutrition/nutrition-for-athletes", key: "goodNutrition.nutritionForAthletes", localePath: "goodNutrition.nutritionForAthletes", fallback: { en: "Nutrition for Athletes", vi: "Dinh dưỡng cho vận động viên" } },
+      { href: "/good-nutrition/plant-based-diets/pregnancy", key: "goodNutrition.pregnancy", localePath: "goodNutrition.pregnancy", fallback: { en: "Pregnancy", vi: "Thai kỳ" } },
+      { href: "/good-nutrition/nutrition-for-kids", key: "goodNutrition.nutritionForKids", localePath: "goodNutrition.nutritionForKids", fallback: { en: "Nutrition for Kids", vi: "Dinh dưỡng cho trẻ em" } },
+      { href: "/good-nutrition/nutrition-for-clinicians", key: "goodNutrition.nutritionForClinicians", localePath: "goodNutrition.nutritionForClinicians", fallback: { en: "Nutrition for Clinicians", vi: "Dinh dưỡng cho chuyên gia lâm sàng" } },
+      { href: "/good-nutrition/healthy-communities", key: "goodNutrition.healthyCommunities", localePath: "goodNutrition.healthyCommunities", fallback: { en: "Healthy Communities", vi: "Cộng đồng khỏe mạnh" } },
+      { href: "/findadoctor", key: "goodNutrition.findADoctor", localePath: "goodNutrition.findADoctor", fallback: { en: "Find a Doctor", vi: "Tìm bác sĩ" } },
+      { href: "/findadietitian", key: "goodNutrition.findADietitian", localePath: "goodNutrition.findADietitian", fallback: { en: "Find a Dietitian", vi: "Tìm chuyên gia dinh dưỡng" } }
     ],
   },
   {
@@ -292,27 +232,17 @@ export const HEADER_MAIN_NAV_GROUPS: HeaderMainGroup[] = [
     columns: 3,
     key: "mainNav.healthTopics",
     localePath: "mainNav.healthTopics",
-    fallback: { en: "Health Topics", vi: "Chá»§ Ä‘á» sá»©c khá»e" },
+    fallback: { en: "Health Topics", vi: "Chủ đề sức khỏe" },
     items: [
-      { href: "/health-topics", key: "healthTopicsMenu.overview", fallback: { en: "Overview", vi: "Tá»•ng quan" } },
-      { href: "/health-topics/alzheimers", key: "healthTopicsMenu.alzheimers", fallback: { en: "Alzheimer's", vi: "Alzheimer" } },
-      { href: "/health-topics/arthritis", key: "healthTopicsMenu.arthritis", fallback: { en: "Arthritis", vi: "ViÃªm khá»›p" } },
-      { href: "/health-topics/asthma", key: "healthTopicsMenu.asthma", fallback: { en: "Asthma", vi: "Hen suyá»…n" } },
-      { href: "/health-topics/breast-cancer", key: "healthTopicsMenu.breastCancer", fallback: { en: "Breast Cancer", vi: "Ung thÆ° vÃº" } },
-      { href: "/health-topics/cancer", key: "healthTopicsMenu.cancer", fallback: { en: "Cancer", vi: "Ung thÆ°" } },
-      { href: "/health-topics/colorectal-cancer", key: "healthTopicsMenu.colorectalCancer", fallback: { en: "Colorectal Cancer", vi: "Ung thÆ° Ä‘áº¡i trá»±c trÃ ng" } },
-      { href: "/health-topics/coronavirus", key: "healthTopicsMenu.coronavirus", fallback: { en: "Coronavirus", vi: "Coronavirus" } },
-      { href: "/health-topics/diabetes", key: "healthTopicsMenu.diabetes", fallback: { en: "Diabetes", vi: "Tiá»ƒu Ä‘Æ°á»ng" } },
-      { href: "/health-topics/gut-bacteria", key: "healthTopicsMenu.gutBacteria", fallback: { en: "Gut Bacteria", vi: "Vi khuáº©n Ä‘Æ°á»ng ruá»™t" } },
-      { href: "/health-topics/healthy-aging", key: "healthTopicsMenu.healthyAging", fallback: { en: "Healthy Aging", vi: "LÃ£o hÃ³a khá»e máº¡nh" } },
-      { href: "/health-topics/healthy-bones", key: "healthTopicsMenu.healthyBones", fallback: { en: "Healthy Bones", vi: "XÆ°Æ¡ng khá»e máº¡nh" } },
-      { href: "/health-topics/heart-disease", key: "healthTopicsMenu.heartDisease", fallback: { en: "Heart Disease", vi: "Bá»‡nh tim" } },
-      { href: "/health-topics/high-blood-pressure", key: "healthTopicsMenu.highBloodPressure", fallback: { en: "High Blood Pressure", vi: "Cao huyáº¿t Ã¡p" } },
-      { href: "/health-topics/migraines", key: "healthTopicsMenu.migraines", fallback: { en: "Migraines", vi: "Äau ná»­a Ä‘áº§u" } },
-      { href: "/health-topics/ovarian-cancer", key: "healthTopicsMenu.ovarianCancer", fallback: { en: "Ovarian Cancer", vi: "Ung thÆ° buá»“ng trá»©ng" } },
-      { href: "/health-topics/polycystic-ovarian-syndrome", key: "healthTopicsMenu.pcos", fallback: { en: "Polycystic Ovarian Syndrome", vi: "Há»™i chá»©ng buá»“ng trá»©ng Ä‘a nang" } },
-      { href: "/health-topics/prostate-cancer", key: "healthTopicsMenu.prostateCancer", fallback: { en: "Prostate Cancer", vi: "Ung thÆ° tuyáº¿n tiá»n liá»‡t" } },
-      { href: "/health-topics/weight-loss", key: "healthTopicsMenu.weightLoss", fallback: { en: "Weight Loss", vi: "Giáº£m cÃ¢n" } }
+      { href: "/health-topics", key: "healthTopics.title", localePath: "healthTopics.title", fallback: { en: "Health Topics", vi: "Chủ đề sức khỏe" } },
+      { href: "/health-topics/diabetes", key: "healthTopicsMenu.diabetes", fallback: { en: "Diabetes", vi: "Đái tháo đường" } },
+      { href: "/health-topics/heart-disease", key: "healthTopicsMenu.heartDisease", fallback: { en: "Heart Disease", vi: "Bệnh tim mạch" } },
+      { href: "/health-topics/high-blood-pressure", key: "healthTopicsMenu.highBloodPressure", fallback: { en: "High Blood Pressure", vi: "Tăng huyết áp" } },
+      { href: "/health-topics/healthy-bones", key: "healthTopicsMenu.healthyBones", fallback: { en: "Healthy Bones", vi: "Sức khỏe xương" } },
+      { href: "/health-topics/cancer", key: "healthTopicsMenu.cancer", fallback: { en: "Cancer", vi: "Ung thư" } },
+      { href: "/health-topics/breast-cancer", key: "healthTopicsMenu.breastCancer", fallback: { en: "Breast Cancer", vi: "Ung thư vú" } },
+      { href: "/health-topics/colorectal-cancer", key: "healthTopicsMenu.colorectalCancer", fallback: { en: "Colorectal Cancer", vi: "Ung thư đại trực tràng" } },
+      { href: "/health-topics/weight-loss", key: "healthTopicsMenu.weightLoss", fallback: { en: "Weight Loss", vi: "Kiểm soát cân nặng" } }
     ],
   },
   {
@@ -321,21 +251,16 @@ export const HEADER_MAIN_NAV_GROUPS: HeaderMainGroup[] = [
     columns: 2,
     key: "mainNav.ethicalScience",
     localePath: "mainNav.ethicalScience",
-    fallback: { en: "Ethical Science", vi: "Khoa há»c cÃ³ Ä‘áº¡o Ä‘á»©c" },
+    fallback: { en: "Ethical Science", vi: "Khoa học có đạo đức" },
     items: [
-      { href: "/ethical-science", key: "ethicalScienceMenu.overview", fallback: { en: "Overview", vi: "Tá»•ng quan" } },
-      { href: "/ethical-science/ethical-education-and-training/surgery-training", key: "ethicalScienceMenu.surgeryTraining", fallback: { en: "Surgery Training", vi: "ÄÃ o táº¡o pháº«u thuáº­t" } },
-      { href: "/ethical-science/ethical-education-and-training/paramedic-training", key: "ethicalScienceMenu.paramedicTraining", fallback: { en: "Paramedic Training", vi: "ÄÃ o táº¡o cáº¥p cá»©u" } },
-      { href: "/ethical-science/animals-in-medical-research", key: "ethicalScienceMenu.animalsInMedicalResearch", fallback: { en: "Animals in Medical Research", vi: "Äá»™ng váº­t trong nghiÃªn cá»©u y khoa" } },
-      { href: "/dogs", key: "ethicalScienceMenu.dogs", fallback: { en: "Dogs", vi: "ChÃ³" } },
-      { href: "/ethical-science/animals-in-medical-research/alzheimers-disease-research-without-animals", key: "ethicalScienceMenu.alzheimersWithoutAnimals", fallback: { en: "Alzheimer's Research Without Animals", vi: "NghiÃªn cá»©u Alzheimer khÃ´ng dÃ¹ng Ä‘á»™ng váº­t" } },
+      { href: "/ethical-science", key: "ethicalScience.title", localePath: "ethicalScience.title", fallback: { en: "Ethical Science", vi: "Khoa học có đạo đức" } },
+      { href: "/ethical-science/animals-in-medical-research", key: "ethicalScienceMenu.animalsInMedicalResearch", fallback: { en: "Animals in Medical Research", vi: "Động vật trong nghiên cứu y khoa" } },
+      { href: "/ethical-science/animal-testing-and-alternatives", key: "ethicalScienceMenu.animalTestingAlternatives", fallback: { en: "Animal Testing and Alternatives", vi: "Thử nghiệm trên động vật và giải pháp thay thế" } },
+      { href: "/ethical-science/animal-testing-and-alternatives/human-tissue-research", key: "ethicalScienceMenu.humanTissueResearch", fallback: { en: "Human Tissue Research", vi: "Nghiên cứu mô người" } },
+      { href: "/ethical-science/ethical-education-and-training/surgery-training", key: "ethicalScienceMenu.surgeryTraining", fallback: { en: "Surgery Training", vi: "Đào tạo phẫu thuật" } },
+      { href: "/ethical-science/ethical-education-and-training/paramedic-training", key: "ethicalScienceMenu.paramedicTraining", fallback: { en: "Paramedic Training", vi: "Đào tạo cấp cứu ngoại viện" } },
       { href: "/ethical-science/ethical-education-and-training/ERA21", key: "ethicalScienceMenu.era21", fallback: { en: "ERA21", vi: "ERA21" } },
-      { href: "/ethical-science/animal-testing-and-alternatives", key: "ethicalScienceMenu.animalTestingAlternatives", fallback: { en: "Animal Testing & Alternatives", vi: "Thá»­ nghiá»‡m trÃªn Ä‘á»™ng váº­t vÃ  giáº£i phÃ¡p thay tháº¿" } },
-      { href: "/ethical-science/animal-testing-and-alternatives/animal-free-antibodies", key: "ethicalScienceMenu.animalFreeAntibodies", fallback: { en: "Animal-Free Antibodies", vi: "KhÃ¡ng thá»ƒ khÃ´ng dÃ¹ng Ä‘á»™ng váº­t" } },
-      { href: "/ethical-science/animal-testing-and-alternatives/chemical-testing-reform", key: "ethicalScienceMenu.chemicalTestingReform", fallback: { en: "Chemical Testing Reform", vi: "Cáº£i cÃ¡ch thá»­ nghiá»‡m hÃ³a cháº¥t" } },
-      { href: "/ethical-science/animal-testing-and-alternatives/cruelty-free-cosmetics", key: "ethicalScienceMenu.crueltyFreeCosmetics", fallback: { en: "Cruelty-Free Cosmetics", vi: "Má»¹ pháº©m khÃ´ng thá»­ nghiá»‡m trÃªn Ä‘á»™ng váº­t" } },
-      { href: "/ethical-science/animal-testing-and-alternatives/nura", key: "ethicalScienceMenu.nura", fallback: { en: "Alternatives to Animal Use", vi: "Giáº£i phÃ¡p thay tháº¿ sá»­ dá»¥ng Ä‘á»™ng váº­t" } },
-      { href: "/ethical-science/animal-testing-and-alternatives/human-tissue-research", key: "ethicalScienceMenu.humanTissueResearch", fallback: { en: "Human Tissue Research", vi: "NghiÃªn cá»©u mÃ´ ngÆ°á»i" } }
+      { href: "/ethical-science/animal-testing-and-alternatives/animal-free-antibodies", key: "ethicalScienceMenu.animalFreeAntibodies", fallback: { en: "Animal-Free Antibodies", vi: "Kháng thể không dùng động vật" } }
     ],
   },
   {
@@ -344,13 +269,13 @@ export const HEADER_MAIN_NAV_GROUPS: HeaderMainGroup[] = [
     columns: 2,
     key: "mainNav.ourResearch",
     localePath: "mainNav.ourResearch",
-    fallback: { en: "Our Research", vi: "NghiÃªn cá»©u cá»§a chÃºng tÃ´i" },
+    fallback: { en: "Our Research", vi: "Nghiên cứu của chúng tôi" },
     items: [
-      { href: "/clinical-research", key: "researchMenu.overview", fallback: { en: "Overview", vi: "Tá»•ng quan" } },
-      { href: "/clinical-research/recruitment", key: "researchMenu.recruitment", fallback: { en: "Recruitment", vi: "Tuyá»ƒn ngÆ°á»i tham gia" } },
-      { href: "/t2dstudy", key: "researchMenu.t2dStudy", fallback: { en: "T2D Study", vi: "NghiÃªn cá»©u T2D" } },
-      { href: "/clinical-research/endometriosis", key: "researchMenu.endometriosis", fallback: { en: "Endometriosis", vi: "Láº¡c ná»™i máº¡c tá»­ cung" } },
-      { href: "/clinical-research/fighting-hot-flashes-with-diet", key: "researchMenu.fightingHotFlashesWithDiet", fallback: { en: "Fighting Hot Flashes with Diet", vi: "Kiá»ƒm soÃ¡t bá»‘c há»a báº±ng cháº¿ Ä‘á»™ Äƒn" } }
+      { href: "/clinical-research", key: "research.title", localePath: "research.title", fallback: { en: "Our Research", vi: "Nghiên cứu của chúng tôi" } },
+      { href: "/clinical-research/recruitment", key: "researchMenu.recruitment", fallback: { en: "Recruitment", vi: "Tuyển người tham gia" } },
+      { href: "/t2dstudy", key: "researchMenu.t2dStudy", fallback: { en: "T2D Study", vi: "Nghiên cứu T2D" } },
+      { href: "/clinical-research/endometriosis", key: "researchMenu.endometriosis", fallback: { en: "Endometriosis", vi: "Lạc nội mạc tử cung" } },
+      { href: "/clinical-research/fighting-hot-flashes-with-diet", key: "researchMenu.fightingHotFlashesWithDiet", fallback: { en: "Fighting Hot Flashes with Diet", vi: "Kiểm soát bốc hỏa bằng chế độ ăn" } }
     ],
   },
   {
@@ -359,18 +284,17 @@ export const HEADER_MAIN_NAV_GROUPS: HeaderMainGroup[] = [
     columns: 2,
     key: "mainNav.news",
     localePath: "mainNav.news",
-    fallback: { en: "News", vi: "Tin tá»©c" },
+    fallback: { en: "News & Events", vi: "Thông tin & sự kiện" },
     items: [
-      { href: "/news", key: "newsMenu.overview", fallback: { en: "Overview", vi: "Tá»•ng quan" } },
-      { href: "/podcast", key: "newsMenu.podcast", fallback: { en: "Podcast", vi: "Podcast" } },
-      { href: "/news/blog", key: "newsMenu.allNews", fallback: { en: "All News", vi: "Táº¥t cáº£ tin tá»©c" } },
-      { href: "/news/health-nutrition", key: "news.healthNutrition", localePath: "news.healthNutrition", fallback: { en: "Health and Nutrition News", vi: "Tin tá»©c sá»©c khá»e vÃ  dinh dÆ°á»¡ng" } },
-      { href: "/news/innovative-science-news", key: "newsMenu.innovativeScienceNews", fallback: { en: "Innovative Science News", vi: "Tin khoa há»c Ä‘á»•i má»›i" } },
-      { href: "/news/good-science-digest", key: "newsMenu.goodScienceDigest", fallback: { en: "Good Science Digest", vi: "Báº£n tin khoa há»c" } },
-      { href: "/news/good-medicine", key: "newsMenu.goodMedicine", fallback: { en: "Good Medicine", vi: "Y há»c tá»‘t" } },
-      { href: "/news/media-center", key: "news.mediaCenter", localePath: "news.mediaCenter", fallback: { en: "Media Center", vi: "Trung tÃ¢m truyá»n thÃ´ng" } },
-      { href: "/news/news-releases", key: "newsMenu.newsReleases", fallback: { en: "News Releases", vi: "ThÃ´ng cÃ¡o bÃ¡o chÃ­" } },
-      { href: "/yourbodyinbalance", key: "newsMenu.yourBodyInBalance", fallback: { en: "Your Body in Balance", vi: "Your Body in Balance" } }
+      { href: "/news", key: "news.title", localePath: "news.title", fallback: { en: "News & Events", vi: "Thông tin & sự kiện" } },
+      { href: "/news/blog", key: "newsMenu.allNews", fallback: { en: "All News", vi: "Tất cả tin bài" } },
+      { href: "/news/health-nutrition", key: "news.healthNutrition", localePath: "news.healthNutrition", fallback: { en: "Health and Nutrition News", vi: "Tin sức khỏe và dinh dưỡng" } },
+      { href: "/news/innovative-science-news", key: "news.innovativeScienceNews", localePath: "news.innovativeScienceNews", fallback: { en: "Innovative Science News", vi: "Tin khoa học đổi mới" } },
+      { href: "/news/good-science-digest", key: "news.goodScienceDigest", localePath: "news.goodScienceDigest", fallback: { en: "Good Science Digest", vi: "Bản tin khoa học" } },
+      { href: "/news/good-medicine", key: "newsMenu.goodMedicine", fallback: { en: "Good Medicine", vi: "Y học tốt" } },
+      { href: "/news/media-center", key: "news.mediaCenter", localePath: "news.mediaCenter", fallback: { en: "Media Center", vi: "Trung tâm truyền thông" } },
+      { href: "/news/news-releases", key: "newsMenu.newsReleases", fallback: { en: "News Releases", vi: "Thông cáo báo chí" } },
+      { href: "/events", key: "utilityNav.events", localePath: "utilityNav.events", fallback: { en: "Events", vi: "Sự kiện" } }
     ],
   },
   {
@@ -383,29 +307,32 @@ export const HEADER_MAIN_NAV_GROUPS: HeaderMainGroup[] = [
     items: [],
   },
   {
-    id: "takeAction",
-    href: "/take-action",
+    id: "resources",
+    href: "/free-downloads",
     columns: 2,
-    key: "mainNav.takeAction",
-    localePath: "mainNav.takeAction",
-    fallback: { en: "Take Action", vi: "CÃ¹ng hÃ nh Ä‘á»™ng" },
-    items: [],
-  }
+    key: "mainNav.resources",
+    localePath: "mainNav.resources",
+    fallback: { en: "Resources", vi: "Tài nguyên" },
+    items: [
+      { href: "/free-downloads", key: "utilityNav.resources", localePath: "utilityNav.resources", fallback: { en: "Resources", vi: "Tài nguyên" } },
+      { href: "/contact", key: "utilityNav.contact", localePath: "utilityNav.contact", fallback: { en: "Contact", vi: "Liên hệ" } },
+      { href: "/authors", key: "mainNav.authors", localePath: "mainNav.authors", fallback: { en: "Authors", vi: "Tác giả" } },
+      { href: "/about-us/financial-report", key: "resources.financialReports", fallback: { en: "Reports", vi: "Báo cáo" } },
+      { href: "/news/media-center", key: "utilityNav.mediaCenter", localePath: "utilityNav.mediaCenter", fallback: { en: "Media Center", vi: "Trung tâm truyền thông" } }
+    ],
+  },
 ];
 
 export const FOOTER_UTILITY_LINKS: CatalogItem[] = [
-  { href: "/events", key: "utilityNav.events", localePath: "utilityNav.events", fallback: { en: "Events", vi: "Sá»± kiá»‡n" } },
-  { href: "/shop", key: "utilityNav.shop", localePath: "utilityNav.shop", fallback: { en: "Resources", vi: "TÃ i nguyÃªn" } },
-  { href: "/contact", key: "utilityNav.contact", localePath: "utilityNav.contact", fallback: { en: "Contact", vi: "LiÃªn há»‡" } },
-  { href: "/news/media-center", key: "utilityNav.mediaCenter", localePath: "utilityNav.mediaCenter", fallback: { en: "Media Center", vi: "Trung tÃ¢m truyá»n thÃ´ng" } },
-  { href: "/barnard-medical-center", key: "utilityNav.barnardMedicalCenter", localePath: "utilityNav.barnardMedicalCenter", fallback: { en: "Barnard Medical Center", vi: "Trung tÃ¢m Y khoa Barnard" } },
-  { href: "/about-us/careers", key: "utilityNav.careers", localePath: "utilityNav.careers", fallback: { en: "Careers", vi: "Tuyá»ƒn dá»¥ng" } },
-  { href: "https://www.pcrm.org/es", external: true, key: "utilityNav.spanishResources", localePath: "utilityNav.spanishResources", fallback: { en: "Recursos en EspaÃ±ol", vi: "TÃ i nguyÃªn tiáº¿ng TÃ¢y Ban Nha" } },
-  { href: "https://www.pcrm.org/fr", external: true, key: "utilityNav.frenchResources", localePath: "utilityNav.frenchResources", fallback: { en: "Ressources en FranÃ§ais", vi: "TÃ i nguyÃªn tiáº¿ng PhÃ¡p" } }
+  { href: "/events", key: "utilityNav.events", localePath: "utilityNav.events", fallback: { en: "Events", vi: "Sự kiện" } },
+  { href: "/free-downloads", key: "utilityNav.resources", localePath: "utilityNav.resources", fallback: { en: "Resources", vi: "Tài nguyên" } },
+  { href: "/contact", key: "utilityNav.contact", localePath: "utilityNav.contact", fallback: { en: "Contact", vi: "Liên hệ" } },
+  { href: "/news/media-center", key: "utilityNav.mediaCenter", localePath: "utilityNav.mediaCenter", fallback: { en: "Media Center", vi: "Trung tâm truyền thông" } },
+  { href: "/about-us/careers", key: "utilityNav.careers", localePath: "utilityNav.careers", fallback: { en: "Careers", vi: "Tuyển dụng" } },
+  { href: "/authors", key: "mainNav.authors", localePath: "mainNav.authors", fallback: { en: "Authors", vi: "Tác giả" } },
 ];
 
 export const FOOTER_LEGAL_LINKS: CatalogItem[] = [
-  { href: "/privacy-policy", key: "footerLegal.privacyPolicy", localePath: "footerLegal.privacyPolicy", fallback: { en: "Privacy Policy", vi: "ChÃ­nh sÃ¡ch báº£o máº­t" } },
-  { href: "/terms-of-use", key: "footerLegal.termsOfUse", localePath: "footerLegal.termsOfUse", fallback: { en: "Terms of Use", vi: "Äiá»u khoáº£n sá»­ dá»¥ng" } }
+  { href: "/privacy-policy", key: "footerLegal.privacyPolicy", localePath: "footerLegal.privacyPolicy", fallback: { en: "Privacy Policy", vi: "Chính sách bảo mật" } },
+  { href: "/terms-of-use", key: "footerLegal.termsOfUse", localePath: "footerLegal.termsOfUse", fallback: { en: "Terms of Use", vi: "Điều khoản sử dụng" } },
 ];
-

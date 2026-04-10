@@ -61,8 +61,8 @@ export default async function HomePage() {
   });
 
   const heroCtaHref = feed.featuredNews[0]?.internal ? feed.featuredNews[0].href : "/news/blog";
-  const topPromotedTitle = "Bài viết nổi bật";
-  const featuredTitle = homeUi.victory || "Tin nổi bật";
+  const topPromotedTitle = homeUi.topPromotedStories;
+  const featuredTitle = homeUi.victory || locale.common.featured;
 
   return (
     <>
@@ -291,7 +291,7 @@ export default async function HomePage() {
             <p className="home-hero-copy mx-auto mt-3 max-w-3xl text-slate-200 md:mt-4">{homeUi.supportFallbackSummary}</p>
             <div className="mt-5 md:mt-6">
               <Link href="/about-us/our-victories" className="inline-block rounded-full border border-white/40 px-7 py-2.5 text-sm font-semibold tracking-[0.01em] text-white transition hover:bg-white/10 no-underline md:px-8 md:py-3">
-                Xem nội dung
+                {homeUi.exploreHighlights}
               </Link>
             </div>
           </div>

@@ -115,6 +115,8 @@ export default function Header({ initialLanguage }: HeaderProps) {
       menu: locale.common.mainMenu,
       quickAccess: locale.repoUi.quickAccess,
       openMainSection: locale.repoUi.openMainSection,
+      english: locale.languageSwitcher.english,
+      vietnamese: locale.languageSwitcher.vietnamese,
     };
   }, [locale]);
 
@@ -181,7 +183,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                       language === 'vi' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
-                    {"TI\u1ebeNG VI\u1ec6T"}
+                    {currentLabels.vietnamese}
                   </button>
                   <button
                     onClick={() => handleLanguageChange('en')}
@@ -189,14 +191,19 @@ export default function Header({ initialLanguage }: HeaderProps) {
                       language === 'en' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
-                    ENGLISH
+                    {currentLabels.english}
                   </button>
                 </div>
               ) : null}
 
               {mounted ? (
                 <div className="hidden lg:block">
-                  <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
+                  <LanguageSwitcher
+                    language={language}
+                    onLanguageChange={handleLanguageChange}
+                    englishLabel={currentLabels.english}
+                    vietnameseLabel={currentLabels.vietnamese}
+                  />
                 </div>
               ) : null}
 
@@ -281,7 +288,12 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   <div className="mb-2 text-[13px] font-medium tracking-[0.005em] text-slate-500">
                     {currentLabels.quickAccess}
                   </div>
-                  <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
+                  <LanguageSwitcher
+                    language={language}
+                    onLanguageChange={handleLanguageChange}
+                    englishLabel={currentLabels.english}
+                    vietnameseLabel={currentLabels.vietnamese}
+                  />
                 </div>
               ) : null}
 
