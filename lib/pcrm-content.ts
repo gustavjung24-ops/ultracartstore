@@ -109,7 +109,6 @@ const QA_VISIBLE_NEWS_ARTICLE_RULES: Record<string, VisibleNewsArticleQaRule> = 
   [HOMEPAGE_FEATURED_ARTICLE_PATHS[0]]: {
     cleanTopSectionNoise: true,
     cleanIntroSummary: true,
-    viTitleOverride: "Hiá»‡p há»™i Tim máº¡ch Hoa Ká»³ khuyáº¿n nghá»‹ Æ°u tiÃªn protein tá»« thá»±c váº­t thay vÃ¬ thá»‹t",
   },
   [HOMEPAGE_FEATURED_ARTICLE_PATHS[1]]: {
     cleanTopSectionNoise: true,
