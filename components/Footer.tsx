@@ -89,7 +89,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold tracking-[0.02em] text-[#007fab]">{locale.common.mainMenu}</h4>
+            <h4 className="mb-4 text-[15px] font-semibold tracking-[0.01em] text-[#007fab]">{locale.common.mainMenu}</h4>
             <ul className="space-y-2 text-sm">
               {mainNavLinks.map((item) => (
                 <li key={item.href}>
@@ -102,7 +102,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold tracking-[0.02em] text-[#007fab]">{locale.common.resources}</h4>
+            <h4 className="mb-4 text-[15px] font-semibold tracking-[0.01em] text-[#007fab]">{locale.common.resources}</h4>
             <ul className="space-y-2 text-sm">
               {utilityLinks.map((item) => (
                 <li key={item.href}>
@@ -127,13 +127,13 @@ export default function Footer({ initialLanguage }: FooterProps) {
             </p>
             <Link
               href="/contact"
-              className="mt-3 inline-flex rounded-full border border-[#0f5c73] px-4 py-2 text-sm font-semibold tracking-[0.02em] text-[#0f5c73] no-underline transition hover:bg-[#0f5c73] hover:text-white"
+              className="mt-3 inline-flex rounded-full border border-[#0f5c73] px-4 py-2 text-sm font-semibold tracking-[0.01em] text-[#0f5c73] no-underline transition hover:bg-[#0f5c73] hover:text-white"
             >
               Đến trang liên hệ
             </Link>
             <div className="mt-4 border-t border-[#e2e8f0] pt-3">
-              <p className="text-sm font-semibold tracking-[0.02em] text-[#007fab]">{locale.footerAuthor.title}</p>
-              <p className="mt-1 text-xs leading-relaxed text-[#64748b]">{locale.footerAuthor.description}</p>
+              <p className="text-[15px] font-semibold tracking-[0.01em] text-[#007fab]">{locale.footerAuthor.title}</p>
+              <p className="mt-1 text-[13px] leading-relaxed text-[#64748b]">{locale.footerAuthor.description}</p>
               <ul className="mt-3 space-y-2 text-sm">
                 {footerAuthors.map((author) => (
                   <li key={author.id}>
@@ -146,7 +146,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
                         <p className="truncate text-sm font-semibold text-slate-900 group-hover:text-[#007fab]">
                           {author.displayName}
                         </p>
-                        <p className="line-clamp-2 text-[11px] leading-4 text-slate-500">{author.headline}</p>
+                        <p className="line-clamp-2 text-xs leading-[1.35rem] text-slate-500">{author.headline}</p>
                       </div>
                     </Link>
                   </li>
