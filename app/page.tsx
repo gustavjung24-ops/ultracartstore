@@ -16,7 +16,7 @@ type StoryLinkProps = {
   children: ReactNode;
 };
 
-const HOMEPAGE_HERO_IMAGE_SRC = "/44.png";
+const HOMEPAGE_HERO_IMAGE_SRC = "/55.png";
 const HOMEPAGE_SEO_TITLE = "Y học lành mạnh | Dinh dưỡng thực vật và y học dự phòng";
 const HOMEPAGE_SEO_DESCRIPTION =
   "Kiến thức y học dự phòng và dinh dưỡng thực vật dựa trên bằng chứng, dành cho sinh viên y khoa và người làm chuyên môn y tế.";

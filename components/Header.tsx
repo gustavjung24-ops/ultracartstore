@@ -142,8 +142,10 @@ export default function Header({ initialLanguage }: HeaderProps) {
         className="fixed inset-x-0 top-0 z-[9999] border-b border-slate-200 bg-white shadow-sm"
       >
         <div className="border-b border-[#2a5d7d] bg-[#18354a]">
-          <div className="mx-auto max-w-7xl overflow-hidden px-3 py-1.5 text-center text-xs font-medium leading-5 tracking-[0.005em] text-slate-100 whitespace-nowrap md:px-6 md:text-sm">
-            {locale.site.tagline}
+          <div className="mx-auto flex max-w-7xl items-center justify-center overflow-hidden px-2 py-1.5 text-center text-slate-100 md:px-6">
+            <span className="block max-w-full truncate whitespace-nowrap text-[11px] font-medium leading-4 tracking-[0.005em] md:text-sm md:leading-5">
+              {locale.site.tagline}
+            </span>
           </div>
           <div className="mx-auto hidden max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6 lg:grid">
             {topGroups.map((group) => (
