@@ -17,6 +17,10 @@ type StoryLinkProps = {
   children: ReactNode;
 };
 
+type OverlayLanguage = "en" | "vi";
+type ArticleCardHeadingTag = "h3" | "h4";
+type ArticleTitleOverlayByPath = Record<string, Record<OverlayLanguage, string>>;
+
 const HOMEPAGE_SEO_TITLE = "Y học lành mạnh | Dinh dưỡng thực vật và y học dự phòng";
 const HOMEPAGE_SEO_DESCRIPTION =
   "Kiến thức y học dự phòng và dinh dưỡng thực vật dựa trên bằng chứng, dành cho sinh viên y khoa và người làm chuyên môn y tế.";
@@ -75,6 +79,50 @@ const sharedArticleCardSummaryClass =
   "home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 tracking-normal text-slate-600";
 const sharedArticleCardReadMoreClass =
   "mt-4 inline-block text-sm font-semibold leading-6 tracking-[0.01em] text-[#0f5c73] no-underline hover:underline";
+const ARTICLE_TITLE_OVERLAY_BY_PATH: ArticleTitleOverlayByPath = {
+  "/news/health-nutrition/plant-based-diets-reduce-risk-cancer": {
+    en: "/overlays/article-title-cancer-en.svg",
+    vi: "/overlays/article-title-cancer-vi.svg",
+  },
+  "/news/health-nutrition/american-heart-association-recommends-plant-based-protein-over-meat": {
+    en: "/overlays/article-title-heart-en.svg",
+    vi: "/overlays/article-title-heart-vi.svg",
+  },
+};
+
+function getArticleTitleOverlaySrc(path: string, lang: OverlayLanguage): string | null {
+  const overlay = ARTICLE_TITLE_OVERLAY_BY_PATH[path];
+  if (!overlay) {
+    return null;
+  }
+
+  return overlay[lang];
+}
+
+type ArticleCardTitleProps = {
+  story: HomepageStory;
+  className: string;
+  headingTag: ArticleCardHeadingTag;
+  lang: OverlayLanguage;
+};
+
+function ArticleCardTitle({ story, className, headingTag, lang }: ArticleCardTitleProps) {
+  const overlaySrc = getArticleTitleOverlaySrc(story.path, lang);
+  const HeadingTag = headingTag;
+
+  if (!overlaySrc) {
+    return <HeadingTag className={className}>{story.title}</HeadingTag>;
+  }
+
+  return (
+    <HeadingTag className={className.replace("line-clamp-2 ", "")}>
+      <span className="sr-only">{story.title}</span>
+      <span aria-hidden="true" className="relative block h-[2.8em] w-full">
+        <Image src={overlaySrc} alt="" fill className="object-contain object-left" />
+      </span>
+    </HeadingTag>
+  );
+}
 
 export default async function HomePage() {
   const lang = await getSiteLanguageFromCookie();
@@ -202,7 +250,12 @@ export default async function HomePage() {
                 </div>
                 <div className="p-4 md:p-5">
                   <p className="text-xs font-semibold tracking-[0.01em] text-[#0f5c73]">{story.label}</p>
-                  <h4 className={sharedArticleCardTitleClass}>{story.title}</h4>
+                  <ArticleCardTitle
+                    story={story}
+                    className={sharedArticleCardTitleClass}
+                    headingTag="h4"
+                    lang={lang}
+                  />
                   <p className={sharedArticleCardSummaryClass}>{story.summary}</p>
                   <StoryLink story={story} className={sharedArticleCardReadMoreClass}>
                     {locale.common.readMore}
@@ -299,7 +352,12 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className={sharedArticleCardTitleClass}>{story.title}</h3>
+                  <ArticleCardTitle
+                    story={story}
+                    className={sharedArticleCardTitleClass}
+                    headingTag="h3"
+                    lang={lang}
+                  />
                   <p className={sharedArticleCardSummaryClass}>{story.summary}</p>
                   <StoryLink story={story} className={sharedArticleCardReadMoreClass}>
                     {locale.common.readMore}
