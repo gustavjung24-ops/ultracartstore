@@ -53,7 +53,7 @@ export const authors: AuthorProfile[] = [
     slug: "neal-barnard",
     fullName: "Neal Barnard, MD, FACC",
     displayName: "Neal Barnard",
-    avatar: "",
+    avatar: "https://www.pcrm.org/sites/default/files/2023-05/Neal%20Barnard%2C%20MD%2C%20FACC%20%281%29.jpg",
     coverImage: "",
     headline: "Bác sĩ nội khoa, nhà nghiên cứu dinh dưỡng, Chủ tịch PCRM",
     shortBio:
@@ -124,7 +124,7 @@ export const authors: AuthorProfile[] = [
     slug: "hana-kahleova",
     fullName: "Hana Kahleova, MD, PhD",
     displayName: "Hana Kahleova",
-    avatar: "",
+    avatar: "https://www.pcrm.org/sites/default/files/2026-01/Hana-Kahleova-512px.jpg",
     coverImage: "",
     headline: "Bác sĩ, nhà nghiên cứu lâm sàng về dinh dưỡng và chuyển hóa",
     shortBio:
@@ -189,7 +189,7 @@ export const authors: AuthorProfile[] = [
     slug: "amy-lanou",
     fullName: "Amy Lanou, PhD",
     displayName: "Amy Lanou",
-    avatar: "",
+    avatar: "https://www.pcrm.org/sites/default/files/styles/medium/public/amy-lanou-headshot.jpg?itok=WfnU0ErK",
     coverImage: "",
     headline: "Nhà khoa học dinh dưỡng, giáo sư sức khỏe và wellness",
     shortBio:
@@ -254,7 +254,7 @@ export const authors: AuthorProfile[] = [
     slug: "janine-mccarthy",
     fullName: "Janine McCarthy, MPH",
     displayName: "Janine McCarthy",
-    avatar: "",
+    avatar: "https://www.pcrm.org/sites/default/files/2023-05/Janine%20McCarthy%2C%20MPH.jpg",
     coverImage: "",
     headline: "Chuyên gia chính sách nghiên cứu và khoa học nhân đạo",
     shortBio:
@@ -320,7 +320,7 @@ export const authors: AuthorProfile[] = [
     slug: "roxanne-becker",
     fullName: "Roxanne Becker, MBChB, DipIBLM",
     displayName: "Roxanne Becker",
-    avatar: "",
+    avatar: "https://www.pcrm.org/sites/default/files/2025-06/roxie-becker-512.jpeg",
     coverImage: "",
     headline: "Biên tập viên y khoa và nhà giáo dục về lifestyle medicine",
     shortBio:

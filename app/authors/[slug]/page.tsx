@@ -2,12 +2,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AuthorAvatar from "@/components/AuthorAvatar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import type { AuthorProfile } from "@/data/authors";
 import {
   getAuthorBySlug,
-  getAuthorInitials,
   getAuthors,
 } from "@/lib/authors";
 import { buildPageMetadata, resolveSeoImage } from "@/lib/seo";
@@ -184,15 +184,7 @@ export default async function AuthorProfilePage({ params }: Props) {
 
           <div className="p-6 md:p-8">
             <div className="flex flex-wrap items-center gap-4">
-              {author.avatar ? (
-                <div className="relative h-20 w-20 overflow-hidden rounded-full border border-slate-200 bg-white">
-                  <Image src={author.avatar} alt={author.displayName} fill className="object-cover" unoptimized />
-                </div>
-              ) : (
-                <div className="flex h-20 w-20 items-center justify-center rounded-full border border-slate-200 bg-white text-2xl font-bold text-[#0f5c73]">
-                  {getAuthorInitials(author.displayName)}
-                </div>
-              )}
+              <AuthorAvatar author={author} size="lg" />
 
               <div>
                 <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">{author.fullName}</h1>

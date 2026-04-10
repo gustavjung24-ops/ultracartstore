@@ -1,4 +1,4 @@
-import {
+﻿import {
   getBlogPages,
   getLocalizedPcrmPageContent,
   getPcrmPageByPath,
@@ -284,11 +284,14 @@ function toLatestNewsStories(lang: Language): HomepageStory[] {
       path: post.path,
       title: localized.title,
       summary: getCleanNewsSummary(localized, lang),
-      label: localizeHomepageLabel(post.path.includes("/news/news-releases/")
-        ? "News Release"
-        : post.path.includes("/news/health-nutrition/")
-          ? "Health and Nutrition News"
-          : "News", lang),
+      label: localizeHomepageLabel(
+        post.path.includes("/news/news-releases/")
+          ? "News Release"
+          : post.path.includes("/news/health-nutrition/")
+            ? "Health and Nutrition News"
+            : "News",
+        lang,
+      ),
       href: post.path,
       internal: true,
       imageSrc: resolvedImage.src,

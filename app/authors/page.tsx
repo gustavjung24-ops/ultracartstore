@@ -1,9 +1,9 @@
 ﻿import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import AuthorAvatar from "@/components/AuthorAvatar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getAuthorInitials, getAuthorProfileHref, getAuthors } from "@/lib/authors";
+import { getAuthorProfileHref, getAuthors } from "@/lib/authors";
 import { buildPageMetadata } from "@/lib/seo";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
@@ -41,15 +41,7 @@ export default async function AuthorsPage() {
             {authorList.map((author) => (
               <article key={author.id} className="smooth-card rounded-2xl p-5">
                 <div className="flex items-center gap-3">
-                  {author.avatar ? (
-                    <div className="relative h-14 w-14 overflow-hidden rounded-full border border-slate-200 bg-white">
-                      <Image src={author.avatar} alt={author.displayName} fill className="object-cover" unoptimized />
-                    </div>
-                  ) : (
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full border border-slate-200 bg-white text-sm font-bold text-[#0f5c73]">
-                      {getAuthorInitials(author.displayName)}
-                    </div>
-                  )}
+                  <AuthorAvatar author={author} size="md" />
 
                   <div>
                     <h2 className="text-lg font-bold text-slate-900">{author.displayName}</h2>
@@ -60,7 +52,7 @@ export default async function AuthorsPage() {
                 </div>
 
                 <p className="mt-4 text-sm font-medium text-slate-700">{author.headline}</p>
-                <p className="mt-3 line-clamp-4 text-sm leading-7 text-slate-600">{author.shortBio}</p>
+                <p className="mt-3 line-clamp-2 text-sm leading-7 text-slate-600">{author.shortBio}</p>
 
                 <Link
                   href={getAuthorProfileHref(author)}

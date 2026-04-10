@@ -28,9 +28,43 @@ export interface HeaderMainGroup extends CatalogLabel {
   items: CatalogItem[];
 }
 
+function repairMojibakeText(value: string): string {
+  const suspiciousPattern = /Ã|Â|Ä|â|áº|á»|á¼|Ã¡|Ã©|Ã³|Ã£|Ãª|Ã´|Ã‘|Â©/;
+  if (!suspiciousPattern.test(value)) {
+    return value;
+  }
+
+  try {
+    const repaired = decodeURIComponent(escape(value));
+    return repaired || value;
+  } catch {
+    return value;
+  }
+}
+
+function repairMojibakeDeep<T>(input: T): T {
+  if (typeof input === "string") {
+    return repairMojibakeText(input) as T;
+  }
+
+  if (Array.isArray(input)) {
+    return input.map((item) => repairMojibakeDeep(item)) as T;
+  }
+
+  if (input && typeof input === "object") {
+    const output: Record<string, unknown> = {};
+    for (const [key, value] of Object.entries(input as Record<string, unknown>)) {
+      output[key] = repairMojibakeDeep(value);
+    }
+    return output as T;
+  }
+
+  return input;
+}
+
 export const COMMON_LOCALES: Record<Language, CommonLocaleDictionary> = {
   en: enCommon,
-  vi: viCommon as CommonLocaleDictionary,
+  vi: repairMojibakeDeep(viCommon as CommonLocaleDictionary),
 };
 
 function lookupPath(obj: unknown, path: string): unknown {
@@ -49,7 +83,7 @@ export function resolveLocaleText(locale: CommonLocaleDictionary, path?: string)
   }
 
   const value = lookupPath(locale, path);
-  return typeof value === "string" ? value : undefined;
+  return typeof value === "string" ? repairMojibakeText(value) : undefined;
 }
 
 export function resolveCatalogLabel(
@@ -57,7 +91,7 @@ export function resolveCatalogLabel(
   language: Language,
   label: CatalogLabel
 ): string {
-  return resolveLocaleText(locale, label.localePath) || label.fallback[language];
+  return resolveLocaleText(locale, label.localePath) || repairMojibakeText(label.fallback[language]);
 }
 
 export const HEADER_TOP_NAV_GROUPS: HeaderTopGroup[] = [

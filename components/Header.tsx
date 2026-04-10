@@ -138,7 +138,13 @@ export default function Header({ initialLanguage }: HeaderProps) {
       <header
         ref={headerRef}
         className="inset-x-0 top-0 z-[9999] border-b border-slate-200 bg-white shadow-sm"
-        style={{ position: 'fixed', top: 0, left: 0, right: 0 }}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          fontFamily: 'var(--font-body), "Segoe UI", system-ui, sans-serif',
+        }}
       >
         <div className="border-b border-[#2a5d7d] bg-[#18354a]">
           <div className="mx-auto max-w-7xl overflow-hidden px-3 py-1 text-center text-[9px] leading-4 text-slate-100 whitespace-nowrap md:px-6 md:text-[11px] md:leading-5">
@@ -160,7 +166,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-2 py-2 text-center text-[11px] font-semibold text-white no-underline transition hover:bg-white/18"
                 >
                   <span className="line-clamp-1">{group.label}</span>
-                  <span className="ml-1 text-[10px]">▾</span>
+                  <span className="ml-1 text-[10px]">{"\u25BE"}</span>
                 </Link>
 
                 <div className="absolute left-0 top-full z-50 hidden min-w-[260px] rounded-md border border-slate-200 bg-white p-2 shadow-2xl lg:group-hover:block lg:group-focus-within:block">
@@ -190,7 +196,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                       language === 'vi' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
-                    TIẾNG VIỆT
+                    {"TI\u1ebeNG VI\u1ec6T"}
                   </button>
                   <button
                     onClick={() => handleLanguageChange('en')}
@@ -302,7 +308,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                     aria-expanded={openMobileGroup === group.key}
                   >
                     <span>{group.label}</span>
-                    <span className={`text-base transition-transform ${openMobileGroup === group.key ? 'rotate-180' : ''}`}>▾</span>
+                    <span className={`text-base transition-transform ${openMobileGroup === group.key ? 'rotate-180' : ''}`}>{"\u25BE"}</span>
                   </button>
                   {openMobileGroup === group.key ? (
                     <div className="grid gap-1 p-2">

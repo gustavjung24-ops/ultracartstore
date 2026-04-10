@@ -1,8 +1,9 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import AuthorAvatar from '@/components/AuthorAvatar';
 import logoImage from '../logo_main_2.png';
 import type { Language } from '@/lib/translations';
 import { getPreferredClientLanguage } from '@/lib/client-language';
@@ -61,7 +62,10 @@ export default function Footer({ initialLanguage }: FooterProps) {
   const headquartersLabel = 'Trụ sở PCRM';
 
   return (
-    <footer className="mt-16 border-t border-[#dbe5ec] bg-white text-[#1f2d3d]">
+    <footer
+      className="mt-16 border-t border-[#dbe5ec] bg-white text-[#1f2d3d]"
+      style={{ fontFamily: 'var(--font-body), "Segoe UI", system-ui, sans-serif' }}
+    >
       <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -142,11 +146,20 @@ export default function Footer({ initialLanguage }: FooterProps) {
             <div className="mt-4 border-t border-[#e2e8f0] pt-3">
               <p className="text-xs font-semibold uppercase tracking-wide text-[#007fab]">{locale.footerAuthor.title}</p>
               <p className="mt-1 text-xs leading-relaxed text-[#64748b]">{locale.footerAuthor.description}</p>
-              <ul className="mt-2 space-y-1 text-sm">
+              <ul className="mt-3 space-y-2 text-sm">
                 {footerAuthors.map((author) => (
                   <li key={author.id}>
-                    <Link href={getAuthorProfileHref(author)} className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
-                      {author.displayName}
+                    <Link
+                      href={getAuthorProfileHref(author)}
+                      className="group flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-2 text-[#1f2d3d] no-underline transition hover:border-[#007fab]/40 hover:bg-slate-50"
+                    >
+                      <AuthorAvatar author={author} size="sm" className="shrink-0" />
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-semibold text-slate-900 group-hover:text-[#007fab]">
+                          {author.displayName}
+                        </p>
+                        <p className="line-clamp-2 text-[11px] leading-4 text-slate-500">{author.headline}</p>
+                      </div>
                     </Link>
                   </li>
                 ))}
