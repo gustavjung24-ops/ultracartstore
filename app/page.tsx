@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import NewsImage from "@/components/NewsImage";
 import { buildHomepageFeed, type HomepageStory } from "@/lib/homepage-feed";
 import { getNewsPlaceholderImage } from "@/lib/news-media";
-import { buildPageMetadata, DEFAULT_SITE_DESCRIPTION, DEFAULT_SITE_TITLE, DEFAULT_SOCIAL_IMAGE } from "@/lib/seo";
+import { buildPageMetadata, DEFAULT_SITE_TITLE } from "@/lib/seo";
 import { getCommonLocale, getSiteLanguageFromCookie } from "@/lib/site-locale";
 
 type StoryLinkProps = {
@@ -17,12 +17,14 @@ type StoryLinkProps = {
 };
 
 const HOMEPAGE_HERO_IMAGE_SRC = "/44.png";
+const HOMEPAGE_SEO_DESCRIPTION =
+  "Kiến thức y học dự phòng và dinh dưỡng thực vật dựa trên bằng chứng, dành cho sinh viên y khoa và người làm chuyên môn y tế.";
 
 export const metadata: Metadata = buildPageMetadata({
   path: "/",
   title: DEFAULT_SITE_TITLE,
-  description: DEFAULT_SITE_DESCRIPTION,
-  image: DEFAULT_SOCIAL_IMAGE,
+  description: HOMEPAGE_SEO_DESCRIPTION,
+  image: HOMEPAGE_HERO_IMAGE_SRC,
   type: "website",
   language: "vi",
 });

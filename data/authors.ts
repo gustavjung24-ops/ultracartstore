@@ -1,4 +1,4 @@
-export type AuthorStatus = "draft" | "published" | "archived";
+﻿export type AuthorStatus = "draft" | "published" | "archived";
 
 export interface AuthorSocialLink {
   label?: string;

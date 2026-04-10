@@ -1,4 +1,4 @@
-import type { PcrmLink, PcrmPage } from "./pcrm-content";
+﻿import type { PcrmLink, PcrmPage } from "./pcrm-content";
 
 const BASE = "https://www.pcrm.org";
 
@@ -42,282 +42,282 @@ const manualPageSpecs: ManualPageSpec[] = [
   [
     "/good-nutrition/plant-based-diets",
     "Plant-Based Diets",
-    "Chế độ ăn thực vật",
+    "Cháº¿ Ä‘á»™ Äƒn thá»±c váº­t",
     "Foundational guides and resources about plant-based eating.",
-    "Tài liệu nền tảng và tài nguyên về chế độ ăn thực vật.",
+    "TÃ i liá»‡u ná»n táº£ng vÃ  tÃ i nguyÃªn vá» cháº¿ Ä‘á»™ Äƒn thá»±c váº­t.",
   ],
   [
     "/good-nutrition/plant-based-diets/nutrition-faq",
     "Nutrition FAQ",
-    "Câu hỏi thường gặp về dinh dưỡng",
+    "CÃ¢u há»i thÆ°á»ng gáº·p vá» dinh dÆ°á»¡ng",
     "Answers to common questions about plant-based nutrition.",
-    "Giải đáp các câu hỏi thường gặp về dinh dưỡng thực vật.",
+    "Giáº£i Ä‘Ã¡p cÃ¡c cÃ¢u há»i thÆ°á»ng gáº·p vá» dinh dÆ°á»¡ng thá»±c váº­t.",
   ],
   [
     "/good-nutrition/nutrition-for-clinicians",
     "Nutrition for Clinicians",
-    "Dinh dưỡng cho bác sĩ",
+    "Dinh dÆ°á»¡ng cho bÃ¡c sÄ©",
     "Practical nutrition resources for healthcare professionals.",
-    "Tài liệu dinh dưỡng thực hành dành cho nhân viên y tế.",
+    "TÃ i liá»‡u dinh dÆ°á»¡ng thá»±c hÃ nh dÃ nh cho nhÃ¢n viÃªn y táº¿.",
   ],
   [
     "/good-nutrition/nutrition-for-clinicians/medical-students",
     "Nutrition for Medical Students",
-    "Dinh dưỡng cho sinh viên y khoa",
+    "Dinh dÆ°á»¡ng cho sinh viÃªn y khoa",
     "Introductory resources for medical students learning plant-based nutrition.",
-    "Tài liệu nhập môn cho sinh viên y khoa tìm hiểu dinh dưỡng thực vật.",
+    "TÃ i liá»‡u nháº­p mÃ´n cho sinh viÃªn y khoa tÃ¬m hiá»ƒu dinh dÆ°á»¡ng thá»±c váº­t.",
   ],
   [
     "/good-nutrition/nutrition-information/the-carbohydrate-advantage",
     "The Carbohydrate Advantage",
-    "Lợi thế của carbohydrate",
+    "Lá»£i tháº¿ cá»§a carbohydrate",
     "Why smart carbohydrate choices matter in a plant-based diet.",
-    "Vì sao lựa chọn carbohydrate phù hợp rất quan trọng trong chế độ ăn thực vật.",
+    "VÃ¬ sao lá»±a chá»n carbohydrate phÃ¹ há»£p ráº¥t quan trá»ng trong cháº¿ Ä‘á»™ Äƒn thá»±c váº­t.",
   ],
   [
     "/good-nutrition/nutrition-information/soy-and-health",
     "Soy and Health",
-    "Đậu nành và sức khỏe",
+    "Äáº­u nÃ nh vÃ  sá»©c khá»e",
     "Evidence-based guidance on soy foods and health outcomes.",
-    "Hướng dẫn dựa trên bằng chứng về đậu nành và sức khỏe.",
+    "HÆ°á»›ng dáº«n dá»±a trÃªn báº±ng chá»©ng vá» Ä‘áº­u nÃ nh vÃ  sá»©c khá»e.",
   ],
   [
     "/good-nutrition/nutrition-information/lowering-cholesterol-with-a-plant-based-diet",
     "Lowering Cholesterol with a Plant-Based Diet",
-    "Giảm cholesterol bằng chế độ ăn thực vật",
+    "Giáº£m cholesterol báº±ng cháº¿ Ä‘á»™ Äƒn thá»±c váº­t",
     "Ways to support healthy cholesterol levels through food choices.",
-    "Cách hỗ trợ mức cholesterol lành mạnh thông qua lựa chọn thực phẩm.",
+    "CÃ¡ch há»— trá»£ má»©c cholesterol lÃ nh máº¡nh thÃ´ng qua lá»±a chá»n thá»±c pháº©m.",
   ],
   [
     "/good-nutrition/nutrition-information/chicken",
     "Chicken",
-    "Thịt gà",
+    "Thá»‹t gÃ ",
     "Nutrition guidance and concerns related to chicken consumption.",
-    "Hướng dẫn dinh dưỡng và các lưu ý liên quan đến việc ăn thịt gà.",
+    "HÆ°á»›ng dáº«n dinh dÆ°á»¡ng vÃ  cÃ¡c lÆ°u Ã½ liÃªn quan Ä‘áº¿n viá»‡c Äƒn thá»‹t gÃ .",
   ],
   [
     "/good-nutrition/nutrition-information/processed-meat",
     "Processed Meat",
-    "Thịt chế biến sẵn",
+    "Thá»‹t cháº¿ biáº¿n sáºµn",
     "Health concerns and evidence about processed meat.",
-    "Các lo ngại sức khỏe và bằng chứng về thịt chế biến sẵn.",
+    "CÃ¡c lo ngáº¡i sá»©c khá»e vÃ  báº±ng chá»©ng vá» thá»‹t cháº¿ biáº¿n sáºµn.",
   ],
   [
     "/good-nutrition/healthy-communities",
     "Healthy Communities",
-    "Cộng đồng khỏe mạnh",
+    "Cá»™ng Ä‘á»“ng khá»e máº¡nh",
     "Community-based programs and outreach resources.",
-    "Chương trình cộng đồng và tài nguyên truyền thông.",
+    "ChÆ°Æ¡ng trÃ¬nh cá»™ng Ä‘á»“ng vÃ  tÃ i nguyÃªn truyá»n thÃ´ng.",
   ],
   [
     "/good-nutrition/nutrition-programs-policies",
     "Nutrition Programs & Policies",
-    "Chương trình và chính sách dinh dưỡng",
+    "ChÆ°Æ¡ng trÃ¬nh vÃ  chÃ­nh sÃ¡ch dinh dÆ°á»¡ng",
     "Program and policy resources supporting healthier food environments.",
-    "Tài nguyên về chương trình và chính sách hỗ trợ môi trường ăn uống lành mạnh.",
+    "TÃ i nguyÃªn vá» chÆ°Æ¡ng trÃ¬nh vÃ  chÃ­nh sÃ¡ch há»— trá»£ mÃ´i trÆ°á»ng Äƒn uá»‘ng lÃ nh máº¡nh.",
   ],
   [
     "/ethical-science/ethical-education-and-training/paramedic-training",
     "Paramedic Training",
-    "Đào tạo nhân viên cấp cứu",
+    "ÄÃ o táº¡o nhÃ¢n viÃªn cáº¥p cá»©u",
     "Training resources focused on humane and effective medical education.",
-    "Tài liệu đào tạo hướng tới giáo dục y khoa hiệu quả và nhân đạo.",
+    "TÃ i liá»‡u Ä‘Ã o táº¡o hÆ°á»›ng tá»›i giÃ¡o dá»¥c y khoa hiá»‡u quáº£ vÃ  nhÃ¢n Ä‘áº¡o.",
   ],
   [
     "/ethical-science/animals-in-medical-research",
     "Animals in Medical Research",
-    "Động vật trong nghiên cứu y khoa",
+    "Äá»™ng váº­t trong nghiÃªn cá»©u y khoa",
     "Alternatives, analysis, and discussion of animal use in research.",
-    "Các giải pháp thay thế, phân tích và thảo luận về việc dùng động vật trong nghiên cứu.",
+    "CÃ¡c giáº£i phÃ¡p thay tháº¿, phÃ¢n tÃ­ch vÃ  tháº£o luáº­n vá» viá»‡c dÃ¹ng Ä‘á»™ng váº­t trong nghiÃªn cá»©u.",
   ],
   [
     "/ethical-science/animals-in-medical-research/alzheimers-disease-research-without-animals",
     "Alzheimer's Disease Research Without Animals",
-    "Nghiên cứu Alzheimer không dùng động vật",
-    "Human-relevant research and alternatives for Alzheimer’s studies.",
-    "Nghiên cứu phù hợp với con người và các giải pháp thay thế cho nghiên cứu Alzheimer.",
+    "NghiÃªn cá»©u Alzheimer khÃ´ng dÃ¹ng Ä‘á»™ng váº­t",
+    "Human-relevant research and alternatives for Alzheimerâ€™s studies.",
+    "NghiÃªn cá»©u phÃ¹ há»£p vá»›i con ngÆ°á»i vÃ  cÃ¡c giáº£i phÃ¡p thay tháº¿ cho nghiÃªn cá»©u Alzheimer.",
   ],
   [
     "/ethical-science/ethical-education-and-training/ERA21",
     "ERA21",
     "ERA21",
     "Alternative surgical training resources and education initiatives.",
-    "Tài nguyên đào tạo phẫu thuật thay thế và các sáng kiến giáo dục.",
+    "TÃ i nguyÃªn Ä‘Ã o táº¡o pháº«u thuáº­t thay tháº¿ vÃ  cÃ¡c sÃ¡ng kiáº¿n giÃ¡o dá»¥c.",
   ],
   [
     "/ethical-science/animal-testing-and-alternatives",
     "Animal Testing and Alternatives",
-    "Thử nghiệm trên động vật và giải pháp thay thế",
+    "Thá»­ nghiá»‡m trÃªn Ä‘á»™ng váº­t vÃ  giáº£i phÃ¡p thay tháº¿",
     "Overview of modern research methods and alternatives to animal testing.",
-    "Tổng quan về các phương pháp nghiên cứu hiện đại và giải pháp thay thế thử nghiệm động vật.",
+    "Tá»•ng quan vá» cÃ¡c phÆ°Æ¡ng phÃ¡p nghiÃªn cá»©u hiá»‡n Ä‘áº¡i vÃ  giáº£i phÃ¡p thay tháº¿ thá»­ nghiá»‡m Ä‘á»™ng váº­t.",
   ],
   [
     "/ethical-science/animal-testing-and-alternatives/animal-free-antibodies",
     "Animal-Free Antibodies",
-    "Kháng thể không dùng động vật",
+    "KhÃ¡ng thá»ƒ khÃ´ng dÃ¹ng Ä‘á»™ng váº­t",
     "Methods and resources for producing antibodies without animals.",
-    "Phương pháp và tài nguyên sản xuất kháng thể mà không cần động vật.",
+    "PhÆ°Æ¡ng phÃ¡p vÃ  tÃ i nguyÃªn sáº£n xuáº¥t khÃ¡ng thá»ƒ mÃ  khÃ´ng cáº§n Ä‘á»™ng váº­t.",
   ],
   [
     "/ethical-science/animal-testing-and-alternatives/cruelty-free-cosmetics",
     "Cruelty-Free Cosmetics",
-    "Mỹ phẩm không thử nghiệm trên động vật",
+    "Má»¹ pháº©m khÃ´ng thá»­ nghiá»‡m trÃªn Ä‘á»™ng váº­t",
     "How cosmetic testing can move away from animal use.",
-    "Cách ngành mỹ phẩm có thể chuyển sang không dùng động vật.",
+    "CÃ¡ch ngÃ nh má»¹ pháº©m cÃ³ thá»ƒ chuyá»ƒn sang khÃ´ng dÃ¹ng Ä‘á»™ng váº­t.",
   ],
   [
     "/ethical-science/animal-testing-and-alternatives/human-tissue-research",
     "Human Tissue Research",
-    "Nghiên cứu mô người",
+    "NghiÃªn cá»©u mÃ´ ngÆ°á»i",
     "Human tissue-based approaches to biomedical research.",
-    "Các phương pháp nghiên cứu y sinh dựa trên mô người.",
+    "CÃ¡c phÆ°Æ¡ng phÃ¡p nghiÃªn cá»©u y sinh dá»±a trÃªn mÃ´ ngÆ°á»i.",
   ],
   [
     "/clinical-research/endometriosis",
     "Endometriosis",
-    "Lạc nội mạc tử cung",
+    "Láº¡c ná»™i máº¡c tá»­ cung",
     "Clinical research and nutrition-related resources on endometriosis.",
-    "Nghiên cứu lâm sàng và tài nguyên dinh dưỡng liên quan đến lạc nội mạc tử cung.",
+    "NghiÃªn cá»©u lÃ¢m sÃ ng vÃ  tÃ i nguyÃªn dinh dÆ°á»¡ng liÃªn quan Ä‘áº¿n láº¡c ná»™i máº¡c tá»­ cung.",
   ],
   [
     "/clinical-research/fighting-hot-flashes-with-diet",
     "Fighting Hot Flashes with Diet",
-    "Kiểm soát bốc hỏa bằng chế độ ăn",
+    "Kiá»ƒm soÃ¡t bá»‘c há»a báº±ng cháº¿ Ä‘á»™ Äƒn",
     "Diet strategies and clinical guidance for managing hot flashes.",
-    "Chiến lược dinh dưỡng và hướng dẫn lâm sàng để kiểm soát bốc hỏa.",
+    "Chiáº¿n lÆ°á»£c dinh dÆ°á»¡ng vÃ  hÆ°á»›ng dáº«n lÃ¢m sÃ ng Ä‘á»ƒ kiá»ƒm soÃ¡t bá»‘c há»a.",
   ],
   [
     "/health-topics/alzheimers",
     "Alzheimer's",
     "Alzheimer",
-    "Research-backed guidance and articles related to Alzheimer’s disease.",
-    "Tài liệu và bài viết dựa trên bằng chứng về bệnh Alzheimer.",
+    "Research-backed guidance and articles related to Alzheimerâ€™s disease.",
+    "TÃ i liá»‡u vÃ  bÃ i viáº¿t dá»±a trÃªn báº±ng chá»©ng vá» bá»‡nh Alzheimer.",
   ],
   [
     "/health-topics/arthritis",
     "Arthritis",
-    "Viêm khớp",
+    "ViÃªm khá»›p",
     "Research-backed guidance and articles related to arthritis.",
-    "Tài liệu và bài viết dựa trên bằng chứng về viêm khớp.",
+    "TÃ i liá»‡u vÃ  bÃ i viáº¿t dá»±a trÃªn báº±ng chá»©ng vá» viÃªm khá»›p.",
   ],
   [
     "/health-topics/asthma",
     "Asthma",
-    "Hen suyễn",
+    "Hen suyá»…n",
     "Research-backed guidance and articles related to asthma.",
-    "Tài liệu và bài viết dựa trên bằng chứng về hen suyễn.",
+    "TÃ i liá»‡u vÃ  bÃ i viáº¿t dá»±a trÃªn báº±ng chá»©ng vá» hen suyá»…n.",
   ],
   [
     "/health-topics/breast-cancer",
     "Breast Cancer",
-    "Ung thư vú",
+    "Ung thÆ° vÃº",
     "Research-backed guidance and articles related to breast cancer.",
-    "Tài liệu và bài viết dựa trên bằng chứng về ung thư vú.",
+    "TÃ i liá»‡u vÃ  bÃ i viáº¿t dá»±a trÃªn báº±ng chá»©ng vá» ung thÆ° vÃº.",
   ],
   [
     "/health-topics/coronavirus",
     "Coronavirus",
     "Coronavirus",
     "Research-backed guidance and articles related to coronavirus.",
-    "Tài liệu và bài viết dựa trên bằng chứng về coronavirus.",
+    "TÃ i liá»‡u vÃ  bÃ i viáº¿t dá»±a trÃªn báº±ng chá»©ng vá» coronavirus.",
   ],
   [
     "/health-topics/healthy-bones",
     "Healthy Bones",
-    "Xương khỏe mạnh",
+    "XÆ°Æ¡ng khá»e máº¡nh",
     "Research-backed guidance and articles related to bone health.",
-    "Tài liệu và bài viết dựa trên bằng chứng về sức khỏe xương.",
+    "TÃ i liá»‡u vÃ  bÃ i viáº¿t dá»±a trÃªn báº±ng chá»©ng vá» sá»©c khá»e xÆ°Æ¡ng.",
   ],
   [
     "/health-topics/heart-disease",
     "Heart Disease",
-    "Bệnh tim",
+    "Bá»‡nh tim",
     "Research-backed guidance and articles related to heart disease.",
-    "Tài liệu và bài viết dựa trên bằng chứng về bệnh tim.",
+    "TÃ i liá»‡u vÃ  bÃ i viáº¿t dá»±a trÃªn báº±ng chá»©ng vá» bá»‡nh tim.",
   ],
   [
     "/health-topics/migraines",
     "Migraines",
-    "Đau nửa đầu",
+    "Äau ná»­a Ä‘áº§u",
     "Research-backed guidance and articles related to migraines.",
-    "Tài liệu và bài viết dựa trên bằng chứng về đau nửa đầu.",
+    "TÃ i liá»‡u vÃ  bÃ i viáº¿t dá»±a trÃªn báº±ng chá»©ng vá» Ä‘au ná»­a Ä‘áº§u.",
   ],
   [
     "/health-topics/ovarian-cancer",
     "Ovarian Cancer",
-    "Ung thư buồng trứng",
+    "Ung thÆ° buá»“ng trá»©ng",
     "Research-backed guidance and articles related to ovarian cancer.",
-    "Tài liệu và bài viết dựa trên bằng chứng về ung thư buồng trứng.",
+    "TÃ i liá»‡u vÃ  bÃ i viáº¿t dá»±a trÃªn báº±ng chá»©ng vá» ung thÆ° buá»“ng trá»©ng.",
   ],
   [
     "/health-topics/polycystic-ovarian-syndrome",
     "Polycystic Ovarian Syndrome",
-    "Hội chứng buồng trứng đa nang",
+    "Há»™i chá»©ng buá»“ng trá»©ng Ä‘a nang",
     "Research-backed guidance and articles related to PCOS.",
-    "Tài liệu và bài viết dựa trên bằng chứng về hội chứng buồng trứng đa nang.",
+    "TÃ i liá»‡u vÃ  bÃ i viáº¿t dá»±a trÃªn báº±ng chá»©ng vá» há»™i chá»©ng buá»“ng trá»©ng Ä‘a nang.",
   ],
   [
     "/about-us/careers",
     "Careers",
-    "Tuyển dụng",
+    "Tuyá»ƒn dá»¥ng",
     "Open roles and opportunities with PCRM.",
-    "Các vị trí tuyển dụng và cơ hội nghề nghiệp tại PCRM.",
+    "CÃ¡c vá»‹ trÃ­ tuyá»ƒn dá»¥ng vÃ  cÆ¡ há»™i nghá» nghiá»‡p táº¡i PCRM.",
   ],
   [
     "/about-us/careers/internships",
     "Internships",
-    "Thực tập",
+    "Thá»±c táº­p",
     "Student and early-career internship opportunities.",
-    "Cơ hội thực tập cho sinh viên và người mới bắt đầu sự nghiệp.",
+    "CÆ¡ há»™i thá»±c táº­p cho sinh viÃªn vÃ  ngÆ°á»i má»›i báº¯t Ä‘áº§u sá»± nghiá»‡p.",
   ],
   [
     "/about-us/financial-report",
     "Annual & Financial Reports",
-    "Báo cáo thường niên và tài chính",
+    "BÃ¡o cÃ¡o thÆ°á»ng niÃªn vÃ  tÃ i chÃ­nh",
     "Annual reports and financial information.",
-    "Báo cáo thường niên và thông tin tài chính.",
+    "BÃ¡o cÃ¡o thÆ°á»ng niÃªn vÃ  thÃ´ng tin tÃ i chÃ­nh.",
   ],
   [
     "/events",
     "Events",
-    "Sự kiện",
+    "Sá»± kiá»‡n",
     "Upcoming events, programs, and featured activities.",
-    "Các sự kiện, chương trình và hoạt động nổi bật sắp tới.",
+    "CÃ¡c sá»± kiá»‡n, chÆ°Æ¡ng trÃ¬nh vÃ  hoáº¡t Ä‘á»™ng ná»•i báº­t sáº¯p tá»›i.",
   ],
   [
     "/news",
     "News",
-    "Tin tức",
+    "Tin tá»©c",
     "Latest news, science updates, and event coverage from PCRM.",
-    "Tin tức mới nhất, cập nhật khoa học và tường thuật sự kiện từ PCRM.",
+    "Tin tá»©c má»›i nháº¥t, cáº­p nháº­t khoa há»c vÃ  tÆ°á»ng thuáº­t sá»± kiá»‡n tá»« PCRM.",
   ],
   [
     "/news/health-nutrition",
     "Health & Nutrition News",
-    "Tin tức sức khỏe và dinh dưỡng",
+    "Tin tá»©c sá»©c khá»e vÃ  dinh dÆ°á»¡ng",
     "Research-backed nutrition news and articles.",
-    "Tin tức và bài viết dinh dưỡng dựa trên bằng chứng.",
+    "Tin tá»©c vÃ  bÃ i viáº¿t dinh dÆ°á»¡ng dá»±a trÃªn báº±ng chá»©ng.",
   ],
   [
     "/news/innovative-science-news",
     "Innovative Science News",
-    "Tin khoa học đổi mới",
+    "Tin khoa há»c Ä‘á»•i má»›i",
     "News about humane, human-relevant science.",
-    "Tin tức về khoa học nhân văn và phù hợp với con người.",
+    "Tin tá»©c vá» khoa há»c nhÃ¢n vÄƒn vÃ  phÃ¹ há»£p vá»›i con ngÆ°á»i.",
   ],
   [
     "/news/media-center",
     "Media Center",
-    "Trung tâm truyền thông",
+    "Trung tÃ¢m truyá»n thÃ´ng",
     "Press materials and media resources.",
-    "Tài liệu báo chí và nguồn lực dành cho truyền thông.",
+    "TÃ i liá»‡u bÃ¡o chÃ­ vÃ  nguá»“n lá»±c dÃ nh cho truyá»n thÃ´ng.",
   ],
   [
     "/ways-to-give",
     "Support Information",
-    "Thông tin hỗ trợ",
+    "ThÃ´ng tin há»— trá»£",
     "This supporting reference site does not accept donations.",
-    "Website tham chiếu này không tiếp nhận quyên góp.",
+    "Website tham chiáº¿u nÃ y khÃ´ng tiáº¿p nháº­n quyÃªn gÃ³p.",
   ],
 ];
 
@@ -375,24 +375,274 @@ function createDetailedPage(spec: DetailedManualPageSpec): PcrmPage & { path: st
 
 const priorityArticleManualPages: DetailedManualPageSpec[] = [
   {
+    path: "/news/news-releases/physicians-committee-offering-grants-farmers-who-are-growing-health-promoting",
+    titleEn:
+      "Physicians Committee Is Offering Grants to Farmers Who Are Growing Health-Promoting Fruits and Veggies While Phasing Out Animal Agriculture",
+    titleVi:
+      "Ủy ban Bác sĩ cấp tài trợ cho nông dân trồng cây có lợi cho sức khỏe khi chuyển đổi khỏi chăn nuôi công nghiệp",
+    descriptionEn:
+      "The Physicians Committee announced a grant program supporting farmers who are transitioning toward health-promoting crop production.",
+    descriptionVi:
+      "Ủy ban Bác sĩ công bố chương trình tài trợ dành cho nông dân đang chuyển hướng sang canh tác cây trồng có lợi cho sức khỏe cộng đồng.",
+    paragraphsEn: [
+      "The announcement introduces funding opportunities for farmers expanding production of fruits and vegetables that support healthier diets.",
+      "The program is positioned as practical support for agricultural transition while aligning food systems with public-health goals.",
+      "Read the full release for eligibility criteria, timeline, and implementation details.",
+    ],
+    paragraphsVi: [
+      "Thông cáo giới thiệu các gói hỗ trợ tài chính cho nông dân mở rộng sản xuất rau, củ, quả phục vụ mô hình dinh dưỡng lành mạnh hơn.",
+      "Chương trình được định vị như một hỗ trợ thực tiễn cho quá trình chuyển đổi nông nghiệp, đồng thời gắn với mục tiêu cải thiện sức khỏe cộng đồng.",
+      "Xem toàn văn thông cáo để theo dõi tiêu chí tham gia, mốc thời gian và chi tiết triển khai.",
+    ],
+    links: [
+      {
+        text: "News Releases",
+        url: `${BASE}/news/news-releases`,
+      },
+      {
+        text: "Health & Nutrition News",
+        url: `${BASE}/news/health-nutrition`,
+      },
+    ],
+    linksVi: [
+      {
+        text: "News Releases",
+        text_vi: "Thông cáo báo chí",
+        url: `${BASE}/news/news-releases`,
+      },
+      {
+        text: "Health & Nutrition News",
+        text_vi: "Tin sức khỏe và dinh dưỡng",
+        url: `${BASE}/news/health-nutrition`,
+      },
+    ],
+  },
+  {
+    path: "/news/news-releases/doctors-group-files-legal-petition-urging-usda-require-colorectal-cancer-warning",
+    titleEn:
+      "Doctors Group Files Legal Petition Urging USDA to Require Colorectal Cancer Warning Labels on Processed Meat",
+    titleVi:
+      "Nhóm bác sĩ nộp kiến nghị pháp lý, đề nghị USDA yêu cầu cảnh báo nguy cơ ung thư đại trực tràng trên thịt chế biến sẵn",
+    descriptionEn:
+      "A Physicians Committee legal petition asks USDA to require clearer colorectal-cancer warning labels tied to processed meat products.",
+    descriptionVi:
+      "Kiến nghị pháp lý của Ủy ban Bác sĩ đề nghị USDA yêu cầu nhãn cảnh báo rõ ràng hơn về nguy cơ ung thư đại trực tràng liên quan đến thịt chế biến sẵn.",
+    paragraphsEn: [
+      "The Physicians Committee announced a legal filing that urges USDA to strengthen consumer warning language for processed meat.",
+      "The petition focuses on transparency in risk communication and more consistent public-health messaging at point of purchase.",
+      "See the full release for legal context, petition scope, and requested regulatory action.",
+    ],
+    paragraphsVi: [
+      "Ủy ban Bác sĩ công bố hồ sơ kiến nghị pháp lý, kêu gọi USDA tăng cường nội dung cảnh báo dành cho người tiêu dùng đối với thịt chế biến sẵn.",
+      "Kiến nghị nhấn mạnh tính minh bạch trong truyền thông nguy cơ và sự nhất quán của thông điệp y tế công cộng tại điểm bán.",
+      "Xem toàn văn thông cáo để theo dõi bối cảnh pháp lý, phạm vi kiến nghị và các đề xuất quản lý cụ thể.",
+    ],
+    links: [
+      {
+        text: "News Releases",
+        url: `${BASE}/news/news-releases`,
+      },
+      {
+        text: "Health & Nutrition News",
+        url: `${BASE}/news/health-nutrition`,
+      },
+    ],
+    linksVi: [
+      {
+        text: "News Releases",
+        text_vi: "Thông cáo báo chí",
+        url: `${BASE}/news/news-releases`,
+      },
+      {
+        text: "Health & Nutrition News",
+        text_vi: "Tin sức khỏe và dinh dưỡng",
+        url: `${BASE}/news/health-nutrition`,
+      },
+    ],
+  },
+  {
+    path: "/news/health-nutrition/american-heart-association-recommends-plant-based-protein-over-meat",
+    titleEn: "American Heart Association Recommends Plant-Based Protein Over Meat",
+    titleVi: "Hiệp hội Tim mạch Hoa Kỳ khuyến nghị ưu tiên protein thực vật thay cho thịt",
+    descriptionEn:
+      "The American Heart Association recommends choosing plant-based protein sources in place of meat for better cardiovascular health.",
+    descriptionVi:
+      "Hiệp hội Tim mạch Hoa Kỳ khuyến nghị ưu tiên nguồn protein từ thực vật thay cho thịt để hỗ trợ sức khỏe tim mạch.",
+    paragraphsEn: [
+      "This health and nutrition update summarizes the American Heart Association recommendation on replacing meat with plant-based protein sources.",
+      "The guidance highlights dietary patterns that support cardiometabolic health and long-term risk reduction.",
+      "Read the full article for context and key takeaways relevant to clinical counseling.",
+    ],
+    paragraphsVi: [
+      "Bản tin sức khỏe và dinh dưỡng này tóm tắt khuyến nghị của Hiệp hội Tim mạch Hoa Kỳ về việc thay thế thịt bằng nguồn protein thực vật.",
+      "Nội dung nhấn mạnh mô hình ăn uống hỗ trợ sức khỏe tim mạch - chuyển hóa và giảm nguy cơ bệnh trong dài hạn.",
+      "Xem bài đầy đủ để nắm rõ bối cảnh và các điểm chính có thể áp dụng trong tư vấn lâm sàng.",
+    ],
+    links: [
+      {
+        text: "Health & Nutrition News",
+        url: `${BASE}/news/health-nutrition`,
+      },
+      {
+        text: "Good Nutrition",
+        url: `${BASE}/good-nutrition`,
+      },
+    ],
+    linksVi: [
+      {
+        text: "Health & Nutrition News",
+        text_vi: "Tin sức khỏe và dinh dưỡng",
+        url: `${BASE}/news/health-nutrition`,
+      },
+      {
+        text: "Good Nutrition",
+        text_vi: "Dinh dưỡng lành mạnh",
+        url: `${BASE}/good-nutrition`,
+      },
+    ],
+  },
+  {
+    path: "/news/exam-room-podcast/can-your-gut-predict-parkinsons-alzheimers-dr-trisha-pasricha",
+    titleEn: "Can Your Gut Predict Parkinson’s & Alzheimer’s? | Dr. Trisha Pasricha",
+    titleVi: "Đường ruột có thể dự đoán Parkinson và Alzheimer? | TS.BS. Trisha Pasricha",
+    descriptionEn:
+      "In this Exam Room episode, Dr. Trisha Pasricha discusses emerging evidence linking gut health with neurodegenerative disease risk.",
+    descriptionVi:
+      "Trong tập Exam Room này, TS.BS. Trisha Pasricha trao đổi về các bằng chứng mới liên hệ sức khỏe đường ruột với nguy cơ bệnh thoái hóa thần kinh.",
+    paragraphsEn: [
+      "The episode explores current research on the gut-brain axis and how digestive patterns may relate to Parkinson’s and Alzheimer’s disease.",
+      "It also discusses what is known today, what remains uncertain, and how clinicians should communicate evidence to the public.",
+      "Listen to the full episode for expert context and practical interpretation.",
+    ],
+    paragraphsVi: [
+      "Tập podcast phân tích các nghiên cứu hiện tại về trục ruột - não và cách đặc điểm tiêu hóa có thể liên quan đến Parkinson cũng như Alzheimer.",
+      "Nội dung đồng thời làm rõ những gì đã có bằng chứng, những điểm còn chưa chắc chắn và cách truyền đạt thông tin cho người bệnh.",
+      "Nghe toàn bộ tập để theo dõi bối cảnh chuyên gia và cách diễn giải mang tính thực hành.",
+    ],
+    links: [
+      {
+        text: "Exam Room Podcast",
+        url: `${BASE}/news/exam-room-podcast`,
+      },
+      {
+        text: "Health Topics",
+        url: `${BASE}/health-topics`,
+      },
+    ],
+    linksVi: [
+      {
+        text: "Exam Room Podcast",
+        text_vi: "Podcast Exam Room",
+        url: `${BASE}/news/exam-room-podcast`,
+      },
+      {
+        text: "Health Topics",
+        text_vi: "Chủ đề sức khỏe",
+        url: `${BASE}/health-topics`,
+      },
+    ],
+  },
+  {
+    path: "/news/health-nutrition/plant-based-diets-reduce-risk-cancer",
+    titleEn: "Plant-Based Diets Reduce the Risk of Cancer",
+    titleVi: "Chế độ ăn thực vật giúp giảm nguy cơ ung thư",
+    descriptionEn:
+      "A health and nutrition feature reviews evidence showing that plant-based dietary patterns are associated with lower cancer risk.",
+    descriptionVi:
+      "Bài viết sức khỏe - dinh dưỡng tổng hợp bằng chứng cho thấy mô hình ăn dựa trên thực vật có liên quan với nguy cơ ung thư thấp hơn.",
+    paragraphsEn: [
+      "The article summarizes how dietary patterns centered on whole plant foods may contribute to lower risk across multiple cancer outcomes.",
+      "It highlights practical implications for prevention-focused nutrition counseling in clinical and community settings.",
+      "Read the full story for study context and evidence highlights.",
+    ],
+    paragraphsVi: [
+      "Bài viết tóm tắt cách mô hình ăn tập trung vào thực phẩm thực vật nguyên chất có thể góp phần giảm nguy cơ ở nhiều nhóm ung thư.",
+      "Nội dung nhấn mạnh ý nghĩa ứng dụng trong tư vấn dinh dưỡng dự phòng, cả trong lâm sàng lẫn cộng đồng.",
+      "Xem bài đầy đủ để theo dõi bối cảnh nghiên cứu và các điểm bằng chứng quan trọng.",
+    ],
+    links: [
+      {
+        text: "Health & Nutrition News",
+        url: `${BASE}/news/health-nutrition`,
+      },
+      {
+        text: "Health Topics",
+        url: `${BASE}/health-topics/cancer`,
+      },
+    ],
+    linksVi: [
+      {
+        text: "Health & Nutrition News",
+        text_vi: "Tin sức khỏe và dinh dưỡng",
+        url: `${BASE}/news/health-nutrition`,
+      },
+      {
+        text: "Health Topics",
+        text_vi: "Chủ đề sức khỏe: ung thư",
+        url: `${BASE}/health-topics/cancer`,
+      },
+    ],
+  },
+  {
+    path: "/news/innovative-science/patient-derived-brain-organoids-provide-new-insights-autism-spectrum",
+    titleEn: "Patient-Derived Brain Organoids Provide New Insights Into Autism Spectrum Disorders",
+    titleVi: "Não cơ quan mini từ tế bào người bệnh mở ra góc nhìn mới về rối loạn phổ tự kỷ",
+    descriptionEn:
+      "Innovative science researchers report how patient-derived brain organoids are helping clarify mechanisms related to autism spectrum disorders.",
+    descriptionVi:
+      "Bản tin khoa học đổi mới cho thấy mô hình não cơ quan mini từ tế bào người bệnh đang giúp làm rõ thêm các cơ chế liên quan đến rối loạn phổ tự kỷ.",
+    paragraphsEn: [
+      "The article explains how patient-derived organoid models can capture human-relevant biological signals that are difficult to observe in older models.",
+      "It discusses why this approach may improve hypothesis testing and translational relevance in neurodevelopmental research.",
+      "Read the full update for study framing and key scientific implications.",
+    ],
+    paragraphsVi: [
+      "Bài viết giải thích cách mô hình organoid tạo từ tế bào người bệnh có thể phản ánh tín hiệu sinh học liên quan trực tiếp đến con người, vốn khó quan sát trong các mô hình cũ.",
+      "Nội dung cũng nêu vì sao cách tiếp cận này có thể hỗ trợ kiểm định giả thuyết tốt hơn và tăng giá trị chuyển giao trong nghiên cứu phát triển thần kinh.",
+      "Xem bản cập nhật đầy đủ để theo dõi thiết kế nghiên cứu và các hàm ý khoa học chính.",
+    ],
+    links: [
+      {
+        text: "Innovative Science News",
+        url: `${BASE}/news/innovative-science-news`,
+      },
+      {
+        text: "Good Science Digest",
+        url: `${BASE}/news/good-science-digest`,
+      },
+    ],
+    linksVi: [
+      {
+        text: "Innovative Science News",
+        text_vi: "Tin khoa học đổi mới",
+        url: `${BASE}/news/innovative-science-news`,
+      },
+      {
+        text: "Good Science Digest",
+        text_vi: "Bản tin khoa học chuyên sâu",
+        url: `${BASE}/news/good-science-digest`,
+      },
+    ],
+  },
+  {
     path: "/news/news-releases/swapping-meat-and-dairy-plant-based-foods-cuts-climate-pollution-35-randomized",
     titleEn:
       "Swapping Meat and Dairy for Plant-Based Foods Cuts Climate Pollution by 35%, Randomized Trial Finds",
     titleVi:
-      "Thay thịt và sữa bằng thực phẩm từ thực vật giúp giảm 35% phát thải khí hậu, theo thử nghiệm ngẫu nhiên",
+      "Thay thịt và sữa bằng thực phẩm thực vật giúp giảm 35% phát thải khí hậu, theo thử nghiệm ngẫu nhiên",
     descriptionEn:
       "A randomized trial reported that replacing meat and dairy with plant-based foods lowered climate-related pollution by 35%.",
     descriptionVi:
-      "Một thử nghiệm ngẫu nhiên cho thấy việc thay thịt và sữa bằng thực phẩm từ thực vật giúp giảm 35% phát thải liên quan đến khí hậu.",
+      "Một thử nghiệm ngẫu nhiên cho thấy việc thay thịt và sữa bằng thực phẩm thực vật giúp giảm 35% phát thải liên quan đến khí hậu.",
     paragraphsEn: [
       "The Physicians Committee shared findings from a randomized trial showing a measurable drop in climate pollution when participants replaced meat and dairy with plant-based foods.",
-      "The report emphasizes that individual food choices can produce meaningful environmental impact while aligning with health-focused dietary patterns.",
-      "Read the release for study context, methods, and the full summary from the research team.",
+      "The report highlights that everyday food choices may create meaningful environmental benefits while remaining aligned with preventive-health goals.",
+      "Read the release for methods, trial context, and full study summary.",
     ],
     paragraphsVi: [
-      "Ủy ban Bác sĩ công bố kết quả từ một thử nghiệm ngẫu nhiên cho thấy mức phát thải khí hậu giảm rõ rệt khi người tham gia thay thịt và sữa bằng thực phẩm từ thực vật.",
-      "Bản tin nhấn mạnh rằng lựa chọn thực phẩm hằng ngày có thể tạo tác động môi trường đáng kể, đồng thời phù hợp với định hướng dinh dưỡng lành mạnh.",
-      "Xem toàn văn thông cáo để theo dõi bối cảnh nghiên cứu, phương pháp và tóm tắt chi tiết từ nhóm nghiên cứu.",
+      "Ủy ban Bác sĩ công bố kết quả thử nghiệm ngẫu nhiên cho thấy mức phát thải khí hậu giảm rõ rệt khi người tham gia thay thịt và sữa bằng thực phẩm thực vật.",
+      "Bản tin nhấn mạnh lựa chọn ăn uống hằng ngày có thể tạo lợi ích môi trường đáng kể, đồng thời phù hợp với định hướng y học dự phòng.",
+      "Xem toàn văn thông cáo để theo dõi phương pháp, bối cảnh thử nghiệm và tóm tắt nghiên cứu đầy đủ.",
     ],
     links: [
       {
@@ -407,7 +657,7 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
     linksVi: [
       {
         text: "Health & Nutrition News",
-        text_vi: "Thông tin sức khỏe và dinh dưỡng",
+        text_vi: "Tin sức khỏe và dinh dưỡng",
         url: `${BASE}/news/health-nutrition`,
       },
       {
@@ -422,18 +672,18 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
     titleEn: "Progress in Expanding the Organ Donor Pool",
     titleVi: "Tiến triển trong việc mở rộng nguồn hiến tạng",
     descriptionEn:
-      "An Innovative Science update highlights current progress and research directions aimed at expanding the organ donor pool.",
+      "An innovative science update highlights current progress and research directions aimed at expanding the organ donor pool.",
     descriptionVi:
-      "Bài viết thuộc chuyên mục Khoa học đổi mới cập nhật các tiến triển và hướng nghiên cứu nhằm mở rộng nguồn hiến tạng.",
+      "Bản tin khoa học đổi mới cập nhật các tiến triển và hướng nghiên cứu nhằm mở rộng nguồn hiến tạng.",
     paragraphsEn: [
-      "This update reviews scientific efforts designed to increase organ availability and improve transplant pathways.",
-      "It outlines where research is moving, including human-relevant methods that may strengthen translation into clinical use.",
-      "See the full article for detailed context and linked sources.",
+      "This update reviews scientific strategies intended to increase organ availability and improve transplant pathways.",
+      "It outlines research directions, including human-relevant methods that may improve translation into clinical settings.",
+      "Read the full article for study context, limitations, and linked sources.",
     ],
     paragraphsVi: [
-      "Bài cập nhật này tổng hợp các hướng nghiên cứu nhằm tăng khả năng tiếp cận nguồn tạng hiến và cải thiện lộ trình ghép tạng.",
-      "Nội dung nêu rõ các xu hướng mới, trong đó có những phương pháp phù hợp với sinh học người để hỗ trợ chuyển giao vào thực hành lâm sàng.",
-      "Xem bài gốc để theo dõi bối cảnh chi tiết và các nguồn liên quan.",
+      "Bài cập nhật tổng hợp các chiến lược khoa học nhằm tăng khả năng sẵn có của tạng hiến và cải thiện quy trình ghép tạng.",
+      "Nội dung nêu các hướng nghiên cứu, trong đó có những phương pháp phù hợp với sinh học người để tăng tính ứng dụng lâm sàng.",
+      "Xem bài đầy đủ để theo dõi bối cảnh nghiên cứu, giới hạn dữ liệu và nguồn tham chiếu.",
     ],
     links: [
       {
@@ -448,7 +698,7 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
     linksVi: [
       {
         text: "Innovative Science News",
-        text_vi: "Thông tin khoa học đổi mới",
+        text_vi: "Tin khoa học đổi mới",
         url: `${BASE}/news/innovative-science-news`,
       },
       {
@@ -461,19 +711,19 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
   {
     path: "/news/blog/chicken-ick-fecal-soup",
     titleEn: "Chicken Ick: Fecal Soup",
-    titleVi: "Góc khuất thịt gà: “canh vi khuẩn phân”",
+    titleVi: "Góc khuất thịt gà: nguy cơ nhiễm bẩn từ quy trình chế biến",
     descriptionEn:
       "A blog post discussing contamination concerns around chicken processing and what consumers should know.",
     descriptionVi:
-      "Bài blog phân tích các rủi ro nhiễm bẩn trong chuỗi xử lý thịt gà và những điều người tiêu dùng nên lưu ý.",
+      "Bài blog phân tích nguy cơ nhiễm bẩn trong chuỗi chế biến thịt gà và các điểm người tiêu dùng cần lưu ý.",
     paragraphsEn: [
-      "This article explains why contamination risks in chicken production continue to raise public-health concerns.",
-      "It summarizes practical context for consumers and points readers to broader food-safety and prevention resources.",
-      "Read the full post for references and additional guidance.",
+      "The post explains why contamination risk in chicken production remains a persistent public-health concern.",
+      "It summarizes practical context for consumers and links to broader food-safety and prevention resources.",
+      "Read the full article for references and additional guidance.",
     ],
     paragraphsVi: [
-      "Bài viết làm rõ vì sao nguy cơ nhiễm bẩn trong sản xuất thịt gà vẫn là vấn đề đáng lo ngại đối với sức khỏe cộng đồng.",
-      "Nội dung tóm tắt bối cảnh thực tế cho người tiêu dùng, đồng thời dẫn tới các tài liệu liên quan đến an toàn thực phẩm và phòng ngừa.",
+      "Bài viết làm rõ vì sao nguy cơ nhiễm bẩn trong sản xuất thịt gà vẫn là vấn đề đáng quan ngại đối với sức khỏe cộng đồng.",
+      "Nội dung tóm tắt bối cảnh thực tế cho người tiêu dùng và dẫn tới các tài liệu liên quan về an toàn thực phẩm, dự phòng bệnh.",
       "Xem bài đầy đủ để theo dõi nguồn tham khảo và hướng dẫn chi tiết hơn.",
     ],
     links: [
@@ -489,7 +739,7 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
     linksVi: [
       {
         text: "Health & Nutrition News",
-        text_vi: "Thông tin sức khỏe và dinh dưỡng",
+        text_vi: "Tin sức khỏe và dinh dưỡng",
         url: `${BASE}/news/health-nutrition`,
       },
       {
@@ -504,20 +754,20 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
     titleEn:
       "Human Health, Human Science: How the Physicians Committee Is Improving Public Health Through Smarter Research",
     titleVi:
-      "Sức khỏe con người, khoa học vì con người: Cách Ủy ban Bác sĩ cải thiện sức khỏe cộng đồng bằng nghiên cứu thông minh hơn",
+      "Sức khỏe con người, khoa học vì con người: cách Ủy ban Bác sĩ cải thiện y tế công cộng bằng nghiên cứu phù hợp hơn",
     descriptionEn:
       "A Good Science Digest overview of how human-relevant research supports better public-health outcomes.",
     descriptionVi:
-      "Bài tổng hợp Good Science Digest về cách nghiên cứu phù hợp với con người có thể hỗ trợ kết quả sức khỏe cộng đồng tốt hơn.",
+      "Bài tổng hợp Good Science Digest cho thấy nghiên cứu phù hợp với sinh học người có thể hỗ trợ kết quả y tế công cộng tốt hơn.",
     paragraphsEn: [
-      "The article outlines how science that is more directly relevant to humans can strengthen evidence for health decisions.",
-      "It highlights policy and research priorities that aim to improve outcomes while reducing reliance on outdated animal-based models.",
-      "Read the full digest entry for complete context and references.",
+      "The digest outlines how human-relevant science can strengthen evidence quality for public-health decision-making.",
+      "It highlights policy and research priorities that seek better outcomes while reducing dependence on outdated animal-based models.",
+      "Read the full entry for complete context and references.",
     ],
     paragraphsVi: [
-      "Bài viết trình bày cách tiếp cận nghiên cứu gắn chặt hơn với sinh học người có thể củng cố bằng chứng cho các quyết định y tế công cộng.",
-      "Nội dung nhấn mạnh các ưu tiên chính sách và nghiên cứu nhằm cải thiện hiệu quả sức khỏe, đồng thời giảm phụ thuộc vào mô hình cũ dựa trên động vật.",
-      "Xem toàn văn bài tổng hợp để nắm đầy đủ bối cảnh và tài liệu tham chiếu.",
+      "Bài tổng hợp trình bày cách khoa học gắn chặt với dữ liệu trên người có thể nâng chất lượng bằng chứng cho quyết định y tế công cộng.",
+      "Nội dung nhấn mạnh các ưu tiên chính sách và nghiên cứu nhằm cải thiện hiệu quả sức khỏe, đồng thời giảm phụ thuộc vào mô hình động vật đã lỗi thời.",
+      "Xem toàn văn để theo dõi đầy đủ bối cảnh và tài liệu tham chiếu.",
     ],
     links: [
       {
@@ -537,94 +787,8 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
       },
       {
         text: "Innovative Science News",
-        text_vi: "Thông tin khoa học đổi mới",
+        text_vi: "Tin khoa học đổi mới",
         url: `${BASE}/news/innovative-science-news`,
-      },
-    ],
-  },
-  {
-    path: "/news/news-releases/doctors-group-files-legal-petition-urging-usda-require-colorectal-cancer-warning",
-    titleEn:
-      "Doctors Group Files Legal Petition Urging USDA to Require Colorectal Cancer Warning",
-    titleVi:
-      "Nhóm bác sĩ nộp kiến nghị pháp lý, đề nghị USDA yêu cầu cảnh báo về nguy cơ ung thư đại trực tràng",
-    descriptionEn:
-      "A Physicians Committee legal petition asks USDA to require colorectal-cancer warnings connected to processed meat.",
-    descriptionVi:
-      "Một kiến nghị pháp lý từ Ủy ban Bác sĩ đề nghị USDA yêu cầu cảnh báo về nguy cơ ung thư đại trực tràng liên quan thịt chế biến sẵn.",
-    paragraphsEn: [
-      "The Physicians Committee announced a legal petition requesting that USDA add clearer warning language tied to colorectal-cancer risk.",
-      "The petition focuses on consumer-facing information and transparency in public nutrition communication.",
-      "Read the full release for filing details and supporting context.",
-    ],
-    paragraphsVi: [
-      "Ủy ban Bác sĩ thông báo đã nộp kiến nghị pháp lý, đề xuất USDA bổ sung cảnh báo rõ ràng hơn về nguy cơ ung thư đại trực tràng.",
-      "Kiến nghị tập trung vào thông tin dành cho người tiêu dùng và tính minh bạch trong truyền thông dinh dưỡng công cộng.",
-      "Xem toàn văn thông cáo để theo dõi chi tiết hồ sơ và bối cảnh liên quan.",
-    ],
-    links: [
-      {
-        text: "News Releases",
-        url: `${BASE}/news/news-releases`,
-      },
-      {
-        text: "Health & Nutrition News",
-        url: `${BASE}/news/health-nutrition`,
-      },
-    ],
-    linksVi: [
-      {
-        text: "News Releases",
-        text_vi: "Thông cáo báo chí",
-        url: `${BASE}/news/news-releases`,
-      },
-      {
-        text: "Health & Nutrition News",
-        text_vi: "Thông tin sức khỏe và dinh dưỡng",
-        url: `${BASE}/news/health-nutrition`,
-      },
-    ],
-  },
-  {
-    path: "/news/news-releases/physicians-committee-offering-grants-farmers-who-are-growing-health-promoting",
-    titleEn:
-      "Physicians Committee Offering Grants to Farmers Who Are Growing Health-Promoting Crops",
-    titleVi:
-      "Ủy ban Bác sĩ cấp tài trợ cho nông dân trồng các loại cây có lợi cho sức khỏe",
-    descriptionEn:
-      "The Physicians Committee announced grant support for farmers growing crops that promote healthier food systems.",
-    descriptionVi:
-      "Ủy ban Bác sĩ công bố chương trình tài trợ dành cho nông dân trồng các loại cây góp phần xây dựng hệ thực phẩm lành mạnh hơn.",
-    paragraphsEn: [
-      "The release introduces grant opportunities aimed at farmers producing health-promoting crops.",
-      "The initiative highlights practical support for agricultural transitions aligned with public-health priorities.",
-      "Read the full release for eligibility and program details.",
-    ],
-    paragraphsVi: [
-      "Thông cáo giới thiệu các khoản tài trợ dành cho nông dân đang canh tác các loại cây có lợi cho sức khỏe cộng đồng.",
-      "Sáng kiến này nhấn mạnh hỗ trợ thực tế cho quá trình chuyển đổi nông nghiệp theo định hướng sức khỏe.",
-      "Xem toàn văn thông cáo để biết tiêu chí tham gia và thông tin chi tiết của chương trình.",
-    ],
-    links: [
-      {
-        text: "News Releases",
-        url: `${BASE}/news/news-releases`,
-      },
-      {
-        text: "Health & Nutrition News",
-        url: `${BASE}/news/health-nutrition`,
-      },
-    ],
-    linksVi: [
-      {
-        text: "News Releases",
-        text_vi: "Thông cáo báo chí",
-        url: `${BASE}/news/news-releases`,
-      },
-      {
-        text: "Health & Nutrition News",
-        text_vi: "Thông tin sức khỏe và dinh dưỡng",
-        url: `${BASE}/news/health-nutrition`,
       },
     ],
   },

@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { AuthorProfile } from "@/data/authors";
 import { getAuthorProfileHref } from "@/lib/authors";
 
@@ -8,7 +8,7 @@ type AuthorAboutBoxProps = {
 
 export default function AuthorAboutBox({ author }: AuthorAboutBoxProps) {
   return (
-    <section className="mt-10 rounded-2xl border border-[#d9e4eb] bg-[#f8fbfd] p-5 md:p-6">
+    <section className="mt-10 rounded-2xl border border-[#d9e4eb] bg-[#f8fbfd] p-5 font-sans md:p-6">
       <p className="text-sm font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">Về tác giả</p>
       <h3 className="mt-2 text-xl font-bold text-slate-900">{author.displayName}</h3>
       <p className="mt-1 text-sm font-medium text-slate-700">{author.headline}</p>

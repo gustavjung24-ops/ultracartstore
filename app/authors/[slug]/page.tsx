@@ -160,20 +160,20 @@ export default async function AuthorProfilePage({ params }: Props) {
   return (
     <>
       <Header initialLanguage={lang} />
-      <main className="mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-10">
+      <main className="mx-auto max-w-7xl px-4 py-8 font-sans md:px-6 md:py-10">
         <div className="mb-4 text-sm text-slate-500">
           <Link href="/" className="text-slate-500 no-underline hover:underline">
             {locale.common.home}
           </Link>
           <span className="mx-2">/</span>
           <Link href="/authors" className="text-slate-500 no-underline hover:underline">
-            TÃ¡c giáº£
+            Tác giả
           </Link>
           <span className="mx-2">/</span>
           <span>{author.displayName}</span>
         </div>
 
-        <article className="page-surface overflow-hidden">
+        <article className="page-surface overflow-hidden font-sans">
           {author.coverImage ? (
             <div className="relative h-52 w-full bg-slate-100 md:h-64">
               <Image src={author.coverImage} alt={author.displayName} fill className="object-cover" unoptimized />
@@ -197,9 +197,7 @@ export default async function AuthorProfilePage({ params }: Props) {
               <div>
                 <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">{author.fullName}</h1>
                 <p className="mt-2 text-base text-slate-700">{author.headline}</p>
-                <p className="mt-1 text-sm text-slate-500">
-                  ID: {author.id} â€¢ Slug: {author.slug}
-                </p>
+                <p className="mt-1 text-sm text-slate-500">ID: {author.id} | Slug: {author.slug}</p>
               </div>
             </div>
 
@@ -224,24 +222,24 @@ export default async function AuthorProfilePage({ params }: Props) {
             </div>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2">
-              {renderListField("Báº±ng cáº¥p", author.degrees)}
-              {renderStringField("ChuyÃªn mÃ´n", author.specialty)}
-              {renderStringField("Vai trÃ² hiá»‡n táº¡i", author.currentRole)}
-              {renderStringField("Tá»• chá»©c hiá»‡n táº¡i", author.currentOrganization)}
-              {renderStringField("Trá»ng tÃ¢m chuyÃªn mÃ´n", author.professionalFocus)}
-              {renderListField("Má»‘i quan tÃ¢m nghiÃªn cá»©u", author.researchInterests)}
-              {renderListField("Há»c váº¥n", author.education)}
-              {renderListField("Chá»©ng chá»‰", author.certifications)}
-              {renderListField("Giáº£i thÆ°á»Ÿng", author.awards)}
-              {renderListField("Cá»™t má»‘c nghá» nghiá»‡p", author.keyCareerMilestones)}
-              {renderListField("CÃ´ng trÃ¬nh ná»•i báº­t", author.notableWorks)}
-              {renderListField("SÃ¡ch", author.books)}
+              {renderListField("Bằng cấp", author.degrees)}
+              {renderStringField("Chuyên môn", author.specialty)}
+              {renderStringField("Vai trò hiện tại", author.currentRole)}
+              {renderStringField("Tổ chức hiện tại", author.currentOrganization)}
+              {renderStringField("Trọng tâm chuyên môn", author.professionalFocus)}
+              {renderListField("Mối quan tâm nghiên cứu", author.researchInterests)}
+              {renderListField("Học vấn", author.education)}
+              {renderListField("Chứng chỉ", author.certifications)}
+              {renderListField("Giải thưởng", author.awards)}
+              {renderListField("Cột mốc nghề nghiệp", author.keyCareerMilestones)}
+              {renderListField("Công trình nổi bật", author.notableWorks)}
+              {renderListField("Sách", author.books)}
               {renderListField("Podcast", author.podcasts)}
               {renderListField("Talks", author.talks)}
-              {renderListField("Hoáº¡t Ä‘á»™ng chÃ­nh", author.majorActivities)}
-              {renderListField("Danh má»¥c cÃ´ng bá»‘", author.publicationList)}
-              {renderListField("Chá»§ Ä‘á» tÃ¡c giáº£", author.authorThemes)}
-              {renderStringField("VÃ¬ sao tÃ¡c giáº£ viáº¿t chá»§ Ä‘á» nÃ y", author.whyThisAuthorWritesThisTopic)}
+              {renderListField("Hoạt động chính", author.majorActivities)}
+              {renderListField("Danh mục công bố", author.publicationList)}
+              {renderListField("Chủ đề tác giả", author.authorThemes)}
+              {renderStringField("Vì sao tác giả viết chủ đề này", author.whyThisAuthorWritesThisTopic)}
               {renderListField("Related Article Slugs", author.relatedArticleSlugs)}
               {renderLinkListField("Profile Source Links", author.profileSourceLinks)}
               {renderExternalLinks("External Links", author.externalLinks)}
@@ -254,4 +252,3 @@ export default async function AuthorProfilePage({ params }: Props) {
     </>
   );
 }
-

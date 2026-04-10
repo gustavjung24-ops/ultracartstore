@@ -451,6 +451,10 @@ const PRIORITY_NEWS_ARTICLE_PATHS = new Set([
   "/news/good-science-digest/human-health-human-science-how-physicians-committee-improving-public",
   "/news/news-releases/doctors-group-files-legal-petition-urging-usda-require-colorectal-cancer-warning",
   "/news/news-releases/physicians-committee-offering-grants-farmers-who-are-growing-health-promoting",
+  "/news/exam-room-podcast/can-your-gut-predict-parkinsons-alzheimers-dr-trisha-pasricha",
+  "/news/health-nutrition/plant-based-diets-reduce-risk-cancer",
+  "/news/health-nutrition/american-heart-association-recommends-plant-based-protein-over-meat",
+  "/news/innovative-science/patient-derived-brain-organoids-provide-new-insights-autism-spectrum",
 ]);
 
 type PcrmInputPage = PcrmPage & { path?: string };

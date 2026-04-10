@@ -23,18 +23,18 @@ export default async function AuthorsPage() {
   return (
     <>
       <Header initialLanguage={lang} />
-      <main className="mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-10">
+      <main className="mx-auto max-w-7xl px-4 py-8 font-sans md:px-6 md:py-10">
         <div className="mb-4 text-sm text-slate-500">
           <span>{locale.common.home}</span>
           <span className="mx-2">/</span>
-          <span>TÃ¡c giáº£</span>
+          <span>Tác giả</span>
         </div>
 
-        <section className="page-surface p-6 md:p-8">
-          <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">TÃ¡c giáº£</h1>
+        <section className="page-surface p-6 font-sans md:p-8">
+          <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">Tác giả</h1>
           <p className="mt-3 max-w-3xl text-slate-700">
-            Danh sÃ¡ch há»“ sÆ¡ tÃ¡c giáº£ theo Ä‘á»‹nh dáº¡ng há»c thuáº­t Ä‘á»ƒ thuáº­n tiá»‡n cho viá»‡c biÃªn táº­p, Ä‘á»‘i chiáº¿u nguá»“n vÃ 
-            gáº¯n bÃ i viáº¿t theo author slug/id.
+            Danh sách hồ sơ tác giả theo định dạng học thuật để thuận tiện cho việc biên tập, đối chiếu nguồn và
+            gắn bài viết theo author slug/id.
           </p>
 
           <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -66,7 +66,7 @@ export default async function AuthorsPage() {
                   href={getAuthorProfileHref(author)}
                   className="mt-4 inline-flex rounded-full border border-[#0f5c73] px-4 py-2 text-xs font-bold uppercase tracking-[0.08em] text-[#0f5c73] no-underline transition hover:bg-[#0f5c73] hover:text-white"
                 >
-                  Xem há»“ sÆ¡ tÃ¡c giáº£
+                  Xem hồ sơ tác giả
                 </Link>
               </article>
             ))}
@@ -77,4 +77,3 @@ export default async function AuthorsPage() {
     </>
   );
 }
-
