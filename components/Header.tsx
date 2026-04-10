@@ -143,7 +143,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
           top: 0,
           left: 0,
           right: 0,
-          fontFamily: 'var(--font-body), "Segoe UI", system-ui, sans-serif',
+          fontFamily: 'var(--font-body), "Segoe UI", "Noto Sans", Arial, system-ui, sans-serif',
         }}
       >
         <div className="border-b border-[#2a5d7d] bg-[#18354a]">

@@ -8,7 +8,7 @@ interface LanguageSwitcherProps {
 }
 
 export default function LanguageSwitcher({
-  language = 'en',
+  language = 'vi',
   onLanguageChange,
 }: LanguageSwitcherProps) {
   const handleChange = (lang: Language) => {
@@ -23,7 +23,7 @@ export default function LanguageSwitcher({
 
   return (
     <div className="inline-flex flex-nowrap items-center gap-1 rounded-md bg-gray-100 p-1"
-      style={{ fontFamily: 'var(--font-body), "Segoe UI", system-ui, sans-serif' }}>
+      style={{ fontFamily: 'var(--font-body), "Segoe UI", "Noto Sans", Arial, system-ui, sans-serif' }}>
       <button
         onClick={() => handleChange('en')}
         className={`whitespace-nowrap rounded px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.02em] transition sm:px-3 ${

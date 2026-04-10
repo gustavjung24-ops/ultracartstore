@@ -33,7 +33,7 @@ export function getClientLanguageFromCookie(cookieValue?: string): Language | nu
 }
 
 export function getPreferredClientLanguage(): Language {
-  return getClientLanguageFromStorage() ?? getClientLanguageFromCookie() ?? 'en';
+  return getClientLanguageFromStorage() ?? getClientLanguageFromCookie() ?? 'vi';
 }
 
 export function persistClientLanguage(language: Language): void {

@@ -64,7 +64,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
   return (
     <footer
       className="mt-16 border-t border-[#dbe5ec] bg-white text-[#1f2d3d]"
-      style={{ fontFamily: 'var(--font-body), "Segoe UI", system-ui, sans-serif' }}
+      style={{ fontFamily: 'var(--font-body), "Segoe UI", "Noto Sans", Arial, system-ui, sans-serif' }}
     >
       <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">

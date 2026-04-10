@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import AuthorAvatar from "@/components/AuthorAvatar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import type { AuthorProfile } from "@/data/authors";
 import {
   getAuthorBySlug,
   getAuthors,
@@ -105,48 +104,6 @@ function renderLinkListField(label: string, items: string[]) {
   );
 }
 
-function renderExternalLinks(label: string, links: AuthorProfile["externalLinks"]) {
-  if (!links.length) {
-    return null;
-  }
-
-  return (
-    <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
-      <h2 className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{label}</h2>
-      <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
-        {links.map((link, index) => (
-          <li key={`${label}-${link.url}-${index}`}>
-            <a href={link.url} target="_blank" rel="noreferrer" className="text-[#0f5c73] hover:underline">
-              {link.label || link.url}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
-
-function renderSocialLinks(label: string, links: AuthorProfile["socialLinks"]) {
-  if (!links.length) {
-    return null;
-  }
-
-  return (
-    <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
-      <h2 className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">{label}</h2>
-      <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
-        {links.map((link, index) => (
-          <li key={`${label}-${link.url}-${index}`}>
-            <a href={link.url} target="_blank" rel="noreferrer" className="text-[#0f5c73] hover:underline">
-              {link.label || link.url}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
-
 export default async function AuthorProfilePage({ params }: Props) {
   const { slug } = await params;
   const lang = await getSiteLanguageFromCookie();
@@ -189,53 +146,21 @@ export default async function AuthorProfilePage({ params }: Props) {
               <div>
                 <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">{author.fullName}</h1>
                 <p className="mt-2 text-base text-slate-700">{author.headline}</p>
-                <p className="mt-1 text-sm text-slate-500">Mã tác giả: {author.id} | Định danh: {author.slug}</p>
               </div>
             </div>
 
             <p className="mt-6 text-base leading-8 text-slate-700">{author.shortBio}</p>
-
-            <div className="mt-6 rounded-xl border border-[#d9e4eb] bg-[#f8fbfd] p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">Thông tin dữ liệu</p>
-              <div className="mt-2 grid gap-2 text-sm text-slate-700 md:grid-cols-2">
-                <p>
-                  <span className="font-semibold">Nổi bật:</span> {author.featured ? "Có" : "Không"}
-                </p>
-                <p>
-                  <span className="font-semibold">Thứ tự sắp xếp:</span> {author.sortOrder}
-                </p>
-                <p>
-                  <span className="font-semibold">Trạng thái:</span> {author.status}
-                </p>
-                <p>
-                  <span className="font-semibold">Ngày rà soát:</span> {author.lastReviewedAt}
-                </p>
-              </div>
-            </div>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2">
               {renderListField("Bằng cấp", author.degrees)}
               {renderStringField("Chuyên môn", author.specialty)}
               {renderStringField("Vai trò hiện tại", author.currentRole)}
               {renderStringField("Tổ chức hiện tại", author.currentOrganization)}
-              {renderStringField("Trọng tâm chuyên môn", author.professionalFocus)}
+              {renderStringField("Trọng tâm nghiên cứu", author.professionalFocus)}
               {renderListField("Mối quan tâm nghiên cứu", author.researchInterests)}
-              {renderListField("Học vấn", author.education)}
-              {renderListField("Chứng chỉ", author.certifications)}
-              {renderListField("Giải thưởng", author.awards)}
               {renderListField("Cột mốc nghề nghiệp", author.keyCareerMilestones)}
               {renderListField("Công trình nổi bật", author.notableWorks)}
-              {renderListField("Sách", author.books)}
-              {renderListField("Podcast", author.podcasts)}
-              {renderListField("Bài nói chuyện", author.talks)}
-              {renderListField("Hoạt động chính", author.majorActivities)}
-              {renderListField("Danh mục công bố", author.publicationList)}
-              {renderListField("Chủ đề tác giả", author.authorThemes)}
-              {renderStringField("Vì sao tác giả viết chủ đề này", author.whyThisAuthorWritesThisTopic)}
-              {renderListField("Slug bài viết liên quan", author.relatedArticleSlugs)}
               {renderLinkListField("Liên kết nguồn hồ sơ", author.profileSourceLinks)}
-              {renderExternalLinks("Liên kết ngoài", author.externalLinks)}
-              {renderSocialLinks("Liên kết mạng xã hội", author.socialLinks)}
             </div>
           </div>
         </article>

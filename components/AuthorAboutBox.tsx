@@ -8,6 +8,8 @@ type AuthorAboutBoxProps = {
 };
 
 export default function AuthorAboutBox({ author }: AuthorAboutBoxProps) {
+  const degreeLine = author.degrees.map((degree) => degree.trim()).filter(Boolean).join(", ");
+
   return (
     <section className="mt-10 rounded-2xl border border-[#d9e4eb] bg-[#f8fbfd] p-5 font-sans md:p-6">
       <p className="text-sm font-semibold uppercase tracking-[0.08em] text-[#0f5c73]">Về tác giả</p>
@@ -15,6 +17,9 @@ export default function AuthorAboutBox({ author }: AuthorAboutBoxProps) {
         <AuthorAvatar author={author} size="md" className="shrink-0" />
         <div className="min-w-0">
           <h3 className="text-xl font-bold text-slate-900">{author.displayName}</h3>
+          {degreeLine ? (
+            <p className="mt-1 text-xs font-semibold uppercase tracking-[0.06em] text-slate-500">{degreeLine}</p>
+          ) : null}
           <p className="mt-1 text-sm font-medium text-slate-700">{author.headline}</p>
           <p className="mt-3 line-clamp-4 text-sm leading-7 text-slate-600">{author.shortBio}</p>
           <Link

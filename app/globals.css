@@ -32,7 +32,7 @@ body {
 body {
   @apply antialiased;
   color: var(--color-text);
-  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-family: var(--font-body), "Segoe UI", "Noto Sans", Arial, system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.65;
   overscroll-behavior-y: auto;

@@ -33,8 +33,7 @@ export default async function AuthorsPage() {
         <section className="page-surface p-6 font-sans md:p-8">
           <h1 className="text-3xl font-extrabold text-slate-900 md:text-4xl">Tác giả</h1>
           <p className="mt-3 max-w-3xl text-slate-700">
-            Danh sách hồ sơ tác giả theo định dạng học thuật để thuận tiện cho việc biên tập, đối chiếu nguồn và
-            gắn bài viết theo author slug/id.
+            Danh sách hồ sơ chuyên môn của đội ngũ tác giả, trình bày theo hướng gọn, rõ và học thuật.
           </p>
 
           <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
