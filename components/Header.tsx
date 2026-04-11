@@ -155,12 +155,12 @@ export default function Header({ initialLanguage }: HeaderProps) {
               </a>
             </span>
           </div>
-          <div className="mx-auto hidden max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6 lg:grid">
+          <div className="mx-auto hidden max-w-7xl grid-cols-4 gap-2 px-4 py-1.5 md:px-6 lg:grid">
             {topGroups.map((group) => (
               <div key={group.id} className="group relative">
                 <Link
                   href={group.href}
-                  className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-3 py-2 text-center text-[13px] font-medium leading-5 tracking-[0.005em] text-white no-underline transition hover:bg-white/18"
+                  className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-3 py-1.5 text-center text-[13px] font-medium leading-5 tracking-[0.005em] text-white no-underline transition hover:bg-white/18"
                 >
                   <span className="line-clamp-1">{group.label}</span>
                   <span className="ml-1 text-[11px]">{"\u25BE"}</span>
@@ -182,7 +182,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
           </div>
         </div>
 
-        <div className="border-b border-[color:var(--color-border-light)] bg-white px-2 py-2 sm:px-4 md:px-6 md:py-3">
+        <div className="border-b border-[color:var(--color-border-light)] bg-white px-2 py-2 sm:px-4 md:px-6 md:py-2">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-1 sm:gap-2">
             <div className="order-1 flex shrink-0 items-center gap-1.5 md:gap-3">
               {mounted ? (
@@ -235,11 +235,11 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   alt={locale.site.name}
                   width={1024}
                   height={1024}
-                  className="h-[30px] w-auto object-contain drop-shadow-[0_2px_7px_rgba(15,92,115,0.24)] sm:h-[54px] md:h-[62px]"
-                  sizes="(min-width: 768px) 62px, (min-width: 640px) 54px, 46px"
+                  className="h-[30px] w-auto object-contain drop-shadow-[0_2px_7px_rgba(15,92,115,0.24)] sm:h-[54px] md:h-[46px] lg:h-[48px]"
+                  sizes="(min-width: 1024px) 48px, (min-width: 768px) 46px, (min-width: 640px) 54px, 46px"
                   priority
                 />
-                <p className="hidden whitespace-nowrap text-xs font-medium tracking-[0.005em] text-[color:var(--color-primary-navy)] sm:block sm:text-sm">
+                <p className="hidden whitespace-nowrap text-xs font-medium tracking-[0.005em] text-[color:var(--color-primary-navy)] sm:block sm:text-sm md:hidden">
                   {locale.site.tagline}
                 </p>
               </div>
@@ -261,7 +261,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 <div key={group.id} className="group relative">
                   <Link
                     href={group.href}
-                    className="flex h-full items-center px-4 py-4 text-sm font-semibold leading-[1.35rem] tracking-[0.005em] text-white no-underline hover:bg-[color:var(--color-secondary-teal)]"
+                    className="flex h-full items-center px-4 py-3 text-sm font-semibold leading-[1.35rem] tracking-[0.005em] text-white no-underline hover:bg-[color:var(--color-secondary-teal)]"
                   >
                     {group.label}
                   </Link>
