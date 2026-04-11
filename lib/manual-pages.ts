@@ -781,6 +781,12 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
       "Nội dung nêu các hướng nghiên cứu, trong đó có những phương pháp phù hợp với sinh học người để tăng tính ứng dụng lâm sàng.",
       "Xem bài đầy đủ để theo dõi bối cảnh nghiên cứu, giới hạn dữ liệu và nguồn tham chiếu.",
     ],
+    images: [
+      {
+        src: "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2026-03/SOT.jpg?h=ec041e41&itok=0ZFFVzBa",
+        alt: "Hình minh họa tiến triển trong mở rộng nguồn hiến tạng",
+      },
+    ],
     links: [
       {
         text: "Innovative Science News",
@@ -821,6 +827,12 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
       "Bài viết làm rõ vì sao nguy cơ nhiễm bẩn trong sản xuất thịt gà vẫn là vấn đề đáng quan ngại đối với sức khỏe cộng đồng.",
       "Nội dung tóm tắt bối cảnh thực tế cho người tiêu dùng và dẫn tới các tài liệu liên quan về an toàn thực phẩm, dự phòng bệnh.",
       "Xem bài đầy đủ để theo dõi nguồn tham khảo và hướng dẫn chi tiết hơn.",
+    ],
+    images: [
+      {
+        src: "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2020-04/chickens.jpg?h=ae1281eb&itok=WCHUTecY",
+        alt: "Hình minh họa chủ đề an toàn thực phẩm liên quan đến thịt gà",
+      },
     ],
     links: [
       {
@@ -864,6 +876,12 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
       "Bài tổng hợp trình bày cách khoa học gắn chặt với dữ liệu trên người có thể nâng chất lượng bằng chứng cho quyết định y tế công cộng.",
       "Nội dung nhấn mạnh các ưu tiên chính sách và nghiên cứu nhằm cải thiện hiệu quả sức khỏe, đồng thời giảm phụ thuộc vào mô hình động vật đã lỗi thời.",
       "Xem toàn văn để theo dõi đầy đủ bối cảnh và tài liệu tham chiếu.",
+    ],
+    images: [
+      {
+        src: "https://www.pcrm.org/sites/default/files/2026-03/octopus.jpeg",
+        alt: "Hình minh họa bản tin khoa học về nghiên cứu phù hợp với con người",
+      },
     ],
     links: [
       {
