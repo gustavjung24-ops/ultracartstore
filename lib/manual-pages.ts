@@ -1,4 +1,4 @@
-﻿import type { PcrmLink, PcrmPage } from "./pcrm-content";
+﻿import type { PcrmLink, PcrmMedia, PcrmPage } from "./pcrm-content";
 
 const BASE = "https://www.pcrm.org";
 
@@ -329,6 +329,7 @@ type DetailedManualPageSpec = {
   descriptionVi: string;
   paragraphsEn: string[];
   paragraphsVi: string[];
+  images?: PcrmMedia[];
   links: PcrmLink[];
   linksVi?: (PcrmLink & { text_vi?: string })[];
 };
@@ -342,6 +343,7 @@ function createDetailedPage(spec: DetailedManualPageSpec): PcrmPage & { path: st
     descriptionVi,
     paragraphsEn,
     paragraphsVi,
+    images,
     links,
     linksVi,
   } = spec;
@@ -367,7 +369,7 @@ function createDetailedPage(spec: DetailedManualPageSpec): PcrmPage & { path: st
     paragraphs: paragraphsEn,
     paragraphs_en: paragraphsEn,
     paragraphs_vi: paragraphsVi,
-    images: [],
+    images: images ?? [],
     links,
     links_vi: linksVi,
   };
@@ -810,6 +812,12 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
       "Nội dung giải thích vì sao ưu tiên nghiên cứu phù hợp với sinh học người là cần thiết cho trách nhiệm giải trình và hiệu quả khoa học.",
       "Xem bản tin đầy đủ để theo dõi bối cảnh, khuyến nghị và nguồn tham chiếu.",
     ],
+    images: [
+      {
+        src: "https://www.pcrm.org/sites/default/files/2026-03/octopus.jpeg",
+        alt: "Bản tin khoa học về định hướng nghiên cứu phù hợp với con người",
+      },
+    ],
     links: [
       {
         text: "Good Science Digest",
@@ -851,6 +859,12 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
       "Nội dung nhấn mạnh các chiến lược nghiên cứu có thể cải thiện tính chuyển giao trong khoa học sức khỏe tâm thần.",
       "Xem toàn văn bản tin để theo dõi lập luận, bối cảnh và tài liệu liên quan.",
     ],
+    images: [
+      {
+        src: "https://www.pcrm.org/sites/default/files/styles/teaser_400x225/public/2026-03/MRI-scans.jpg?h=d1cb525d&itok=LJLOXJE3",
+        alt: "Hình minh họa nghiên cứu thần kinh học dựa trên dữ liệu người",
+      },
+    ],
     links: [
       {
         text: "Good Science Digest",
@@ -880,3 +894,4 @@ export const manualPages = [
   ...manualPageSpecs.map(createPage),
   ...priorityArticleManualPages.map(createDetailedPage),
 ];
+
