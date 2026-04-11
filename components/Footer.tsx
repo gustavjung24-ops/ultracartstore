@@ -173,7 +173,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
                           <p className="truncate text-sm font-semibold text-white group-hover:text-[color:var(--color-soft-cream)]">
                             {author.displayName}
                           </p>
-                          <span className="inline-flex shrink-0 items-center rounded-full bg-white/20 px-1.5 py-0.5 text-[10px] font-semibold tracking-[0.01em] text-[color:var(--color-soft-cream)]">
+                          <span className="inline-flex shrink-0 items-center rounded-full bg-[#E8F4EC] px-1.5 py-0.5 text-[10px] font-semibold tracking-[0.01em] text-[color:var(--color-accent-green)]">
                             {authorBadgeLabel}
                           </span>
                         </div>

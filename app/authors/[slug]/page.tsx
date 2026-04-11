@@ -149,7 +149,7 @@ export default async function AuthorProfilePage({ params }: Props) {
               <div>
                 <div className="flex flex-wrap items-center gap-2">
                   <h1 className="text-3xl font-bold text-slate-900 md:text-4xl">{author.fullName}</h1>
-                  <span className="inline-flex items-center rounded-full bg-[color:var(--color-soft-cream)] px-2.5 py-0.5 text-[11px] font-semibold tracking-[0.01em] text-[color:var(--color-secondary-teal)] md:text-xs">
+                  <span className="inline-flex items-center rounded-full bg-[#E8F4EC] px-2.5 py-0.5 text-[11px] font-semibold tracking-[0.01em] text-[color:var(--color-accent-green)] md:text-xs">
                     {authorBadgeLabel}
                   </span>
                 </div>
