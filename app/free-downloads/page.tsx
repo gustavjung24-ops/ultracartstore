@@ -14,56 +14,56 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 const breadcrumbs = [
-  { label: "Trang chá»§", href: "/" },
-  { label: "Táº£i miá»…n phÃ­" },
+  { label: "Trang chủ", href: "/" },
+  { label: "Tải miễn phí" },
 ];
 
 const freeResources = [
   {
     id: "pcrm-kickstart",
-    title: "ChÆ°Æ¡ng trÃ¬nh Kickstart 21 ngÃ y",
+    title: "Chương trình Kickstart 21 ngày",
     description:
-      "HÆ°á»›ng dáº«n tá»«ng bÆ°á»›c trong 21 ngÃ y Ä‘á»ƒ chuyá»ƒn sang cháº¿ Ä‘á»™ Äƒn thá»±c váº­t. KÃ¨m thá»±c Ä‘Æ¡n máº«u, máº¹o mua sáº¯m vÃ  cÃ´ng thá»©c náº¥u Äƒn Ä‘Æ¡n giáº£n.",
+      "Hướng dẫn từng bước trong 21 ngày để chuyển sang chế độ ăn thực vật. Kèm thực đơn mẫu, mẹo mua sắm và công thức nấu ăn đơn giản.",
     type: "PDF",
     link: "https://pcrm.org/kickstart",
   },
   {
     id: "diabetes-starter",
-    title: "HÆ°á»›ng dáº«n kiá»ƒm soÃ¡t tiá»ƒu Ä‘Æ°á»ng báº±ng cháº¿ Ä‘á»™ Äƒn thá»±c váº­t",
+    title: "Hướng dẫn kiểm soát tiểu đường bằng chế độ ăn thực vật",
     description:
-      "Tá»•ng há»£p báº±ng chá»©ng khoa há»c vÃ  hÆ°á»›ng dáº«n thá»±c tiá»…n giÃºp ngÆ°á»i máº¯c tiá»ƒu Ä‘Æ°á»ng loáº¡i 2 cáº£i thiá»‡n Ä‘Æ°á»ng huyáº¿t thÃ´ng qua Äƒn uá»‘ng Ä‘Ãºng cÃ¡ch.",
+      "Tổng hợp bằng chứng khoa học và hướng dẫn thực tiễn giúp người mắc tiểu đường loại 2 cải thiện đường huyết thông qua ăn uống đúng cách.",
     type: "PDF",
     link: "https://pcrm.org/diabetes",
   },
   {
     id: "healthy-heart",
-    title: "Cháº¿ Ä‘á»™ Äƒn báº£o vá»‡ tim máº¡ch",
+    title: "Chế độ ăn bảo vệ tim mạch",
     description:
-      "Thá»±c pháº©m nÃªn Äƒn, thá»±c pháº©m nÃªn trÃ¡nh vÃ  káº¿ hoáº¡ch 4 tuáº§n Ä‘á»ƒ cáº£i thiá»‡n sá»©c khá»e tim máº¡ch â€” dá»±a trÃªn nghiÃªn cá»©u cá»§a Physicians Committee.",
+      "Thực phẩm nên ăn, thực phẩm nên tránh và kế hoạch 4 tuần để cải thiện sức khỏe tim mạch — dựa trên nghiên cứu của Physicians Committee.",
     type: "PDF",
     link: "https://pcrm.org/heart",
   },
   {
     id: "cancer-prevention",
-    title: "PhÃ²ng ngá»«a ung thÆ° qua Äƒn uá»‘ng",
+    title: "Phòng ngừa ung thư qua ăn uống",
     description:
-      "PhÃ¢n tÃ­ch má»‘i liÃªn há»‡ giá»¯a cháº¿ Ä‘á»™ Äƒn vÃ  nguy cÆ¡ ung thÆ°, kÃ¨m khuyáº¿n nghá»‹ thá»±c tiá»…n dá»… Ã¡p dá»¥ng hÃ ng ngÃ y.",
+      "Phân tích mối liên hệ giữa chế độ ăn và nguy cơ ung thư, kèm khuyến nghị thực tiễn dễ áp dụng hằng ngày.",
     type: "PDF",
     link: "https://pcrm.org/cancer",
   },
   {
     id: "weight-loss-guide",
-    title: "Giáº£m cÃ¢n bá»n vá»¯ng vá»›i thá»±c váº­t",
+    title: "Giảm cân bền vững với thực vật",
     description:
-      "PhÆ°Æ¡ng phÃ¡p giáº£m cÃ¢n khÃ´ng tÃ­nh calo, khÃ´ng nhá»‹n Ä‘Ã³i â€” dá»±a trÃªn nguyÃªn lÃ½ máº­t Ä‘á»™ nÄƒng lÆ°á»£ng thá»±c pháº©m tá»« PCRM.",
+      "Phương pháp giảm cân không tính calo, không nhịn đói — dựa trên nguyên lý mật độ năng lượng thực phẩm từ PCRM.",
     type: "PDF",
     link: "https://pcrm.org/weightloss",
   },
   {
     id: "pcrm-plate",
-    title: "ÄÄ©a thá»©c Äƒn lÃ nh máº¡nh PCRM",
+    title: "Đĩa thức ăn lành mạnh PCRM",
     description:
-      "HÆ°á»›ng dáº«n trá»±c quan vá» tá»· lá»‡ cÃ¡c nhÃ³m thá»±c pháº©m trong má»™t bá»¯a Äƒn cÃ¢n báº±ng theo khuyáº¿n nghá»‹ cá»§a Physicians Committee.",
+      "Hướng dẫn trực quan về tỷ lệ các nhóm thực phẩm trong một bữa ăn cân bằng theo khuyến nghị của Physicians Committee.",
     type: "PDF",
     link: "https://pcrm.org/plate",
   },
@@ -77,11 +77,11 @@ export default function FreeDownloadsPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <h1 className="text-brand-teal text-3xl font-semibold leading-tight pb-3 mb-4 border-b border-gray-200">
-          Táº£i miá»…n phÃ­
+          Tải miễn phí
         </h1>
         <p className="text-gray-600 mb-8 text-sm leading-relaxed max-w-2xl">
-          Y há»c lÃ nh máº¡nh cung cáº¥p miá»…n phÃ­ nhiá»u tÃ i liá»‡u giÃ¡o dá»¥c sá»©c khá»e dÆ°á»›i dáº¡ng PDF.
-          Táº£i vá» vÃ  chia sáº» vá»›i cá»™ng Ä‘á»“ng, bá»‡nh nhÃ¢n hoáº·c nhá»¯ng ngÆ°á»i thÃ¢n mÃ  báº¡n yÃªu quÃ½.
+          Y học lành mạnh cung cấp miễn phí nhiều tài liệu giáo dục sức khỏe dưới dạng PDF.
+          Tải về và chia sẻ với cộng đồng, bệnh nhân hoặc những người thân mà bạn yêu quý.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -106,23 +106,23 @@ export default function FreeDownloadsPage() {
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-                Táº£i xuá»‘ng
+                Tải xuống
               </a>
             </div>
           ))}
         </div>
 
         <div className="mt-10 bg-brand-dark text-white p-6 rounded text-sm">
-          <p className="font-semibold text-brand-teal mb-2">Muá»‘n tÃ i liá»‡u in sáºµn?</p>
+          <p className="font-semibold text-brand-teal mb-2">Muốn tài liệu in sẵn?</p>
           <p className="text-gray-300 mb-4">
-            ChÃºng tÃ´i cÅ©ng cung cáº¥p tÃ i liá»‡u in sáºµn cháº¥t lÆ°á»£ng cao Ä‘á»ƒ phÃ¡t táº¡i sá»± kiá»‡n,
-            phÃ²ng khÃ¡m vÃ  cá»™ng Ä‘á»“ng.
+            Chúng tôi cũng cung cấp tài liệu in sẵn chất lượng cao để phát tại sự kiện,
+            phòng khám và cộng đồng.
           </p>
           <Link
             href="/shop"
             className="inline-block bg-brand-teal hover:bg-brand-mid text-white text-sm font-semibold tracking-[0.01em] py-2 px-6 transition-colors"
           >
-            Xem ná»™i dung
+            Xem nội dung
           </Link>
         </div>
       </div>

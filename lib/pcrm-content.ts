@@ -443,7 +443,7 @@ const QA_VI_PARAGRAPH_REPLACEMENTS_BY_PATH: Record<string, Record<string, string
 
 const QA_HUB_VI_TITLE_OVERRIDES: Record<string, string> = {
   "/good-nutrition": "Dinh dưỡng lành mạnh",
-  "/ethical-science": "Khoa há»c cÃ³ Ä‘áº¡o Ä‘á»©c",
+  "/ethical-science": "Khoa học có đạo đức",
 };
 
 // Source-of-truth resolution for each normalized path.
