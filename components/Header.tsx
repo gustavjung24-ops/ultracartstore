@@ -119,6 +119,10 @@ export default function Header({ initialLanguage }: HeaderProps) {
       vietnamese: locale.languageSwitcher.vietnamese,
     };
   }, [locale]);
+  const desktopCenterSlogan =
+    language === 'vi'
+      ? 'Dinh dưỡng dựa trên bằng chứng và khoa học có đạo đức'
+      : 'Evidence-based nutrition and ethical science';
 
   const mobileMenuGroups: Array<{ key: string; href: string; label: string; items: RenderNavItem[] }> = [
     ...topGroups.map((group) => ({
@@ -183,7 +187,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
         </div>
 
         <div className="border-b border-[color:var(--color-border-light)] bg-white px-2 py-2 sm:px-4 md:px-6 md:py-2">
-          <div className="mx-auto flex max-w-7xl items-center justify-between gap-1 sm:gap-2">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-1 sm:gap-2 md:grid md:grid-cols-[auto_minmax(0,1fr)_auto] md:gap-4 md:justify-normal">
             <div className="order-1 flex shrink-0 items-center gap-1.5 md:gap-3">
               {mounted ? (
                 <div className="inline-flex flex-nowrap overflow-hidden rounded-md border border-slate-300 bg-white lg:hidden">
@@ -228,7 +232,11 @@ export default function Header({ initialLanguage }: HeaderProps) {
               </button>
             </div>
 
-            <Link href="/" className="order-2 ml-auto shrink-0 no-underline hover:opacity-95">
+            <p className="hidden min-w-0 truncate whitespace-nowrap text-center text-[11px] font-medium tracking-[0.004em] text-[color:var(--color-primary-navy)] md:block lg:text-xs">
+              {desktopCenterSlogan}
+            </p>
+
+            <Link href="/" className="order-2 ml-auto shrink-0 no-underline hover:opacity-95 md:ml-0">
               <div className="flex flex-col items-center gap-0.5 text-center sm:items-end sm:text-right">
                 <Image
                   src={logoImage}

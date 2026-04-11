@@ -62,6 +62,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
 
   const footerAuthors = useMemo(() => getAuthors(), []);
   const viewAllAuthorsLabel = language === 'vi' ? 'Xem tất cả tác giả' : 'View all authors';
+  const authorBadgeLabel = language === 'vi' ? '(Thuần Chay)' : '(Plant-Based)';
 
   return (
     <footer className="mt-16 border-t border-white/20 bg-[color:var(--color-primary-navy)] text-slate-100">
@@ -168,9 +169,14 @@ export default function Footer({ initialLanguage }: FooterProps) {
                     >
                       <AuthorAvatar author={author} size="sm" className="shrink-0" />
                       <div className="min-w-0">
-                        <p className="truncate text-sm font-semibold text-white group-hover:text-[color:var(--color-soft-cream)]">
-                          {author.displayName}
-                        </p>
+                        <div className="flex min-w-0 items-center gap-1.5">
+                          <p className="truncate text-sm font-semibold text-white group-hover:text-[color:var(--color-soft-cream)]">
+                            {author.displayName}
+                          </p>
+                          <span className="inline-flex shrink-0 items-center rounded-full bg-white/20 px-1.5 py-0.5 text-[10px] font-semibold tracking-[0.01em] text-[color:var(--color-soft-cream)]">
+                            {authorBadgeLabel}
+                          </span>
+                        </div>
                         <p className="line-clamp-2 text-xs leading-[1.35rem] text-slate-300">{author.headline}</p>
                       </div>
                     </Link>

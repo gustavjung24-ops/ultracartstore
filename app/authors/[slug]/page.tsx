@@ -111,6 +111,7 @@ export default async function AuthorProfilePage({ params }: Props) {
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
   const author = getAuthorBySlug(slug);
+  const authorBadgeLabel = lang === "vi" ? "(Thuần Chay)" : "(Plant-Based)";
 
   if (!author) {
     notFound();
@@ -146,7 +147,12 @@ export default async function AuthorProfilePage({ params }: Props) {
               <AuthorAvatar author={author} size="lg" />
 
               <div>
-                <h1 className="text-3xl font-bold text-slate-900 md:text-4xl">{author.fullName}</h1>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h1 className="text-3xl font-bold text-slate-900 md:text-4xl">{author.fullName}</h1>
+                  <span className="inline-flex items-center rounded-full bg-[color:var(--color-soft-cream)] px-2.5 py-0.5 text-[11px] font-semibold tracking-[0.01em] text-[color:var(--color-secondary-teal)] md:text-xs">
+                    {authorBadgeLabel}
+                  </span>
+                </div>
                 <p className="mt-2 text-base text-slate-700">{author.headline}</p>
               </div>
             </div>

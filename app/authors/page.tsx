@@ -19,6 +19,7 @@ export default async function AuthorsPage() {
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
   const authorList = getAuthors();
+  const authorBadgeLabel = lang === "vi" ? "(Thuần Chay)" : "(Plant-Based)";
 
   return (
     <>
@@ -41,7 +42,12 @@ export default async function AuthorsPage() {
                   <AuthorAvatar author={author} size="md" />
 
                   <div>
-                    <h2 className="text-lg font-bold text-slate-900">{author.displayName}</h2>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h2 className="text-lg font-bold text-slate-900">{author.displayName}</h2>
+                      <span className="inline-flex items-center rounded-full bg-[color:var(--color-soft-cream)] px-2 py-0.5 text-[10px] font-semibold tracking-[0.01em] text-[color:var(--color-secondary-teal)]">
+                        {authorBadgeLabel}
+                      </span>
+                    </div>
                     <p className="mt-0.5 text-sm font-medium text-slate-500">{author.degrees.join(", ")}</p>
                   </div>
                 </div>
