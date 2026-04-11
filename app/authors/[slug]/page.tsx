@@ -19,7 +19,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const author = getAuthorBySlug(slug);
+  const lang = await getSiteLanguageFromCookie();
+  const author = getAuthorBySlug(slug, lang);
 
   if (!author) {
     return {};
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: author.shortBio,
     image: authorImage,
     type: "profile",
-    language: "vi",
+    language: lang,
   });
 }
 
@@ -110,7 +111,7 @@ export default async function AuthorProfilePage({ params }: Props) {
   const { slug } = await params;
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
-  const author = getAuthorBySlug(slug);
+  const author = getAuthorBySlug(slug, lang);
   const authorBadgeLabel = lang === "vi" ? "(Thuần Chay)" : "(Vegan)";
 
   if (!author) {

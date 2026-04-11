@@ -18,7 +18,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default async function AuthorsPage() {
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
-  const authorList = getAuthors();
+  const authorList = getAuthors(lang);
   const authorBadgeLabel = lang === "vi" ? "(Thuần Chay)" : "(Vegan)";
 
   return (

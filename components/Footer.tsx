@@ -60,7 +60,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
     [locale, language]
   );
 
-  const footerAuthors = useMemo(() => getAuthors(), []);
+  const footerAuthors = useMemo(() => getAuthors(language), [language]);
   const viewAllAuthorsLabel = language === 'vi' ? 'Xem tất cả tác giả' : 'View all authors';
   const authorBadgeLabel = language === 'vi' ? '(Thuần Chay)' : '(Vegan)';
 

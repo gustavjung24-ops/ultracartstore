@@ -121,7 +121,7 @@ export default async function DynamicPcrmPage({ params }: Props) {
       return true;
     });
   const showTrustBadges = page.path === "/about-us/financial-report";
-  const articleAuthor = getAuthorForArticlePath(page.path);
+  const articleAuthor = getAuthorForArticlePath(page.path, lang);
   const heroImage = resolveNewsImage(page.path, page.images);
   const shouldRenderHeroImage = page.path.startsWith("/news/") ? true : heroImage.fromSource;
 
