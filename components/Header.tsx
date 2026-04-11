@@ -143,8 +143,16 @@ export default function Header({ initialLanguage }: HeaderProps) {
       >
         <div className="border-b border-[#2a5d7d] bg-[#18354a]">
           <div className="mx-auto flex max-w-7xl items-center justify-center overflow-hidden px-2 py-1.5 text-center text-slate-100 md:px-6">
-            <span className="block max-w-full truncate whitespace-nowrap text-[11px] font-medium leading-4 tracking-[0.005em] md:text-sm md:leading-5">
-              {locale.site.tagline}
+            <span className="block max-w-full truncate whitespace-nowrap text-[10px] font-medium leading-4 tracking-[0.005em] sm:text-xs md:text-sm md:leading-5">
+              Nội dung trang web này được trích từ{" "}
+              <a
+                href="https://www.pcrm.org"
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-white/70 underline-offset-2 hover:text-white"
+              >
+                PCRM.org
+              </a>
             </span>
           </div>
           <div className="mx-auto hidden max-w-7xl grid-cols-4 gap-2 px-4 py-2 md:px-6 lg:grid">
