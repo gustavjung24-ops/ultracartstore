@@ -792,6 +792,88 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
       },
     ],
   },
+  {
+    path: "/news/good-science-digest/physicians-committee-calls-nih-implement-key-fiscal-year-2026",
+    titleEn: "Physicians Committee Calls on NIH to Implement Key Fiscal Year 2026 Congressional Directives",
+    titleVi: "Ủy ban Bác sĩ kêu gọi NIH thực hiện các chỉ đạo trọng điểm của Quốc hội năm tài khóa 2026",
+    descriptionEn:
+      "A Good Science Digest update outlining calls for NIH to implement key congressional directives in fiscal year 2026.",
+    descriptionVi:
+      "Bản tin Good Science Digest cập nhật lời kêu gọi NIH triển khai các chỉ đạo quan trọng của Quốc hội trong năm tài khóa 2026.",
+    paragraphsEn: [
+      "The update summarizes policy directives highlighted for NIH implementation in fiscal year 2026.",
+      "It explains why human-relevant research priorities matter for public accountability and scientific impact.",
+      "Read the full digest entry for context, recommendations, and source references.",
+    ],
+    paragraphsVi: [
+      "Bài viết tóm tắt các chỉ đạo chính sách được nhấn mạnh để NIH triển khai trong năm tài khóa 2026.",
+      "Nội dung giải thích vì sao ưu tiên nghiên cứu phù hợp với sinh học người là cần thiết cho trách nhiệm giải trình và hiệu quả khoa học.",
+      "Xem bản tin đầy đủ để theo dõi bối cảnh, khuyến nghị và nguồn tham chiếu.",
+    ],
+    links: [
+      {
+        text: "Good Science Digest",
+        url: `${BASE}/news/good-science-digest`,
+      },
+      {
+        text: "Innovative Science News",
+        url: `${BASE}/news/innovative-science-news`,
+      },
+    ],
+    linksVi: [
+      {
+        text: "Good Science Digest",
+        text_vi: "Bản tin khoa học",
+        url: `${BASE}/news/good-science-digest`,
+      },
+      {
+        text: "Innovative Science News",
+        text_vi: "Tin khoa học đổi mới",
+        url: `${BASE}/news/innovative-science-news`,
+      },
+    ],
+  },
+  {
+    path: "/news/good-science-digest/physicians-committee-calls-greater-investment-human-based-research-nimh",
+    titleEn: "Physicians Committee Calls for Greater Investment in Human-Based Research at NIMH",
+    titleVi: "Ủy ban Bác sĩ kêu gọi tăng đầu tư cho nghiên cứu dựa trên con người tại NIMH",
+    descriptionEn:
+      "A Good Science Digest story on recommendations to expand investment in human-based research at NIMH.",
+    descriptionVi:
+      "Bản tin Good Science Digest về đề xuất tăng đầu tư cho các hướng nghiên cứu dựa trên con người tại NIMH.",
+    paragraphsEn: [
+      "The story highlights recommendations for stronger federal investment in human-based neuroscience research pathways.",
+      "It emphasizes research strategies that can improve translational relevance for mental health science.",
+      "Read the full digest article for rationale, context, and linked references.",
+    ],
+    paragraphsVi: [
+      "Bài viết nêu các khuyến nghị nhằm tăng cường đầu tư liên bang cho các hướng nghiên cứu thần kinh học dựa trên dữ liệu người.",
+      "Nội dung nhấn mạnh các chiến lược nghiên cứu có thể cải thiện tính chuyển giao trong khoa học sức khỏe tâm thần.",
+      "Xem toàn văn bản tin để theo dõi lập luận, bối cảnh và tài liệu liên quan.",
+    ],
+    links: [
+      {
+        text: "Good Science Digest",
+        url: `${BASE}/news/good-science-digest`,
+      },
+      {
+        text: "Innovative Science News",
+        url: `${BASE}/news/innovative-science-news`,
+      },
+    ],
+    linksVi: [
+      {
+        text: "Good Science Digest",
+        text_vi: "Bản tin khoa học",
+        url: `${BASE}/news/good-science-digest`,
+      },
+      {
+        text: "Innovative Science News",
+        text_vi: "Tin khoa học đổi mới",
+        url: `${BASE}/news/innovative-science-news`,
+      },
+    ],
+  },
 ];
 
 export const manualPages = [
