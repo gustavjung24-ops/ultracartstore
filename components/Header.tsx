@@ -159,15 +159,15 @@ export default function Header({ initialLanguage }: HeaderProps) {
               </a>
             </span>
           </div>
-          <div className="mx-auto hidden max-w-7xl grid-cols-4 gap-2 px-4 py-1.5 md:px-6 lg:grid">
+          <div className="mx-auto hidden max-w-7xl grid-cols-4 gap-1.5 px-4 py-1 md:px-6 lg:grid">
             {topGroups.map((group) => (
               <div key={group.id} className="group relative">
                 <Link
                   href={group.href}
-                  className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-3 py-1.5 text-center text-[13px] font-medium leading-5 tracking-[0.005em] text-white no-underline transition hover:bg-white/18"
+                  className="flex h-full items-center justify-center rounded-md border border-white/20 bg-white/10 px-3 py-1 text-center text-[12px] font-medium leading-4 tracking-[0.005em] text-white no-underline transition hover:bg-white/18"
                 >
                   <span className="line-clamp-1">{group.label}</span>
-                  <span className="ml-1 text-[11px]">{"\u25BE"}</span>
+                  <span className="ml-1 text-[10px]">{"\u25BE"}</span>
                 </Link>
 
                 <div className="absolute left-0 top-full z-50 hidden min-w-[260px] rounded-md border border-[#CFE1E5] bg-[#EEF6F7] p-2 shadow-[0_12px_24px_rgba(18,59,93,0.12)] lg:group-hover:block lg:group-focus-within:block">
