@@ -19,7 +19,7 @@ export default async function AuthorsPage() {
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
   const authorList = getAuthors();
-  const authorBadgeLabel = lang === "vi" ? "(Thuần Chay)" : "(Plant-Based)";
+  const authorBadgeLabel = lang === "vi" ? "(Thuần Chay)" : "(Vegan)";
 
   return (
     <>

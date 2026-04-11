@@ -111,7 +111,7 @@ export default async function AuthorProfilePage({ params }: Props) {
   const lang = await getSiteLanguageFromCookie();
   const locale = getCommonLocale(lang);
   const author = getAuthorBySlug(slug);
-  const authorBadgeLabel = lang === "vi" ? "(Thuần Chay)" : "(Plant-Based)";
+  const authorBadgeLabel = lang === "vi" ? "(Thuần Chay)" : "(Vegan)";
 
   if (!author) {
     notFound();
