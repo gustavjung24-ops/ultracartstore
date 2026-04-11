@@ -166,12 +166,12 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   <span className="ml-1 text-[11px]">{"\u25BE"}</span>
                 </Link>
 
-                <div className="absolute left-0 top-full z-50 hidden min-w-[260px] rounded-md border border-slate-200 bg-white p-2 shadow-2xl lg:group-hover:block lg:group-focus-within:block">
+                <div className="absolute left-0 top-full z-50 hidden min-w-[260px] rounded-md border border-[#CFE1E5] bg-[#EEF6F7] p-2 shadow-[0_12px_24px_rgba(18,59,93,0.12)] lg:group-hover:block lg:group-focus-within:block">
                   {group.items.map((item) => (
                     <Link
                       key={`${group.id}-${item.href}`}
                       href={item.href}
-                      className="block rounded px-2.5 py-2 text-sm font-medium leading-6 text-slate-700 no-underline hover:bg-slate-50 hover:text-[color:var(--color-secondary-teal)]"
+                      className="block rounded px-2.5 py-2 text-sm font-medium leading-6 text-[#244150] no-underline hover:bg-[#DCEDEF] hover:text-[#0F6E7E]"
                     >
                       {item.label}
                     </Link>
@@ -267,8 +267,10 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   </Link>
 
                   {group.items.length > 0 ? (
-                    <div className={`absolute ${alignClass} top-full z-50 hidden ${panelWidthClass} max-w-[94vw] border border-slate-200 bg-white p-5 shadow-2xl group-hover:block`}>
-                      <div className="mb-3 border-b border-slate-200 pb-2 text-[13px] font-semibold tracking-[0.005em] text-[color:var(--color-secondary-teal)]">
+                    <div
+                      className={`absolute ${alignClass} top-full z-50 hidden ${panelWidthClass} max-w-[94vw] border border-[#CFE1E5] bg-[#EEF6F7] p-5 shadow-[0_14px_28px_rgba(18,59,93,0.12)] group-hover:block`}
+                    >
+                      <div className="mb-3 border-b border-[#CFE1E5] pb-2 text-[13px] font-semibold tracking-[0.005em] text-[#0F6E7E]">
                         {group.label}
                       </div>
                       <div className={`grid max-h-[68vh] ${gridColsClass} gap-x-6 gap-y-2 overflow-auto pr-1`}>
@@ -276,7 +278,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                           <Link
                             key={`${group.id}-${item.href}`}
                             href={item.href}
-                            className="block rounded-sm px-2 py-2 text-sm font-medium leading-6 text-slate-700 no-underline hover:bg-slate-50 hover:text-[color:var(--color-secondary-teal)]"
+                            className="block rounded-sm px-2 py-2 text-sm font-medium leading-6 text-[#244150] no-underline hover:bg-[#DCEDEF] hover:text-[#0F6E7E]"
                           >
                             {item.label}
                           </Link>
