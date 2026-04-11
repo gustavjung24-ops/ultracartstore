@@ -22,6 +22,8 @@ type FooterProps = {
 
 export default function Footer({ initialLanguage }: FooterProps) {
   const [language, setLanguage] = useState<Language>(() => initialLanguage ?? getPreferredClientLanguage());
+  const [isMainMenuOpen, setMainMenuOpen] = useState(false);
+  const [isResourcesOpen, setResourcesOpen] = useState(false);
 
   useEffect(() => {
     setLanguage(getPreferredClientLanguage());
@@ -58,15 +60,8 @@ export default function Footer({ initialLanguage }: FooterProps) {
     [locale, language]
   );
 
-  const footerAuthors = useMemo(() => getAuthors().slice(0, 3), []);
-  const footerQuickLinks = useMemo(
-    () => [
-      { href: "/news/blog", label: locale.mainNav.news },
-      { href: "/authors", label: locale.mainNav.authors },
-      { href: "/contact", label: locale.utilityNav.contact },
-    ],
-    [locale],
-  );
+  const footerAuthors = useMemo(() => getAuthors(), []);
+  const viewAllAuthorsLabel = language === 'vi' ? 'Xem tất cả tác giả' : 'View all authors';
 
   return (
     <footer className="mt-16 border-t border-[#dbe5ec] bg-white text-[#1f2d3d]">
@@ -83,45 +78,73 @@ export default function Footer({ initialLanguage }: FooterProps) {
               />
             </Link>
             <p className="mt-4 text-[15px] leading-7 text-[#4a6072]">{locale.site.tagline}</p>
-            <div className="mt-4 flex gap-3 text-[15px] font-medium">
-              {footerQuickLinks.map((item) => (
-                <Link key={item.href} href={item.href} className="no-underline hover:text-[#007fab]">
-                  {item.label}
-                </Link>
-              ))}
-            </div>
           </div>
 
           <div>
-            <h4 className="mb-4 text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.common.mainMenu}</h4>
-            <ul className="space-y-2 text-[15px] leading-6">
-              {mainNavLinks.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-4 text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.common.resources}</h4>
-            <ul className="space-y-2 text-[15px] leading-6">
-              {utilityLinks.map((item) => (
-                <li key={item.href}>
-                  {item.external ? (
-                    <a href={item.href} target="_blank" rel="noreferrer" className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
-                      {item.label}
-                    </a>
-                  ) : (
+            <button
+              type="button"
+              className="mb-2 flex w-full items-center justify-between text-left"
+              onClick={() => setMainMenuOpen((current) => !current)}
+              aria-expanded={isMainMenuOpen}
+            >
+              <span className="text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.common.mainMenu}</span>
+              <span
+                className={`text-[#007fab] transition-transform ${isMainMenuOpen ? "rotate-180" : ""}`}
+                aria-hidden="true"
+              >
+                ▾
+              </span>
+            </button>
+            {isMainMenuOpen ? (
+              <ul className="space-y-2 text-[15px] leading-6">
+                {mainNavLinks.map((item) => (
+                  <li key={item.href}>
                     <Link href={item.href} className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
                       {item.label}
                     </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+
+          <div>
+            <button
+              type="button"
+              className="mb-2 flex w-full items-center justify-between text-left"
+              onClick={() => setResourcesOpen((current) => !current)}
+              aria-expanded={isResourcesOpen}
+            >
+              <span className="text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.common.resources}</span>
+              <span
+                className={`text-[#007fab] transition-transform ${isResourcesOpen ? "rotate-180" : ""}`}
+                aria-hidden="true"
+              >
+                ▾
+              </span>
+            </button>
+            {isResourcesOpen ? (
+              <ul className="space-y-2 text-[15px] leading-6">
+                {utilityLinks.map((item) => (
+                  <li key={item.href}>
+                    {item.external ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-[#1f2d3d] no-underline hover:text-[#007fab]"
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link href={item.href} className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
+                        {item.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </div>
 
           <div>
@@ -136,7 +159,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
             <div className="mt-4 border-t border-[#e2e8f0] pt-3">
               <p className="text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.footerAuthor.title}</p>
               <p className="mt-1 text-[13px] leading-relaxed text-[#64748b]">{locale.footerAuthor.description}</p>
-              <ul className="mt-3 space-y-2 text-sm">
+              <ul className="mt-3 max-h-72 space-y-2 overflow-y-auto pr-1 text-sm">
                 {footerAuthors.map((author) => (
                   <li key={author.id}>
                     <Link
@@ -154,6 +177,12 @@ export default function Footer({ initialLanguage }: FooterProps) {
                   </li>
                 ))}
               </ul>
+              <Link
+                href="/authors"
+                className="mt-3 inline-flex text-xs font-semibold tracking-[0.005em] text-[#0f5c73] no-underline hover:text-[#007fab]"
+              >
+                {viewAllAuthorsLabel}
+              </Link>
             </div>
           </div>
         </div>
