@@ -293,11 +293,11 @@ export default function Header({ initialLanguage }: HeaderProps) {
         </nav>
 
         {isMenuOpen ? (
-          <div className="max-h-[72vh] overflow-y-auto border-t border-[color:var(--color-border-light)] bg-white px-4 py-4 lg:hidden">
+          <div className="max-h-[72vh] overflow-y-auto border-t border-[#CFE1E5] bg-[#EEF6F7] px-4 py-4 lg:hidden">
             <div className="space-y-4">
               {mounted ? (
-                <div className="rounded-lg border border-slate-200 bg-[color:var(--color-soft-cream)] p-3">
-                  <div className="mb-2 text-[13px] font-medium tracking-[0.005em] text-slate-500">
+                <div className="rounded-lg border border-[#CFE1E5] bg-[#EEF6F7] p-3">
+                  <div className="mb-2 text-[13px] font-medium tracking-[0.005em] text-[#0F6E7E]">
                     {currentLabels.quickAccess}
                   </div>
                   <LanguageSwitcher
@@ -310,10 +310,10 @@ export default function Header({ initialLanguage }: HeaderProps) {
               ) : null}
 
               {mobileMenuGroups.map((group) => (
-                <div key={group.key} className="rounded-lg border border-slate-200">
+                <div key={group.key} className="rounded-lg border border-[#CFE1E5] bg-[#EEF6F7]">
                   <button
                     onClick={() => setOpenMobileGroup((prev) => (prev === group.key ? null : group.key))}
-                    className="flex w-full items-center justify-between border-b border-slate-200 px-4 py-3 text-left text-[15px] font-medium leading-snug text-[color:var(--color-primary-navy)]"
+                    className="flex w-full items-center justify-between border-b border-[#CFE1E5] px-4 py-3 text-left text-[15px] font-medium leading-snug text-[#0F6E7E]"
                     aria-expanded={openMobileGroup === group.key}
                   >
                     <span>{group.label}</span>
@@ -323,7 +323,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                     <div className="grid gap-1 p-2">
                       <Link
                         href={group.href}
-                        className="rounded px-3 py-2 text-sm font-semibold leading-6 text-[color:var(--color-primary-navy)] no-underline hover:bg-slate-50"
+                        className="rounded px-3 py-2 text-sm font-semibold leading-6 text-[#0F6E7E] no-underline hover:bg-[#DCEDEF]"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {currentLabels.openMainSection}
@@ -335,7 +335,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                             href={item.href}
                             target="_blank"
                             rel="noreferrer"
-                            className="rounded px-3 py-2 text-sm font-medium leading-6 text-slate-700 no-underline hover:bg-slate-50"
+                            className="rounded px-3 py-2 text-sm font-medium leading-6 text-[#244150] no-underline hover:bg-[#DCEDEF] hover:text-[#0F6E7E]"
                           >
                             {item.label}
                           </a>
@@ -343,7 +343,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                           <Link
                             key={`${group.key}-${item.href}`}
                             href={item.href}
-                            className="rounded px-3 py-2 text-sm font-medium leading-6 text-slate-700 no-underline hover:bg-slate-50"
+                            className="rounded px-3 py-2 text-sm font-medium leading-6 text-[#244150] no-underline hover:bg-[#DCEDEF] hover:text-[#0F6E7E]"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             {item.label}
@@ -355,7 +355,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 </div>
               ))}
 
-              <div className="flex flex-col gap-2 border-t border-slate-200 pt-4 text-sm text-slate-700">
+              <div className="flex flex-col gap-2 border-t border-[#CFE1E5] pt-4 text-sm text-[#244150]">
                 <a
                   href={`tel:${locale.site.contact.phoneHref}`}
                   className="inline-flex items-center gap-2 no-underline hover:text-[color:var(--color-secondary-teal)]"
