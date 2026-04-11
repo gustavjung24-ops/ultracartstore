@@ -627,6 +627,100 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
     ],
   },
   {
+    path: "/icnm",
+    titleEn: "International Conference on Nutrition in Medicine August 13-15, 2026",
+    titleVi: "Hội nghị Quốc tế về Dinh dưỡng trong Y học, 13-15 tháng 8, 2026",
+    descriptionEn:
+      "The International Conference on Nutrition in Medicine brings clinicians and researchers together to share evidence-based nutrition updates for medical practice.",
+    descriptionVi:
+      "Hội nghị Quốc tế về Dinh dưỡng trong Y học quy tụ bác sĩ và nhà nghiên cứu để cập nhật bằng chứng dinh dưỡng ứng dụng trong thực hành lâm sàng.",
+    paragraphsEn: [
+      "This conference highlights practical nutrition science, prevention-focused medicine, and clinical implementation strategies.",
+      "Sessions include current research summaries, case-based discussions, and applied guidance for healthcare professionals.",
+      "See the full conference details for program updates and participation information.",
+    ],
+    paragraphsVi: [
+      "Hội nghị tập trung vào khoa học dinh dưỡng ứng dụng, y học dự phòng và các chiến lược triển khai trong thực hành.",
+      "Nội dung bao gồm tổng quan nghiên cứu mới, thảo luận tình huống lâm sàng và hướng dẫn áp dụng cho nhân viên y tế.",
+      "Xem thông tin đầy đủ của hội nghị để theo dõi chương trình và hình thức tham gia.",
+    ],
+    images: [
+      {
+        src: "https://www.pcrm.org/sites/default/files/2023-12/Neal-Barnard-ICNM-2023-Podium.jpg",
+        alt: "Diễn giả tại Hội nghị Quốc tế về Dinh dưỡng trong Y học",
+      },
+    ],
+    links: [
+      {
+        text: "Events",
+        url: `${BASE}/events`,
+      },
+      {
+        text: "Good Nutrition",
+        url: `${BASE}/good-nutrition`,
+      },
+    ],
+    linksVi: [
+      {
+        text: "Events",
+        text_vi: "Sự kiện",
+        url: `${BASE}/events`,
+      },
+      {
+        text: "Good Nutrition",
+        text_vi: "Dinh dưỡng lành mạnh",
+        url: `${BASE}/good-nutrition`,
+      },
+    ],
+  },
+  {
+    path: "/ethical-science/summer-immersion",
+    titleEn: "2026 Summer Immersion on Innovative Approaches in Science",
+    titleVi: "Summer Immersion 2026 về các phương pháp khoa học đổi mới",
+    descriptionEn:
+      "A focused summer program exploring modern, human-relevant scientific approaches and responsible research methods.",
+    descriptionVi:
+      "Chương trình mùa hè chuyên sâu về các phương pháp khoa học hiện đại, phù hợp với dữ liệu người và định hướng nghiên cứu có trách nhiệm.",
+    paragraphsEn: [
+      "The immersion introduces participants to innovative research frameworks that improve translational relevance and scientific quality.",
+      "It covers practical examples, policy context, and collaborative learning for ethically grounded science.",
+      "Read the full program page for curriculum details, schedule, and eligibility.",
+    ],
+    paragraphsVi: [
+      "Chương trình giới thiệu các khung nghiên cứu đổi mới giúp nâng cao tính chuyển giao và chất lượng bằng chứng khoa học.",
+      "Nội dung bao gồm ví dụ thực tiễn, bối cảnh chính sách và hoạt động học tập hợp tác theo định hướng đạo đức.",
+      "Xem trang chương trình đầy đủ để theo dõi nội dung học, lịch trình và điều kiện tham gia.",
+    ],
+    images: [
+      {
+        src: "https://www.pcrm.org/sites/default/files/2025-12/2026-Summer-Immersion.jpg",
+        alt: "Summer Immersion 2026 về các phương pháp khoa học đổi mới",
+      },
+    ],
+    links: [
+      {
+        text: "Ethical Science",
+        url: `${BASE}/ethical-science`,
+      },
+      {
+        text: "Good Science Digest",
+        url: `${BASE}/news/good-science-digest`,
+      },
+    ],
+    linksVi: [
+      {
+        text: "Ethical Science",
+        text_vi: "Khoa học có đạo đức",
+        url: `${BASE}/ethical-science`,
+      },
+      {
+        text: "Good Science Digest",
+        text_vi: "Bản tin khoa học",
+        url: `${BASE}/news/good-science-digest`,
+      },
+    ],
+  },
+  {
     path: "/news/news-releases/swapping-meat-and-dairy-plant-based-foods-cuts-climate-pollution-35-randomized",
     titleEn:
       "Swapping Meat and Dairy for Plant-Based Foods Cuts Climate Pollution by 35%, Randomized Trial Finds",
