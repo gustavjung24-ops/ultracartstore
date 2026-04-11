@@ -177,11 +177,19 @@ export default async function DynamicPcrmPage({ params }: Props) {
                 {normalizedLinks.slice(0, 24).map((link, index) => (
                   <li key={`${link.href}-${index}`}>
                     {link.internal ? (
-                      <Link href={link.href} className="text-[#006c96] hover:underline">
+                      <Link
+                        href={link.href}
+                        className="text-[color:var(--color-secondary-teal)] hover:text-[color:var(--color-secondary-teal-hover)] hover:underline"
+                      >
                         {link.text}
                       </Link>
                     ) : (
-                      <a href={link.href} className="text-[#006c96] hover:underline" target="_blank" rel="noreferrer">
+                      <a
+                        href={link.href}
+                        className="text-[color:var(--color-secondary-teal)] hover:text-[color:var(--color-secondary-teal-hover)] hover:underline"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         {link.text}
                       </a>
                     )}
@@ -192,7 +200,7 @@ export default async function DynamicPcrmPage({ params }: Props) {
           ) : null}
 
           {showTrustBadges ? (
-            <section className="mt-10 rounded-sm bg-[#0b485a] p-5 md:p-8">
+            <section className="mt-10 rounded-sm bg-[color:var(--color-primary-navy)] p-5 md:p-8">
               <div className="flex flex-wrap items-start gap-6 md:gap-8">
                 {TRUST_BADGES.slice(0, 3).map((badge) => (
                   <div key={badge.src} className="flex h-[108px] w-[108px] items-center justify-center">

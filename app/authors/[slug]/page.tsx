@@ -50,7 +50,7 @@ function renderStringField(label: string, value: string) {
 
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
-      <h2 className="text-sm font-semibold tracking-[0.005em] text-[#0f5c73]">{label}</h2>
+      <h2 className="text-sm font-semibold tracking-[0.005em] text-[color:var(--color-secondary-teal)]">{label}</h2>
       <p className="mt-2 text-sm leading-7 text-slate-700">{value}</p>
     </section>
   );
@@ -65,7 +65,7 @@ function renderListField(label: string, items: string[]) {
 
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
-      <h2 className="text-sm font-semibold tracking-[0.005em] text-[#0f5c73]">{label}</h2>
+      <h2 className="text-sm font-semibold tracking-[0.005em] text-[color:var(--color-secondary-teal)]">{label}</h2>
       <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
         {cleaned.map((item) => (
           <li key={`${label}-${item}`} className="flex gap-2">
@@ -87,11 +87,16 @@ function renderLinkListField(label: string, items: string[]) {
 
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-4 md:p-5">
-      <h2 className="text-sm font-semibold tracking-[0.005em] text-[#0f5c73]">{label}</h2>
+      <h2 className="text-sm font-semibold tracking-[0.005em] text-[color:var(--color-secondary-teal)]">{label}</h2>
       <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
         {cleaned.map((item) => (
           <li key={`${label}-${item}`}>
-            <a href={item} target="_blank" rel="noreferrer" className="text-[#0f5c73] hover:underline">
+            <a
+              href={item}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[color:var(--color-secondary-teal)] hover:text-[color:var(--color-secondary-teal-hover)] hover:underline"
+            >
               {item}
             </a>
           </li>
@@ -133,7 +138,7 @@ export default async function AuthorProfilePage({ params }: Props) {
               <Image src={author.coverImage} alt={author.displayName} fill className="object-cover" unoptimized />
             </div>
           ) : (
-            <div className="h-28 w-full bg-gradient-to-r from-[#0f5c73] via-[#1b708d] to-[#2d8ca9]" />
+            <div className="h-28 w-full bg-gradient-to-r from-[color:var(--color-primary-navy)] via-[color:var(--color-secondary-teal)] to-[color:var(--color-accent-green)]" />
           )}
 
           <div className="p-6 md:p-8">

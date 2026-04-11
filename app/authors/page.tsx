@@ -51,7 +51,7 @@ export default async function AuthorsPage() {
 
                 <Link
                   href={getAuthorProfileHref(author)}
-                  className="mt-4 inline-flex rounded-full border border-[#0f5c73] px-4 py-2 text-sm font-semibold tracking-[0.005em] text-[#0f5c73] no-underline transition hover:bg-[#0f5c73] hover:text-white"
+                  className="mt-4 inline-flex rounded-full border border-[color:var(--color-secondary-teal)] px-4 py-2 text-sm font-semibold tracking-[0.005em] text-[color:var(--color-secondary-teal)] no-underline transition hover:bg-[color:var(--color-secondary-teal)] hover:text-white"
                 >
                   {locale.common.viewAuthorProfile}
                 </Link>

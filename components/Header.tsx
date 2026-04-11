@@ -139,9 +139,9 @@ export default function Header({ initialLanguage }: HeaderProps) {
     <>
       <header
         ref={headerRef}
-        className="fixed inset-x-0 top-0 z-[9999] border-b border-slate-200 bg-white shadow-sm"
+        className="fixed inset-x-0 top-0 z-[9999] border-b border-[color:var(--color-border-light)] bg-white shadow-sm"
       >
-        <div className="border-b border-[#2a5d7d] bg-[#18354a]">
+        <div className="border-b border-white/20 bg-[color:var(--color-primary-navy)]">
           <div className="mx-auto flex max-w-7xl items-center justify-center overflow-hidden px-2 py-1.5 text-center text-slate-100 md:px-6">
             <span className="block max-w-full truncate whitespace-nowrap text-[10px] font-medium leading-4 tracking-[0.005em] sm:text-xs md:text-sm md:leading-5">
               Nội dung trang web này được trích từ{" "}
@@ -171,7 +171,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                     <Link
                       key={`${group.id}-${item.href}`}
                       href={item.href}
-                      className="block rounded px-2.5 py-2 text-sm font-medium leading-6 text-slate-700 no-underline hover:bg-slate-50 hover:text-[#007fab]"
+                      className="block rounded px-2.5 py-2 text-sm font-medium leading-6 text-slate-700 no-underline hover:bg-slate-50 hover:text-[color:var(--color-secondary-teal)]"
                     >
                       {item.label}
                     </Link>
@@ -182,7 +182,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
           </div>
         </div>
 
-        <div className="border-b border-slate-200 bg-white px-2 py-2 sm:px-4 md:px-6 md:py-3">
+        <div className="border-b border-[color:var(--color-border-light)] bg-white px-2 py-2 sm:px-4 md:px-6 md:py-3">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-1 sm:gap-2">
             <div className="order-1 flex shrink-0 items-center gap-1.5 md:gap-3">
               {mounted ? (
@@ -190,7 +190,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   <button
                     onClick={() => handleLanguageChange('vi')}
                     className={`whitespace-nowrap px-2.5 py-1.5 text-xs font-semibold tracking-[0.005em] transition ${
-                      language === 'vi' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
+                      language === 'vi' ? 'bg-[color:var(--color-primary-navy)] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
                     {currentLabels.vietnamese}
@@ -198,7 +198,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   <button
                     onClick={() => handleLanguageChange('en')}
                     className={`whitespace-nowrap border-l border-slate-300 px-2.5 py-1.5 text-xs font-semibold tracking-[0.005em] transition ${
-                      language === 'en' ? 'bg-[#007fab] text-white' : 'text-slate-700 hover:bg-slate-100'
+                      language === 'en' ? 'bg-[color:var(--color-primary-navy)] text-white' : 'text-slate-700 hover:bg-slate-100'
                     }`}
                   >
                     {currentLabels.english}
@@ -219,7 +219,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
 
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-300 text-[#0f5c73] lg:hidden"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-300 text-[color:var(--color-primary-navy)] lg:hidden"
                 aria-label={currentLabels.menu}
               >
                 <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round">
@@ -239,18 +239,18 @@ export default function Header({ initialLanguage }: HeaderProps) {
                   sizes="(min-width: 768px) 62px, (min-width: 640px) 54px, 46px"
                   priority
                 />
-                <p className="hidden text-xs font-medium tracking-[0.005em] text-[#0f5c73] whitespace-nowrap sm:block sm:text-sm">
+                <p className="hidden whitespace-nowrap text-xs font-medium tracking-[0.005em] text-[color:var(--color-primary-navy)] sm:block sm:text-sm">
                   {locale.site.tagline}
                 </p>
               </div>
             </Link>
           </div>
-          <p className="mt-1 text-center text-xs font-medium tracking-[0.005em] text-[#0f5c73] sm:hidden">
+          <p className="mt-1 text-center text-xs font-medium tracking-[0.005em] text-[color:var(--color-primary-navy)] sm:hidden">
             {locale.site.tagline}
           </p>
         </div>
 
-        <nav className="hidden bg-[#007fab] lg:block">
+        <nav className="hidden bg-[color:var(--color-primary-navy)] lg:block">
           <div className="mx-auto flex max-w-7xl items-stretch justify-between px-4 md:px-6">
             {mainGroups.map((group, index) => {
               const alignClass = index >= mainGroups.length - 2 ? 'left-auto right-0' : 'left-0';
@@ -261,14 +261,14 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 <div key={group.id} className="group relative">
                   <Link
                     href={group.href}
-                    className="flex h-full items-center px-4 py-4 text-sm font-semibold leading-[1.35rem] tracking-[0.005em] text-white no-underline hover:bg-[#005f87]"
+                    className="flex h-full items-center px-4 py-4 text-sm font-semibold leading-[1.35rem] tracking-[0.005em] text-white no-underline hover:bg-[color:var(--color-secondary-teal)]"
                   >
                     {group.label}
                   </Link>
 
                   {group.items.length > 0 ? (
                     <div className={`absolute ${alignClass} top-full z-50 hidden ${panelWidthClass} max-w-[94vw] border border-slate-200 bg-white p-5 shadow-2xl group-hover:block`}>
-                      <div className="mb-3 border-b border-slate-200 pb-2 text-[13px] font-semibold tracking-[0.005em] text-[#007fab]">
+                      <div className="mb-3 border-b border-slate-200 pb-2 text-[13px] font-semibold tracking-[0.005em] text-[color:var(--color-secondary-teal)]">
                         {group.label}
                       </div>
                       <div className={`grid max-h-[68vh] ${gridColsClass} gap-x-6 gap-y-2 overflow-auto pr-1`}>
@@ -276,7 +276,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                           <Link
                             key={`${group.id}-${item.href}`}
                             href={item.href}
-                            className="block rounded-sm px-2 py-2 text-sm font-medium leading-6 text-slate-700 no-underline hover:bg-slate-50 hover:text-[#007fab]"
+                            className="block rounded-sm px-2 py-2 text-sm font-medium leading-6 text-slate-700 no-underline hover:bg-slate-50 hover:text-[color:var(--color-secondary-teal)]"
                           >
                             {item.label}
                           </Link>
@@ -291,10 +291,10 @@ export default function Header({ initialLanguage }: HeaderProps) {
         </nav>
 
         {isMenuOpen ? (
-          <div className="max-h-[72vh] overflow-y-auto border-t border-slate-200 bg-white px-4 py-4 lg:hidden">
+          <div className="max-h-[72vh] overflow-y-auto border-t border-[color:var(--color-border-light)] bg-white px-4 py-4 lg:hidden">
             <div className="space-y-4">
               {mounted ? (
-                <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                <div className="rounded-lg border border-slate-200 bg-[color:var(--color-soft-cream)] p-3">
                   <div className="mb-2 text-[13px] font-medium tracking-[0.005em] text-slate-500">
                     {currentLabels.quickAccess}
                   </div>
@@ -311,7 +311,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                 <div key={group.key} className="rounded-lg border border-slate-200">
                   <button
                     onClick={() => setOpenMobileGroup((prev) => (prev === group.key ? null : group.key))}
-                    className="flex w-full items-center justify-between border-b border-slate-200 px-4 py-3 text-left text-[15px] font-medium leading-snug text-[#007fab]"
+                    className="flex w-full items-center justify-between border-b border-slate-200 px-4 py-3 text-left text-[15px] font-medium leading-snug text-[color:var(--color-primary-navy)]"
                     aria-expanded={openMobileGroup === group.key}
                   >
                     <span>{group.label}</span>
@@ -321,7 +321,7 @@ export default function Header({ initialLanguage }: HeaderProps) {
                     <div className="grid gap-1 p-2">
                       <Link
                         href={group.href}
-                        className="rounded px-3 py-2 text-sm font-semibold leading-6 text-[#0f5c73] no-underline hover:bg-slate-50"
+                        className="rounded px-3 py-2 text-sm font-semibold leading-6 text-[color:var(--color-primary-navy)] no-underline hover:bg-slate-50"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         {currentLabels.openMainSection}
@@ -354,7 +354,10 @@ export default function Header({ initialLanguage }: HeaderProps) {
               ))}
 
               <div className="flex flex-col gap-2 border-t border-slate-200 pt-4 text-sm text-slate-700">
-                <a href={`tel:${locale.site.contact.phoneHref}`} className="inline-flex items-center gap-2 no-underline hover:text-[#007fab]">
+                <a
+                  href={`tel:${locale.site.contact.phoneHref}`}
+                  className="inline-flex items-center gap-2 no-underline hover:text-[color:var(--color-secondary-teal)]"
+                >
                   <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.77.65 2.61a2 2 0 0 1-.45 2.11L8.07 9.67a16 16 0 0 0 6.26 6.26l1.23-1.24a2 2 0 0 1 2.11-.45c.84.31 1.71.53 2.61.65A2 2 0 0 1 22 16.92z" />
                   </svg>

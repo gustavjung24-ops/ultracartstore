@@ -64,7 +64,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
   const viewAllAuthorsLabel = language === 'vi' ? 'Xem tất cả tác giả' : 'View all authors';
 
   return (
-    <footer className="mt-16 border-t border-[#dbe5ec] bg-white text-[#1f2d3d]">
+    <footer className="mt-16 border-t border-white/20 bg-[color:var(--color-primary-navy)] text-slate-100">
       <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -77,7 +77,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
                 className="h-auto w-[180px]"
               />
             </Link>
-            <p className="mt-4 text-[15px] leading-7 text-[#4a6072]">{locale.site.tagline}</p>
+            <p className="mt-4 text-[15px] leading-7 text-slate-300">{locale.site.tagline}</p>
           </div>
 
           <div>
@@ -87,9 +87,9 @@ export default function Footer({ initialLanguage }: FooterProps) {
               onClick={() => setMainMenuOpen((current) => !current)}
               aria-expanded={isMainMenuOpen}
             >
-              <span className="text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.common.mainMenu}</span>
+              <span className="text-[14px] font-semibold tracking-[0.005em] text-[color:var(--color-soft-cream)]">{locale.common.mainMenu}</span>
               <span
-                className={`text-[#007fab] transition-transform ${isMainMenuOpen ? "rotate-180" : ""}`}
+                className={`text-[color:var(--color-soft-cream)] transition-transform ${isMainMenuOpen ? "rotate-180" : ""}`}
                 aria-hidden="true"
               >
                 ▾
@@ -99,7 +99,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
               <ul className="space-y-2 text-[15px] leading-6">
                 {mainNavLinks.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
+                    <Link href={item.href} className="text-slate-200 no-underline hover:text-white">
                       {item.label}
                     </Link>
                   </li>
@@ -115,9 +115,9 @@ export default function Footer({ initialLanguage }: FooterProps) {
               onClick={() => setResourcesOpen((current) => !current)}
               aria-expanded={isResourcesOpen}
             >
-              <span className="text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.common.resources}</span>
+              <span className="text-[14px] font-semibold tracking-[0.005em] text-[color:var(--color-soft-cream)]">{locale.common.resources}</span>
               <span
-                className={`text-[#007fab] transition-transform ${isResourcesOpen ? "rotate-180" : ""}`}
+                className={`text-[color:var(--color-soft-cream)] transition-transform ${isResourcesOpen ? "rotate-180" : ""}`}
                 aria-hidden="true"
               >
                 ▾
@@ -132,12 +132,12 @@ export default function Footer({ initialLanguage }: FooterProps) {
                         href={item.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-[#1f2d3d] no-underline hover:text-[#007fab]"
+                        className="text-slate-200 no-underline hover:text-white"
                       >
                         {item.label}
                       </a>
                     ) : (
-                      <Link href={item.href} className="text-[#1f2d3d] no-underline hover:text-[#007fab]">
+                      <Link href={item.href} className="text-slate-200 no-underline hover:text-white">
                         {item.label}
                       </Link>
                     )}
@@ -148,30 +148,30 @@ export default function Footer({ initialLanguage }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="mb-4 text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.utilityNav.contact}</h4>
-            <p className="text-sm leading-relaxed text-[#4a6072]">{locale.footer.contactDescription}</p>
+            <h4 className="mb-4 text-[14px] font-semibold tracking-[0.005em] text-[color:var(--color-soft-cream)]">{locale.utilityNav.contact}</h4>
+            <p className="text-sm leading-relaxed text-slate-300">{locale.footer.contactDescription}</p>
             <Link
               href="/contact"
-              className="mt-3 inline-flex rounded-full border border-[#0f5c73] px-4 py-2 text-sm font-semibold tracking-[0.005em] text-[#0f5c73] no-underline transition hover:bg-[#0f5c73] hover:text-white"
+              className="mt-3 inline-flex rounded-full border border-[color:var(--color-accent-green)] bg-[color:var(--color-accent-green)] px-4 py-2 text-sm font-semibold tracking-[0.005em] text-white no-underline transition hover:bg-[color:var(--color-accent-green-hover)] hover:border-[color:var(--color-accent-green-hover)]"
             >
               {locale.footer.contactCta}
             </Link>
-            <div className="mt-4 border-t border-[#e2e8f0] pt-3">
-              <p className="text-[14px] font-semibold tracking-[0.005em] text-[#007fab]">{locale.footerAuthor.title}</p>
-              <p className="mt-1 text-[13px] leading-relaxed text-[#64748b]">{locale.footerAuthor.description}</p>
+            <div className="mt-4 border-t border-white/20 pt-3">
+              <p className="text-[14px] font-semibold tracking-[0.005em] text-[color:var(--color-soft-cream)]">{locale.footerAuthor.title}</p>
+              <p className="mt-1 text-[13px] leading-relaxed text-slate-300">{locale.footerAuthor.description}</p>
               <ul className="mt-3 max-h-72 space-y-2 overflow-y-auto pr-1 text-sm">
                 {footerAuthors.map((author) => (
                   <li key={author.id}>
                     <Link
                       href={getAuthorProfileHref(author)}
-                      className="group flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-2 text-[#1f2d3d] no-underline transition hover:border-[#007fab]/40 hover:bg-slate-50"
+                      className="group flex items-center gap-3 rounded-lg border border-white/20 bg-white/10 p-2 text-slate-100 no-underline transition hover:border-white/45 hover:bg-white/15"
                     >
                       <AuthorAvatar author={author} size="sm" className="shrink-0" />
                       <div className="min-w-0">
-                        <p className="truncate text-sm font-semibold text-slate-900 group-hover:text-[#007fab]">
+                        <p className="truncate text-sm font-semibold text-white group-hover:text-[color:var(--color-soft-cream)]">
                           {author.displayName}
                         </p>
-                        <p className="line-clamp-2 text-xs leading-[1.35rem] text-slate-500">{author.headline}</p>
+                        <p className="line-clamp-2 text-xs leading-[1.35rem] text-slate-300">{author.headline}</p>
                       </div>
                     </Link>
                   </li>
@@ -179,7 +179,7 @@ export default function Footer({ initialLanguage }: FooterProps) {
               </ul>
               <Link
                 href="/authors"
-                className="mt-3 inline-flex text-xs font-semibold tracking-[0.005em] text-[#0f5c73] no-underline hover:text-[#007fab]"
+                className="mt-3 inline-flex text-xs font-semibold tracking-[0.005em] text-[color:var(--color-soft-cream)] no-underline hover:text-white"
               >
                 {viewAllAuthorsLabel}
               </Link>
@@ -187,11 +187,11 @@ export default function Footer({ initialLanguage }: FooterProps) {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-[#e2e8f0] pt-6 text-[13px] leading-6 text-[#64748b] md:flex-row md:items-center md:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-white/20 pt-6 text-[13px] leading-6 text-slate-300 md:flex-row md:items-center md:justify-between">
           <p>© {currentYear} {locale.site.name}. {locale.footerLegal.allRightsReserved}</p>
           <div className="flex gap-4">
             {legalLinks.map((item) => (
-              <Link key={item.href} href={item.href} className="no-underline hover:text-[#007fab]">
+              <Link key={item.href} href={item.href} className="no-underline hover:text-white">
                 {item.label}
               </Link>
             ))}

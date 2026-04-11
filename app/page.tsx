@@ -66,20 +66,21 @@ function StoryLink({ story, className, children }: StoryLinkProps) {
 }
 
 const featureArticleCardTitleClass =
-  "home-card-title mt-2 line-clamp-2 text-lg font-semibold leading-[1.35] tracking-normal text-slate-900";
+  "home-card-title mt-2 line-clamp-2 text-lg font-semibold leading-[1.35] tracking-normal text-[color:var(--color-primary-navy)]";
 const featureArticleCardCopyClass =
-  "home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 tracking-normal text-slate-600 md:mt-3";
+  "home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 tracking-normal text-[color:var(--color-muted-text)] md:mt-3";
 const leadArticleCardTitleClass =
-  "home-card-title mt-2 text-[1.5rem] font-semibold leading-[1.25] tracking-normal text-slate-900 md:text-[1.875rem]";
-const leadArticleCardCopyClass = "home-card-copy mt-3 text-sm leading-7 tracking-normal text-slate-600";
+  "home-card-title mt-2 text-[1.5rem] font-semibold leading-[1.25] tracking-normal text-[color:var(--color-primary-navy)] md:text-[1.875rem]";
+const leadArticleCardCopyClass =
+  "home-card-copy mt-3 text-sm leading-7 tracking-normal text-[color:var(--color-muted-text)]";
 const articleCardLinkClass =
-  "mt-4 inline-block text-sm font-semibold leading-6 tracking-[0.01em] text-[#0f5c73] no-underline hover:underline";
+  "mt-4 inline-block text-sm font-semibold leading-6 tracking-[0.01em] text-[color:var(--color-secondary-teal)] no-underline hover:text-[color:var(--color-primary-navy)] hover:underline";
 const sharedArticleCardTitleClass =
-  "home-card-title mt-2 line-clamp-2 text-base font-semibold leading-[1.35] tracking-normal text-slate-900";
+  "home-card-title mt-2 line-clamp-2 text-base font-semibold leading-[1.35] tracking-normal text-[color:var(--color-primary-navy)]";
 const sharedArticleCardSummaryClass =
-  "home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 tracking-normal text-slate-600";
+  "home-card-copy mt-2.5 line-clamp-3 text-sm leading-7 tracking-normal text-[color:var(--color-muted-text)]";
 const sharedArticleCardReadMoreClass =
-  "mt-4 inline-block text-sm font-semibold leading-6 tracking-[0.01em] text-[#0f5c73] no-underline hover:underline";
+  "mt-4 inline-block text-sm font-semibold leading-6 tracking-[0.01em] text-[color:var(--color-secondary-teal)] no-underline hover:text-[color:var(--color-primary-navy)] hover:underline";
 const HEART_PROTEIN_ARTICLE_PATH =
   "/news/health-nutrition/american-heart-association-recommends-plant-based-protein-over-meat";
 const ARTICLE_TITLE_OVERLAY_BY_PATH: ArticleTitleOverlayByPath = {
@@ -177,11 +178,11 @@ export default async function HomePage() {
   return (
     <>
       <Header initialLanguage={lang} />
-      <main className="pb-12 md:pb-16">
+      <main className="bg-[color:var(--color-soft-cream)] pb-12 md:pb-16">
         <section className="mx-auto max-w-7xl px-4 pt-3 md:px-6 md:pt-5">
-          <div className="overflow-hidden rounded-[34px] border border-[#cad8df] bg-white shadow-[0_18px_44px_rgba(15,35,45,0.16)]">
+          <div className="overflow-hidden rounded-[34px] border border-[color:var(--color-border-light)] bg-white shadow-[0_18px_44px_rgba(18,59,93,0.14)]">
             <div className="grid md:grid-cols-2">
-              <div className="relative min-h-[260px] bg-[#dce8ee] md:min-h-[500px]">
+              <div className="relative min-h-[260px] bg-[color:var(--color-soft-cream)] md:min-h-[500px]">
                 <Image
                   src={heroCoverImage}
                   alt={heroContent.imageAlt}
@@ -191,19 +192,21 @@ export default async function HomePage() {
                 />
               </div>
 
-              <div className="flex items-center bg-[radial-gradient(circle_at_top_left,#1f7390_0%,#0f5c73_58%,#0c4a5e_100%)] px-5 py-8 text-white md:px-10 md:py-14">
+              <div className="flex items-center bg-[linear-gradient(135deg,var(--color-card-white)_0%,var(--color-soft-cream)_100%)] px-5 py-8 text-[color:var(--color-body-text)] md:px-10 md:py-14">
                 <div>
-                  <p className="text-[11px] font-semibold tracking-[0.01em] text-[#ddbb83] md:text-xs">{locale.site.name}</p>
-                  <h1 className="home-hero-title mt-2.5 text-3xl font-bold leading-tight text-white sm:text-4xl md:mt-3 md:text-5xl">
+                  <p className="text-[11px] font-semibold tracking-[0.01em] text-[color:var(--color-secondary-teal)] md:text-xs">
+                    {locale.site.name}
+                  </p>
+                  <h1 className="home-hero-title mt-2.5 text-3xl font-bold leading-tight text-[color:var(--color-primary-navy)] sm:text-4xl md:mt-3 md:text-5xl">
                     {heroContent.title}
                   </h1>
-                  <p className="home-hero-copy mt-4 max-w-xl text-base leading-8 text-slate-100 md:mt-5 md:text-lg">
+                  <p className="home-hero-copy mt-4 max-w-xl text-base leading-8 text-[color:var(--color-muted-text)] md:mt-5 md:text-lg">
                     {heroContent.summary}
                   </p>
                   <div className="mt-6 md:mt-8">
                     <Link
                       href="/good-nutrition"
-                      className="rounded-full border border-white/45 px-6 py-2.5 text-sm font-semibold tracking-[0.01em] text-white no-underline transition hover:bg-white/10 md:px-7 md:py-3"
+                      className="rounded-full border border-[color:var(--color-accent-green)] bg-[color:var(--color-accent-green)] px-6 py-2.5 text-sm font-semibold tracking-[0.01em] text-white no-underline transition hover:border-[color:var(--color-accent-green-hover)] hover:bg-[color:var(--color-accent-green-hover)] md:px-7 md:py-3"
                     >
                       {locale.common.learnMore}
                     </Link>
@@ -215,7 +218,9 @@ export default async function HomePage() {
         </section>
 
         <section className="mx-auto mt-10 max-w-7xl px-4 md:mt-12 md:px-6">
-          <h2 className="home-section-title mb-5 text-3xl font-bold text-[#0f5c73] md:mb-6 md:text-4xl">{featuredTitle}</h2>
+          <h2 className="home-section-title mb-5 text-3xl font-bold text-[color:var(--color-primary-navy)] md:mb-6 md:text-4xl">
+            {featuredTitle}
+          </h2>
           <div className="grid gap-4 md:grid-cols-3 md:gap-6">
             {feed.featuredNews.map((story) => (
               <article key={story.id} className="smooth-card overflow-hidden rounded-2xl">
@@ -228,7 +233,7 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-4 md:p-5">
-                  <p className="text-xs font-semibold tracking-[0.01em] text-[#0f5c73]">{story.label}</p>
+                  <p className="text-xs font-semibold tracking-[0.01em] text-[color:var(--color-secondary-teal)]">{story.label}</p>
                   <h3 className={featureArticleCardTitleClass}>{story.title}</h3>
                   <p className={featureArticleCardCopyClass}>{story.summary}</p>
                   <StoryLink story={story} className={articleCardLinkClass}>
@@ -241,7 +246,7 @@ export default async function HomePage() {
         </section>
 
         <section className="mx-auto mt-10 max-w-7xl px-4 md:mt-14 md:px-6">
-          <h2 className="home-section-title mb-5 text-3xl font-bold text-[#0f5c73] md:mb-6 md:text-4xl">
+          <h2 className="home-section-title mb-5 text-3xl font-bold text-[color:var(--color-primary-navy)] md:mb-6 md:text-4xl">
             {locale.common.newsAndEvents}
           </h2>
 
@@ -257,7 +262,9 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-5 md:p-7">
-                  <p className="text-xs font-semibold tracking-[0.01em] text-[#0f5c73]">{feed.newsEventsLead.label}</p>
+                  <p className="text-xs font-semibold tracking-[0.01em] text-[color:var(--color-secondary-teal)]">
+                    {feed.newsEventsLead.label}
+                  </p>
                   <h3 className={leadArticleCardTitleClass}>{feed.newsEventsLead.title}</h3>
                   <p className={leadArticleCardCopyClass}>{feed.newsEventsLead.summary}</p>
                   <StoryLink story={feed.newsEventsLead} className={articleCardLinkClass}>
@@ -268,7 +275,7 @@ export default async function HomePage() {
             </article>
           ) : null}
 
-          <h3 className="mt-8 text-xl font-bold text-slate-900 md:mt-9">{topPromotedTitle}</h3>
+          <h3 className="mt-8 text-xl font-bold text-[color:var(--color-primary-navy)] md:mt-9">{topPromotedTitle}</h3>
           <div className="mt-4 grid gap-4 md:grid-cols-3 md:gap-6">
             {feed.topPromotedStories.map((story) => (
               <article key={story.id} className="smooth-card overflow-hidden rounded-2xl">
@@ -281,7 +288,7 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-4 md:p-5">
-                  <p className="text-xs font-semibold tracking-[0.01em] text-[#0f5c73]">{story.label}</p>
+                  <p className="text-xs font-semibold tracking-[0.01em] text-[color:var(--color-secondary-teal)]">{story.label}</p>
                   <ArticleCardTitle
                     story={story}
                     className={sharedArticleCardTitleClass}
@@ -299,7 +306,9 @@ export default async function HomePage() {
         </section>
 
         <section className="mx-auto mt-10 max-w-7xl px-4 md:mt-14 md:px-6">
-          <h2 className="home-section-title mb-5 text-3xl font-bold text-[#0f5c73] md:mb-6 md:text-4xl">{homeUi.topicHighlights}</h2>
+          <h2 className="home-section-title mb-5 text-3xl font-bold text-[color:var(--color-primary-navy)] md:mb-6 md:text-4xl">
+            {homeUi.topicHighlights}
+          </h2>
           <div className="grid gap-4 md:gap-6 md:grid-cols-3">
             {feed.topicHighlights.map((section) => (
               <article key={section.id} className="smooth-card overflow-hidden rounded-2xl">
@@ -312,14 +321,16 @@ export default async function HomePage() {
                   />
                 </div>
                 <div className="p-4 md:p-5">
-                  <h3 className="home-card-title text-xl font-semibold text-slate-900">{section.title}</h3>
-                  <p className="home-card-copy mt-2.5 text-sm leading-7 text-slate-600 md:mt-3">{section.summary}</p>
+                  <h3 className="home-card-title text-xl font-semibold text-[color:var(--color-primary-navy)]">{section.title}</h3>
+                  <p className="home-card-copy mt-2.5 text-sm leading-7 text-[color:var(--color-muted-text)] md:mt-3">
+                    {section.summary}
+                  </p>
                   <div className="mt-3.5 space-y-3 md:mt-4">
                     {section.stories.map((story) => (
                       <StoryLink
                         key={`${section.id}-${story.id}`}
                         story={story}
-                        className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-2 text-sm font-semibold text-[#0f5c73] no-underline transition hover:border-[#0f5c73]/50"
+                        className="flex items-center gap-3 rounded-lg border border-[color:var(--color-border-light)] bg-white p-2 text-sm font-semibold text-[color:var(--color-secondary-teal)] no-underline transition hover:border-[color:var(--color-secondary-teal)]/60"
                       >
                         <span className="relative h-14 w-20 shrink-0 overflow-hidden rounded bg-slate-100">
                           <NewsImage
@@ -333,7 +344,10 @@ export default async function HomePage() {
                       </StoryLink>
                     ))}
                   </div>
-                  <Link href={section.href} className="mt-4 inline-block text-sm font-semibold tracking-[0.01em] text-[#0f5c73] no-underline hover:underline">
+                  <Link
+                    href={section.href}
+                    className="mt-4 inline-block text-sm font-semibold tracking-[0.01em] text-[color:var(--color-secondary-teal)] no-underline hover:text-[color:var(--color-primary-navy)] hover:underline"
+                  >
                     {homeUi.openSection}
                   </Link>
                 </div>
@@ -345,11 +359,15 @@ export default async function HomePage() {
         <section className="mx-auto mt-10 max-w-7xl px-4 md:mt-14 md:px-6">
           <div className="smooth-surface grid items-center gap-6 rounded-3xl p-5 md:gap-8 md:p-10 md:grid-cols-2">
             <div>
-              <h2 className="home-section-title text-3xl font-bold text-[#0f5c73] md:text-4xl">{homeUi.impactTitle}</h2>
-              <p className="home-hero-copy mt-3 text-base leading-8 text-slate-700 md:mt-4 md:text-lg">{homeUi.impactFallbackSummary}</p>
+              <h2 className="home-section-title text-3xl font-bold text-[color:var(--color-primary-navy)] md:text-4xl">
+                {homeUi.impactTitle}
+              </h2>
+              <p className="home-hero-copy mt-3 text-base leading-8 text-[color:var(--color-body-text)] md:mt-4 md:text-lg">
+                {homeUi.impactFallbackSummary}
+              </p>
               <Link
                 href="/about-us"
-                className="mt-5 inline-block rounded-full bg-[#0f5c73] px-6 py-2.5 text-sm font-semibold tracking-[0.01em] text-white no-underline hover:opacity-90 md:mt-6 md:py-3"
+                className="mt-5 inline-block rounded-full bg-[color:var(--color-accent-green)] px-6 py-2.5 text-sm font-semibold tracking-[0.01em] text-white no-underline transition hover:bg-[color:var(--color-accent-green-hover)] md:mt-6 md:py-3"
               >
                 {locale.common.learnMore}
               </Link>
@@ -371,7 +389,9 @@ export default async function HomePage() {
         </section>
 
         <section className="mx-auto mt-10 max-w-7xl px-4 md:mt-14 md:px-6">
-          <h2 className="home-section-title mb-5 text-3xl font-bold text-[#0f5c73] md:mb-6 md:text-4xl">{homeUi.latestStories}</h2>
+          <h2 className="home-section-title mb-5 text-3xl font-bold text-[color:var(--color-primary-navy)] md:mb-6 md:text-4xl">
+            {homeUi.latestStories}
+          </h2>
           <div className="grid gap-4 md:gap-6 md:grid-cols-3">
             {feed.latestNews.map((story) => (
               <article key={story.id} className="smooth-card rounded-2xl overflow-hidden">
@@ -401,11 +421,14 @@ export default async function HomePage() {
         </section>
 
         <section className="mx-auto mt-10 max-w-7xl px-4 md:mt-14 md:px-6">
-          <div className="rounded-3xl bg-gradient-to-r from-[#0f5c73] to-[#123847] px-5 py-8 text-center text-white md:px-12 md:py-10">
+          <div className="rounded-3xl bg-gradient-to-r from-[color:var(--color-primary-navy)] to-[color:var(--color-secondary-teal)] px-5 py-8 text-center text-white md:px-12 md:py-10">
             <h2 className="home-section-title text-3xl font-bold md:text-4xl">{locale.common.supportOurMission}</h2>
-            <p className="home-hero-copy mx-auto mt-3 max-w-3xl text-slate-200 md:mt-4">{homeUi.supportFallbackSummary}</p>
+            <p className="home-hero-copy mx-auto mt-3 max-w-3xl text-white/90 md:mt-4">{homeUi.supportFallbackSummary}</p>
             <div className="mt-5 md:mt-6">
-              <Link href="/about-us/our-victories" className="inline-block rounded-full border border-white/40 px-7 py-2.5 text-sm font-semibold tracking-[0.01em] text-white transition hover:bg-white/10 no-underline md:px-8 md:py-3">
+              <Link
+                href="/about-us/our-victories"
+                className="inline-block rounded-full border border-[color:var(--color-accent-green)] bg-[color:var(--color-accent-green)] px-7 py-2.5 text-sm font-semibold tracking-[0.01em] text-white transition hover:bg-[color:var(--color-accent-green-hover)] hover:border-[color:var(--color-accent-green-hover)] no-underline md:px-8 md:py-3"
+              >
                 {homeUi.exploreHighlights}
               </Link>
             </div>

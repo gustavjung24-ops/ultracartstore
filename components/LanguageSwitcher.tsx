@@ -26,13 +26,13 @@ export default function LanguageSwitcher({
   };
 
   return (
-    <div className="inline-flex flex-nowrap items-center gap-2 rounded-full bg-slate-100 p-1">
+    <div className="inline-flex flex-nowrap items-center gap-2 rounded-full border border-[color:var(--color-border-light)] bg-[color:var(--color-soft-cream)] p-1">
       <button
         onClick={() => handleChange('en')}
         className={`whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-semibold leading-5 tracking-[0.005em] transition ${
           language === 'en'
-            ? 'bg-[#007fab] text-white'
-            : 'text-gray-700 hover:text-gray-900'
+            ? 'bg-[color:var(--color-secondary-teal)] text-white'
+            : 'text-[color:var(--color-body-text)] hover:text-[color:var(--color-primary-navy)]'
         }`}
       >
         {englishLabel}
@@ -41,8 +41,8 @@ export default function LanguageSwitcher({
         onClick={() => handleChange('vi')}
         className={`whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-semibold leading-5 tracking-[0.005em] transition ${
           language === 'vi'
-            ? 'bg-[#007fab] text-white'
-            : 'text-gray-700 hover:text-gray-900'
+            ? 'bg-[color:var(--color-secondary-teal)] text-white'
+            : 'text-[color:var(--color-body-text)] hover:text-[color:var(--color-primary-navy)]'
         }`}
       >
         {vietnameseLabel}

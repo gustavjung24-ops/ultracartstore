@@ -91,7 +91,10 @@ export default async function BlogIndexPage() {
                   <p className="mt-2 line-clamp-3 text-sm text-slate-600">
                     {getPostSummary(post, lang)}
                   </p>
-                  <Link href={post.path} className="mt-4 inline-block text-sm font-semibold text-[#006c96] hover:underline">
+                  <Link
+                    href={post.path}
+                    className="mt-4 inline-block text-sm font-semibold text-[color:var(--color-secondary-teal)] hover:text-[color:var(--color-secondary-teal-hover)] hover:underline"
+                  >
                     {locale.common.readMore}
                   </Link>
                 </div>
