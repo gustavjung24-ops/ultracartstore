@@ -1,0 +1,19 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
+  "/news/blog/page": "app/news/blog/page.js",
+  "/donate/page": "app/donate/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/free-downloads/page": "app/free-downloads/page.js",
+  "/authors/[slug]/page": "app/authors/[slug]/page.js",
+  "/authors/page": "app/authors/page.js",
+  "/[...slug]/page": "app/[...slug]/page.js",
+  "/order-turnaround-time/page": "app/order-turnaround-time/page.js",
+  "/privacy-policy/page": "app/privacy-policy/page.js",
+  "/product/[slug]/page": "app/product/[slug]/page.js",
+  "/shop/[category]/page": "app/shop/[category]/page.js",
+  "/shop/page": "app/shop/page.js",
+  "/page": "app/page.js"
+}

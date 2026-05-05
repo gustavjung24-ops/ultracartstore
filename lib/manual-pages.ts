@@ -1,6 +1,20 @@
 ﻿import type { PcrmLink, PcrmMedia, PcrmPage } from "./pcrm-content";
+import mirrorDraftsData from "@/pcrm_translated/mirror/import_drafts_with_images.json";
 
 const BASE = "https://www.pcrm.org";
+
+type MirrorDraftItem = {
+  sourceTitleEn: string;
+  sourceUrl: string;
+  sourceCategory?: string;
+  sourceImageUrl?: string;
+  sourceImageAlt?: string;
+  excerptEn?: string;
+  titleVi?: string;
+  excerptVi?: string;
+  summaryVi?: string;
+  attributionVi?: string;
+};
 
 type ManualPageSpec = readonly [
   path: string,
@@ -374,6 +388,69 @@ function createDetailedPage(spec: DetailedManualPageSpec): PcrmPage & { path: st
     links_vi: linksVi,
   };
 }
+
+function createMirrorDraftPage(item: MirrorDraftItem): PcrmPage & { path: string } {
+  const path = new URL(item.sourceUrl).pathname;
+  const categoryPath = path.split("/").slice(0, -1).join("/") || "/news";
+  const descriptionEn = item.excerptEn?.trim() || item.sourceTitleEn;
+  const descriptionVi = item.summaryVi?.trim() || item.excerptVi?.trim() || item.titleVi?.trim() || item.sourceTitleEn;
+  const fallbackAlt = item.titleVi?.trim() || item.sourceTitleEn;
+
+  return {
+    url: item.sourceUrl,
+    path,
+    title: item.sourceTitleEn,
+    title_en: item.sourceTitleEn,
+    title_vi: item.titleVi?.trim() || item.sourceTitleEn,
+    description: descriptionEn,
+    description_en: descriptionEn,
+    description_vi: descriptionVi,
+    h1: [item.sourceTitleEn],
+    h1_en: [item.sourceTitleEn],
+    h1_vi: [item.titleVi?.trim() || item.sourceTitleEn],
+    h2: [],
+    h2_en: [],
+    h2_vi: [],
+    h3: [],
+    h3_en: [],
+    h3_vi: [],
+    paragraphs: [descriptionEn, "Source: Physicians Committee for Responsible Medicine (PCRM)."],
+    paragraphs_en: [descriptionEn, "Source: Physicians Committee for Responsible Medicine (PCRM)."],
+    paragraphs_vi: [descriptionVi, item.attributionVi?.trim() || "Nguồn: Physicians Committee for Responsible Medicine (PCRM)."],
+    images: item.sourceImageUrl
+      ? [
+          {
+            src: item.sourceImageUrl,
+            alt: item.sourceImageAlt?.trim() || fallbackAlt,
+          },
+        ]
+      : [],
+    links: [
+      {
+        text: item.sourceCategory?.trim() || "News",
+        url: `${BASE}${categoryPath}`,
+      },
+      {
+        text: "Original article on PCRM",
+        url: item.sourceUrl,
+      },
+    ],
+    links_vi: [
+      {
+        text: item.sourceCategory?.trim() || "News",
+        text_vi: item.sourceCategory?.trim() || "Tin tức",
+        url: `${BASE}${categoryPath}`,
+      },
+      {
+        text: "Original article on PCRM",
+        text_vi: "Bài gốc trên PCRM",
+        url: item.sourceUrl,
+      },
+    ],
+  };
+}
+
+const mirrorDraftPages = (mirrorDraftsData.items as MirrorDraftItem[]).map(createMirrorDraftPage);
 
 const priorityArticleManualPages: DetailedManualPageSpec[] = [
   {
@@ -1004,6 +1081,7 @@ const priorityArticleManualPages: DetailedManualPageSpec[] = [
 
 export const manualPages = [
   ...manualPageSpecs.map(createPage),
+  ...mirrorDraftPages,
   ...priorityArticleManualPages.map(createDetailedPage),
 ];
 

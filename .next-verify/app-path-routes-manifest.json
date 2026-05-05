@@ -1,0 +1,19 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/robots.txt/route": "/robots.txt",
+  "/manifest.webmanifest/route": "/manifest.webmanifest",
+  "/news/blog/page": "/news/blog",
+  "/donate/page": "/donate",
+  "/contact/page": "/contact",
+  "/free-downloads/page": "/free-downloads",
+  "/authors/[slug]/page": "/authors/[slug]",
+  "/authors/page": "/authors",
+  "/[...slug]/page": "/[...slug]",
+  "/order-turnaround-time/page": "/order-turnaround-time",
+  "/privacy-policy/page": "/privacy-policy",
+  "/product/[slug]/page": "/product/[slug]",
+  "/shop/[category]/page": "/shop/[category]",
+  "/shop/page": "/shop",
+  "/page": "/"
+}
